@@ -21,6 +21,19 @@ const styles = `
     font-family: 'Playfair Display', serif;
   }
 
+  /* Отключаем кастомный курсор и эффекты наведения для корректной работы на мобильных */
+  @media (hover: none) and (pointer: coarse) {
+    body {
+      cursor: auto !important;
+    }
+    .custom-cursor {
+      display: none !important;
+    }
+    .glass-card::before {
+      display: none !important;
+    }
+  }
+
   ::selection {
     background: #E50940;
     color: #fff;
@@ -236,8 +249,8 @@ const LandingPage = () => {
       <div className="bg-glow cyan"></div>
 
       {/* Header */}
-      <header className="fixed w-full top-0 z-50 transition-all duration-300 backdrop-blur-md bg-[#050505]/50 border-b border-white/5 py-4 px-6 md:px-12 flex justify-between items-center">
-        <div className="text-2xl font-serif font-semibold tracking-tighter interactive-elem cursor-pointer">
+      <header className="fixed w-full top-0 z-50 transition-all duration-300 backdrop-blur-md bg-[#050505]/50 border-b border-white/5 py-4 px-4 md:px-12 flex justify-between items-center">
+        <div className="text-xl md:text-2xl font-serif font-semibold tracking-tighter interactive-elem cursor-pointer">
           AppSea<span className="text-[#E50940] italic">Pro</span>
         </div>
         <nav className="hidden md:flex gap-8 text-sm font-medium text-[#8B8D98]">
@@ -245,7 +258,7 @@ const LandingPage = () => {
           <a href="#technology" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Технологии</a>
           <a href="#investments" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Инвестиции</a>
         </nav>
-        <a href="#contact" className="glass-card px-6 py-2 rounded-full text-sm font-medium hover:bg-white/10 transition-colors interactive-elem cursor-pointer" onMouseMove={handleGlassMove}>
+        <a href="#contact" className="glass-card px-5 md:px-6 py-2 rounded-full text-xs md:text-sm font-medium hover:bg-white/10 transition-colors interactive-elem cursor-pointer" onMouseMove={handleGlassMove}>
           <span className="glass-content">Связаться</span>
         </a>
       </header>
@@ -254,18 +267,18 @@ const LandingPage = () => {
       <main className="relative z-10 bg-[#050505] pb-10" style={{ boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}>
         
         {/* HERO SECTION */}
-        <section className="min-h-screen flex items-center justify-center relative px-6 pt-20">
+        <section className="min-h-screen flex items-center justify-center relative px-4 md:px-6 pt-24 md:pt-20">
           <div className="max-w-5xl mx-auto text-center z-10">
-            <p className="text-[#00F5D4] text-sm md:text-base font-medium tracking-widest uppercase mb-6 fade-up-elem" style={{ transitionDelay: '0s' }}>
+            <p className="text-[#00F5D4] text-xs md:text-sm font-medium tracking-widest uppercase mb-4 md:mb-6 fade-up-elem" style={{ transitionDelay: '0s' }}>
               Digital Boutique
             </p>
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium leading-tight mb-8 fade-up-elem" style={{ transitionDelay: '0.1s' }}>
-              Технологии, которые <br/>
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-medium leading-tight mb-6 md:mb-8 fade-up-elem" style={{ transitionDelay: '0.1s' }}>
+              Технологии, которые <br className="hidden md:block"/>
               <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#E50940] to-pink-500">продают</span> ваш статус
             </h1>
             
-            <p className="text-[#8B8D98] text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light fade-up-elem" style={{ transitionDelay: '0.2s' }}>
+            <p className="text-[#8B8D98] text-base md:text-xl max-w-2xl mx-auto mb-10 md:mb-12 font-light fade-up-elem px-2" style={{ transitionDelay: '0.2s' }}>
               Создаем премиальные PWA-визитки, Smart-меню и цифровые экосистемы, оставляя конкурентов в прошлом.
             </p>
 
@@ -301,21 +314,21 @@ const LandingPage = () => {
         </section>
 
         {/* SHOWROOM SECTION */}
-        <section id="showroom" className="py-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
-          <div className="mb-16 md:mb-24 fade-up-elem">
-            <h2 className="text-4xl md:text-5xl font-serif mb-4">Интерактивный <span className="italic text-[#00F5D4]">Showroom</span></h2>
-            <p className="text-[#8B8D98] text-lg max-w-lg">Безупречная эстетика и функциональность в каждом решении. Выберите свою нишу.</p>
+        <section id="showroom" className="py-24 md:py-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
+          <div className="mb-12 md:mb-24 fade-up-elem text-center md:text-left">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Интерактивный <span className="italic text-[#00F5D4]">Showroom</span></h2>
+            <p className="text-[#8B8D98] text-base md:text-lg max-w-lg mx-auto md:mx-0">Безупречная эстетика и функциональность в каждом решении. Выберите свою нишу.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             
             {/* PWA Визитки */}
-            <div className="glass-card md:col-span-2 p-8 md:p-12 min-h-[400px] flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove}>
-              <div className="glass-content flex-1 z-10">
+            <div className="glass-card md:col-span-2 p-6 md:p-12 min-h-[400px] flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove}>
+              <div className="glass-content flex-1 z-10 text-center md:text-left">
                 <span className="text-[#E50940] text-xs uppercase tracking-widest font-semibold mb-2 block">Флагман</span>
-                <h3 className="text-3xl font-serif mb-4">Цифровые визитки <br/>нового поколения</h3>
-                <p className="text-[#8B8D98] mb-6">От элегантного Lite-старта до 3D-Premium визиток с анимациями. Ваш контакт сохраняется в телефон в один клик без App Store.</p>
-                <div className="flex gap-4">
+                <h3 className="text-2xl md:text-3xl font-serif mb-4">Цифровые визитки <br className="hidden md:block"/>нового поколения</h3>
+                <p className="text-[#8B8D98] mb-6 text-sm md:text-base">От элегантного Lite-старта до 3D-Premium визиток с анимациями. Ваш контакт сохраняется в телефон в один клик без App Store.</p>
+                <div className="flex gap-4 justify-center md:justify-start">
                   <span className="border border-white/10 px-4 py-1 rounded-full text-xs">Lite</span>
                   <span className="bg-white/10 border border-white/20 px-4 py-1 rounded-full text-xs text-white">VIP</span>
                 </div>
@@ -341,12 +354,12 @@ const LandingPage = () => {
             </div>
 
             {/* Smart HoReCa */}
-            <div className="glass-card p-8 min-h-[400px] flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
-              <div className="glass-content z-10 flex flex-col h-full">
+            <div className="glass-card p-6 md:p-8 min-h-[400px] flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
+              <div className="glass-content z-10 flex flex-col h-full text-center md:text-left">
                 <span className="text-[#00F5D4] text-xs uppercase tracking-widest font-semibold mb-2 block">HoReCa</span>
-                <h3 className="text-2xl font-serif mb-4">Smart <span className="italic">Меню</span></h3>
+                <h3 className="text-xl md:text-2xl font-serif mb-4">Smart <span className="italic">Меню</span></h3>
                 <p className="text-[#8B8D98] text-sm flex-1">Для крафтовых ресторанов и крупных сетей. QR-меню, которое выглядит как глянцевый журнал.</p>
-                <div className="mt-6 border border-white/10 rounded-xl p-4 bg-black/40">
+                <div className="mt-6 border border-white/10 rounded-xl p-4 bg-black/40 text-left">
                   <div className="flex justify-between items-end mb-4">
                     <div className="h-3 w-16 bg-white/20 rounded"></div>
                     <div className="h-3 w-8 bg-[#00F5D4]/50 rounded"></div>
@@ -363,22 +376,22 @@ const LandingPage = () => {
             </div>
 
             {/* Beauty */}
-            <div className="glass-card p-8 min-h-[300px] flex flex-col justify-end interactive-elem fade-up-elem cursor-pointer relative" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.2s', backgroundImage: "url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <div className="glass-card p-6 md:p-8 min-h-[300px] flex flex-col justify-end interactive-elem fade-up-elem cursor-pointer relative" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.2s', backgroundImage: "url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 z-0"></div>
-              <div className="glass-content z-10">
+              <div className="glass-content z-10 text-center md:text-left">
                 <span className="text-white/70 text-xs uppercase tracking-widest font-semibold mb-2 block">Beauty & SPA</span>
-                <h3 className="text-2xl font-serif mb-2 text-white">Эстетика и Запись</h3>
+                <h3 className="text-xl md:text-2xl font-serif mb-2 text-white">Эстетика и Запись</h3>
                 <p className="text-sm text-white/60">Календарь, лояльность и бронирование в едином PWA.</p>
               </div>
             </div>
 
             {/* Тизер: Future */}
-            <div className="glass-card md:col-span-2 p-8 min-h-[300px] flex items-center justify-center glitch-hover relative interactive-elem overflow-hidden fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.3s' }}>
+            <div className="glass-card md:col-span-2 p-6 md:p-8 min-h-[300px] flex items-center justify-center glitch-hover relative interactive-elem overflow-hidden fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.3s' }}>
               <div className="absolute inset-0 backdrop-blur-xl bg-[#050505]/60 z-10 flex items-center justify-center transition-all duration-300">
                 <div className="text-center glass-content">
                   <svg className="w-8 h-8 mx-auto mb-4 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                  <h3 className="text-3xl font-serif glitch-text font-bold text-white/50 tracking-widest transition-colors duration-300">Медтуризм & Стоматология</h3>
-                  <p className="text-sm mt-2 text-white/30 uppercase tracking-[0.3em]">Loading 2024</p>
+                  <h3 className="text-2xl md:text-3xl font-serif glitch-text font-bold text-white/50 tracking-widest transition-colors duration-300">Медтуризм & Стоматология</h3>
+                  <p className="text-xs md:text-sm mt-2 text-white/30 uppercase tracking-[0.3em]">Loading 2024</p>
                 </div>
               </div>
             </div>
@@ -388,13 +401,13 @@ const LandingPage = () => {
 
         {/* TECHNOLOGY SECTION */}
         <section id="technology" className="py-24 px-4 md:px-8 max-w-5xl mx-auto relative z-10">
-          <div className="text-center mb-16 fade-up-elem">
-            <h2 className="text-4xl md:text-5xl font-serif mb-4">Технологии <span className="italic text-[#E50940]">Превосходства</span></h2>
-            <p className="text-[#8B8D98] text-lg">Мы не используем конструкторы. Только кастомный код и передовые Web-стандарты.</p>
+          <div className="text-center mb-12 md:mb-16 fade-up-elem">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Технологии <span className="italic text-[#E50940]">Превосходства</span></h2>
+            <p className="text-[#8B8D98] text-base md:text-lg">Мы не используем конструкторы. Только кастомный код и передовые Web-стандарты.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="glass-card p-10 flex flex-col items-center text-center interactive-elem group fade-up-elem cursor-pointer" onMouseMove={handleGlassMove}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <div className="glass-card p-8 md:p-10 flex flex-col items-center text-center interactive-elem group fade-up-elem cursor-pointer" onMouseMove={handleGlassMove}>
               <div className="glass-content">
                 <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 mx-auto group-hover:scale-110 group-hover:bg-[#E50940]/20 transition-all duration-300">
                   <svg className="w-8 h-8 text-white group-hover:text-[#E50940] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
@@ -419,20 +432,20 @@ const LandingPage = () => {
         </section>
 
         {/* PRICING SECTION */}
-        <section id="investments" className="py-32 px-4 md:px-8 relative z-10 overflow-hidden">
-          <div className="max-w-7xl mx-auto text-center mb-16 fade-up-elem">
-            <h2 className="text-4xl md:text-5xl font-serif mb-4"><span className="italic text-[#00F5D4]">Инвестиции</span> в капитал бренда</h2>
-            <p className="text-[#8B8D98] text-lg max-w-xl mx-auto">Выберите уровень цифровизации. Цена — это то, что вы платите. Ценность — то, что вы получаете.</p>
+        <section id="investments" className="py-24 md:py-32 px-4 md:px-8 relative z-10 overflow-hidden">
+          <div className="max-w-7xl mx-auto text-center mb-12 md:mb-16 fade-up-elem">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4"><span className="italic text-[#00F5D4]">Инвестиции</span> в капитал бренда</h2>
+            <p className="text-[#8B8D98] text-base md:text-lg max-w-xl mx-auto">Выберите уровень цифровизации. Цена — это то, что вы платите. Ценность — то, что вы получаете.</p>
           </div>
 
-          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 items-center justify-center">
+          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6 md:gap-8 items-center justify-center">
             
             {/* Тариф Lite */}
-            <div className="glass-card p-8 w-full lg:w-1/3 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove}>
+            <div className="glass-card p-6 md:p-8 w-full lg:w-1/3 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove}>
               <div className="glass-content">
                 <span className="text-[#8B8D98] text-sm font-semibold uppercase tracking-wider">Start / Lite</span>
-                <div className="my-6"><span className="text-4xl font-serif">5 000 ₽</span></div>
-                <p className="text-sm text-[#8B8D98] mb-8 h-12">Идеальный старт для частных специалистов.</p>
+                <div className="my-6"><span className="text-3xl md:text-4xl font-serif">5 000 ₽</span></div>
+                <p className="text-sm text-[#8B8D98] mb-8 lg:h-12">Идеальный старт для частных специалистов.</p>
                 <ul className="space-y-4 mb-8 text-sm">
                   <li className="flex items-center gap-3"><svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Односторонняя PWA-визитка</li>
                   <li className="flex items-center gap-3"><svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Базовый премиум дизайн</li>
@@ -443,12 +456,12 @@ const LandingPage = () => {
             </div>
 
             {/* Тариф VIP */}
-            <div className="glass-card p-10 w-full lg:w-[40%] flex flex-col border-[#00F5D4]/30 shadow-[0_0_50px_rgba(0,245,212,0.1)] transform lg:-translate-y-4 relative interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-[#00F5D4] rounded-b-lg shadow-[0_0_20px_#00F5D4]"></div>
+            <div className="glass-card p-8 md:p-10 w-full lg:w-[40%] flex flex-col border-[#00F5D4]/30 shadow-[0_0_50px_rgba(0,245,212,0.1)] transform lg:-translate-y-4 relative interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 md:w-32 h-1 bg-[#00F5D4] rounded-b-lg shadow-[0_0_20px_#00F5D4]"></div>
               <div className="glass-content">
                 <span className="text-[#00F5D4] text-sm font-semibold uppercase tracking-wider">VIP / Premium</span>
-                <div className="my-6"><span className="text-5xl font-serif">15 000 ₽</span></div>
-                <p className="text-sm text-[#8B8D98] mb-8 h-12">Для брендов, которым нужен бескомпромиссный WOW-эффект.</p>
+                <div className="my-6"><span className="text-4xl md:text-5xl font-serif">15 000 ₽</span></div>
+                <p className="text-sm text-[#8B8D98] mb-8 lg:h-12">Для брендов, которым нужен бескомпромиссный WOW-эффект.</p>
                 <ul className="space-y-4 mb-10 text-sm font-medium">
                   <li className="flex items-center gap-3"><svg className="w-4 h-4 text-[#00F5D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Индивидуальный UI/UX концепт</li>
                   <li className="flex items-center gap-3"><svg className="w-4 h-4 text-[#00F5D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> 3D-анимации и аудио</li>
@@ -460,11 +473,11 @@ const LandingPage = () => {
             </div>
 
             {/* Тариф Custom */}
-            <div className="glass-card p-8 w-full lg:w-1/3 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
+            <div className="glass-card p-6 md:p-8 w-full lg:w-1/3 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
               <div className="glass-content">
                 <span className="text-[#8B8D98] text-sm font-semibold uppercase tracking-wider">Enterprise</span>
-                <div className="my-6"><span className="text-4xl font-serif text-white/50">Custom</span></div>
-                <p className="text-sm text-[#8B8D98] mb-8 h-12">Сложные экосистемы для франшиз, клиник и сетей HoReCa.</p>
+                <div className="my-6"><span className="text-3xl md:text-4xl font-serif text-white/50">Custom</span></div>
+                <p className="text-sm text-[#8B8D98] mb-8 lg:h-12">Сложные экосистемы для франшиз, клиник и сетей HoReCa.</p>
                 <ul className="space-y-4 mb-8 text-sm text-white/60">
                   <li className="flex items-center gap-3"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Интеграция с CRM / POS</li>
                   <li className="flex items-center gap-3"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Программы лояльности</li>
@@ -479,9 +492,9 @@ const LandingPage = () => {
       </main>
 
       {/* FOOTER (REVEAL EFFECT) */}
-      <footer ref={footerRef} id="contact" className="fixed bottom-0 w-full h-[60vh] md:h-[70vh] bg-[#050505] flex flex-col justify-between p-6 md:p-12 z-0 border-t border-white/5">
-        <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center text-center mt-10">
-          <h2 className="text-5xl md:text-7xl lg:text-9xl font-serif font-medium mb-8">
+      <footer ref={footerRef} id="contact" className="fixed bottom-0 w-full min-h-[60vh] md:min-h-[70vh] h-auto bg-[#050505] flex flex-col justify-between p-6 md:p-12 z-0 border-t border-white/5 pb-20 md:pb-6">
+        <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center text-center mt-12 md:mt-10 flex-1">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-serif font-medium mb-6 md:mb-8">
             Готовы к <span className="italic text-[#E50940]">эволюции</span>?
           </h2>
           
@@ -489,16 +502,16 @@ const LandingPage = () => {
             <input 
               type="text" 
               placeholder="Ваш Telegram или Телефон" 
-              className="w-full bg-[#121212] border border-white/10 rounded-full py-4 pl-6 pr-32 text-white placeholder-white/30 focus:outline-none focus:border-[#00F5D4]/50 transition-colors"
+              className="w-full bg-[#121212] border border-white/10 rounded-full py-3 md:py-4 pl-6 pr-28 md:pr-32 text-sm md:text-base text-white placeholder-white/30 focus:outline-none focus:border-[#00F5D4]/50 transition-colors"
             />
-            <button className="absolute right-1 top-1 bottom-1 bg-white text-black px-6 rounded-full font-medium text-sm hover:bg-gray-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+            <button className="absolute right-1 top-1 bottom-1 bg-white text-black px-4 md:px-6 rounded-full font-medium text-xs md:text-sm hover:bg-gray-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.2)]">
               Отправить
             </button>
           </div>
-          <p className="text-xs text-[#8B8D98] mt-6">Оставляя заявку, вы соглашаетесь с эстетикой и качеством.</p>
+          <p className="text-xs text-[#8B8D98] mt-4 md:mt-6">Оставляя заявку, вы соглашаетесь с эстетикой и качеством.</p>
         </div>
         
-        <div className="flex justify-between items-center text-xs text-[#8B8D98] max-w-7xl w-full mx-auto pb-4">
+        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-[#8B8D98] max-w-7xl w-full mx-auto pt-8 md:pb-4 gap-4 md:gap-0">
           <span>&copy; 2026 AppSeaPro. All rights reserved.</span>
           <div className="flex gap-4">
             <a href="#" className="hover:text-white transition-colors interactive-elem cursor-pointer">Instagram</a>
