@@ -21,16 +21,10 @@ const styles = `
     font-family: 'Playfair Display', serif;
   }
 
-  /* Отключаем кастомный курсор и эффекты наведения для корректной работы на мобильных */
+  /* Отключаем системное поведение, но оставляем наши эффекты на телефонах */
   @media (hover: none) and (pointer: coarse) {
     body {
       cursor: auto !important;
-    }
-    .custom-cursor {
-      display: none !important;
-    }
-    .glass-card::before {
-      display: none !important;
     }
   }
 
@@ -171,7 +165,9 @@ const LandingPage = () => {
   // 1. Логика курсора и эффектов наведения
   useEffect(() => {
     const moveCursor = (e) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      setCursorPos({ x: clientX, y: clientY });
     };
 
     const checkHover = (e) => {
@@ -180,10 +176,14 @@ const LandingPage = () => {
     };
 
     window.addEventListener('mousemove', moveCursor);
+    window.addEventListener('touchmove', moveCursor, { passive: true });
+    window.addEventListener('touchstart', moveCursor, { passive: true });
     window.addEventListener('mouseover', checkHover);
 
     return () => {
       window.removeEventListener('mousemove', moveCursor);
+      window.removeEventListener('touchmove', moveCursor);
+      window.removeEventListener('touchstart', moveCursor);
       window.removeEventListener('mouseover', checkHover);
     };
   }, []);
@@ -219,14 +219,18 @@ const LandingPage = () => {
   // Обработчики мыши для 3D и Glassmorphism
   const handleGlassMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-    e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    e.currentTarget.style.setProperty('--mouse-x', `${clientX - rect.left}px`);
+    e.currentTarget.style.setProperty('--mouse-y', `${clientY - rect.top}px`);
   };
 
   const handleHeroMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-    const y = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const x = (clientX - rect.left - rect.width / 2) / (rect.width / 2);
+    const y = (clientY - rect.top - rect.height / 2) / (rect.height / 2);
     e.currentTarget.querySelector('.hero-3d-element').style.transform = `rotateY(${x * 15}deg) rotateX(${-y * 15}deg)`;
   };
 
@@ -284,14 +288,17 @@ const LandingPage = () => {
 
             {/* 3D Interactive Element */}
             <div 
-              className="hero-3d-wrapper w-56 h-72 md:w-64 md:h-80 mx-auto mt-4 md:mt-10 fade-up-elem cursor-pointer relative z-20" 
+              className="hero-3d-wrapper w-56 h-72 md:w-64 md:h-80 mx-auto mt-4 md:mt-10 mb-20 md:mb-24 fade-up-elem cursor-pointer relative z-20" 
               style={{ transitionDelay: '0.3s' }}
               onMouseMove={handleHeroMove}
               onMouseLeave={handleHeroLeave}
+              onTouchMove={handleHeroMove}
+              onTouchEnd={handleHeroLeave}
             >
               <div 
                 className="hero-3d-element glass-card w-full h-full flex items-center justify-center rounded-[2rem] border border-white/10 shadow-2xl relative overflow-hidden group interactive-elem"
                 onMouseMove={handleGlassMove}
+                onTouchMove={handleGlassMove}
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                 
