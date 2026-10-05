@@ -267,8 +267,8 @@ const LandingPage = () => {
       <main className="relative z-10 bg-[#050505] pb-10" style={{ boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}>
         
         {/* HERO SECTION */}
-        <section className="min-h-screen flex items-center justify-center relative px-4 md:px-6 pt-24 md:pt-20">
-          <div className="max-w-5xl mx-auto text-center z-10">
+        <section className="min-h-screen flex flex-col items-center justify-center relative px-4 md:px-6 pt-24 md:pt-20 pb-20 md:pb-0">
+          <div className="max-w-5xl mx-auto text-center z-10 flex-1 flex flex-col justify-center items-center w-full">
             <p className="text-[#00F5D4] text-xs md:text-sm font-medium tracking-widest uppercase mb-4 md:mb-6 fade-up-elem" style={{ transitionDelay: '0s' }}>
               Digital Boutique
             </p>
@@ -284,7 +284,7 @@ const LandingPage = () => {
 
             {/* 3D Interactive Element */}
             <div 
-              className="hero-3d-wrapper w-64 h-80 mx-auto mt-10 fade-up-elem cursor-pointer" 
+              className="hero-3d-wrapper w-56 h-72 md:w-64 md:h-80 mx-auto mt-4 md:mt-10 fade-up-elem cursor-pointer relative z-20" 
               style={{ transitionDelay: '0.3s' }}
               onMouseMove={handleHeroMove}
               onMouseLeave={handleHeroLeave}
@@ -307,7 +307,7 @@ const LandingPage = () => {
           </div>
           
           {/* Scroll Indicator */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 fade-up-elem" style={{ transitionDelay: '0.5s' }}>
+          <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 fade-up-elem z-10" style={{ transitionDelay: '0.5s' }}>
             <span className="text-xs tracking-widest uppercase text-[#8B8D98]">Scroll</span>
             <div className="w-px h-12 bg-gradient-to-b from-white/50 to-transparent"></div>
           </div>
@@ -323,76 +323,59 @@ const LandingPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             
             {/* PWA Визитки */}
-            <div className="glass-card md:col-span-2 p-6 md:p-12 min-h-[400px] flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove}>
-              <div className="glass-content flex-1 z-10 text-center md:text-left">
+            <div className="glass-card md:col-span-3 p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove}>
+              <div className="glass-content flex-1 z-10 text-center md:text-left w-full">
                 <span className="text-[#E50940] text-xs uppercase tracking-widest font-semibold mb-2 block">Флагман</span>
                 <h3 className="text-2xl md:text-3xl font-serif mb-4">Цифровые визитки <br className="hidden md:block"/>нового поколения</h3>
-                <p className="text-[#8B8D98] mb-6 text-sm md:text-base">От элегантного Lite-старта до 3D-Premium визиток с анимациями. Ваш контакт сохраняется в телефон в один клик без App Store.</p>
-                <div className="flex gap-4 justify-center md:justify-start">
-                  <span className="border border-white/10 px-4 py-1 rounded-full text-xs">Lite</span>
-                  <span className="bg-white/10 border border-white/20 px-4 py-1 rounded-full text-xs text-white">VIP</span>
-                </div>
-              </div>
-              <div className="w-48 h-80 border-4 border-[#333] rounded-[2rem] bg-black relative overflow-hidden shadow-[0_0_30px_rgba(229,9,64,0.2)] flex-shrink-0">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-[#333] rounded-b-xl z-20"></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-[#121212] to-[#050505] p-4 pt-10 flex flex-col items-center">
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-[#E50940] to-pink-500 mb-4 p-1">
-                    <div className="w-full h-full bg-black rounded-full border-2 border-transparent"></div>
-                  </div>
-                  <div className="h-2 w-24 bg-white/20 rounded mb-2"></div>
-                  <div className="h-2 w-16 bg-white/10 rounded mb-8"></div>
-                  <div className="w-full bg-white/5 rounded-xl p-3 mb-2 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded bg-[#E50940]/20"></div>
-                    <div className="flex-1 h-2 bg-white/10 rounded"></div>
-                  </div>
-                  <div className="w-full bg-white/5 rounded-xl p-3 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded bg-[#00F5D4]/20"></div>
-                    <div className="flex-1 h-2 bg-white/10 rounded"></div>
-                  </div>
+                <p className="text-[#8B8D98] mb-8 text-sm md:text-base max-w-2xl">Три уникальных формата под ваши задачи. Контакт сохраняется в телефон в один клик без App Store. Выберите свой уровень цифрового нетворкинга.</p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+                   <div className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-colors">
+                      <h4 className="text-white font-medium mb-2 text-sm md:text-base">Classic</h4>
+                      <p className="text-[#8B8D98] text-xs leading-relaxed">Простая и лаконичная визитка. Вся суть на одном экране, идеальная классика.</p>
+                   </div>
+                   <div className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-colors">
+                      <h4 className="text-white font-medium mb-2 text-sm md:text-base">Expand</h4>
+                      <p className="text-[#8B8D98] text-xs leading-relaxed">Разворачивающийся формат. Дополнительный блок для портфолио, медиа и полезных ссылок.</p>
+                   </div>
+                   <div className="bg-[#E50940]/10 border border-[#E50940]/30 rounded-xl p-5 shadow-[0_0_15px_rgba(229,9,64,0.1)] relative overflow-hidden group">
+                      <div className="absolute top-0 right-0 bg-[#E50940] text-white text-[10px] px-2 py-1 rounded-bl-lg font-bold tracking-wider">NEW</div>
+                      <h4 className="text-[#E50940] font-medium mb-2 text-sm md:text-base">Double ID</h4>
+                      <p className="text-[#8B8D98] text-xs leading-relaxed">Личная и рабочая визитка в одной. Умная смена профилей по заданному времени суток.</p>
+                   </div>
                 </div>
               </div>
             </div>
 
             {/* Smart HoReCa */}
-            <div className="glass-card p-6 md:p-8 min-h-[400px] flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
+            <div className="glass-card md:col-span-2 p-6 md:p-8 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
               <div className="glass-content z-10 flex flex-col h-full text-center md:text-left">
                 <span className="text-[#00F5D4] text-xs uppercase tracking-widest font-semibold mb-2 block">HoReCa</span>
-                <h3 className="text-xl md:text-2xl font-serif mb-4">Smart <span className="italic">Меню</span></h3>
-                <p className="text-[#8B8D98] text-sm flex-1">Для крафтовых ресторанов и крупных сетей. QR-меню, которое выглядит как глянцевый журнал.</p>
-                <div className="mt-6 border border-white/10 rounded-xl p-4 bg-black/40 text-left">
-                  <div className="flex justify-between items-end mb-4">
-                    <div className="h-3 w-16 bg-white/20 rounded"></div>
-                    <div className="h-3 w-8 bg-[#00F5D4]/50 rounded"></div>
+                <h3 className="text-xl md:text-2xl font-serif mb-3">Smart <span className="italic">Меню</span></h3>
+                <p className="text-[#8B8D98] text-sm mb-6 max-w-xl">Два решения для вашего заведения. Все заказы, вызовы официанта и запросы счета моментально прилетают прямо в ваш Telegram-канал.</p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 text-left flex-1">
+                  <div className="flex-1 bg-black/40 border border-white/10 rounded-xl p-4 relative overflow-hidden">
+                     <div className="absolute top-0 left-0 w-1 h-full bg-[#00F5D4]/50"></div>
+                     <h4 className="text-white text-sm font-medium mb-2">Классика (QR-витрина)</h4>
+                     <p className="text-[#8B8D98] text-xs">Вкусное описание, состав блюд, мгновенный вызов официанта и запрос счета в 1 клик.</p>
                   </div>
-                  <div className="flex gap-2 mb-2">
-                    <div className="h-16 w-16 bg-white/10 rounded-lg"></div>
-                    <div className="flex-1 flex flex-col gap-2 justify-center">
-                      <div className="h-2 w-full bg-white/20 rounded"></div>
-                      <div className="h-2 w-2/3 bg-white/10 rounded"></div>
-                    </div>
+                  <div className="flex-1 bg-black/40 border border-white/10 rounded-xl p-4 relative overflow-hidden">
+                     <div className="absolute top-0 left-0 w-1 h-full bg-[#E50940]/50"></div>
+                     <h4 className="text-white text-sm font-medium mb-2">Флагман (QR-заказы)</h4>
+                     <p className="text-[#8B8D98] text-xs">Полноценное меню с корзиной, оформлением заказов, вызовом персонала и оплатой.</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Beauty */}
-            <div className="glass-card p-6 md:p-8 min-h-[300px] flex flex-col justify-end interactive-elem fade-up-elem cursor-pointer relative" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.2s', backgroundImage: "url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <div className="glass-card md:col-span-1 p-6 md:p-8 min-h-[250px] flex flex-col justify-end interactive-elem fade-up-elem cursor-pointer relative" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.2s', backgroundImage: "url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 z-0"></div>
               <div className="glass-content z-10 text-center md:text-left">
                 <span className="text-white/70 text-xs uppercase tracking-widest font-semibold mb-2 block">Beauty & SPA</span>
                 <h3 className="text-xl md:text-2xl font-serif mb-2 text-white">Эстетика и Запись</h3>
                 <p className="text-sm text-white/60">Календарь, лояльность и бронирование в едином PWA.</p>
-              </div>
-            </div>
-
-            {/* Тизер: Future */}
-            <div className="glass-card md:col-span-2 p-6 md:p-8 min-h-[300px] flex items-center justify-center glitch-hover relative interactive-elem overflow-hidden fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.3s' }}>
-              <div className="absolute inset-0 backdrop-blur-xl bg-[#050505]/60 z-10 flex items-center justify-center transition-all duration-300">
-                <div className="text-center glass-content">
-                  <svg className="w-8 h-8 mx-auto mb-4 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                  <h3 className="text-2xl md:text-3xl font-serif glitch-text font-bold text-white/50 tracking-widest transition-colors duration-300">Медтуризм & Стоматология</h3>
-                  <p className="text-xs md:text-sm mt-2 text-white/30 uppercase tracking-[0.3em]">Loading 2024</p>
-                </div>
               </div>
             </div>
 
@@ -438,52 +421,53 @@ const LandingPage = () => {
             <p className="text-[#8B8D98] text-base md:text-lg max-w-xl mx-auto">Выберите уровень цифровизации. Цена — это то, что вы платите. Ценность — то, что вы получаете.</p>
           </div>
 
-          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6 md:gap-8 items-center justify-center">
+          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6 md:gap-8 items-stretch justify-center">
             
-            {/* Тариф Lite */}
+            {/* Card 1: Classic & Expand */}
             <div className="glass-card p-6 md:p-8 w-full lg:w-1/3 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove}>
-              <div className="glass-content">
-                <span className="text-[#8B8D98] text-sm font-semibold uppercase tracking-wider">Start / Lite</span>
-                <div className="my-6"><span className="text-3xl md:text-4xl font-serif">5 000 ₽</span></div>
-                <p className="text-sm text-[#8B8D98] mb-8 lg:h-12">Идеальный старт для частных специалистов.</p>
-                <ul className="space-y-4 mb-8 text-sm">
-                  <li className="flex items-center gap-3"><svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Односторонняя PWA-визитка</li>
-                  <li className="flex items-center gap-3"><svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Базовый премиум дизайн</li>
-                  <li className="flex items-center gap-3"><svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Сохранение VCF контакта</li>
+              <div className="glass-content h-full flex flex-col">
+                <span className="text-[#8B8D98] text-sm font-semibold uppercase tracking-wider">PWA Визитки</span>
+                <div className="my-6"><span className="text-3xl md:text-4xl font-serif">от 5 000 ₽</span></div>
+                <p className="text-sm text-[#8B8D98] mb-8 lg:h-12">Тарифы Classic и Expand. Идеальный старт для нетворкинга.</p>
+                <ul className="space-y-4 mb-8 text-sm flex-1">
+                  <li className="flex items-start gap-3"><svg className="w-4 h-4 text-white/50 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Classic:</strong> простая и лаконичная</span></li>
+                  <li className="flex items-start gap-3"><svg className="w-4 h-4 text-white/50 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Expand:</strong> разворот с доп. информацией</span></li>
+                  <li className="flex items-start gap-3"><svg className="w-4 h-4 text-white/50 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Сохранение VCF контакта</span></li>
+                  <li className="flex items-start gap-3"><svg className="w-4 h-4 text-white/50 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Базовый премиум дизайн</span></li>
                 </ul>
-                <button className="w-full py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Смотреть демо</button>
+                <button className="w-full py-3 mt-auto rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Смотреть демо</button>
               </div>
             </div>
 
-            {/* Тариф VIP */}
-            <div className="glass-card p-8 md:p-10 w-full lg:w-[40%] flex flex-col border-[#00F5D4]/30 shadow-[0_0_50px_rgba(0,245,212,0.1)] transform lg:-translate-y-4 relative interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 md:w-32 h-1 bg-[#00F5D4] rounded-b-lg shadow-[0_0_20px_#00F5D4]"></div>
-              <div className="glass-content">
-                <span className="text-[#00F5D4] text-sm font-semibold uppercase tracking-wider">VIP / Premium</span>
+            {/* Card 2: Double ID */}
+            <div className="glass-card p-8 md:p-10 w-full lg:w-[40%] flex flex-col border-[#E50940]/30 shadow-[0_0_50px_rgba(229,9,64,0.1)] transform lg:-translate-y-4 relative interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 md:w-32 h-1 bg-[#E50940] rounded-b-lg shadow-[0_0_20px_#E50940]"></div>
+              <div className="glass-content h-full flex flex-col">
+                <span className="text-[#E50940] text-sm font-semibold uppercase tracking-wider">Эксклюзив</span>
                 <div className="my-6"><span className="text-4xl md:text-5xl font-serif">15 000 ₽</span></div>
-                <p className="text-sm text-[#8B8D98] mb-8 lg:h-12">Для брендов, которым нужен бескомпромиссный WOW-эффект.</p>
-                <ul className="space-y-4 mb-10 text-sm font-medium">
-                  <li className="flex items-center gap-3"><svg className="w-4 h-4 text-[#00F5D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Индивидуальный UI/UX концепт</li>
-                  <li className="flex items-center gap-3"><svg className="w-4 h-4 text-[#00F5D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> 3D-анимации и аудио</li>
-                  <li className="flex items-center gap-3"><svg className="w-4 h-4 text-[#00F5D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> До 5 внутренних шторок-страниц</li>
-                  <li className="flex items-center gap-3"><svg className="w-4 h-4 text-[#00F5D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Мультиязычность</li>
+                <p className="text-sm text-[#8B8D98] mb-8 lg:h-12">Визитка Double ID. Наша авторская разработка для WOW-эффекта.</p>
+                <ul className="space-y-4 mb-10 text-sm font-medium flex-1">
+                  <li className="flex items-start gap-3"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Два профиля (Личный + Рабочий)</span></li>
+                  <li className="flex items-start gap-3"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Смена профиля по времени суток</span></li>
+                  <li className="flex items-start gap-3"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Индивидуальный UI/UX концепт</span></li>
+                  <li className="flex items-start gap-3"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>3D-анимации и аудио</span></li>
                 </ul>
-                <button className="w-full py-4 rounded-xl bg-white text-black font-semibold hover:bg-gray-200 transition-colors text-sm shadow-[0_0_20px_rgba(255,255,255,0.3)]">Смотреть демо</button>
+                <button className="w-full py-4 mt-auto rounded-xl bg-white text-black font-semibold hover:bg-gray-200 transition-colors text-sm shadow-[0_0_20px_rgba(255,255,255,0.3)]">Смотреть демо</button>
               </div>
             </div>
 
-            {/* Тариф Custom */}
+            {/* Card 3: HoReCa */}
             <div className="glass-card p-6 md:p-8 w-full lg:w-1/3 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
-              <div className="glass-content">
-                <span className="text-[#8B8D98] text-sm font-semibold uppercase tracking-wider">Enterprise</span>
+              <div className="glass-content h-full flex flex-col">
+                <span className="text-[#00F5D4] text-sm font-semibold uppercase tracking-wider">Smart HoReCa</span>
                 <div className="my-6"><span className="text-3xl md:text-4xl font-serif text-white/50">Custom</span></div>
-                <p className="text-sm text-[#8B8D98] mb-8 lg:h-12">Сложные экосистемы для франшиз, клиник и сетей HoReCa.</p>
-                <ul className="space-y-4 mb-8 text-sm text-white/60">
-                  <li className="flex items-center gap-3"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Интеграция с CRM / POS</li>
-                  <li className="flex items-center gap-3"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Программы лояльности</li>
-                  <li className="flex items-center gap-3"><svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> Панель администратора</li>
+                <p className="text-sm text-[#8B8D98] mb-8 lg:h-12">Решения Флагман и Классика для ресторанов и кафе.</p>
+                <ul className="space-y-4 mb-8 text-sm text-white/60 flex-1">
+                  <li className="flex items-start gap-3"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Telegram-уведомления</span></li>
+                  <li className="flex items-start gap-3"><svg className="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Заказы, счет, вызов официанта</span></li>
+                  <li className="flex items-start gap-3"><svg className="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Управление через панель</span></li>
                 </ul>
-                <button className="w-full py-3 rounded-xl border border-white/10 hover:bg-white/5 transition-colors text-sm text-white/70 font-semibold">Обсудить проект</button>
+                <button className="w-full py-3 mt-auto rounded-xl border border-white/10 hover:bg-white/5 transition-colors text-sm text-white/70 font-semibold">Обсудить проект</button>
               </div>
             </div>
 
