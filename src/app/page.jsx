@@ -161,6 +161,7 @@ const styles = `
 const LandingPage = () => {
   const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isHorecaModalOpen, setIsHorecaModalOpen] = useState(false);
   
   const footerRef = useRef(null);
   const spacerRef = useRef(null);
@@ -360,7 +361,13 @@ const LandingPage = () => {
             </div>
 
             {/* Smart HoReCa */}
-            <div className="glass-card md:col-span-2 p-6 md:p-8 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
+            <div 
+              className="glass-card md:col-span-2 p-6 md:p-8 flex flex-col interactive-elem fade-up-elem cursor-pointer" 
+              onMouseMove={handleGlassMove} 
+              onTouchMove={handleGlassMove} 
+              onClick={() => setIsHorecaModalOpen(true)}
+              style={{ transitionDelay: '0.1s' }}
+            >
               <div className="glass-content z-10 flex flex-col h-full text-center md:text-left">
                 <span className="text-[#00F5D4] text-xs uppercase tracking-widest font-semibold mb-2 block">HoReCa</span>
                 <h3 className="text-xl md:text-2xl font-serif mb-3">Smart <span className="italic">Меню</span></h3>
@@ -519,6 +526,73 @@ const LandingPage = () => {
       {/* Spacer для эффекта reveal footer */}
       <div ref={spacerRef} className="w-full relative z-[-1]"></div>
 
+      {/* МОДАЛЬНОЕ ОКНО HORECA */}
+      {isHorecaModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 fade-up-elem visible" style={{ transitionDuration: '0.3s' }}>
+           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setIsHorecaModalOpen(false)}></div>
+           <div className="glass-card relative w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 md:p-10 z-10 flex flex-col border border-white/20 shadow-[0_0_50px_rgba(0,245,212,0.1)]">
+              <button onClick={() => setIsHorecaModalOpen(false)} className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors interactive-elem p-2">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+              </button>
+              
+              <div className="text-center mb-8 mt-2">
+                <span className="text-[#00F5D4] text-xs uppercase tracking-widest font-semibold mb-2 block">Smart HoReCa</span>
+                <h3 className="text-3xl md:text-4xl font-serif mb-4">Цифровизация ресторанов</h3>
+                <p className="text-[#8B8D98] text-sm md:text-base max-w-2xl mx-auto">Два формата для любого типа заведения. Выбирайте то, что нужно вашему бизнесу прямо сейчас.</p>
+              </div>
+
+              <div className="flex flex-col lg:flex-row gap-8 mb-8">
+                {/* Visual / Telegram Simulation */}
+                <div className="w-full lg:w-1/2 bg-[#0A0A0A] border border-white/10 rounded-2xl p-4 flex flex-col items-center justify-center relative overflow-hidden group">
+                   <div className="absolute inset-0 bg-gradient-to-br from-[#00F5D4]/10 to-transparent opacity-30"></div>
+                   
+                   {/* Эту картинку можно будет потом заменить на твою GIF */}
+                   <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="HoReCa Interface" className="w-full h-48 md:h-64 object-cover rounded-xl opacity-40 group-hover:opacity-60 transition-opacity" />
+                   
+                   {/* Имитация плашки Telegram поверх картинки */}
+                   <div className="absolute bottom-6 left-6 right-6 bg-[#1C1C1E]/90 backdrop-blur-md border border-white/10 p-4 rounded-2xl flex items-center gap-4 shadow-2xl transform transition-transform group-hover:-translate-y-2">
+                     <div className="w-10 h-10 rounded-full bg-[#2AABEE] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(42,171,238,0.4)]">
+                       <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.833.94z"/></svg>
+                     </div>
+                     <div className="text-left">
+                       <p className="text-white font-semibold text-sm">Новый заказ: Стол №4</p>
+                       <p className="text-[#8B8D98] text-xs mt-0.5">Том Ям, Стейк Рибай, 2x Капучино</p>
+                     </div>
+                   </div>
+                </div>
+
+                {/* Features comparison */}
+                <div className="w-full lg:w-1/2 flex flex-col justify-center gap-4 md:gap-6">
+                  <div className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-colors">
+                     <h4 className="text-[#00F5D4] font-medium mb-2 text-lg">Классика (QR-витрина)</h4>
+                     <p className="text-[#8B8D98] text-sm leading-relaxed mb-4">Бесконтактное меню с сочными фото. Гость сканирует QR, смотрит состав, вызывает официанта и просит счет в 1 клик. Все падает в Telegram.</p>
+                     <a href="#" target="_blank" rel="noreferrer" className="inline-block w-full bg-white/10 hover:bg-white/20 text-center py-2.5 rounded-lg text-sm text-white transition-colors interactive-elem font-medium">Live Демо</a>
+                  </div>
+                  <div className="bg-black/40 border border-[#E50940]/30 rounded-xl p-5 relative overflow-hidden shadow-[0_0_20px_rgba(229,9,64,0.05)]">
+                     <div className="absolute top-0 right-0 bg-[#E50940] text-white text-[10px] px-3 py-1 rounded-bl-lg font-bold tracking-wider">PRO</div>
+                     <h4 className="text-[#E50940] font-medium mb-2 text-lg">Флагман (QR-заказы)</h4>
+                     <p className="text-[#8B8D98] text-sm leading-relaxed mb-4">Автоматизация продаж. Гость сам собирает корзину, оформляет заказ и оплачивает его прямо с телефона без ожидания официанта.</p>
+                     <a href="#" target="_blank" rel="noreferrer" className="inline-block w-full bg-[#E50940]/20 hover:bg-[#E50940]/40 text-center py-2.5 rounded-lg text-sm text-white transition-colors border border-[#E50940]/50 interactive-elem font-medium">Live Демо</a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-center mt-4">
+                <button 
+                  onClick={() => {
+                    setIsHorecaModalOpen(false);
+                    setTimeout(() => {
+                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  className="bg-white text-black px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.2)] interactive-elem w-full md:w-auto"
+                >
+                  Обсудить проект
+                </button>
+              </div>
+           </div>
+        </div>
+      )}
     </div>
   );
 };
