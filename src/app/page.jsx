@@ -13,7 +13,7 @@ const styles = `
     background-color: #050505;
     color: #F3F4F6;
     overflow-x: hidden;
-    cursor: none; /* Скрываем стандартный курсор */
+    cursor: none; /* Скрываем стандартный курсор на ПК */
     font-family: 'Inter', sans-serif;
   }
 
@@ -21,10 +21,13 @@ const styles = `
     font-family: 'Playfair Display', serif;
   }
 
-  /* Отключаем системное поведение, но оставляем наши эффекты на телефонах */
+  /* Полностью отключаем кастомный курсор на мобильных и возвращаем системный */
   @media (hover: none) and (pointer: coarse) {
     body {
       cursor: auto !important;
+    }
+    .custom-cursor {
+      display: none !important;
     }
   }
 
@@ -162,12 +165,13 @@ const LandingPage = () => {
   const footerRef = useRef(null);
   const spacerRef = useRef(null);
 
-  // 1. Логика курсора и эффектов наведения
+  // 1. Логика курсора и эффектов наведения (только для ПК)
   useEffect(() => {
+    // Проверяем поддержку touch-событий, чтобы не вешать лишние слушатели
+    const isTouchDevice = (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+
     const moveCursor = (e) => {
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      setCursorPos({ x: clientX, y: clientY });
+      setCursorPos({ x: e.clientX, y: e.clientY });
     };
 
     const checkHover = (e) => {
@@ -175,16 +179,16 @@ const LandingPage = () => {
       setIsHovering(isInteractive);
     };
 
-    window.addEventListener('mousemove', moveCursor);
-    window.addEventListener('touchmove', moveCursor, { passive: true });
-    window.addEventListener('touchstart', moveCursor, { passive: true });
-    window.addEventListener('mouseover', checkHover);
+    if (!isTouchDevice) {
+      window.addEventListener('mousemove', moveCursor);
+      window.addEventListener('mouseover', checkHover);
+    }
 
     return () => {
-      window.removeEventListener('mousemove', moveCursor);
-      window.removeEventListener('touchmove', moveCursor);
-      window.removeEventListener('touchstart', moveCursor);
-      window.removeEventListener('mouseover', checkHover);
+      if (!isTouchDevice) {
+        window.removeEventListener('mousemove', moveCursor);
+        window.removeEventListener('mouseover', checkHover);
+      }
     };
   }, []);
 
@@ -242,7 +246,7 @@ const LandingPage = () => {
     <div className="antialiased min-h-screen text-[#F3F4F6] bg-[#050505] selection:bg-[#E50940] selection:text-white">
       <style>{styles}</style>
 
-      {/* Кастомный курсор */}
+      {/* Кастомный курсор (будет скрыт на мобильных через CSS) */}
       <div 
         className={`custom-cursor ${isHovering ? 'hover' : ''}`} 
         style={{ left: cursorPos.x, top: cursorPos.y }}
@@ -262,7 +266,7 @@ const LandingPage = () => {
           <a href="#technology" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Технологии</a>
           <a href="#investments" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Инвестиции</a>
         </nav>
-        <a href="#contact" className="glass-card px-5 md:px-6 py-2 rounded-full text-xs md:text-sm font-medium hover:bg-white/10 transition-colors interactive-elem cursor-pointer" onMouseMove={handleGlassMove}>
+        <a href="#contact" className="glass-card px-5 md:px-6 py-2 rounded-full text-xs md:text-sm font-medium hover:bg-white/10 transition-colors interactive-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
           <span className="glass-content">Связаться</span>
         </a>
       </header>
@@ -272,7 +276,8 @@ const LandingPage = () => {
         
         {/* HERO SECTION */}
         <section className="min-h-screen flex flex-col items-center justify-center relative px-4 md:px-6 pt-24 md:pt-20 pb-20 md:pb-0">
-          <div className="max-w-5xl mx-auto text-center z-10 flex-1 flex flex-col justify-center items-center w-full">
+          {/* Добавлен pb-20 md:pb-28, чтобы контент не наезжал на кнопку Scroll */}
+          <div className="max-w-5xl mx-auto text-center z-10 flex-1 flex flex-col justify-center items-center w-full pb-20 md:pb-28">
             <p className="text-[#00F5D4] text-xs md:text-sm font-medium tracking-widest uppercase mb-4 md:mb-6 fade-up-elem" style={{ transitionDelay: '0s' }}>
               Digital Boutique
             </p>
@@ -288,7 +293,7 @@ const LandingPage = () => {
 
             {/* 3D Interactive Element */}
             <div 
-              className="hero-3d-wrapper w-56 h-72 md:w-64 md:h-80 mx-auto mt-4 md:mt-10 mb-20 md:mb-24 fade-up-elem cursor-pointer relative z-20" 
+              className="hero-3d-wrapper w-56 h-72 md:w-64 md:h-80 mx-auto mt-4 md:mt-10 mb-8 md:mb-10 fade-up-elem cursor-pointer relative z-20" 
               style={{ transitionDelay: '0.3s' }}
               onMouseMove={handleHeroMove}
               onMouseLeave={handleHeroLeave}
@@ -330,7 +335,7 @@ const LandingPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             
             {/* PWA Визитки */}
-            <div className="glass-card md:col-span-3 p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove}>
+            <div className="glass-card md:col-span-3 p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
               <div className="glass-content flex-1 z-10 text-center md:text-left w-full">
                 <span className="text-[#E50940] text-xs uppercase tracking-widest font-semibold mb-2 block">Флагман</span>
                 <h3 className="text-2xl md:text-3xl font-serif mb-4">Цифровые визитки <br className="hidden md:block"/>нового поколения</h3>
@@ -355,7 +360,7 @@ const LandingPage = () => {
             </div>
 
             {/* Smart HoReCa */}
-            <div className="glass-card md:col-span-2 p-6 md:p-8 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
+            <div className="glass-card md:col-span-2 p-6 md:p-8 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
               <div className="glass-content z-10 flex flex-col h-full text-center md:text-left">
                 <span className="text-[#00F5D4] text-xs uppercase tracking-widest font-semibold mb-2 block">HoReCa</span>
                 <h3 className="text-xl md:text-2xl font-serif mb-3">Smart <span className="italic">Меню</span></h3>
@@ -377,7 +382,7 @@ const LandingPage = () => {
             </div>
 
             {/* Beauty */}
-            <div className="glass-card md:col-span-1 p-6 md:p-8 min-h-[250px] flex flex-col justify-end interactive-elem fade-up-elem cursor-pointer relative" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.2s', backgroundImage: "url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <div className="glass-card md:col-span-1 p-6 md:p-8 min-h-[250px] flex flex-col justify-end interactive-elem fade-up-elem cursor-pointer relative" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s', backgroundImage: "url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30 z-0"></div>
               <div className="glass-content z-10 text-center md:text-left">
                 <span className="text-white/70 text-xs uppercase tracking-widest font-semibold mb-2 block">Beauty & SPA</span>
@@ -397,7 +402,7 @@ const LandingPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            <div className="glass-card p-8 md:p-10 flex flex-col items-center text-center interactive-elem group fade-up-elem cursor-pointer" onMouseMove={handleGlassMove}>
+            <div className="glass-card p-8 md:p-10 flex flex-col items-center text-center interactive-elem group fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
               <div className="glass-content">
                 <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 mx-auto group-hover:scale-110 group-hover:bg-[#E50940]/20 transition-all duration-300">
                   <svg className="w-8 h-8 text-white group-hover:text-[#E50940] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
@@ -407,7 +412,7 @@ const LandingPage = () => {
               </div>
             </div>
 
-            <div className="glass-card p-10 flex flex-col items-center text-center interactive-elem group fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
+            <div className="glass-card p-10 flex flex-col items-center text-center interactive-elem group fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
               <div className="glass-content">
                 <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 mx-auto relative overflow-hidden group-hover:border-[#00F5D4]/50 transition-all duration-300">
                   <svg className="w-10 h-10 text-[#00F5D4] absolute bottom-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -431,7 +436,7 @@ const LandingPage = () => {
           <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-6 md:gap-8 items-stretch justify-center">
             
             {/* Card 1: Classic & Expand */}
-            <div className="glass-card p-6 md:p-8 w-full lg:w-1/3 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove}>
+            <div className="glass-card p-6 md:p-8 w-full lg:w-1/3 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
               <div className="glass-content h-full flex flex-col">
                 <span className="text-[#8B8D98] text-sm font-semibold uppercase tracking-wider">PWA Визитки</span>
                 <div className="my-6"><span className="text-3xl md:text-4xl font-serif">от 5 000 ₽</span></div>
@@ -447,7 +452,7 @@ const LandingPage = () => {
             </div>
 
             {/* Card 2: Double ID */}
-            <div className="glass-card p-8 md:p-10 w-full lg:w-[40%] flex flex-col border-[#E50940]/30 shadow-[0_0_50px_rgba(229,9,64,0.1)] transform lg:-translate-y-4 relative interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
+            <div className="glass-card p-8 md:p-10 w-full lg:w-[40%] flex flex-col border-[#E50940]/30 shadow-[0_0_50px_rgba(229,9,64,0.1)] transform lg:-translate-y-4 relative interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 md:w-32 h-1 bg-[#E50940] rounded-b-lg shadow-[0_0_20px_#E50940]"></div>
               <div className="glass-content h-full flex flex-col">
                 <span className="text-[#E50940] text-sm font-semibold uppercase tracking-wider">Эксклюзив</span>
@@ -464,7 +469,7 @@ const LandingPage = () => {
             </div>
 
             {/* Card 3: HoReCa */}
-            <div className="glass-card p-6 md:p-8 w-full lg:w-1/3 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
+            <div className="glass-card p-6 md:p-8 w-full lg:w-1/3 flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
               <div className="glass-content h-full flex flex-col">
                 <span className="text-[#00F5D4] text-sm font-semibold uppercase tracking-wider">Smart HoReCa</span>
                 <div className="my-6"><span className="text-3xl md:text-4xl font-serif text-white/50">Custom</span></div>
