@@ -221,6 +221,18 @@ const LandingPage = () => {
     return () => window.removeEventListener('resize', setFooterHeight);
   }, []);
 
+  // Блокировка скролла страницы при открытой модалке
+  useEffect(() => {
+    if (isHorecaModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isHorecaModalOpen]);
+
   // Обработчики мыши для 3D и Glassmorphism
   const handleGlassMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -530,7 +542,7 @@ const LandingPage = () => {
       {isHorecaModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 fade-up-elem visible" style={{ transitionDuration: '0.3s' }}>
            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setIsHorecaModalOpen(false)}></div>
-           <div className="glass-card relative w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 md:p-10 z-10 flex flex-col border border-white/20 shadow-[0_0_50px_rgba(0,245,212,0.1)]">
+           <div className="glass-card relative w-full max-w-4xl max-h-[90vh] overflow-y-auto overscroll-contain p-6 md:p-10 z-10 flex flex-col border border-white/20 shadow-[0_0_50px_rgba(0,245,212,0.1)]">
               <button onClick={() => setIsHorecaModalOpen(false)} className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors interactive-elem p-2">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
               </button>
@@ -547,7 +559,7 @@ const LandingPage = () => {
                    <div className="absolute inset-0 bg-gradient-to-br from-[#00F5D4]/10 to-transparent opacity-30"></div>
                    
                    {/* Эту картинку можно будет потом заменить на твою GIF */}
-                   <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="HoReCa Interface" className="w-full h-48 md:h-64 object-cover rounded-xl opacity-40 group-hover:opacity-60 transition-opacity" />
+                   <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="HoReCa Interface" className="w-full h-48 md:h-64 object-cover rounded-xl opacity-40 group-hover:opacity-60 transition-opacity" />
                    
                    {/* Имитация плашки Telegram поверх картинки */}
                    <div className="absolute bottom-6 left-6 right-6 bg-[#1C1C1E]/90 backdrop-blur-md border border-white/10 p-4 rounded-2xl flex items-center gap-4 shadow-2xl transform transition-transform group-hover:-translate-y-2">
