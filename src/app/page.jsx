@@ -2,6 +2,10 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 
+// ==========================================
+// ГЛОБАЛЬНЫЕ СТИЛИ КОМПОНЕНТА
+// Вставляем их прямо сюда, чтобы не ломать основной конфиг
+// ==========================================
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
@@ -9,7 +13,7 @@ const styles = `
     background-color: #050505;
     color: #F3F4F6;
     overflow-x: hidden;
-    cursor: none; 
+    cursor: none; /* Скрываем стандартный курсор на ПК */
     font-family: 'Inter', sans-serif;
   }
 
@@ -17,6 +21,7 @@ const styles = `
     font-family: 'Playfair Display', serif;
   }
 
+  /* Полностью отключаем кастомный курсор на мобильных и возвращаем системный */
   @media (hover: none) and (pointer: coarse) {
     body {
       cursor: auto !important;
@@ -31,6 +36,7 @@ const styles = `
     color: #fff;
   }
 
+  /* Кастомный курсор */
   .custom-cursor {
     width: 20px;
     height: 20px;
@@ -53,6 +59,7 @@ const styles = `
     filter: blur(10px);
   }
 
+  /* Фоновые градиенты (Glow) */
   .bg-glow {
     position: fixed;
     width: 60vw;
@@ -71,6 +78,7 @@ const styles = `
     100% { transform: translate(10%, 15%) scale(1.2); }
   }
 
+  /* Продвинутый Glassmorphism Карточек */
   .glass-card {
     background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
     backdrop-filter: blur(24px) saturate(120%);
@@ -87,6 +95,7 @@ const styles = `
     box-shadow: 0 30px 60px -10px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.15);
   }
 
+  /* Эффект фонарика под стеклом при наведении */
   .glass-card::before {
     content: '';
     position: absolute;
@@ -112,6 +121,7 @@ const styles = `
     z-index: 1;
   }
 
+  /* 3D элемент в Hero */
   .hero-3d-wrapper {
     perspective: 1000px;
   }
@@ -120,6 +130,7 @@ const styles = `
     transition: transform 0.1s ease-out;
   }
 
+  /* Нативные анимации появления */
   .fade-up-elem {
     opacity: 0;
     transform: translateY(30px);
@@ -130,6 +141,7 @@ const styles = `
     transform: translateY(0);
   }
 
+  /* Скрытие маркера details */
   details > summary {
     list-style: none;
   }
@@ -263,7 +275,7 @@ export default function LandingPage() {
         </button>
       </header>
 
-      {}
+      {/* Main Content */}
       <main className="relative z-10 bg-[#050505] pb-10" style={{ boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}>
         
         <section className="min-h-screen flex flex-col items-center justify-center relative px-4 md:px-6 pt-24 md:pt-20 pb-20 md:pb-0">
@@ -272,11 +284,10 @@ export default function LandingPage() {
               Digital Boutique
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-medium leading-tight mb-6 md:mb-8 fade-up-elem" style={{ transitionDelay: '0.1s' }}>
-              Цифровые решения <br className="hidden md:block"/>
-              <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#E50940] to-pink-500">без абонплаты.</span> Навсегда.
+              Ваш цифровой <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#E50940] to-pink-500">статус</span>.
             </h1>
             <p className="text-[#8B8D98] text-base md:text-xl max-w-2xl mx-auto mb-10 md:mb-12 font-light fade-up-elem px-2" style={{ transitionDelay: '0.2s' }}>
-              PWA-визитки, Smart-меню для HoReCa и системы бронирования. Вы платите один раз — продукт работает на вас всегда. Управление через Telegram и вашу персональную облачную панель. Никакого сложного софта.
+              Премиальные бизнес-экосистемы и PWA-визитки. Секретные Z-жесты, перелистывание 3D-визиток со звуком и физические NFC-брелоки из кожи Crazy Horse. Продукты, которыми хочется хвастаться перед партнерами.
             </p>
 
             <div 
@@ -302,7 +313,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {}
+        {/* Showroom */}
         <section id="showroom" className="py-24 md:py-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="mb-12 md:mb-24 fade-up-elem text-center md:text-left">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Выберите свое <span className="italic text-[#00F5D4]">Решение</span></h2>
@@ -390,7 +401,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {}
+        {/* NFC Breloq */}
         <section id="nfc" className="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="glass-card flex flex-col md:flex-row items-center interactive-elem fade-up-elem overflow-hidden cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
             <div className="w-full md:w-5/12 h-64 md:h-auto md:self-stretch relative border-b md:border-b-0 md:border-r border-white/10">
@@ -414,7 +425,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {}
+        {/* About */}
         <section id="about" className="py-24 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="glass-card p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem">
             <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-[#111] to-[#222] border border-[#00F5D4]/30 overflow-hidden shrink-0 shadow-[0_0_30px_rgba(0,245,212,0.15)] p-2">
@@ -426,18 +437,19 @@ export default function LandingPage() {
               <h2 className="text-3xl md:text-4xl font-serif mb-4">Привет, я Елена</h2>
               <p className="text-[#00F5D4] font-medium tracking-widest text-xs uppercase mb-6">IT-Архитектор</p>
               <p className="text-[#8B8D98] text-sm md:text-base leading-relaxed mb-6 max-w-3xl">
-                Я занимаюсь кастомной веб-разработкой и проектирую независимые IT-экосистемы. Моя главная цель — дать малому бизнесу технологии уровня корпораций, но <strong className="text-white">без вытягивания денег за кабальные подписки</strong>. 
-                Вы получаете продукт, который навсегда остается вашим. Управление происходит через интуитивную панель управления и Telegram. Это логично, статусно и не требует найма отдельного IT-специалиста.
+                Я проектирую премиальные IT-экосистемы и занимаюсь кастомной веб-разработкой. Моя главная цель — создавать цифровые продукты, подчеркивающие статус владельца. Продукты, которые не стыдно показать на закрытой встрече или бизнес-ужине. 
+                При этом вы получаете технологии уровня корпораций <strong className="text-white">без вытягивания денег за кабальные подписки</strong>. Управление происходит через интуитивную панель и Telegram. Это логично, дорого выглядит и не требует найма IT-специалиста.
               </p>
               <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                 <span className="px-4 py-2 bg-white/5 rounded-lg text-xs border border-white/10">✓ Размещение под ключ</span>
-                <span className="px-4 py-2 bg-white/5 rounded-lg text-xs border border-white/10">✓ Никаких абонплат</span>
+                <span className="px-4 py-2 bg-white/5 rounded-lg text-xs border border-white/10">✓ Индивидуальный дизайн</span>
                 <span className="px-4 py-2 bg-white/5 rounded-lg text-xs border border-white/10">✓ Интуитивная система управления</span>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Technology */}
         <section id="technology" className="py-12 px-4 md:px-8 max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-12 md:mb-16 fade-up-elem">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Технологии <span className="italic text-[#E50940]">Превосходства</span></h2>
@@ -477,7 +489,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {}
+        {/* Pricing */}
         <section id="investments" className="py-24 md:py-32 px-4 md:px-8 relative z-10 overflow-hidden">
           <div className="max-w-7xl mx-auto text-center mb-12 md:mb-16 fade-up-elem">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Инвестиции в <span className="italic text-[#00F5D4]">Капитал Бренда</span></h2>
@@ -604,7 +616,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {}
+        {/* FAQ */}
         <section id="faq" className="py-24 px-4 md:px-8 max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12 fade-up-elem">
             <h2 className="text-3xl md:text-5xl font-serif mb-4">Частые <span className="italic text-[#00F5D4]">Вопросы</span></h2>
@@ -636,7 +648,7 @@ export default function LandingPage() {
 
       </main>
 
-      {}
+      {/* Footer */}
       <footer ref={footerRef} id="contact" className="fixed bottom-0 w-full min-h-[60vh] md:min-h-[70vh] h-auto bg-[#050505] flex flex-col justify-between p-6 md:p-12 z-0 border-t border-white/5 pb-20 md:pb-6">
         <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center text-center mt-12 md:mt-10 flex-1">
           <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-serif font-medium mb-6 md:mb-8">
@@ -667,7 +679,7 @@ export default function LandingPage() {
 
       <div ref={spacerRef} className="w-full relative z-[-1]"></div>
 
-      {}
+      {/* Sandbox Modal */}
       {isHorecaModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 fade-up-elem visible !overflow-y-auto overscroll-contain" style={{ transitionDuration: '0.3s' }}>
            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm fixed" onClick={() => setIsHorecaModalOpen(false)}></div>
