@@ -370,7 +370,7 @@ export default function LandingPage() {
 
             <div className="glass-card md:col-span-3 p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
                <div className="w-full md:w-1/3 h-48 md:h-full min-h-[250px] rounded-xl overflow-hidden relative shadow-2xl">
-                 <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" alt="Beauty Spa" className="absolute inset-0 w-full h-full object-cover opacity-80" />
+                 <img src="beauty-bg.jpg" alt="Beauty Spa" className="absolute inset-0 w-full h-full object-cover opacity-80" />
                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
                </div>
                
@@ -405,7 +405,7 @@ export default function LandingPage() {
         <section id="nfc" className="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="glass-card flex flex-col md:flex-row items-center interactive-elem fade-up-elem overflow-hidden cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
             <div className="w-full md:w-5/12 h-64 md:h-auto md:self-stretch relative border-b md:border-b-0 md:border-r border-white/10">
-               <img src="https://images.unsplash.com/photo-1590736969955-71cc94801759?auto=format&fit=crop&w=800&q=80" alt="Leather NFC Keychain" className="absolute inset-0 w-full h-full object-cover opacity-70 grayscale hover:grayscale-0 transition-all duration-700" />
+               <img src="nfc-keychain.jpg" alt="Leather NFC Keychain" className="absolute inset-0 w-full h-full object-cover opacity-70 grayscale hover:grayscale-0 transition-all duration-700" />
                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent md:bg-gradient-to-r md:from-transparent md:via-[#050505]/50 md:to-[#050505] z-0 pointer-events-none"></div>
             </div>
             
@@ -430,7 +430,7 @@ export default function LandingPage() {
           <div className="glass-card p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem">
             <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-[#111] to-[#222] border border-[#00F5D4]/30 overflow-hidden shrink-0 shadow-[0_0_30px_rgba(0,245,212,0.15)] p-2">
               <div className="w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center">
-                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Айти-архитектор" className="w-full h-full object-cover opacity-90 grayscale hover:grayscale-0 transition-all duration-500" />
+                 <img src="elena-photo.jpg" alt="Айти-архитектор" className="w-full h-full object-cover opacity-90 grayscale hover:grayscale-0 transition-all duration-500" />
               </div>
             </div>
             <div className="text-center md:text-left glass-content">
@@ -502,7 +502,7 @@ export default function LandingPage() {
               <div className="glass-content h-full flex flex-col">
                 <span className="text-white/50 text-xs font-semibold uppercase tracking-wider">PWA Визитка</span>
                 <h3 className="text-2xl font-serif mt-2 mb-4">Classic</h3>
-                <div className="mb-6"><span className="text-3xl font-serif text-white">от X ₽</span></div>
+                <div className="mb-6"><span className="text-3xl font-serif text-white">от $150</span></div>
                 
                 <ul className="space-y-3 mb-6 text-sm text-[#8B8D98] flex-1">
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>7 премиальных дизайн-концептов</span></li>
@@ -519,7 +519,7 @@ export default function LandingPage() {
               <div className="glass-content h-full flex flex-col">
                 <span className="text-[#00F5D4] text-xs font-semibold uppercase tracking-wider">PWA Визитка</span>
                 <h3 className="text-2xl font-serif mt-2 mb-4">Infinity</h3>
-                <div className="mb-6"><span className="text-3xl font-serif text-[#00F5D4]">от X ₽</span></div>
+                <div className="mb-6"><span className="text-3xl font-serif text-[#00F5D4]">от $300</span></div>
                 
                 <ul className="space-y-3 mb-6 text-sm text-[#8B8D98] flex-1">
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Интерактивная 3D-архитектура (2 стороны)</span></li>
@@ -537,7 +537,7 @@ export default function LandingPage() {
               <div className="glass-content h-full flex flex-col">
                 <span className="text-[#E50940] text-xs font-semibold uppercase tracking-wider">Эксклюзив</span>
                 <h3 className="text-2xl font-serif mt-2 mb-4">Twin ID</h3>
-                <div className="mb-6"><span className="text-3xl font-serif text-white">от X ₽</span></div>
+                <div className="mb-6"><span className="text-3xl font-serif text-white">от $500</span></div>
                 
                 <ul className="space-y-3 mb-6 text-sm text-[#8B8D98] flex-1">
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Два независимых профиля в одном приложении</span></li>
@@ -557,11 +557,11 @@ export default function LandingPage() {
                 <div className="flex flex-col gap-2 mb-6 text-left max-w-xs mx-auto w-full">
                   <div className="flex justify-between items-center border-b border-white/10 pb-2">
                     <span className="text-sm text-gray-300">Классика</span>
-                    <span className="font-serif text-xl">от X ₽</span>
+                    <span className="font-serif text-xl">от $400</span>
                   </div>
                   <div className="flex justify-between items-center pt-1">
                     <span className="text-sm text-gray-300">Флагман</span>
-                    <span className="font-serif text-xl text-[#00F5D4]">от X ₽</span>
+                    <span className="font-serif text-xl text-[#00F5D4]">от $800</span>
                   </div>
                 </div>
                 
@@ -581,7 +581,7 @@ export default function LandingPage() {
               <div className="glass-content h-full flex flex-col text-center">
                 <span className="text-pink-400 text-xs font-semibold uppercase tracking-wider mb-2">Салоны и Мастера</span>
                 <h3 className="text-2xl md:text-3xl font-serif mb-4">Beauty & SPA</h3>
-                <div className="mb-4"><span className="text-3xl font-serif">от X ₽</span></div>
+                <div className="mb-4"><span className="text-3xl font-serif">от $450</span></div>
                 <p className="text-sm text-[#8B8D98] mb-4">Premium PWA-лендинг с онлайн-бронированием. Идеальный инструмент без комиссий.</p>
                 
                 <ul className="space-y-3 mb-6 text-sm text-[#8B8D98] flex-1 text-left max-w-sm mx-auto">
@@ -599,7 +599,7 @@ export default function LandingPage() {
               <div className="glass-content h-full flex flex-col text-center">
                 <span className="text-amber-500 text-xs font-semibold uppercase tracking-wider mb-2">Физический носитель</span>
                 <h3 className="text-2xl md:text-3xl font-serif mb-4">NFC Брелок</h3>
-                <div className="mb-4"><span className="text-3xl font-serif text-white">от X ₽</span></div>
+                <div className="mb-4"><span className="text-3xl font-serif text-white">от $60</span></div>
                 <p className="text-sm text-[#8B8D98] mb-4">Кожа Crazy Horse. Идеальное дополнение к вашей цифровой визитке.</p>
                 
                 <ul className="space-y-3 mb-6 text-sm text-[#8B8D98] flex-1 text-left max-w-sm mx-auto w-full">
