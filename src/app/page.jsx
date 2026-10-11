@@ -110,6 +110,12 @@ const styles = `
     box-shadow: 0 30px 60px -10px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.25);
   }
 
+  /* Сетка с одинаковой высотой всех карточек даже в 1 колонку на мобильных */
+  .equal-subcards-grid {
+    display: grid;
+    grid-auto-rows: 1fr;
+  }
+
   /* Премиальные подкарточки в едином бутиковом стиле */
   .luxury-subcard {
     background: linear-gradient(160deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.015) 100%);
@@ -118,6 +124,7 @@ const styles = `
     border-radius: 20px;
     position: relative;
     overflow: hidden;
+    height: 100%;
     transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
@@ -152,15 +159,27 @@ const styles = `
     z-index: 1;
   }
 
-  /* 3D элемент в Hero (повышенная отзывчивость и глубина на мобильных) */
+  /* 3D элемент в Hero (повышенная отзывчивость и фиксация на месте при развороте) */
   .hero-3d-wrapper {
     perspective: 650px;
     touch-action: none;
     user-select: none;
     -webkit-user-select: none;
+    width: 15rem;
+    height: 20rem;
+  }
+  @media (min-width: 768px) {
+    .hero-3d-wrapper {
+      width: 16rem;
+      height: 20rem;
+    }
   }
   .hero-3d-element {
+    width: 100%;
+    height: 100%;
+    position: relative;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     transition: transform 0.08s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
     will-change: transform;
   }
@@ -169,13 +188,30 @@ const styles = `
     animation: heroIdleTilt 6s ease-in-out infinite alternate;
   }
   .hero-flip-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
   }
   .hero-card-face {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+  }
+  .hero-card-face.hero-card-front {
+    transform: rotateY(0deg) translateZ(1px) !important;
+  }
+  .hero-card-face.hero-card-back {
+    transform: rotateY(180deg) translateZ(1px) !important;
   }
 
   @keyframes heroIdleTilt {
@@ -297,8 +333,15 @@ export default function LandingPage() {
     setIsCardFlipped(prev => !prev);
   };
 
-  // Фиксация масштаба без блокировки вертикального скролла страницы
+  // Старт страницы строго с самого верха + фиксация масштаба
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
     let meta = document.querySelector('meta[name="viewport"]');
     if (!meta) {
       meta = document.createElement('meta');
@@ -520,24 +563,23 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {}
       {/* Main Content */}
       <main className="relative z-10 bg-[#050505] pb-10 overflow-x-hidden" style={{ boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}>
         
-        <section className="min-h-screen flex flex-col items-center justify-center relative px-4 md:px-6 pt-24 md:pt-20 pb-20 md:pb-0">
-          <div className="max-w-5xl mx-auto text-center z-10 flex-1 flex flex-col justify-center items-center w-full pb-20 md:pb-28">
+        <section className="min-h-screen flex flex-col items-center justify-start md:justify-center relative px-4 md:px-6 pt-24 md:pt-24 pb-16 md:pb-0">
+          <div className="max-w-5xl mx-auto text-center z-10 flex-1 flex flex-col justify-start md:justify-center items-center w-full pt-2 md:pt-0 pb-14 md:pb-28">
             <p className="text-[#00F5D4] text-xs md:text-sm font-medium tracking-widest uppercase mb-4 md:mb-6 fade-up-elem" style={{ transitionDelay: '0s' }}>
               Digital Boutique
             </p>
             <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-serif font-medium leading-tight mb-6 md:mb-8 fade-up-elem" style={{ transitionDelay: '0.1s' }}>
               Ваш цифровой <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#E50940] to-pink-500">статус</span>.
             </h1>
-            <p className="text-[#8B8D98] text-base md:text-xl max-w-2xl mx-auto mb-10 md:mb-12 font-light fade-up-elem px-2" style={{ transitionDelay: '0.2s' }}>
+            <p className="text-[#8B8D98] text-base md:text-xl max-w-2xl mx-auto mb-8 md:mb-12 font-light fade-up-elem px-2" style={{ transitionDelay: '0.2s' }}>
               Премиальные бизнес-экосистемы и PWA-визитки. Секретные Z-жесты, перелистывание 3D-визиток со звуком и физические NFC-брелоки из кожи Crazy Horse. Продукты, которыми хочется хвастаться перед партнерами.
             </p>
 
             <div 
-              className="hero-3d-wrapper w-60 h-76 md:w-64 md:h-80 mx-auto mt-4 md:mt-10 mb-8 md:mb-10 fade-up-elem cursor-pointer relative z-20" 
+              className="hero-3d-wrapper w-60 h-80 md:w-64 md:h-80 mx-auto mt-2 md:mt-10 mb-8 md:mb-10 fade-up-elem cursor-pointer relative z-20" 
               style={{ transitionDelay: '0.3s' }}
               onClick={handleCardFlip}
               onMouseMove={handleHeroMove}
@@ -553,7 +595,7 @@ export default function LandingPage() {
                   style={{ transform: isCardFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
                 >
                   {/* Лицевая сторона визитки */}
-                  <div className="hero-card-face glass-card w-full h-full absolute inset-0 flex items-center justify-center rounded-[2rem] border border-white/20 shadow-[0_25px_60px_rgba(229,9,64,0.22),inset_0_1px_1px_rgba(255,255,255,0.3)] overflow-hidden group">
+                  <div className="hero-card-face hero-card-front glass-card flex items-center justify-center rounded-[2rem] border border-white/20 shadow-[0_25px_60px_rgba(229,9,64,0.22),inset_0_1px_1px_rgba(255,255,255,0.3)] overflow-hidden group">
                     {/* Динамический световой блик при наклоне */}
                     <div className="hero-glare absolute -inset-12 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.28)_0%,rgba(229,9,64,0.12)_35%,transparent_70%)] opacity-35 pointer-events-none transition-transform duration-75"></div>
                     <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
@@ -567,10 +609,7 @@ export default function LandingPage() {
                   </div>
 
                   {/* Обратная сторона визитки с фотографией */}
-                  <div
-                    className="hero-card-face glass-card w-full h-full absolute inset-0 rounded-[2rem] border border-white/25 shadow-[0_25px_60px_rgba(229,9,64,0.28),inset_0_1px_1px_rgba(255,255,255,0.35)] overflow-hidden"
-                    style={{ transform: 'rotateY(180deg)' }}
-                  >
+                  <div className="hero-card-face hero-card-back glass-card rounded-[2rem] border border-white/25 shadow-[0_25px_60px_rgba(229,9,64,0.28),inset_0_1px_1px_rgba(255,255,255,0.35)] overflow-hidden">
                     <img
                       src="elena-photo.jpg"
                       alt="Елена — IT-Архитектор"
@@ -587,13 +626,12 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-          <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 fade-up-elem z-10" style={{ transitionDelay: '0.5s' }}>
+          <div className="absolute bottom-4 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 fade-up-elem z-10" style={{ transitionDelay: '0.5s' }}>
             <span className="text-xs tracking-widest uppercase text-[#8B8D98]">Scroll</span>
-            <div className="w-px h-12 bg-gradient-to-b from-white/50 to-transparent"></div>
+            <div className="w-px h-10 md:h-12 bg-gradient-to-b from-white/50 to-transparent"></div>
           </div>
         </section>
 
-        {}
         {/* Showroom */}
         <section id="showroom" className="py-24 md:py-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="mb-12 md:mb-24 fade-up-elem text-center md:text-left">
@@ -616,48 +654,48 @@ export default function LandingPage() {
                 <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Цифровые PWA-визитки</h3>
                 <p className="text-[#8B8D98] mb-8 text-sm md:text-base max-w-2xl leading-relaxed">Устанавливаются на рабочий стол телефона как приложение в один клик. БЕЗ скачивания из App Store или Google Play. Ваш статус и контакты всегда под рукой.</p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 text-left">
+                <div className="equal-subcards-grid grid-cols-1 md:grid-cols-3 auto-rows-fr gap-4 md:gap-5 text-left">
                    {/* Classic */}
-                   <div className="luxury-subcard p-6 group">
+                   <div className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-start group">
                       <div className="absolute -top-12 -right-12 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 flex items-center justify-center text-white shadow-inner">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 flex items-center justify-center text-white shadow-inner shrink-0">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0"></path></svg>
                           </div>
                           <h4 className="text-white font-serif text-lg tracking-wide">Classic</h4>
                         </div>
-                        <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 font-medium">VCF • QR</span>
+                        <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 font-medium shrink-0">VCF • QR</span>
                       </div>
                       <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Лаконичная визитка. 7 премиальных дизайн-тем, мультиязычность, кинематографичные анимации и умное сохранение VCF контакта прямо в телефонную книгу.</p>
                    </div>
 
                    {/* Infinity */}
-                   <div className="luxury-subcard p-6 group border-[#00F5D4]/25">
+                   <div className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-start group border-[#00F5D4]/25">
                       <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#00F5D4]/15 rounded-full blur-2xl pointer-events-none"></div>
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.2)]">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.2)] shrink-0">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                           </div>
                           <h4 className="text-white font-serif text-lg tracking-wide">Infinity</h4>
                         </div>
-                        <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] font-semibold">3D • Sound</span>
+                        <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] font-semibold shrink-0">3D • Sound</span>
                       </div>
                       <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Интерактивная 3D-визитка с переворотом, звуком и тактильным откликом. На обороте: блок доверия, прайс и смарт-кнопки. Адаптация под любую нишу.</p>
                    </div>
 
                    {/* Twin ID */}
-                   <div className="luxury-subcard p-6 group border-[#E50940]/40 bg-gradient-to-br from-[#E50940]/15 via-[#E50940]/5 to-transparent shadow-[0_15px_35px_rgba(229,9,64,0.15),inset_0_1px_0_rgba(255,255,255,0.22)]">
+                   <div className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-start group border-[#E50940]/40 bg-gradient-to-br from-[#E50940]/15 via-[#E50940]/5 to-transparent shadow-[0_15px_35px_rgba(229,9,64,0.15),inset_0_1px_0_rgba(255,255,255,0.22)]">
                       <div className="absolute -top-12 -right-12 w-40 h-40 bg-[#E50940]/25 rounded-full blur-2xl pointer-events-none"></div>
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E50940] to-pink-600 border border-white/25 flex items-center justify-center text-white shadow-[0_0_20px_rgba(229,9,64,0.45)]">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E50940] to-pink-600 border border-white/25 flex items-center justify-center text-white shadow-[0_0_20px_rgba(229,9,64,0.45)] shrink-0">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
                           </div>
                           <h4 className="text-white font-serif text-lg tracking-wide">Twin ID</h4>
                         </div>
-                        <span className="bg-gradient-to-r from-[#E50940] to-pink-600 text-white text-[10px] px-2.5 py-1 rounded-full font-bold tracking-wider shadow-[0_0_12px_rgba(229,9,64,0.5)]">EXCLUSIVE</span>
+                        <span className="bg-gradient-to-r from-[#E50940] to-pink-600 text-white text-[10px] px-2.5 py-1 rounded-full font-bold tracking-wider shadow-[0_0_12px_rgba(229,9,64,0.5)] shrink-0">EXCLUSIVE</span>
                       </div>
                       <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Авторская разработка: Личный и Рабочий профиль в одном. Умная авто-смена стороны по времени суток и секретный Z-жест для вызова Facecontrol.</p>
                    </div>
@@ -678,31 +716,31 @@ export default function LandingPage() {
                 <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Smart <span className="italic text-[#00F5D4]">QR-Меню</span></h3>
                 <p className="text-[#8B8D98] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">Интуитивная облачная панель управления. Все заказы, вызовы официанта и запросы счета моментально прилетают в Telegram-группу персонала.</p>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 text-left">
-                  <div className="luxury-subcard p-6 border-[#00F5D4]/25">
+                <div className="equal-subcards-grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-4 md:gap-5 text-left">
+                  <div className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-start border-[#00F5D4]/25">
                      <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#00F5D4]/15 rounded-full blur-2xl pointer-events-none"></div>
                      <div className="flex items-center justify-between mb-4">
                        <div className="flex items-center gap-3">
-                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.15)]">
+                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.15)] shrink-0">
                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
                          </div>
                          <h4 className="text-white text-lg font-serif">Классика</h4>
                        </div>
-                       <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] font-medium">Instant Call</span>
+                       <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] font-medium shrink-0">Instant Call</span>
                      </div>
                      <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Бесконтактное меню с кинематографичным дизайном. Мультиязычность, умный стоп-лист блюд и плавная навигация. Мгновенный вызов официанта и запрос счета в 1 клик с тактильным откликом.</p>
                   </div>
 
-                  <div className="luxury-subcard p-6 border-[#E50940]/40 bg-gradient-to-br from-[#E50940]/15 via-[#E50940]/5 to-transparent shadow-[0_15px_35px_rgba(229,9,64,0.12),inset_0_1px_0_rgba(255,255,255,0.2)]">
+                  <div className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-start border-[#E50940]/40 bg-gradient-to-br from-[#E50940]/15 via-[#E50940]/5 to-transparent shadow-[0_15px_35px_rgba(229,9,64,0.12),inset_0_1px_0_rgba(255,255,255,0.2)]">
                      <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#E50940]/20 rounded-full blur-2xl pointer-events-none"></div>
                      <div className="flex items-center justify-between mb-4">
                        <div className="flex items-center gap-3">
-                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E50940]/30 to-[#E50940]/10 border border-[#E50940]/50 flex items-center justify-center text-[#E50940] shadow-[0_0_18px_rgba(229,9,64,0.3)]">
+                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E50940]/30 to-[#E50940]/10 border border-[#E50940]/50 flex items-center justify-center text-[#E50940] shadow-[0_0_18px_rgba(229,9,64,0.3)] shrink-0">
                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                          </div>
                          <h4 className="text-white text-lg font-serif">Флагман</h4>
                        </div>
-                       <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#E50940]/20 border border-[#E50940]/40 text-[#E50940] font-bold">PRO • AI Sell</span>
+                       <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#E50940]/20 border border-[#E50940]/40 text-[#E50940] font-bold shrink-0">PRO • AI Sell</span>
                      </div>
                      <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Полноценная автоматизация с умными допродажами (Cross-sell). Гость собирает корзину, оставляет комментарии повару и оформляет заказ. Умный QR-код сам определяет номер столика.</p>
                   </div>
@@ -739,8 +777,8 @@ export default function LandingPage() {
                 <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Эстетика и <span className="italic text-pink-400">Онлайн-запись</span></h3>
                 <p className="text-[#8B8D98] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">Premium визитка-лендинг с умным онлайн-бронированием. Идеальная синхронизация с вашим расписанием без диких ежемесячных комиссий агрегаторам.</p>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 text-left">
-                   <div className="luxury-subcard p-6 border-pink-400/25">
+                <div className="equal-subcards-grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-4 md:gap-5 text-left">
+                   <div className="luxury-subcard p-6 h-full min-h-[168px] flex flex-col justify-start border-pink-400/25">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500/25 to-pink-500/5 border border-pink-400/40 flex items-center justify-center text-pink-400 shrink-0 shadow-[0_0_15px_rgba(244,114,182,0.2)]">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
@@ -749,7 +787,7 @@ export default function LandingPage() {
                       </div>
                       <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Live-календарь с умным поиском свободных окон, расчетом времени услуг и автоматическим режимом «предупреждение об отпуске».</p>
                    </div>
-                   <div className="luxury-subcard p-6 border-pink-400/25">
+                   <div className="luxury-subcard p-6 h-full min-h-[168px] flex flex-col justify-start border-pink-400/25">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500/25 to-pink-500/5 border border-pink-400/40 flex items-center justify-center text-pink-400 shrink-0 shadow-[0_0_15px_rgba(244,114,182,0.2)]">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
@@ -765,7 +803,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {}
         {/* NFC Breloq */}
         <section id="nfc" className="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="glass-card p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-stretch gap-8 interactive-elem fade-up-elem overflow-hidden cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
@@ -792,21 +829,21 @@ export default function LandingPage() {
                 Физическое воплощение вашего цифрового статуса. Я вручную шью премиальные NFC-брелоки из натуральной винтажной кожи для каждой визитки. Одно касание брелоком к смартфону партнера — и ваши контакты уже на его экране.
               </p>
               
-              <ul className="space-y-3 mb-0 text-sm text-[#8B8D98] text-left">
-                 <li className="luxury-subcard p-4 flex items-start gap-3.5 border-amber-500/20">
-                   <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 text-amber-500">
+              <ul className="equal-subcards-grid grid-cols-1 auto-rows-fr gap-3.5 mb-0 text-sm text-[#8B8D98] text-left">
+                 <li className="luxury-subcard p-4 h-full min-h-[92px] flex items-center gap-3.5 border-amber-500/20">
+                   <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 text-amber-500">
                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                    </div>
                    <span className="text-xs md:text-sm leading-relaxed"><strong className="text-white">Полная автономность:</strong> внутри зашит чип, который работает без батареек и его не нужно заряжать.</span>
                  </li>
-                 <li className="luxury-subcard p-4 flex items-start gap-3.5 border-amber-500/20">
-                   <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 text-amber-500">
+                 <li className="luxury-subcard p-4 h-full min-h-[92px] flex items-center gap-3.5 border-amber-500/20">
+                   <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 text-amber-500">
                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.121 14.121L19 19m-7-7l-7-7m7 7L5 19m7-7l7-7"></path></svg>
                    </div>
                    <span className="text-xs md:text-sm leading-relaxed"><strong className="text-white">Ручная работа:</strong> каждый брелок кроится и прошивается вручную седельным швом.</span>
                  </li>
-                 <li className="luxury-subcard p-4 flex items-start gap-3.5 border-amber-500/20">
-                   <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 text-amber-500">
+                 <li className="luxury-subcard p-4 h-full min-h-[92px] flex items-center gap-3.5 border-amber-500/20">
+                   <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 text-amber-500">
                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
                    </div>
                    <span className="text-xs md:text-sm leading-relaxed"><strong className="text-white">Безупречный статус:</strong> винтажная кожа красиво стареет, покрываясь благородной патиной.</span>
@@ -840,7 +877,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {}
         {/* Technology */}
         <section id="technology" className="py-12 px-4 md:px-8 max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-12 md:mb-16 fade-up-elem">
@@ -848,8 +884,8 @@ export default function LandingPage() {
             <p className="text-[#8B8D98] text-base md:text-lg">Мы не используем конструкторы вроде Tilda. Только чистый код и передовые архитектуры.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <div className="glass-card p-8 flex flex-col items-center text-center interactive-elem group fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
+          <div className="equal-subcards-grid grid-cols-1 md:grid-cols-3 auto-rows-fr gap-4 md:gap-6">
+            <div className="glass-card p-8 h-full flex flex-col items-center justify-center text-center interactive-elem group fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
               <div className="glass-content">
                 <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 mx-auto group-hover:scale-110 group-hover:bg-[#E50940]/20 transition-all duration-300">
                   <svg className="w-8 h-8 text-white group-hover:text-[#E50940] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
@@ -859,7 +895,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="glass-card p-8 flex flex-col items-center text-center interactive-elem group fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
+            <div className="glass-card p-8 h-full flex flex-col items-center justify-center text-center interactive-elem group fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
               <div className="glass-content">
                 <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 mx-auto relative overflow-hidden group-hover:border-[#00F5D4]/50 transition-all duration-300">
                   <svg className="w-10 h-10 text-[#00F5D4] absolute bottom-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
@@ -869,7 +905,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="glass-card p-8 flex flex-col items-center text-center interactive-elem group fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
+            <div className="glass-card p-8 h-full flex flex-col items-center justify-center text-center interactive-elem group fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
               <div className="glass-content">
                 <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 mx-auto group-hover:scale-110 group-hover:bg-white/20 transition-all duration-300">
                   <svg className="w-8 h-8 text-white group-hover:text-gray-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
@@ -1008,7 +1044,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {}
         {/* FAQ */}
         <section id="faq" className="py-24 px-4 md:px-8 max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12 fade-up-elem">
