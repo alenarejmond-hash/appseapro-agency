@@ -1542,294 +1542,187 @@ export default function LandingPage() {
         </div>
       </footer>
 
-      {/* Infinity 3D Showroom Modal (Mobile: Edge-to-Edge + iOS Camera Bottom Switcher | Desktop: 3-Part Commercial Configurator) */}
+      {/* Infinity 3D Showroom Modal (Mobile < lg: Edge-to-Edge + Bottom Switcher | Desktop lg: Open Space Frameless Canvas + Top Floating Pills) */}
       {isGalleryModalOpen && (
         <div
-          className="fixed inset-0 z-[110] flex items-center justify-center p-0 lg:p-6 overflow-hidden overscroll-none"
+          className="fixed inset-0 z-[110] flex flex-col items-center justify-between p-0 lg:px-10 lg:py-7 overflow-hidden overscroll-none bg-[#050505] lg:bg-[#050505]/96 lg:backdrop-blur-3xl"
         >
-          {/* Глубокий матовый фон */}
-          <div
-            className="fixed inset-0 bg-[#050505]/92 backdrop-blur-2xl transition-opacity duration-500"
-            onClick={handleCloseGallery}
-          ></div>
+          {/* Мягкое кинематографичное рассеянное свечение (ambient glow) в центре космоса на десктопе */}
+          <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full bg-white/[0.035] blur-[140px] pointer-events-none"></div>
 
-          {/* Главная капсула шоурума: на мобильных Edge-to-Edge 100% экрана без рамок, на десктопе — солидный 3-частный коммерческий конфигуратор */}
+          {/* Мобильный парящий крестик закрытия (только < lg:) */}
+          <button
+            onClick={handleCloseGallery}
+            aria-label="Закрыть шоурум"
+            className="lg:hidden absolute top-4 right-4 z-50 w-10 h-10 rounded-full bg-black/55 hover:bg-white/[0.14] backdrop-blur-[20px] border border-white/15 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 active:scale-95 interactive-elem cursor-pointer"
+          >
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* ================= 1. ПАРЯЩАЯ НАВИГАЦИЯ СВЕРХУ (ТОЛЬКО ДЕСКТОП lg:) ================= */}
           <div
-            className="relative z-10 w-full max-w-7xl h-[100dvh] lg:h-[88vh] lg:max-h-[860px] rounded-none lg:rounded-[2.25rem] border-0 lg:border lg:border-white/10 bg-[#050505] lg:bg-[#070709]/95 lg:backdrop-blur-3xl shadow-none lg:shadow-[0_40px_120px_rgba(0,0,0,0.98),inset_0_1px_0_rgba(255,255,255,0.12)] flex flex-col lg:flex-row overflow-hidden"
+            className="hidden lg:flex w-full max-w-7xl flex-col items-center justify-center relative z-30 shrink-0"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Мягкий студийный софитный свет на десктопе (без кислотной радуги) */}
-            <div className="hidden lg:block absolute -top-40 left-1/2 -translate-x-1/2 w-[42rem] h-80 rounded-full bg-white/[0.035] blur-[130px] pointer-events-none"></div>
+            {/* Правый верхний угол: аккуратная кнопка «На весь экран ↗» и минималистичный крестик закрытия */}
+            <div className="absolute right-0 top-0 flex items-center gap-3">
+              <a
+                href={`${currentTemplate.url}?ref=catalog`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] hover:bg-white/[0.1] backdrop-blur-xl border border-white/10 hover:border-white/25 text-xs font-medium text-[#E4E4E7] hover:text-white transition-all duration-300 interactive-elem"
+              >
+                <span>На весь экран ↗</span>
+              </a>
 
-            {/* Единственный парящий матовый крестик закрытия в правом верхнем углу */}
-            <button
-              onClick={handleCloseGallery}
-              aria-label="Закрыть шоурум"
-              className="absolute top-4 right-4 lg:top-5 lg:right-5 z-50 w-10 h-10 lg:w-11 lg:h-11 rounded-full bg-black/55 lg:bg-white/[0.06] hover:bg-white/[0.14] backdrop-blur-[20px] border border-white/15 hover:border-white/30 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 hover:scale-105 active:scale-95 interactive-elem cursor-pointer"
-            >
-              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+              <button
+                onClick={handleCloseGallery}
+                aria-label="Закрыть шоурум"
+                className="w-10 h-10 rounded-full bg-white/[0.04] hover:bg-white/[0.12] backdrop-blur-[20px] border border-white/10 hover:border-white/25 flex items-center justify-center text-white/80 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 interactive-elem cursor-pointer"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
 
-            {/* ================= 1. ЛЕВАЯ КОЛОНКА (ДЕСКТОП lg: 28% ширины) — Элегантный селектор коллекций ================= */}
-            <div className="hidden lg:flex lg:w-[28%] shrink-0 flex-col justify-between border-r border-white/10 bg-white/[0.01] relative z-20 p-7 overflow-hidden">
-              <div className="mb-5">
-                <span className="text-[10px] uppercase tracking-[0.22em] text-[#A1A1AA] font-medium block mb-1.5">
-                  Infinity Architecture
-                </span>
-                <h3 className="text-2xl font-serif text-white tracking-tight">
-                  Коллекция ниш
-                </h3>
+            {/* Лаконичный заголовок «Infinity 3D» */}
+            <h3 className="font-serif text-2xl xl:text-3xl text-white tracking-tight mb-4">
+              Infinity 3D
+            </h3>
+
+            {/* Воздушная горизонтальная линия изящных матовых пилюль 9 ниш */}
+            <div className="flex flex-wrap items-center justify-center gap-2 max-w-5xl">
+              {INFINITY_TEMPLATES.map((tpl) => {
+                const isActive = currentTemplate.id === tpl.id;
+                return (
+                  <button
+                    key={tpl.id}
+                    onClick={() => handleSelectNiche(tpl)}
+                    className={`px-4 py-2 rounded-full text-xs tracking-wide transition-all duration-300 backdrop-blur-xl border cursor-pointer interactive-elem ${
+                      isActive
+                        ? 'bg-white/[0.12] border-white/35 text-white font-medium shadow-[0_0_25px_rgba(255,255,255,0.14),inset_0_1px_0_rgba(255,255,255,0.3)]'
+                        : 'bg-white/[0.03] border-white/10 text-[#A1A1AA] hover:text-white hover:bg-white/[0.06] hover:border-white/20 font-normal'
+                    }`}
+                  >
+                    {tpl.name}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* ================= 2. СВОБОДНЫЙ ИНТЕРАКТИВНЫЙ ХОЛСТ В ЦЕНТРЕ (Мобильные: Edge-to-Edge | Десктоп lg: w-full max-w-xl h-[72vh] без рамок) ================= */}
+          <div
+            className="w-full flex-1 flex flex-col items-center justify-between lg:justify-center relative z-10 overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative w-full flex-1 lg:flex-none lg:w-full lg:max-w-xl lg:h-[72vh] bg-transparent border-0 flex flex-col overflow-hidden">
+              {/* Деликатный лоадер в открытом пространстве во время подгрузки iframe */}
+              <div
+                className={`absolute inset-0 z-20 flex flex-col items-center justify-center gap-3.5 bg-[#050505] lg:bg-transparent transition-opacity duration-500 ${
+                  iframeLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                }`}
+              >
+                <div className="relative flex items-center justify-center w-12 h-12">
+                  <div className="w-10 h-10 rounded-full border border-white/15 border-t-white/80 animate-spin"></div>
+                </div>
+                <div className="text-center px-6">
+                  <p className="text-xs font-serif tracking-wider text-white">
+                    {currentTemplate.name}
+                  </p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-[#A1A1AA] mt-1">
+                    Загрузка 3D-визитки...
+                  </p>
+                </div>
               </div>
 
-              {/* Список 9 ниш в стиле сдержанного автоконфигуратора (Porsche / Cartier) */}
-              <div className="flex flex-col gap-2 flex-1 overflow-y-auto no-scrollbar pr-1 py-0.5">
-                {INFINITY_TEMPLATES.map((tpl) => {
-                  const isActive = currentTemplate.id === tpl.id;
-                  return (
-                    <button
-                      key={tpl.id}
-                      onClick={() => handleSelectNiche(tpl)}
-                      className={`group relative w-full px-3.5 py-2.5 rounded-xl border text-left transition-all duration-300 flex items-center justify-between gap-3 cursor-pointer interactive-elem overflow-hidden backdrop-blur-xl ${
-                        isActive
-                          ? 'border-white/30 bg-white/[0.07] shadow-[0_10px_28px_rgba(0,0,0,0.65),0_0_20px_rgba(255,255,255,0.04),inset_0_1px_0_rgba(255,255,255,0.22)]'
-                          : 'border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]'
-                      }`}
-                    >
-                      <div className="relative z-10 flex items-center gap-3 min-w-0">
-                        <div
-                          className={`w-9 h-9 rounded-lg border flex items-center justify-center shrink-0 transition-all duration-300 [&>svg]:w-4 [&>svg]:h-4 ${
+              {/* Свободный прозрачный живой iframe выбранной ниши с плавным fade-переходом */}
+              <iframe
+                key={currentTemplate.id}
+                src={currentTemplate.url}
+                title={currentTemplate.name}
+                onLoad={() => setIframeLoaded(true)}
+                className={`w-full h-full flex-1 border-0 bg-transparent transition-opacity duration-500 ease-out ${
+                  iframeLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
+                allow="autoplay; clipboard-write"
+              />
+            </div>
+
+            {/* ================= НИЖНИЙ ПЕРЕКЛЮЧАТЕЛЬ НИШ НА СМАРТФОНАХ (НЕ ТРОНУТ: только < lg:) ================= */}
+            <div className="lg:hidden w-full shrink-0 px-3 pt-2 pb-4 bg-gradient-to-t from-[#050505] via-[#050505]/95 to-transparent relative z-40">
+              <div
+                style={{
+                  boxShadow: `0 12px 35px rgba(0,0,0,0.9), 0 0 25px -8px ${currentTemplate.glow}, inset 0 1px 0 rgba(255,255,255,0.18)`
+                }}
+                className="mx-auto max-w-md h-12 rounded-full bg-[#0B0B0F]/85 backdrop-blur-2xl border border-white/15 flex items-center justify-between px-1.5"
+              >
+                {/* Кнопка влево ‹ */}
+                <button
+                  onClick={() => handleStepNiche(-1)}
+                  aria-label="Предыдущая ниша"
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-white/60 hover:text-white active:scale-90 transition-all shrink-0 cursor-pointer"
+                >
+                  <span className="text-lg leading-none font-light">‹</span>
+                </button>
+
+                {/* Свайп-лента режимов: Эзотерика • [ Психолог ] • Турагент */}
+                <div
+                  ref={mobileSwitcherRef}
+                  className="flex-1 overflow-x-auto no-scrollbar flex items-center gap-1 px-2 scroll-smooth snap-x snap-mandatory"
+                >
+                  {INFINITY_TEMPLATES.map((tpl, index) => {
+                    const isActive = currentTemplate.id === tpl.id;
+                    return (
+                      <React.Fragment key={tpl.id}>
+                        <button
+                          data-niche-id={tpl.id}
+                          onClick={() => handleSelectNiche(tpl)}
+                          style={
                             isActive
-                              ? 'border-white/30 bg-white/[0.1] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]'
-                              : 'border-white/10 bg-white/[0.03] text-[#A1A1AA] group-hover:text-white/90 group-hover:border-white/20'
+                              ? {
+                                  borderColor: `${tpl.color}88`,
+                                  background: tpl.softBg,
+                                  boxShadow: `0 0 16px -3px ${tpl.glow}, inset 0 1px 0 rgba(255,255,255,0.25)`
+                                }
+                              : undefined
+                          }
+                          className={`snap-center shrink-0 px-3 py-1 rounded-full text-xs tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
+                            isActive
+                              ? 'border text-white font-semibold scale-105'
+                              : 'border border-transparent text-white/55 hover:text-white/85 font-normal'
                           }`}
                         >
-                          {tpl.icon}
-                        </div>
-
-                        <div className="min-w-0">
-                          <h4
-                            className={`font-serif text-sm tracking-wide truncate transition-colors ${
-                              isActive ? 'text-white font-medium' : 'text-[#E4E4E7] group-hover:text-white'
-                            }`}
-                          >
-                            {tpl.name}
-                          </h4>
-                          <p className="text-[11px] text-[#A1A1AA] truncate mt-0.5">
-                            {tpl.subtitle}
-                          </p>
-                        </div>
-                      </div>
-
-                      <span
-                        className={`relative z-10 text-xs transition-all duration-300 shrink-0 ${
-                          isActive
-                            ? 'text-white/90 translate-x-0 opacity-100'
-                            : 'text-white/30 -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-70'
-                        }`}
-                      >
-                        ➔
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* ================= 2. ЦЕНТРАЛЬНАЯ СЦЕНА (Мобильные: 100% Edge-to-Edge | Десктоп lg: 44% ширины — безрамочный дисплей) ================= */}
-            <div className="w-full lg:w-[44%] flex-1 h-full flex flex-col items-center justify-between lg:justify-center relative z-10 p-0 lg:px-6 lg:py-7 overflow-hidden">
-              {/* Мягкое софитное свечение позади дисплея на десктопе */}
-              <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[560px] rounded-full bg-white/[0.04] blur-[100px] pointer-events-none"></div>
-
-              {/* Деликатная стеклянная пилюля над экраном (только десктоп) */}
-              <div className="hidden lg:flex relative z-30 mb-3.5 items-center justify-center">
-                <a
-                  href={`${currentTemplate.url}?ref=catalog`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/[0.05] hover:bg-white/[0.1] backdrop-blur-xl border border-white/15 hover:border-white/30 text-xs font-medium text-[#F3F4F6] hover:text-white shadow-[0_10px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-300 interactive-elem"
-                >
-                  <span>Развернуть на весь экран ↗</span>
-                </a>
-              </div>
-
-              {/* Крупный безрамочный дисплей визитки на десктопе (440px, 74vh, алмазная фаска border-white/15) / Edge-to-Edge на мобильных */}
-              <div className="relative w-full flex-1 lg:flex-none lg:w-[440px] lg:max-w-full lg:h-[74vh] lg:max-h-[740px] rounded-none lg:rounded-[2rem] bg-[#050505] border-0 lg:border lg:border-white/15 shadow-none lg:shadow-[0_30px_90px_rgba(0,0,0,0.95)] flex flex-col overflow-hidden">
-                {/* Благородный студийный лоадер во время подгрузки iframe */}
-                <div
-                  className={`absolute inset-0 z-20 flex flex-col items-center justify-center gap-3.5 bg-[#050505] transition-opacity duration-500 ${
-                    iframeLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
-                  }`}
-                >
-                  <div className="relative flex items-center justify-center w-14 h-14">
-                    <div className="w-11 h-11 rounded-full border border-white/15 border-t-white/80 animate-spin"></div>
-                    <div className="absolute flex items-center justify-center text-white/75 [&>svg]:w-4 [&>svg]:h-4">
-                      {currentTemplate.icon}
-                    </div>
-                  </div>
-                  <div className="text-center px-6">
-                    <p className="text-xs font-serif tracking-wider text-white">
-                      {currentTemplate.name}
-                    </p>
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-[#A1A1AA] mt-1">
-                      Загрузка 3D-визитки...
-                    </p>
-                  </div>
-                </div>
-
-                {/* Чистый живой iframe выбранной ниши */}
-                <iframe
-                  key={currentTemplate.id}
-                  src={currentTemplate.url}
-                  title={currentTemplate.name}
-                  onLoad={() => setIframeLoaded(true)}
-                  className={`w-full h-full flex-1 border-0 bg-[#050505] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    iframeLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.985]'
-                  }`}
-                  allow="autoplay; clipboard-write"
-                />
-              </div>
-
-              {/* ================= НИЖНИЙ ПЕРЕКЛЮЧАТЕЛЬ НИШ НА СМАРТФОНАХ (НЕ ТРОНУТ: только < lg:) ================= */}
-              <div className="lg:hidden w-full shrink-0 px-3 pt-2 pb-4 bg-gradient-to-t from-[#050505] via-[#050505]/95 to-transparent relative z-40">
-                <div
-                  style={{
-                    boxShadow: `0 12px 35px rgba(0,0,0,0.9), 0 0 25px -8px ${currentTemplate.glow}, inset 0 1px 0 rgba(255,255,255,0.18)`
-                  }}
-                  className="mx-auto max-w-md h-12 rounded-full bg-[#0B0B0F]/85 backdrop-blur-2xl border border-white/15 flex items-center justify-between px-1.5"
-                >
-                  {/* Кнопка влево ‹ */}
-                  <button
-                    onClick={() => handleStepNiche(-1)}
-                    aria-label="Предыдущая ниша"
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-white/60 hover:text-white active:scale-90 transition-all shrink-0 cursor-pointer"
-                  >
-                    <span className="text-lg leading-none font-light">‹</span>
-                  </button>
-
-                  {/* Свайп-лента режимов: Эзотерика • [ Психолог ] • Турагент */}
-                  <div
-                    ref={mobileSwitcherRef}
-                    className="flex-1 overflow-x-auto no-scrollbar flex items-center gap-1 px-2 scroll-smooth snap-x snap-mandatory"
-                  >
-                    {INFINITY_TEMPLATES.map((tpl, index) => {
-                      const isActive = currentTemplate.id === tpl.id;
-                      return (
-                        <React.Fragment key={tpl.id}>
-                          <button
-                            data-niche-id={tpl.id}
-                            onClick={() => handleSelectNiche(tpl)}
-                            style={
-                              isActive
-                                ? {
-                                    borderColor: `${tpl.color}88`,
-                                    background: tpl.softBg,
-                                    boxShadow: `0 0 16px -3px ${tpl.glow}, inset 0 1px 0 rgba(255,255,255,0.25)`
-                                  }
-                                : undefined
-                            }
-                            className={`snap-center shrink-0 px-3 py-1 rounded-full text-xs tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
-                              isActive
-                                ? 'border text-white font-semibold scale-105'
-                                : 'border border-transparent text-white/55 hover:text-white/85 font-normal'
-                            }`}
-                          >
-                            {isActive && (
-                              <span
-                                className="w-1.5 h-1.5 rounded-full shrink-0"
-                                style={{
-                                  backgroundColor: tpl.color,
-                                  boxShadow: `0 0 8px ${tpl.color}`
-                                }}
-                              ></span>
-                            )}
-                            <span className="whitespace-nowrap">{tpl.name}</span>
-                          </button>
-
-                          {index < INFINITY_TEMPLATES.length - 1 && (
-                            <span className="text-white/20 text-[10px] select-none shrink-0">•</span>
+                          {isActive && (
+                            <span
+                              className="w-1.5 h-1.5 rounded-full shrink-0"
+                              style={{
+                                backgroundColor: tpl.color,
+                                boxShadow: `0 0 8px ${tpl.color}`
+                              }}
+                            ></span>
                           )}
-                        </React.Fragment>
-                      );
-                    })}
-                  </div>
+                          <span className="whitespace-nowrap">{tpl.name}</span>
+                        </button>
 
-                  {/* Кнопка вправо › */}
-                  <button
-                    onClick={() => handleStepNiche(1)}
-                    aria-label="Следующая ниша"
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-white/60 hover:text-white active:scale-90 transition-all shrink-0 cursor-pointer"
-                  >
-                    <span className="text-lg leading-none font-light">›</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* ================= 3. ПРАВАЯ КОЛОНКА (ДЕСКТОП lg: 28% ширины) — Бизнес-ценность для выбранной сферы ================= */}
-            <div className="hidden lg:flex lg:w-[28%] shrink-0 flex-col justify-between border-l border-white/10 bg-white/[0.01] relative z-20 p-7 overflow-hidden">
-              <div className="pt-8">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[10px] uppercase tracking-[0.18em] text-[#A1A1AA] mb-4">
-                  <span>{currentTemplate.name}</span>
+                        {index < INFINITY_TEMPLATES.length - 1 && (
+                          <span className="text-white/20 text-[10px] select-none shrink-0">•</span>
+                        )}
+                      </React.Fragment>
+                    );
+                  })}
                 </div>
 
-                <h4 className="text-2xl font-serif text-white tracking-tight leading-snug mb-2">
-                  {{
-                    esoteric: 'Для частных практиков и консультантов',
-                    psychology: 'Для психологов и коучей',
-                    travel: 'Для турагентов и VIP-консьержей',
-                    blogger: 'Для блогеров и медиаличностей',
-                    fitness: 'Для фитнес-тренеров и экспертов',
-                    beauty: 'Для стилистов и индустрии красоты',
-                    realty: 'Для риелторов и брокеров',
-                    dentistry: 'Для врачей и клиник',
-                    photographer: 'Для фотографов и арт-директоров'
-                  }[currentTemplate.id] || `Для сферы: ${currentTemplate.name}`}
-                </h4>
-
-                <p className="text-xs text-[#A1A1AA] leading-relaxed mb-6">
-                  {currentTemplate.subtitle} — готовая 3D-экосистема, созданная для мгновенной упаковки вашего личного бренда и конверсии контактов в сделки.
-                </p>
-
-                {/* Блок конкретных бизнес-преимуществ */}
-                <div className="space-y-3 text-left">
-                  <div className="p-3.5 rounded-xl bg-white/[0.025] border border-white/10">
-                    <p className="text-xs text-[#E4E4E7] leading-relaxed">
-                      ✓ Мгновенный обмен контактом VCF прямо в телефонную книгу
-                    </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-white/[0.025] border border-white/10">
-                    <p className="text-xs text-[#E4E4E7] leading-relaxed">
-                      ✓ Интерактивная 3D-презентация услуг на обороте карты
-                    </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-white/[0.025] border border-white/10">
-                    <p className="text-xs text-[#E4E4E7] leading-relaxed">
-                      ✓ Автономная работа без App Store и ежемесячных подписок
-                    </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl bg-white/[0.025] border border-white/10">
-                    <p className="text-xs text-[#E4E4E7] leading-relaxed">
-                      ✓ Персональная адаптация дизайна, прайса и смыслов под ваш статус
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Заметная премиальная кнопка заказа */}
-              <div className="pt-5 border-t border-white/10">
+                {/* Кнопка вправо › */}
                 <button
-                  onClick={() => {
-                    handleCloseGallery();
-                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                  }}
-                  className="w-full py-3.5 px-5 rounded-xl bg-white text-black hover:bg-gray-200 active:scale-[0.99] transition-all text-xs font-semibold tracking-wide flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,255,255,0.2)] cursor-pointer interactive-elem"
+                  onClick={() => handleStepNiche(1)}
+                  aria-label="Следующая ниша"
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-white/60 hover:text-white active:scale-90 transition-all shrink-0 cursor-pointer"
                 >
-                  <span>Заказать под свою нишу ➔</span>
+                  <span className="text-lg leading-none font-light">›</span>
                 </button>
               </div>
             </div>
