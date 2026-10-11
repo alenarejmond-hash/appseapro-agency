@@ -9,17 +9,25 @@ import React, { useState, useEffect, useRef } from 'react';
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
-  html, body {
+  html {
+    background-color: #050505;
+    color: #F3F4F6;
+    overscroll-behavior-y: none; /* Отключаем обновление страницы свайпом вниз */
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
     background-color: #050505;
     color: #F3F4F6;
     overflow-x: hidden;
-    overscroll-behavior-y: none; /* Отключаем обновление страницы свайпом вниз */
-    touch-action: pan-y; /* Запрещаем раскачивание и зум страницы */
+    overscroll-behavior-y: none;
+    touch-action: manipulation;
     width: 100%;
-    position: relative;
+    margin: 0;
+    padding: 0;
     cursor: none; /* Скрываем стандартный курсор на ПК */
     font-family: 'Inter', sans-serif;
-    -webkit-text-size-adjust: 100%;
   }
 
   .font-serif {
@@ -86,19 +94,36 @@ const styles = `
 
   /* Продвинутый Glassmorphism Карточек */
   .glass-card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
-    backdrop-filter: blur(24px) saturate(120%);
-    -webkit-backdrop-filter: blur(24px) saturate(120%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+    backdrop-filter: blur(28px) saturate(140%);
+    -webkit-backdrop-filter: blur(28px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    border-radius: 28px;
     position: relative;
     overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
   }
 
   .glass-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 30px 60px -10px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.15);
+    box-shadow: 0 30px 60px -10px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.25);
+  }
+
+  /* Премиальные подкарточки в едином бутиковом стиле */
+  .luxury-subcard {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.015) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .luxury-subcard:hover {
+    border-color: rgba(255, 255, 255, 0.24);
+    transform: translateY(-2px);
   }
 
   /* Эффект фонарика под стеклом при наведении */
@@ -109,7 +134,7 @@ const styles = `
     left: var(--mouse-x, -100px);
     width: 250px;
     height: 250px;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 70%);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -127,16 +152,36 @@ const styles = `
     z-index: 1;
   }
 
-  /* 3D элемент в Hero (заблокирован скролл и обновление страницы при вращении пальцем) */
+  /* 3D элемент в Hero (повышенная отзывчивость и глубина на мобильных) */
   .hero-3d-wrapper {
-    perspective: 1000px;
+    perspective: 650px;
     touch-action: none;
     user-select: none;
     -webkit-user-select: none;
   }
   .hero-3d-element {
     transform-style: preserve-3d;
-    transition: transform 0.1s ease-out;
+    transition: transform 0.08s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+    will-change: transform;
+  }
+  .hero-3d-element.is-idle {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s ease;
+    animation: heroIdleTilt 6s ease-in-out infinite alternate;
+  }
+  .hero-flip-inner {
+    transform-style: preserve-3d;
+    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .hero-card-face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  @keyframes heroIdleTilt {
+    0% { transform: rotateY(-8deg) rotateX(6deg) translateY(0px); }
+    50% { transform: rotateY(8deg) rotateX(-5deg) translateY(-6px); }
+    100% { transform: rotateY(-4deg) rotateX(8deg) translateY(2px); }
   }
 
   /* Нативные анимации появления */
@@ -164,6 +209,8 @@ export default function LandingPage() {
   const [isHovering, setIsHovering] = useState(false);
   const [isHorecaModalOpen, setIsHorecaModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHeroInteracting, setIsHeroInteracting] = useState(false);
+  const [isCardFlipped, setIsCardFlipped] = useState(false);
   
   const [menuItems, setMenuItems] = useState([
     { id: 1, name: 'Том Ям с креветками', desc: 'Острота: средняя', price: 850 },
@@ -175,8 +222,82 @@ export default function LandingPage() {
   
   const footerRef = useRef(null);
   const spacerRef = useRef(null);
+  const audioCtxRef = useRef(null);
 
-  // Фиксация масштаба (запрет зума двумя пальцами и шатания экрана на мобильных)
+  // Реалистичный звук переворота 3D-визитки (Web Audio API)
+  const playCardFlipSound = () => {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      if (!audioCtxRef.current) {
+        audioCtxRef.current = new AudioCtx();
+      }
+      const ctx = audioCtxRef.current;
+      if (ctx.state === 'suspended') {
+        ctx.resume();
+      }
+
+      const now = ctx.currentTime;
+
+      // 1. Мягкий воздушный шелест (whoosh) при развороте грани
+      const duration = 0.22;
+      const bufferSize = Math.floor(ctx.sampleRate * duration);
+      const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const output = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        output[i] = Math.random() * 2 - 1;
+      }
+
+      const whiteNoise = ctx.createBufferSource();
+      whiteNoise.buffer = noiseBuffer;
+
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.Q.setValueAtTime(2.2, now);
+      filter.frequency.setValueAtTime(280, now);
+      filter.frequency.exponentialRampToValueAtTime(1100, now + 0.09);
+      filter.frequency.exponentialRampToValueAtTime(220, now + duration);
+
+      const noiseGain = ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.001, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.18, now + 0.06);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+      whiteNoise.connect(filter);
+      filter.connect(noiseGain);
+      noiseGain.connect(ctx.destination);
+      whiteNoise.start(now);
+      whiteNoise.stop(now + duration);
+
+      // 2. Благородный тактильный щелчок фиксации
+      const osc = ctx.createOscillator();
+      const clickGain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(190, now);
+      osc.frequency.exponentialRampToValueAtTime(55, now + 0.08);
+
+      clickGain.gain.setValueAtTime(0.14, now);
+      clickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+
+      osc.connect(clickGain);
+      clickGain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.08);
+
+      if (typeof navigator !== 'undefined' && navigator.vibrate) {
+        navigator.vibrate(15);
+      }
+    } catch (err) {
+      // Игнорируем ошибку, если браузер заблокировал автовоспроизведение аудио
+    }
+  };
+
+  const handleCardFlip = () => {
+    playCardFlipSound();
+    setIsCardFlipped(prev => !prev);
+  };
+
+  // Фиксация масштаба без блокировки вертикального скролла страницы
   useEffect(() => {
     let meta = document.querySelector('meta[name="viewport"]');
     if (!meta) {
@@ -186,21 +307,16 @@ export default function LandingPage() {
     }
     meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
 
-    const preventMultiTouchZoom = (e) => {
-      if (e.touches && e.touches.length > 1) {
-        e.preventDefault();
-      }
-    };
     const preventGestureZoom = (e) => {
       e.preventDefault();
     };
 
-    document.addEventListener('touchmove', preventMultiTouchZoom, { passive: false });
     document.addEventListener('gesturestart', preventGestureZoom, { passive: false });
+    document.addEventListener('gesturechange', preventGestureZoom, { passive: false });
 
     return () => {
-      document.removeEventListener('touchmove', preventMultiTouchZoom);
       document.removeEventListener('gesturestart', preventGestureZoom);
+      document.removeEventListener('gesturechange', preventGestureZoom);
     };
   }, []);
 
@@ -258,18 +374,46 @@ export default function LandingPage() {
   };
 
   const handleHeroMove = (e) => {
+    setIsHeroInteracting(true);
     const rect = e.currentTarget.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const isTouch = !!e.touches;
+    const clientX = isTouch ? e.touches[0].clientX : e.clientX;
+    const clientY = isTouch ? e.touches[0].clientY : e.clientY;
     const x = (clientX - rect.left - rect.width / 2) / (rect.width / 2);
     const y = (clientY - rect.top - rect.height / 2) / (rect.height / 2);
-    const clampedX = Math.max(-1.5, Math.min(1.5, x));
-    const clampedY = Math.max(-1.5, Math.min(1.5, y));
-    e.currentTarget.querySelector('.hero-3d-element').style.transform = `rotateY(${clampedX * 15}deg) rotateX(${-clampedY * 15}deg)`;
+    const clampedX = Math.max(-1.6, Math.min(1.6, x));
+    const clampedY = Math.max(-1.6, Math.min(1.6, y));
+
+    // На мобильных делаем карточку гораздо более подвижной и объемной
+    const maxTilt = isTouch ? 32 : 20;
+    const rotY = clampedX * maxTilt;
+    const rotX = -clampedY * maxTilt;
+
+    const cardEl = e.currentTarget.querySelector('.hero-3d-element');
+    if (cardEl) {
+      cardEl.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg) scale3d(1.05, 1.05, 1.05)`;
+      cardEl.style.setProperty('--mouse-x', `${clientX - rect.left}px`);
+      cardEl.style.setProperty('--mouse-y', `${clientY - rect.top}px`);
+    }
+
+    const glareEls = e.currentTarget.querySelectorAll('.hero-glare');
+    glareEls.forEach(glareEl => {
+      glareEl.style.opacity = '1';
+      glareEl.style.transform = `translate3d(${clampedX * 45}%, ${clampedY * 45}%, 0)`;
+    });
   };
 
   const handleHeroLeave = (e) => {
-    e.currentTarget.querySelector('.hero-3d-element').style.transform = `rotateY(0deg) rotateX(0deg)`;
+    setIsHeroInteracting(false);
+    const cardEl = e.currentTarget.querySelector('.hero-3d-element');
+    if (cardEl) {
+      cardEl.style.transform = `rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`;
+    }
+    const glareEls = e.currentTarget.querySelectorAll('.hero-glare');
+    glareEls.forEach(glareEl => {
+      glareEl.style.opacity = '0.35';
+      glareEl.style.transform = `translate3d(0%, 0%, 0)`;
+    });
   };
 
   const handlePriceChange = (id, newPrice) => {
@@ -293,7 +437,7 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="antialiased min-h-screen text-[#F3F4F6] bg-[#050505] selection:bg-[#E50940] selection:text-white overflow-x-hidden w-full">
+    <div className="antialiased min-h-screen text-[#F3F4F6] bg-[#050505] selection:bg-[#E50940] selection:text-white w-full">
       <style>{styles}</style>
 
       <div className={`custom-cursor ${isHovering ? 'hover' : ''}`} style={{ left: cursorPos.x, top: cursorPos.y }} />
@@ -378,7 +522,7 @@ export default function LandingPage() {
 
       {}
       {/* Main Content */}
-      <main className="relative z-10 bg-[#050505] pb-10" style={{ boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}>
+      <main className="relative z-10 bg-[#050505] pb-10 overflow-x-hidden" style={{ boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}>
         
         <section className="min-h-screen flex flex-col items-center justify-center relative px-4 md:px-6 pt-24 md:pt-20 pb-20 md:pb-0">
           <div className="max-w-5xl mx-auto text-center z-10 flex-1 flex flex-col justify-center items-center w-full pb-20 md:pb-28">
@@ -393,18 +537,52 @@ export default function LandingPage() {
             </p>
 
             <div 
-              className="hero-3d-wrapper w-56 h-72 md:w-64 md:h-80 mx-auto mt-4 md:mt-10 mb-8 md:mb-10 fade-up-elem cursor-pointer relative z-20" 
+              className="hero-3d-wrapper w-60 h-76 md:w-64 md:h-80 mx-auto mt-4 md:mt-10 mb-8 md:mb-10 fade-up-elem cursor-pointer relative z-20" 
               style={{ transitionDelay: '0.3s' }}
-              onMouseMove={handleHeroMove} onMouseLeave={handleHeroLeave} onTouchMove={handleHeroMove} onTouchEnd={handleHeroLeave} onTouchCancel={handleHeroLeave}
+              onClick={handleCardFlip}
+              onMouseMove={handleHeroMove}
+              onMouseLeave={handleHeroLeave}
+              onTouchStart={handleHeroMove}
+              onTouchMove={handleHeroMove}
+              onTouchEnd={handleHeroLeave}
+              onTouchCancel={handleHeroLeave}
             >
-              <div className="hero-3d-element glass-card w-full h-full flex items-center justify-center rounded-[2rem] border border-white/10 shadow-2xl relative overflow-hidden group interactive-elem" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                <div className="glass-content text-center">
-                  <div className="w-16 h-16 rounded-full border border-[#E50940]/50 flex items-center justify-center mx-auto mb-4 bg-[#E50940]/10 text-[#E50940]">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"></path></svg>
+              <div className={`hero-3d-element ${!isHeroInteracting ? 'is-idle' : ''} w-full h-full relative interactive-elem`}>
+                <div
+                  className="hero-flip-inner w-full h-full relative"
+                  style={{ transform: isCardFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
+                >
+                  {/* Лицевая сторона визитки */}
+                  <div className="hero-card-face glass-card w-full h-full absolute inset-0 flex items-center justify-center rounded-[2rem] border border-white/20 shadow-[0_25px_60px_rgba(229,9,64,0.22),inset_0_1px_1px_rgba(255,255,255,0.3)] overflow-hidden group">
+                    {/* Динамический световой блик при наклоне */}
+                    <div className="hero-glare absolute -inset-12 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.28)_0%,rgba(229,9,64,0.12)_35%,transparent_70%)] opacity-35 pointer-events-none transition-transform duration-75"></div>
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                    <div className="glass-content text-center px-6" style={{ transform: 'translateZ(35px)' }}>
+                      <div className="w-16 h-16 rounded-full border border-[#E50940]/60 flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-[#E50940]/25 to-black/60 text-[#E50940] shadow-[0_0_25px_rgba(229,9,64,0.35)]">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"></path></svg>
+                      </div>
+                      <h3 className="font-serif text-xl text-white tracking-wide">AppSeaPro</h3>
+                      <p className="text-xs text-[#8B8D98] mt-2 uppercase tracking-widest">Digital Agency</p>
+                    </div>
                   </div>
-                  <h3 className="font-serif text-xl">AppSeaPro</h3>
-                  <p className="text-xs text-[#8B8D98] mt-2 uppercase tracking-widest">Digital Agency</p>
+
+                  {/* Обратная сторона визитки с фотографией */}
+                  <div
+                    className="hero-card-face glass-card w-full h-full absolute inset-0 rounded-[2rem] border border-white/25 shadow-[0_25px_60px_rgba(229,9,64,0.28),inset_0_1px_1px_rgba(255,255,255,0.35)] overflow-hidden"
+                    style={{ transform: 'rotateY(180deg)' }}
+                  >
+                    <img
+                      src="elena-photo.jpg"
+                      alt="Елена — IT-Архитектор"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/25 to-transparent"></div>
+                    <div className="hero-glare absolute -inset-12 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.26)_0%,rgba(229,9,64,0.12)_35%,transparent_70%)] opacity-35 pointer-events-none transition-transform duration-75"></div>
+                    <div className="absolute bottom-5 left-4 right-4 text-center z-10">
+                      <h3 className="font-serif text-xl text-white tracking-wide drop-shadow-md">Елена</h3>
+                      <p className="text-[10px] text-[#00F5D4] mt-1 uppercase tracking-widest font-medium">IT-Архитектор</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -423,79 +601,162 @@ export default function LandingPage() {
             <p className="text-[#8B8D98] text-base md:text-lg max-w-lg mx-auto md:mx-0">Безупречная эстетика и функциональность в каждом продукте. Разработано специально под вашу нишу.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <div className="glass-card md:col-span-3 p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
-              <div className="glass-content flex-1 z-10 text-center md:text-left w-full">
-                <span className="text-[#E50940] text-xs uppercase tracking-widest font-semibold mb-2 block">Для предпринимателей и экспертов</span>
-                <h3 className="text-2xl md:text-3xl font-serif mb-4">Цифровые PWA-визитки</h3>
-                <p className="text-[#8B8D98] mb-8 text-sm md:text-base max-w-2xl">Устанавливаются на рабочий стол телефона как приложение в один клик. БЕЗ скачивания из App Store или Google Play. Ваш статус и контакты всегда под рукой.</p>
+            {/* Карточка 01: Цифровые PWA-визитки */}
+            <div className="glass-card md:col-span-3 p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
+              <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#E50940]/15 rounded-full blur-[90px] pointer-events-none"></div>
+              <div className="glass-content flex-1 z-10 text-left w-full">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-[#E50940]/10 border border-[#E50940]/30 text-[#E50940] text-[11px] uppercase tracking-widest font-semibold">
+                    Для предпринимателей и экспертов
+                  </span>
+                  <span className="font-serif italic text-white/25 text-lg md:text-xl">01</span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Цифровые PWA-визитки</h3>
+                <p className="text-[#8B8D98] mb-8 text-sm md:text-base max-w-2xl leading-relaxed">Устанавливаются на рабочий стол телефона как приложение в один клик. БЕЗ скачивания из App Store или Google Play. Ваш статус и контакты всегда под рукой.</p>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
-                   <div className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-colors">
-                      <h4 className="text-white font-medium mb-2 text-sm md:text-base">Classic</h4>
-                      <p className="text-[#8B8D98] text-xs leading-relaxed">Лаконичная визитка. 7 премиальных дизайн-тем, мультиязычность, кинематографичные анимации и умное сохранение VCF контакта прямо в телефонную книгу.</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 text-left">
+                   {/* Classic */}
+                   <div className="luxury-subcard p-6 group">
+                      <div className="absolute -top-12 -right-12 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 flex items-center justify-center text-white shadow-inner">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0"></path></svg>
+                          </div>
+                          <h4 className="text-white font-serif text-lg tracking-wide">Classic</h4>
+                        </div>
+                        <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 font-medium">VCF • QR</span>
+                      </div>
+                      <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Лаконичная визитка. 7 премиальных дизайн-тем, мультиязычность, кинематографичные анимации и умное сохранение VCF контакта прямо в телефонную книгу.</p>
                    </div>
-                   <div className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-colors">
-                      <h4 className="text-white font-medium mb-2 text-sm md:text-base">Infinity</h4>
-                      <p className="text-[#8B8D98] text-xs leading-relaxed">Интерактивная 3D-визитка с переворотом, звуком и тактильным откликом. На обороте: блок доверия, прайс и смарт-кнопки. Адаптация под любую нишу.</p>
+
+                   {/* Infinity */}
+                   <div className="luxury-subcard p-6 group border-[#00F5D4]/25">
+                      <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#00F5D4]/15 rounded-full blur-2xl pointer-events-none"></div>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.2)]">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                          </div>
+                          <h4 className="text-white font-serif text-lg tracking-wide">Infinity</h4>
+                        </div>
+                        <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] font-semibold">3D • Sound</span>
+                      </div>
+                      <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Интерактивная 3D-визитка с переворотом, звуком и тактильным откликом. На обороте: блок доверия, прайс и смарт-кнопки. Адаптация под любую нишу.</p>
                    </div>
-                   <div className="bg-[#E50940]/10 border border-[#E50940]/30 rounded-xl p-5 shadow-[0_0_15px_rgba(229,9,64,0.1)] relative overflow-hidden group">
-                      <div className="absolute top-0 right-0 bg-[#E50940] text-white text-[10px] px-2 py-1 rounded-bl-lg font-bold tracking-wider">EXCLUSIVE</div>
-                      <h4 className="text-[#E50940] font-medium mb-2 text-sm md:text-base">Twin ID</h4>
-                      <p className="text-[#8B8D98] text-xs leading-relaxed">Авторская разработка: Личный и Рабочий профиль в одном. Умная авто-смена стороны по времени суток и секретный Z-жест для вызова Facecontrol.</p>
+
+                   {/* Twin ID */}
+                   <div className="luxury-subcard p-6 group border-[#E50940]/40 bg-gradient-to-br from-[#E50940]/15 via-[#E50940]/5 to-transparent shadow-[0_15px_35px_rgba(229,9,64,0.15),inset_0_1px_0_rgba(255,255,255,0.22)]">
+                      <div className="absolute -top-12 -right-12 w-40 h-40 bg-[#E50940]/25 rounded-full blur-2xl pointer-events-none"></div>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E50940] to-pink-600 border border-white/25 flex items-center justify-center text-white shadow-[0_0_20px_rgba(229,9,64,0.45)]">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
+                          </div>
+                          <h4 className="text-white font-serif text-lg tracking-wide">Twin ID</h4>
+                        </div>
+                        <span className="bg-gradient-to-r from-[#E50940] to-pink-600 text-white text-[10px] px-2.5 py-1 rounded-full font-bold tracking-wider shadow-[0_0_12px_rgba(229,9,64,0.5)]">EXCLUSIVE</span>
+                      </div>
+                      <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Авторская разработка: Личный и Рабочий профиль в одном. Умная авто-смена стороны по времени суток и секретный Z-жест для вызова Facecontrol.</p>
                    </div>
                 </div>
               </div>
             </div>
 
-            <div className="glass-card md:col-span-3 p-6 md:p-10 flex flex-col md:flex-row-reverse items-center gap-8 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} onClick={() => setIsHorecaModalOpen(true)} style={{ transitionDelay: '0.1s' }}>
-              <div className="glass-content flex-1 z-10 text-center md:text-left w-full">
-                <span className="text-[#00F5D4] text-xs uppercase tracking-widest font-semibold mb-2 block">Для ресторанов и кафе</span>
-                <h3 className="text-2xl md:text-3xl font-serif mb-4">Smart <span className="italic">QR-Меню</span></h3>
-                <p className="text-[#8B8D98] text-sm md:text-base mb-8 max-w-2xl">Интуитивная облачная панель управления. Все заказы, вызовы официанта и запросы счета моментально прилетают в Telegram-группу персонала.</p>
+            {/* Карточка 02: Smart QR-Меню */}
+            <div className="glass-card md:col-span-3 p-6 sm:p-8 md:p-12 flex flex-col md:flex-row-reverse items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} onClick={() => setIsHorecaModalOpen(true)} style={{ transitionDelay: '0.1s' }}>
+              <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[#00F5D4]/15 rounded-full blur-[90px] pointer-events-none"></div>
+              <div className="glass-content flex-1 z-10 text-left w-full">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] text-[11px] uppercase tracking-widest font-semibold">
+                    Для ресторанов и кафе
+                  </span>
+                  <span className="font-serif italic text-white/25 text-lg md:text-xl">02</span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Smart <span className="italic text-[#00F5D4]">QR-Меню</span></h3>
+                <p className="text-[#8B8D98] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">Интуитивная облачная панель управления. Все заказы, вызовы официанта и запросы счета моментально прилетают в Telegram-группу персонала.</p>
                 
-                <div className="flex flex-col sm:flex-row gap-4 text-left">
-                  <div className="flex-1 bg-black/40 border border-white/10 rounded-xl p-5 relative overflow-hidden">
-                     <div className="absolute top-0 left-0 w-1 h-full bg-[#00F5D4]/50"></div>
-                     <h4 className="text-white text-base font-medium mb-2">Классика</h4>
-                     <p className="text-[#8B8D98] text-xs leading-relaxed">Бесконтактное меню с кинематографичным дизайном. Мультиязычность, умный стоп-лист блюд и плавная навигация. Мгновенный вызов официанта и запрос счета в 1 клик с тактильным откликом.</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 text-left">
+                  <div className="luxury-subcard p-6 border-[#00F5D4]/25">
+                     <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#00F5D4]/15 rounded-full blur-2xl pointer-events-none"></div>
+                     <div className="flex items-center justify-between mb-4">
+                       <div className="flex items-center gap-3">
+                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.15)]">
+                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                         </div>
+                         <h4 className="text-white text-lg font-serif">Классика</h4>
+                       </div>
+                       <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] font-medium">Instant Call</span>
+                     </div>
+                     <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Бесконтактное меню с кинематографичным дизайном. Мультиязычность, умный стоп-лист блюд и плавная навигация. Мгновенный вызов официанта и запрос счета в 1 клик с тактильным откликом.</p>
                   </div>
-                  <div className="flex-1 bg-black/40 border border-[#E50940]/30 rounded-xl p-5 relative overflow-hidden shadow-[0_0_15px_rgba(229,9,64,0.05)]">
-                     <div className="absolute top-0 left-0 w-1 h-full bg-[#E50940]/50"></div>
-                     <h4 className="text-[#E50940] text-base font-medium mb-2">Флагман</h4>
-                     <p className="text-[#8B8D98] text-xs leading-relaxed">Полноценная автоматизация с умными допродажами (Cross-sell). Гость собирает корзину, оставляет комментарии повару и оформляет заказ. Умный QR-код сам определяет номер столика.</p>
+
+                  <div className="luxury-subcard p-6 border-[#E50940]/40 bg-gradient-to-br from-[#E50940]/15 via-[#E50940]/5 to-transparent shadow-[0_15px_35px_rgba(229,9,64,0.12),inset_0_1px_0_rgba(255,255,255,0.2)]">
+                     <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#E50940]/20 rounded-full blur-2xl pointer-events-none"></div>
+                     <div className="flex items-center justify-between mb-4">
+                       <div className="flex items-center gap-3">
+                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E50940]/30 to-[#E50940]/10 border border-[#E50940]/50 flex items-center justify-center text-[#E50940] shadow-[0_0_18px_rgba(229,9,64,0.3)]">
+                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                         </div>
+                         <h4 className="text-white text-lg font-serif">Флагман</h4>
+                       </div>
+                       <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#E50940]/20 border border-[#E50940]/40 text-[#E50940] font-bold">PRO • AI Sell</span>
+                     </div>
+                     <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Полноценная автоматизация с умными допродажами (Cross-sell). Гость собирает корзину, оставляет комментарии повару и оформляет заказ. Умный QR-код сам определяет номер столика.</p>
                   </div>
                 </div>
-                <button className="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm font-medium transition-colors border border-white/20">Попробовать песочницу ➔</button>
+
+                <div className="mt-7 flex justify-start">
+                  <button className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-[#00F5D4]/20 via-white/10 to-white/5 hover:from-[#00F5D4]/30 hover:to-white/15 rounded-2xl text-sm font-medium text-white transition-all border border-[#00F5D4]/40 shadow-[0_10px_25px_rgba(0,245,212,0.15)] flex items-center justify-center gap-2">
+                    <span>Попробовать песочницу ➔</span>
+                  </button>
+                </div>
               </div>
             </div>
 
-            <div className="glass-card md:col-span-3 p-6 md:p-10 flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
-               <div className="w-full md:w-1/3 h-48 md:h-full min-h-[250px] rounded-xl overflow-hidden relative shadow-2xl">
-                 <img src="beauty-bg.jpg" alt="Beauty Spa" className="absolute inset-0 w-full h-full object-cover opacity-80" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+            {/* Карточка 03: Эстетика и Онлайн-запись */}
+            <div className="glass-card md:col-span-3 p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-stretch gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
+               <div className="absolute -top-24 -left-24 w-72 h-72 bg-pink-500/15 rounded-full blur-[90px] pointer-events-none"></div>
+               
+               <div className="w-full md:w-5/12 h-64 sm:h-72 md:h-auto min-h-[260px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0">
+                 <img src="beauty-bg.jpg" alt="Beauty Spa" className="absolute inset-0 w-full h-full object-cover opacity-85 scale-105 hover:scale-100 transition-transform duration-700" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/25 to-transparent"></div>
+                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3.5 py-2 rounded-xl bg-black/50 backdrop-blur-md border border-white/10 text-[11px] text-white/80">
+                   <span>Beauty & SPA Ecosystem</span>
+                   <span className="text-pink-400 font-semibold">24/7 Live</span>
+                 </div>
                </div>
                
-               <div className="glass-content flex-1 z-10 text-center md:text-left w-full">
-                <span className="text-pink-400 text-xs uppercase tracking-widest font-semibold mb-2 block">Салоны & Мастера</span>
-                <h3 className="text-2xl md:text-3xl font-serif mb-4 text-white">Эстетика и <span className="italic">Онлайн-запись</span></h3>
-                <p className="text-[#8B8D98] text-sm md:text-base mb-8 max-w-2xl">Premium визитка-лендинг с умным онлайн-бронированием. Идеальная синхронизация с вашим расписанием без диких ежемесячных комиссий агрегаторам.</p>
+               <div className="glass-content flex-1 z-10 text-left w-full flex flex-col justify-center">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-pink-500/10 border border-pink-400/30 text-pink-400 text-[11px] uppercase tracking-widest font-semibold">
+                    Салоны & Мастера
+                  </span>
+                  <span className="font-serif italic text-white/25 text-lg md:text-xl">03</span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Эстетика и <span className="italic text-pink-400">Онлайн-запись</span></h3>
+                <p className="text-[#8B8D98] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">Premium визитка-лендинг с умным онлайн-бронированием. Идеальная синхронизация с вашим расписанием без диких ежемесячных комиссий агрегаторам.</p>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
-                   <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex items-start gap-3">
-                      <svg className="w-5 h-5 text-pink-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                      <div>
-                        <h4 className="text-white text-sm font-medium mb-1">Smart-бронирование</h4>
-                        <p className="text-[#8B8D98] text-xs leading-relaxed">Live-календарь с умным поиском свободных окон, расчетом времени услуг и автоматическим режимом «предупреждение об отпуске».</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 text-left">
+                   <div className="luxury-subcard p-6 border-pink-400/25">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500/25 to-pink-500/5 border border-pink-400/40 flex items-center justify-center text-pink-400 shrink-0 shadow-[0_0_15px_rgba(244,114,182,0.2)]">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h4 className="text-white text-base md:text-lg font-serif">Smart-бронирование</h4>
                       </div>
+                      <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Live-календарь с умным поиском свободных окон, расчетом времени услуг и автоматическим режимом «предупреждение об отпуске».</p>
                    </div>
-                   <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex items-start gap-3">
-                      <svg className="w-5 h-5 text-pink-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-                      <div>
-                        <h4 className="text-white text-sm font-medium mb-1">Дизайн & Telegram-забота</h4>
-                        <p className="text-[#8B8D98] text-xs leading-relaxed">Уникальный дизайн, настроенный под ваш бренд. Мгновенные уведомления о записях и заботливая утренняя Telegram-сводка вашего расписания на день за чашкой кофе.</p>
+                   <div className="luxury-subcard p-6 border-pink-400/25">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500/25 to-pink-500/5 border border-pink-400/40 flex items-center justify-center text-pink-400 shrink-0 shadow-[0_0_15px_rgba(244,114,182,0.2)]">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                        </div>
+                        <h4 className="text-white text-base md:text-lg font-serif">Дизайн & Telegram-забота</h4>
                       </div>
+                      <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Уникальный дизайн, настроенный под ваш бренд. Мгновенные уведомления о записях и заботливая утренняя Telegram-сводка вашего расписания на день за чашкой кофе.</p>
                    </div>
                 </div>
               </div>
@@ -507,23 +768,49 @@ export default function LandingPage() {
         {}
         {/* NFC Breloq */}
         <section id="nfc" className="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
-          <div className="glass-card flex flex-col md:flex-row items-center interactive-elem fade-up-elem overflow-hidden cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
-            <div className="w-full md:w-5/12 h-64 md:h-auto md:self-stretch relative border-b md:border-b-0 md:border-r border-white/10">
-               <img src="nfc-keychain.jpg" alt="Leather NFC Keychain" className="absolute inset-0 w-full h-full object-cover opacity-70 grayscale hover:grayscale-0 transition-all duration-700" />
-               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent md:bg-gradient-to-r md:from-transparent md:via-[#050505]/50 md:to-[#050505] z-0 pointer-events-none"></div>
+          <div className="glass-card p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-stretch gap-8 interactive-elem fade-up-elem overflow-hidden cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
+            <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-amber-500/15 rounded-full blur-[90px] pointer-events-none"></div>
+
+            <div className="w-full md:w-5/12 h-64 sm:h-72 md:h-auto min-h-[260px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0">
+               <img src="nfc-keychain.jpg" alt="Leather NFC Keychain" className="absolute inset-0 w-full h-full object-cover opacity-80 grayscale hover:grayscale-0 transition-all duration-700" />
+               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/30 to-transparent pointer-events-none"></div>
+               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3.5 py-2 rounded-xl bg-black/55 backdrop-blur-md border border-white/10 text-[11px] text-white/80">
+                 <span>Handcrafted Leather</span>
+                 <span className="text-amber-500 font-semibold">NFC Inside</span>
+               </div>
             </div>
             
-            <div className="glass-content w-full md:w-7/12 p-8 md:p-12 z-10 text-center md:text-left">
-              <span className="text-amber-500 text-xs uppercase tracking-widest font-semibold mb-2 block">Физический носитель</span>
-              <h3 className="text-3xl md:text-4xl font-serif mb-4">NFC-брелоки <br className="hidden md:block"/>из кожи <span className="italic text-white">Crazy Horse</span></h3>
-              <p className="text-[#8B8D98] text-sm md:text-base leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
+            <div className="glass-content w-full md:w-7/12 z-10 text-left flex flex-col justify-center">
+              <div className="flex items-center justify-between mb-4">
+                <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-500 text-[11px] uppercase tracking-widest font-semibold">
+                  Физический носитель
+                </span>
+                <span className="font-serif italic text-white/25 text-lg md:text-xl">04</span>
+              </div>
+              <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">NFC-брелоки <br className="hidden md:block"/>из кожи <span className="italic text-amber-400">Crazy Horse</span></h3>
+              <p className="text-[#8B8D98] text-sm md:text-base leading-relaxed mb-6 max-w-2xl">
                 Физическое воплощение вашего цифрового статуса. Я вручную шью премиальные NFC-брелоки из натуральной винтажной кожи для каждой визитки. Одно касание брелоком к смартфону партнера — и ваши контакты уже на его экране.
               </p>
               
-              <ul className="space-y-4 mb-0 text-sm text-[#8B8D98] text-left max-w-lg mx-auto md:mx-0">
-                 <li className="flex items-start gap-3"><svg className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> <span><strong>Полная автономность:</strong> внутри зашит чип, который работает без батареек и его не нужно заряжать.</span></li>
-                 <li className="flex items-start gap-3"><svg className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.121 14.121L19 19m-7-7l-7-7m7 7L5 19m7-7l7-7"></path></svg> <span><strong>Ручная работа:</strong> каждый брелок кроится и прошивается вручную седельным швом.</span></li>
-                 <li className="flex items-start gap-3"><svg className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg> <span><strong>Безупречный статус:</strong> винтажная кожа красиво стареет, покрываясь благородной патиной.</span></li>
+              <ul className="space-y-3 mb-0 text-sm text-[#8B8D98] text-left">
+                 <li className="luxury-subcard p-4 flex items-start gap-3.5 border-amber-500/20">
+                   <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 text-amber-500">
+                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                   </div>
+                   <span className="text-xs md:text-sm leading-relaxed"><strong className="text-white">Полная автономность:</strong> внутри зашит чип, который работает без батареек и его не нужно заряжать.</span>
+                 </li>
+                 <li className="luxury-subcard p-4 flex items-start gap-3.5 border-amber-500/20">
+                   <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 text-amber-500">
+                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.121 14.121L19 19m-7-7l-7-7m7 7L5 19m7-7l7-7"></path></svg>
+                   </div>
+                   <span className="text-xs md:text-sm leading-relaxed"><strong className="text-white">Ручная работа:</strong> каждый брелок кроится и прошивается вручную седельным швом.</span>
+                 </li>
+                 <li className="luxury-subcard p-4 flex items-start gap-3.5 border-amber-500/20">
+                   <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 text-amber-500">
+                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                   </div>
+                   <span className="text-xs md:text-sm leading-relaxed"><strong className="text-white">Безупречный статус:</strong> винтажная кожа красиво стареет, покрываясь благородной патиной.</span>
+                 </li>
               </ul>
             </div>
           </div>
@@ -553,6 +840,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* Technology */}
         <section id="technology" className="py-12 px-4 md:px-8 max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-12 md:mb-16 fade-up-elem">
@@ -593,7 +881,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {}
         {/* Pricing */}
         <section id="investments" className="py-24 md:py-32 px-4 md:px-8 relative z-10 overflow-hidden">
           <div className="max-w-7xl mx-auto text-center mb-12 md:mb-16 fade-up-elem">
@@ -721,6 +1008,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* FAQ */}
         <section id="faq" className="py-24 px-4 md:px-8 max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12 fade-up-elem">
@@ -753,7 +1041,6 @@ export default function LandingPage() {
 
       </main>
 
-      {}
       {/* Footer */}
       <footer ref={footerRef} id="contact" className="fixed bottom-0 w-full min-h-[60vh] md:min-h-[70vh] h-auto bg-[#050505] flex flex-col justify-between p-6 md:p-12 z-0 border-t border-white/5 pb-20 md:pb-6">
         <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center text-center mt-12 md:mt-10 flex-1">
