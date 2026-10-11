@@ -504,101 +504,73 @@ export default function LandingPage() {
               aria-label="Меню"
               className={`md:hidden glass-card w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-300 interactive-elem cursor-pointer ${
                 isMobileMenuOpen
-                  ? 'border-[#00F5D4]/40 shadow-[0_0_20px_rgba(0,245,212,0.2)] text-white'
+                  ? 'border-white/30 text-white'
                   : 'border-white/10 text-white/80 hover:text-white'
               }`}
             >
               <span className="glass-content flex flex-col justify-center items-center w-4 h-4 relative">
-                <span className={`block w-4 h-[1.5px] bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-[1.5px] text-[#00F5D4]' : '-translate-y-1'}`}></span>
+                <span className={`block w-4 h-[1.5px] bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-[1.5px]' : '-translate-y-1'}`}></span>
                 <span className={`block w-4 h-[1.5px] bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-                <span className={`block w-4 h-[1.5px] bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-[1.5px] text-[#00F5D4]' : 'translate-y-1'}`}></span>
+                <span className={`block w-4 h-[1.5px] bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-[1.5px]' : 'translate-y-1'}`}></span>
               </span>
             </button>
           </div>
         </div>
 
-        {/* Выпадающее мобильное меню в бутиковом Bento-стиле (строгая цветовая дисциплина: Wine, Cyan и благородная платина) */}
+        {/* Выпадающее мобильное меню в бутиковом стиле (Apple / Balenciaga / Porsche) */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            isMobileMenuOpen ? 'max-h-[420px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0 pointer-events-none'
+            isMobileMenuOpen ? 'max-h-[460px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0 pointer-events-none'
           }`}
         >
-          <nav className="glass-card p-3.5 rounded-[24px] border border-white/15 bg-[#08080A]/95 backdrop-blur-2xl shadow-[0_28px_60px_rgba(0,0,0,0.95),inset_0_1px_0_rgba(255,255,255,0.2)] relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(229,9,64,0.16)_0%,transparent_55%),radial-gradient(circle_at_bottom_right,rgba(0,245,212,0.14)_0%,transparent_55%)] pointer-events-none"></div>
-
-            <div className="grid grid-cols-2 gap-2.5 relative z-10">
+          <nav className="glass-card px-6 py-5 rounded-[24px] border border-white/10 bg-[#08080A]/95 backdrop-blur-2xl shadow-[0_28px_60px_rgba(0,0,0,0.95),inset_0_1px_0_rgba(255,255,255,0.12)]">
+            <div className="flex flex-col">
               <a
                 href="#showroom"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="luxury-subcard p-4 flex flex-col justify-between min-h-[104px] group border-[#E50940]/25 active:scale-[0.98] transition-all"
+                className="flex items-baseline gap-4 py-4 border-b border-white/5 group transition-colors active:opacity-70"
               >
-                <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(229,9,64,0.18)_0%,transparent_65%)] pointer-events-none"></div>
-                <div className="flex items-center justify-between">
-                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#E50940]/25 to-[#E50940]/5 border border-[#E50940]/40 flex items-center justify-center text-[#E50940] shadow-[0_0_15px_rgba(229,9,64,0.2)]">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-                  </div>
-                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
-                </div>
-                <div className="mt-3 text-left">
-                  <span className="block text-[9px] uppercase tracking-widest text-[#E50940] font-semibold">Showroom</span>
-                  <span className="font-serif text-base text-white tracking-wide">Продукты</span>
-                </div>
+                <span className="text-xs font-light tracking-widest text-[#A1A1AA] group-hover:text-white transition-colors w-6 shrink-0">01.</span>
+                <span className="font-serif text-lg sm:text-xl text-[#F3F4F6] group-hover:text-white tracking-wide text-left">Продукты и визитки</span>
               </a>
 
               <a
                 href="#nfc"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="luxury-subcard p-4 flex flex-col justify-between min-h-[104px] group border-white/15 active:scale-[0.98] transition-all"
+                className="flex items-baseline gap-4 py-4 border-b border-white/5 group transition-colors active:opacity-70"
               >
-                <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08)_0%,transparent_65%)] pointer-events-none"></div>
-                <div className="flex items-center justify-between">
-                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 flex items-center justify-center text-white shadow-inner">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                  </div>
-                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
-                </div>
-                <div className="mt-3 text-left">
-                  <span className="block text-[9px] uppercase tracking-widest text-[#D4D4D8] font-semibold">Crazy Horse</span>
-                  <span className="font-serif text-base text-white tracking-wide">NFC Брелоки</span>
-                </div>
+                <span className="text-xs font-light tracking-widest text-[#A1A1AA] group-hover:text-white transition-colors w-6 shrink-0">02.</span>
+                <span className="font-serif text-lg sm:text-xl text-[#F3F4F6] group-hover:text-white tracking-wide text-left">NFC Брелоки Crazy Horse</span>
               </a>
 
               <a
                 href="#about"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="luxury-subcard p-4 flex flex-col justify-between min-h-[104px] group border-[#00F5D4]/25 active:scale-[0.98] transition-all"
+                className="flex items-baseline gap-4 py-4 border-b border-white/5 group transition-colors active:opacity-70"
               >
-                <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(0,245,212,0.16)_0%,transparent_65%)] pointer-events-none"></div>
-                <div className="flex items-center justify-between">
-                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.2)]">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                  </div>
-                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
-                </div>
-                <div className="mt-3 text-left">
-                  <span className="block text-[9px] uppercase tracking-widest text-[#00F5D4] font-semibold">Architecture</span>
-                  <span className="font-serif text-base text-white tracking-wide">Подход</span>
-                </div>
+                <span className="text-xs font-light tracking-widest text-[#A1A1AA] group-hover:text-white transition-colors w-6 shrink-0">03.</span>
+                <span className="font-serif text-lg sm:text-xl text-[#F3F4F6] group-hover:text-white tracking-wide text-left">Подход и технологии</span>
               </a>
 
               <a
                 href="#investments"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="luxury-subcard p-4 flex flex-col justify-between min-h-[104px] group border-white/15 active:scale-[0.98] transition-all"
+                className="flex items-baseline gap-4 py-4 border-b border-white/5 group transition-colors active:opacity-70"
               >
-                <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08)_0%,transparent_65%)] pointer-events-none"></div>
-                <div className="flex items-center justify-between">
-                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 flex items-center justify-center text-white shadow-inner">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  </div>
-                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
-                </div>
-                <div className="mt-3 text-left">
-                  <span className="block text-[9px] uppercase tracking-widest text-[#D4D4D8] font-semibold">Brand Capital</span>
-                  <span className="font-serif text-base text-white tracking-wide">Инвестиции</span>
-                </div>
+                <span className="text-xs font-light tracking-widest text-[#A1A1AA] group-hover:text-white transition-colors w-6 shrink-0">04.</span>
+                <span className="font-serif text-lg sm:text-xl text-[#F3F4F6] group-hover:text-white tracking-wide text-left">Инвестиции (Цены)</span>
               </a>
             </div>
+
+            <button
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+              }}
+              className="mt-5 w-full py-3.5 px-5 rounded-xl bg-white text-black hover:bg-gray-200 active:scale-[0.99] transition-all text-xs sm:text-sm font-semibold tracking-wide flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,255,255,0.15)] cursor-pointer"
+            >
+              <span>Написать лично в Telegram ➔</span>
+            </button>
           </nav>
         </div>
       </header>
