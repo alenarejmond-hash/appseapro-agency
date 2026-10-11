@@ -15,44 +15,22 @@ const styles = `
     overscroll-behavior-y: none; /* Отключаем обновление страницы свайпом вниз */
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
   }
 
   body {
     background-color: #050505;
     color: #F3F4F6;
     overflow-x: hidden;
-    overscroll-behavior-y: none;
-    touch-action: manipulation;
     width: 100%;
     margin: 0;
     padding: 0;
     cursor: none; /* Скрываем стандартный курсор на ПК */
     font-family: 'Inter', sans-serif;
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-  }
-
-  *, *::before, *::after {
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-  }
-
-  input, textarea {
-    -webkit-user-select: text !important;
-    user-select: text !important;
-    -webkit-touch-callout: default !important;
   }
 
   img {
     -webkit-user-drag: none;
     user-drag: none;
-    -webkit-touch-callout: none;
-    pointer-events: none;
   }
 
   .font-serif {
@@ -70,7 +48,8 @@ const styles = `
   }
 
   ::selection {
-    background: transparent;
+    background: rgba(229, 9, 64, 0.35);
+    color: #F3F4F6;
   }
 
   /* Кастомный курсор */
@@ -284,8 +263,6 @@ export default function LandingPage() {
   const [sandboxCart, setSandboxCart] = useState([]);
   const [tgMessages, setTgMessages] = useState([]);
   
-  const footerRef = useRef(null);
-  const spacerRef = useRef(null);
   const audioCtxRef = useRef(null);
 
   // Реалистичный звук переворота 3D-визитки (Web Audio API)
@@ -361,7 +338,7 @@ export default function LandingPage() {
     setIsCardFlipped(prev => !prev);
   };
 
-  // Старт страницы строго с самого верха + фиксация масштаба + защита от копирования и скачивания фото
+  // Старт страницы строго с самого верха + доступный нативный зум (WCAG) + защита картинок от перетаскивания
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
@@ -376,32 +353,17 @@ export default function LandingPage() {
       meta.name = 'viewport';
       document.head.appendChild(meta);
     }
-    meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+    meta.content = 'width=device-width, initial-scale=1.0';
 
-    const preventGestureZoom = (e) => {
-      e.preventDefault();
+    const preventImageDrag = (e) => {
+      if (e.target?.tagName === 'IMG') {
+        e.preventDefault();
+      }
     };
 
-    const preventContextAndCopy = (e) => {
-      const tag = e.target?.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-      e.preventDefault();
-    };
-
-    document.addEventListener('gesturestart', preventGestureZoom, { passive: false });
-    document.addEventListener('gesturechange', preventGestureZoom, { passive: false });
-    document.addEventListener('contextmenu', preventContextAndCopy);
-    document.addEventListener('copy', preventContextAndCopy);
-    document.addEventListener('cut', preventContextAndCopy);
-    document.addEventListener('dragstart', preventContextAndCopy);
-
+    document.addEventListener('dragstart', preventImageDrag);
     return () => {
-      document.removeEventListener('gesturestart', preventGestureZoom);
-      document.removeEventListener('gesturechange', preventGestureZoom);
-      document.removeEventListener('contextmenu', preventContextAndCopy);
-      document.removeEventListener('copy', preventContextAndCopy);
-      document.removeEventListener('cut', preventContextAndCopy);
-      document.removeEventListener('dragstart', preventContextAndCopy);
+      document.removeEventListener('dragstart', preventImageDrag);
     };
   }, []);
 
@@ -432,17 +394,6 @@ export default function LandingPage() {
 
     document.querySelectorAll('.fade-up-elem').forEach(el => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const setFooterHeight = () => {
-      if (footerRef.current && spacerRef.current) {
-        spacerRef.current.style.height = `${footerRef.current.offsetHeight}px`;
-      }
-    };
-    setFooterHeight();
-    window.addEventListener('resize', setFooterHeight);
-    return () => window.removeEventListener('resize', setFooterHeight);
   }, []);
 
   useEffect(() => {
@@ -522,13 +473,7 @@ export default function LandingPage() {
   };
 
   return (
-    <div
-      className="antialiased min-h-screen text-[#F3F4F6] bg-[#050505] select-none w-full"
-      onContextMenu={(e) => {
-        const tag = e.target?.tagName;
-        if (tag !== 'INPUT' && tag !== 'TEXTAREA') e.preventDefault();
-      }}
-    >
+    <div className="antialiased min-h-screen text-[#F3F4F6] bg-[#050505] w-full">
       <style>{styles}</style>
 
       <div className={`custom-cursor ${isHovering ? 'hover' : ''}`} style={{ left: cursorPos.x, top: cursorPos.y }} />
@@ -549,7 +494,7 @@ export default function LandingPage() {
           </nav>
 
           <div className="flex items-center gap-2.5">
-            <button onClick={() => { setIsMobileMenuOpen(false); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="glass-card px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-medium hover:bg-white/10 transition-colors interactive-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
+            <button onClick={() => { setIsMobileMenuOpen(false); window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }} className="glass-card px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-medium hover:bg-white/10 transition-colors interactive-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
               <span className="glass-content">Связаться</span>
             </button>
 
@@ -557,7 +502,11 @@ export default function LandingPage() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Меню"
-              className="md:hidden glass-card w-9 h-9 rounded-full flex items-center justify-center border border-white/10 text-white/80 hover:text-white transition-colors interactive-elem cursor-pointer"
+              className={`md:hidden glass-card w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-300 interactive-elem cursor-pointer ${
+                isMobileMenuOpen
+                  ? 'border-[#00F5D4]/40 shadow-[0_0_20px_rgba(0,245,212,0.2)] text-white'
+                  : 'border-white/10 text-white/80 hover:text-white'
+              }`}
             >
               <span className="glass-content flex flex-col justify-center items-center w-4 h-4 relative">
                 <span className={`block w-4 h-[1.5px] bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-[1.5px] text-[#00F5D4]' : '-translate-y-1'}`}></span>
@@ -568,47 +517,95 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* Выпадающее мобильное меню в стиле Glassmorphism */}
+        {/* Выпадающее мобильное меню в бутиковом Bento-стиле */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
-            isMobileMenuOpen ? 'max-h-72 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0 pointer-events-none'
+          className={`md:hidden overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            isMobileMenuOpen ? 'max-h-[420px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0 pointer-events-none'
           }`}
         >
-          <nav className="glass-card p-4 rounded-2xl border border-white/10 bg-[#0A0A0A]/95 flex flex-col gap-1 text-sm font-medium">
-            <a
-              href="#showroom"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
-            >
-              <span>Продукты</span>
-            </a>
-            <a
-              href="#nfc"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
-            >
-              <span>NFC Брелоки</span>
-            </a>
-            <a
-              href="#about"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
-            >
-              <span>Подход</span>
-            </a>
-            <a
-              href="#investments"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
-            >
-              <span>Инвестиции</span>
-            </a>
+          <nav className="glass-card p-3.5 rounded-[24px] border border-white/15 bg-[#08080A]/95 backdrop-blur-2xl shadow-[0_28px_60px_rgba(0,0,0,0.95),inset_0_1px_0_rgba(255,255,255,0.2)] relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(229,9,64,0.16)_0%,transparent_55%),radial-gradient(circle_at_bottom_right,rgba(0,245,212,0.14)_0%,transparent_55%)] pointer-events-none"></div>
+
+            <div className="grid grid-cols-2 gap-2.5 relative z-10">
+              <a
+                href="#showroom"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="luxury-subcard p-4 flex flex-col justify-between min-h-[104px] group border-[#E50940]/25 active:scale-[0.98] transition-all"
+              >
+                <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(229,9,64,0.18)_0%,transparent_65%)] pointer-events-none"></div>
+                <div className="flex items-center justify-between">
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#E50940]/25 to-[#E50940]/5 border border-[#E50940]/40 flex items-center justify-center text-[#E50940] shadow-[0_0_15px_rgba(229,9,64,0.2)]">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                  </div>
+                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
+                </div>
+                <div className="mt-3 text-left">
+                  <span className="block text-[9px] uppercase tracking-widest text-[#E50940] font-semibold">Showroom</span>
+                  <span className="font-serif text-base text-white tracking-wide">Продукты</span>
+                </div>
+              </a>
+
+              <a
+                href="#nfc"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="luxury-subcard p-4 flex flex-col justify-between min-h-[104px] group border-amber-500/25 active:scale-[0.98] transition-all"
+              >
+                <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.18)_0%,transparent_65%)] pointer-events-none"></div>
+                <div className="flex items-center justify-between">
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500/25 to-amber-500/5 border border-amber-500/40 flex items-center justify-center text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                  </div>
+                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
+                </div>
+                <div className="mt-3 text-left">
+                  <span className="block text-[9px] uppercase tracking-widest text-amber-400 font-semibold">Crazy Horse</span>
+                  <span className="font-serif text-base text-white tracking-wide">NFC Брелоки</span>
+                </div>
+              </a>
+
+              <a
+                href="#about"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="luxury-subcard p-4 flex flex-col justify-between min-h-[104px] group border-[#00F5D4]/25 active:scale-[0.98] transition-all"
+              >
+                <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(0,245,212,0.16)_0%,transparent_65%)] pointer-events-none"></div>
+                <div className="flex items-center justify-between">
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.2)]">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                  </div>
+                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
+                </div>
+                <div className="mt-3 text-left">
+                  <span className="block text-[9px] uppercase tracking-widest text-[#00F5D4] font-semibold">Architecture</span>
+                  <span className="font-serif text-base text-white tracking-wide">Подход</span>
+                </div>
+              </a>
+
+              <a
+                href="#investments"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="luxury-subcard p-4 flex flex-col justify-between min-h-[104px] group border-pink-400/25 active:scale-[0.98] transition-all"
+              >
+                <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(244,114,182,0.18)_0%,transparent_65%)] pointer-events-none"></div>
+                <div className="flex items-center justify-between">
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-pink-500/25 to-pink-500/5 border border-pink-400/40 flex items-center justify-center text-pink-400 shadow-[0_0_15px_rgba(244,114,182,0.2)]">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  </div>
+                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
+                </div>
+                <div className="mt-3 text-left">
+                  <span className="block text-[9px] uppercase tracking-widest text-pink-400 font-semibold">Brand Capital</span>
+                  <span className="font-serif text-base text-white tracking-wide">Инвестиции</span>
+                </div>
+              </a>
+            </div>
           </nav>
         </div>
       </header>
 
+      {}
       {/* Main Content */}
-      <main className="relative z-10 bg-[#050505] pb-10 overflow-x-hidden" style={{ boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}>
+      <main className="relative z-10 bg-[#050505] mb-[60vh] md:mb-[70vh] shadow-[0_20px_50px_rgba(0,0,0,1)] rounded-b-[2rem] md:rounded-b-[3rem] border-b border-white/10 pb-10">
         
         <section className="min-h-screen flex flex-col items-center justify-start md:justify-center relative px-4 md:px-6 pt-24 md:pt-24 pb-16 md:pb-0">
           <div className="max-w-5xl mx-auto text-center z-10 flex-1 flex flex-col justify-start md:justify-center items-center w-full pt-2 md:pt-0 pb-14 md:pb-28">
@@ -677,6 +674,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* Showroom */}
         <section id="showroom" className="pt-24 md:pt-32 pb-0 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="mb-12 md:mb-24 fade-up-elem text-center">
@@ -848,6 +846,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* NFC Breloq */}
         <section id="nfc" className="pt-8 pb-24 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10 scroll-mt-24">
           <div className="glass-card p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem overflow-hidden cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
@@ -922,6 +921,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* Technology */}
         <section id="technology" className="py-12 px-4 md:px-8 max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-12 md:mb-16 fade-up-elem">
@@ -984,7 +984,7 @@ export default function LandingPage() {
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Умный шеринг (QR и VCF)</span></li>
                 </ul>
 
-                <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="w-full py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Оставить заявку</button>
+                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Оставить заявку</button>
               </div>
             </div>
 
@@ -1001,7 +1001,7 @@ export default function LandingPage() {
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Адаптация под любую нишу (Врачи, Риелторы)</span></li>
                 </ul>
 
-                <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="w-full py-3 rounded-xl border border-[#00F5D4]/30 hover:bg-[#00F5D4]/10 transition-colors text-sm font-semibold text-white">Оставить заявку</button>
+                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl border border-[#00F5D4]/30 hover:bg-[#00F5D4]/10 transition-colors text-sm font-semibold text-white">Оставить заявку</button>
               </div>
             </div>
 
@@ -1019,7 +1019,7 @@ export default function LandingPage() {
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Раздельные базы контактов (VCF) и соцсети</span></li>
                 </ul>
 
-                <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="w-full py-3 rounded-xl bg-white text-black hover:bg-gray-200 transition-colors text-sm font-semibold shadow-[0_0_15px_rgba(255,255,255,0.2)]">Оставить заявку</button>
+                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl bg-white text-black hover:bg-gray-200 transition-colors text-sm font-semibold shadow-[0_0_15px_rgba(255,255,255,0.2)]">Оставить заявку</button>
               </div>
             </div>
 
@@ -1046,7 +1046,7 @@ export default function LandingPage() {
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Мультиязычность и Telegram-оповещения</span></li>
                 </ul>
 
-                <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-2/3 mx-auto py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Обсудить проект</button>
+                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full sm:w-2/3 mx-auto py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Обсудить проект</button>
               </div>
             </div>
 
@@ -1064,7 +1064,7 @@ export default function LandingPage() {
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-pink-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Заботливая утренняя Telegram-сводка вашего расписания на день за чашкой кофе</span></li>
                 </ul>
 
-                <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-2/3 mx-auto py-3 rounded-xl border border-pink-400/30 hover:bg-pink-400/10 transition-colors text-sm font-semibold">Обсудить проект</button>
+                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full sm:w-2/3 mx-auto py-3 rounded-xl border border-pink-400/30 hover:bg-pink-400/10 transition-colors text-sm font-semibold">Обсудить проект</button>
               </div>
             </div>
 
@@ -1082,13 +1082,14 @@ export default function LandingPage() {
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Статусность:</strong> винтажная кожа благородно стареет</span></li>
                 </ul>
 
-                <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="w-full sm:w-2/3 mx-auto py-3 rounded-xl border border-amber-500/30 hover:bg-amber-500/10 transition-colors text-sm font-semibold">Заказать</button>
+                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full sm:w-2/3 mx-auto py-3 rounded-xl border border-amber-500/30 hover:bg-amber-500/10 transition-colors text-sm font-semibold">Заказать</button>
               </div>
             </div>
 
           </div>
         </section>
 
+        {}
         {/* FAQ */}
         <section id="faq" className="py-24 px-4 md:px-8 max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12 fade-up-elem">
@@ -1121,8 +1122,8 @@ export default function LandingPage() {
 
       </main>
 
-      {/* Footer */}
-      <footer ref={footerRef} id="contact" className="fixed bottom-0 w-full min-h-[60vh] md:min-h-[70vh] h-auto bg-[#050505] flex flex-col justify-between p-6 md:p-12 z-0 border-t border-white/5 pb-20 md:pb-6">
+      {/* Footer (Curtain Reveal) */}
+      <footer id="contact" className="fixed bottom-0 left-0 w-full h-[60vh] md:h-[70vh] bg-[#050505] flex flex-col justify-between p-6 md:p-12 z-0 pb-20 md:pb-6">
         <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center text-center mt-12 md:mt-10 flex-1">
           <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-serif font-medium mb-6 md:mb-8">
             Начнем <span className="italic text-[#E50940]">проект</span>?
@@ -1150,8 +1151,7 @@ export default function LandingPage() {
         </div>
       </footer>
 
-      <div ref={spacerRef} className="w-full relative z-[-1]"></div>
-
+      {}
       {/* Sandbox Modal */}
       {isHorecaModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 fade-up-elem visible !overflow-y-auto overscroll-contain" style={{ transitionDuration: '0.3s' }}>
