@@ -269,6 +269,23 @@ const styles = `
   details > summary::-webkit-details-marker {
     display: none;
   }
+
+  /* Скрытие скроллбаров для свайп-бара и списка ниш в 3D-шоуруме */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  @keyframes phoneFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-7px); }
+  }
+  . titanium-phone-float {
+    animation: phoneFloat 4.5s ease-in-out infinite alternate;
+  }
 `;
 
 const INFINITY_TEMPLATES = [
@@ -278,6 +295,9 @@ const INFINITY_TEMPLATES = [
     subtitle: 'Таро • Астрология • Практики',
     url: 'https://esoteric.appseapro.com',
     accent: 'wine',
+    color: '#A855F7',
+    glow: 'rgba(168, 85, 247, 0.35)',
+    softBg: 'linear-gradient(135deg, rgba(168, 85, 247, 0.22) 0%, rgba(88, 28, 135, 0.04) 100%)',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
@@ -290,6 +310,9 @@ const INFINITY_TEMPLATES = [
     subtitle: 'Терапия • Коучинг • Менторство',
     url: 'https://psychologist.appseapro.com',
     accent: 'cyan',
+    color: '#38BDF8',
+    glow: 'rgba(56, 189, 248, 0.35)',
+    softBg: 'linear-gradient(135deg, rgba(56, 189, 248, 0.22) 0%, rgba(12, 74, 110, 0.04) 100%)',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -302,6 +325,9 @@ const INFINITY_TEMPLATES = [
     subtitle: 'Авторские туры • VIP-отдых',
     url: 'https://travel.appseapro.com',
     accent: 'cyan',
+    color: '#00F5D4',
+    glow: 'rgba(0, 245, 212, 0.35)',
+    softBg: 'linear-gradient(135deg, rgba(0, 245, 212, 0.22) 0%, rgba(13, 148, 136, 0.04) 100%)',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -314,6 +340,9 @@ const INFINITY_TEMPLATES = [
     subtitle: 'Медиакит • Коллаборации • Бренд',
     url: 'https://blogger.appseapro.com',
     accent: 'wine',
+    color: '#E50940',
+    glow: 'rgba(229, 9, 64, 0.38)',
+    softBg: 'linear-gradient(135deg, rgba(229, 9, 64, 0.24) 0%, rgba(136, 19, 55, 0.04) 100%)',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -326,6 +355,9 @@ const INFINITY_TEMPLATES = [
     subtitle: 'Фитнес-тренер • Нутрициолог',
     url: 'https://fitness.appseapro.com',
     accent: 'cyan',
+    color: '#A3E635',
+    glow: 'rgba(163, 230, 53, 0.35)',
+    softBg: 'linear-gradient(135deg, rgba(163, 230, 53, 0.22) 0%, rgba(63, 98, 18, 0.04) 100%)',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -338,6 +370,9 @@ const INFINITY_TEMPLATES = [
     subtitle: 'Стилист • Визажист • Косметолог',
     url: 'https://beauty.appseapro.com',
     accent: 'wine',
+    color: '#F472B6',
+    glow: 'rgba(244, 114, 182, 0.35)',
+    softBg: 'linear-gradient(135deg, rgba(244, 114, 182, 0.22) 0%, rgba(131, 24, 67, 0.04) 100%)',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
@@ -350,6 +385,9 @@ const INFINITY_TEMPLATES = [
     subtitle: 'Брокер • Инвестиции • Элитное жилье',
     url: 'https://realtor.appseapro.com',
     accent: 'cyan',
+    color: '#FBBF24',
+    glow: 'rgba(251, 191, 36, 0.35)',
+    softBg: 'linear-gradient(135deg, rgba(251, 191, 36, 0.22) 0%, rgba(120, 53, 15, 0.04) 100%)',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -362,6 +400,9 @@ const INFINITY_TEMPLATES = [
     subtitle: 'Эстетическая медицина • Врач',
     url: 'https://dental.appseapro.com',
     accent: 'cyan',
+    color: '#34D399',
+    glow: 'rgba(52, 211, 153, 0.35)',
+    softBg: 'linear-gradient(135deg, rgba(52, 211, 153, 0.22) 0%, rgba(6, 78, 59, 0.04) 100%)',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -374,6 +415,9 @@ const INFINITY_TEMPLATES = [
     subtitle: 'Портфолио • Fashion & Wedding',
     url: 'https://photographer.appseapro.com',
     accent: 'wine',
+    color: '#FB923C',
+    glow: 'rgba(251, 146, 60, 0.35)',
+    softBg: 'linear-gradient(135deg, rgba(251, 146, 60, 0.22) 0%, rgba(124, 45, 18, 0.04) 100%)',
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
@@ -389,7 +433,7 @@ export default function LandingPage() {
   const [horecaIframeLoaded, setHorecaIframeLoaded] = useState(false);
   const [showTgPopup, setShowTgPopup] = useState(false);
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
-  const [activeTemplate, setActiveTemplate] = useState(null);
+  const [activeTemplate, setActiveTemplate] = useState(INFINITY_TEMPLATES[0]);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHeroInteracting, setIsHeroInteracting] = useState(false);
@@ -597,15 +641,20 @@ export default function LandingPage() {
   };
 
   const handleOpenGallery = () => {
-    setActiveTemplate(null);
+    setActiveTemplate(INFINITY_TEMPLATES[0]);
     setIframeLoaded(false);
     setIsGalleryModalOpen(true);
   };
 
   const handleCloseGallery = () => {
     setIsGalleryModalOpen(false);
-    setActiveTemplate(null);
     setIframeLoaded(false);
+  };
+
+  const handleSelectNiche = (tpl) => {
+    if (activeTemplate?.id === tpl.id) return;
+    setIframeLoaded(false);
+    setActiveTemplate(tpl);
   };
 
   const handleGlassMove = (e) => {
@@ -658,6 +707,8 @@ export default function LandingPage() {
       glareEl.style.transform = `translate3d(0%, 0%, 0)`;
     });
   };
+
+  const currentTemplate = activeTemplate || INFINITY_TEMPLATES[0];
 
   return (
     <div className="antialiased min-h-screen text-[#F3F4F6] bg-[#050505] w-full">
@@ -901,7 +952,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {}
         {/* Showroom */}
         <section id="showroom" className="pt-24 md:pt-32 pb-0 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="mb-12 md:mb-24 fade-up-elem text-center">
@@ -1405,209 +1455,332 @@ export default function LandingPage() {
         </div>
       </footer>
 
-      {/* Infinity Live Design Gallery Modal (9 Niches) */}
+      {/* Infinity 3D Showroom Modal (Apple Keynote 2-in-1 Split Architecture) */}
       {isGalleryModalOpen && (
         <div
-          className="fixed inset-0 z-[110] flex items-center justify-center p-2 sm:p-4 md:p-6 fade-up-elem visible !overflow-y-auto overscroll-contain"
-          style={{ transitionDuration: '0.3s' }}
+          className="fixed inset-0 z-[110] flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-hidden overscroll-none"
         >
+          {/* Глубокий матовый фон */}
           <div
-            className="fixed inset-0 bg-black/85 backdrop-blur-md"
+            className="fixed inset-0 bg-[#050505]/85 backdrop-blur-2xl transition-opacity duration-500"
             onClick={handleCloseGallery}
           ></div>
 
-          <div className="glass-card relative w-full max-w-6xl my-auto p-5 sm:p-8 md:p-10 z-10 flex flex-col border border-white/20 bg-[#070709]/95 shadow-[0_30px_90px_rgba(0,0,0,0.95),0_0_60px_rgba(0,245,212,0.12)] overflow-hidden">
-            {/* Фоновые бутиковые акценты внутри модального окна */}
-            <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[#00F5D4]/10 blur-[110px] pointer-events-none"></div>
-            <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-[#E50940]/12 blur-[110px] pointer-events-none"></div>
+          {/* Главная капсула 3D-шоурума */}
+          <div
+            className="relative z-10 w-full max-w-6xl h-[95vh] lg:h-[88vh] max-h-[860px] rounded-[2rem] sm:rounded-[2.5rem] border border-white/15 bg-[#070709]/90 backdrop-blur-3xl shadow-[0_40px_120px_rgba(0,0,0,0.98),inset_0_1px_0_rgba(255,255,255,0.2)] flex flex-col lg:flex-row overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Динамическое фоновое свечение шоурума, реагирующее на цвет выбранной ниши */}
+            <div
+              className="absolute -top-36 -left-36 w-96 h-96 rounded-full blur-[130px] pointer-events-none transition-all duration-700 opacity-30"
+              style={{ backgroundColor: currentTemplate.color }}
+            ></div>
+            <div
+              className="absolute -bottom-36 -right-24 w-[28rem] h-[28rem] rounded-full blur-[150px] pointer-events-none transition-all duration-700 opacity-35"
+              style={{ backgroundColor: currentTemplate.color }}
+            ></div>
 
-            {/* Верхняя панель управления */}
-            <div className="relative z-20 flex items-center justify-between gap-4 pb-5 mb-6 border-b border-white/10">
-              {activeTemplate ? (
-                <button
-                  onClick={() => { setActiveTemplate(null); setIframeLoaded(false); }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/15 text-xs sm:text-sm font-medium text-white transition-all interactive-elem cursor-pointer active:scale-95"
-                >
-                  <svg className="w-4 h-4 text-[#00F5D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-                  </svg>
-                  <span>Назад в галерею</span>
-                </button>
-              ) : (
-                <div className="flex items-center gap-2.5">
-                  <span className="inline-flex items-center px-3.5 py-1 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] text-[10px] sm:text-[11px] uppercase tracking-widest font-semibold">
-                    PWA Визитка • Infinity
-                  </span>
-                  <span className="hidden sm:inline-block text-xs text-[#A1A1AA] font-light tracking-wider">
-                    3D Interactive Showroom
+            {/* Единственный элегантный круглый крестик закрытия из матового стекла (blur 20px) в правом верхнем углу */}
+            <button
+              onClick={handleCloseGallery}
+              aria-label="Закрыть шоурум"
+              className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/[0.08] hover:bg-white/[0.16] backdrop-blur-[20px] border border-white/20 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-300 hover:scale-105 active:scale-95 interactive-elem cursor-pointer"
+            >
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* ================= ЛЕВАЯ КОЛОНКА (40% на десктопе / Компактный свайп-бар на смартфонах) ================= */}
+            <div className="w-full lg:w-[40%] shrink-0 flex flex-col justify-between lg:border-r border-b lg:border-b-0 border-white/10 bg-white/[0.015] relative z-20 px-4 pt-4 pb-3 sm:px-6 sm:pt-6 lg:p-7 lg:overflow-hidden">
+              {/* Заголовок шоурума */}
+              <div className="pr-12 lg:pr-4 mb-3 lg:mb-5">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span
+                    className="w-2 h-2 rounded-full transition-colors duration-500"
+                    style={{
+                      backgroundColor: currentTemplate.color,
+                      boxShadow: `0 0 10px ${currentTemplate.color}`
+                    }}
+                  ></span>
+                  <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-[#A1A1AA] font-semibold">
+                    Apple-Grade Interactive
                   </span>
                 </div>
-              )}
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif text-white tracking-tight leading-tight">
+                  Infinity <span className="italic font-normal text-white/90">3D Showroom</span>
+                </h3>
+                <p className="hidden lg:block text-xs text-[#A1A1AA] mt-1.5 leading-relaxed">
+                  Переключайте ниши в реальном времени — тестируйте переворот 3D-карты, звук и микро-анимации.
+                </p>
+              </div>
 
-              {activeTemplate && (
-                <a
-                  href={`${activeTemplate.url}?ref=catalog`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 rounded-full bg-gradient-to-r from-[#E50940] to-[#ff2a60] text-white text-xs sm:text-sm font-semibold tracking-wide shadow-[0_0_25px_rgba(229,9,64,0.4)] hover:brightness-110 transition-all interactive-elem"
+              {/* МОБИЛЬНЫЙ ГОРИЗОНТАЛЬНЫЙ СВАЙП-БАР С ПИЛЮЛЯМИ НИШ (только на смартфонах и планшетах < lg) */}
+              <div className="lg:hidden -mx-4 px-4 sm:-mx-6 sm:px-6 overflow-x-auto no-scrollbar flex items-center gap-2 pb-1">
+                {INFINITY_TEMPLATES.map((tpl) => {
+                  const isActive = currentTemplate.id === tpl.id;
+                  return (
+                    <button
+                      key={tpl.id}
+                      onClick={() => handleSelectNiche(tpl)}
+                      style={{
+                        borderColor: isActive ? tpl.color : 'rgba(255,255,255,0.1)',
+                        background: isActive ? tpl.softBg : 'rgba(255,255,255,0.03)',
+                        boxShadow: isActive ? `0 0 20px -4px ${tpl.glow}, inset 0 1px 0 rgba(255,255,255,0.25)` : 'none'
+                      }}
+                      className={`shrink-0 flex items-center gap-2 px-3.5 py-2 rounded-full border backdrop-blur-xl transition-all duration-300 cursor-pointer interactive-elem ${
+                        isActive ? 'scale-[1.02] saturate-150' : 'opacity-75 hover:opacity-100'
+                      }`}
+                    >
+                      <span
+                        className="w-2 h-2 rounded-full shrink-0"
+                        style={{
+                          backgroundColor: tpl.color,
+                          boxShadow: isActive ? `0 0 8px ${tpl.color}` : 'none'
+                        }}
+                      ></span>
+                      <span
+                        className="w-4 h-4 flex items-center justify-center shrink-0 [&>svg]:w-3.5 [&>svg]:h-3.5"
+                        style={{ color: isActive ? tpl.color : '#D4D4D8' }}
+                      >
+                        {tpl.icon}
+                      </span>
+                      <span className={`text-xs font-medium whitespace-nowrap ${isActive ? 'text-white' : 'text-[#D4D4D8]'}`}>
+                        {tpl.name}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* ДЕСКТОПНЫЙ СПИСОК КАРТОЧЕК 9 НИШ С ИНДИВИДУАЛЬНЫМ МИКРО-ГРАДИЕНТОМ И ПОДСВЕТКОЙ */}
+              <div className="hidden lg:flex flex-col gap-2 flex-1 overflow-y-auto no-scrollbar pr-1 py-0.5">
+                {INFINITY_TEMPLATES.map((tpl) => {
+                  const isActive = currentTemplate.id === tpl.id;
+                  return (
+                    <button
+                      key={tpl.id}
+                      onClick={() => handleSelectNiche(tpl)}
+                      style={{
+                        borderColor: isActive ? tpl.color : 'rgba(255, 255, 255, 0.08)',
+                        background: isActive
+                          ? tpl.softBg
+                          : 'linear-gradient(145deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0.01) 100%)',
+                        boxShadow: isActive
+                          ? `0 10px 30px -8px ${tpl.glow}, 0 0 0 1px ${tpl.color}40, inset 0 1px 0 rgba(255,255,255,0.28)`
+                          : 'inset 0 1px 0 rgba(255,255,255,0.06)'
+                      }}
+                      className={`group relative w-full px-3.5 py-2.5 rounded-2xl border text-left transition-all duration-300 flex items-center justify-between gap-3 cursor-pointer interactive-elem overflow-hidden ${
+                        isActive
+                          ? 'backdrop-blur-2xl saturate-[180%] translate-x-1'
+                          : 'hover:border-white/20 hover:bg-white/[0.05]'
+                      }`}
+                    >
+                      {/* Индивидуальный микро-градиент темы внутри карточки */}
+                      <div
+                        className="absolute inset-0 opacity-25 group-hover:opacity-45 transition-opacity pointer-events-none"
+                        style={{
+                          background: `radial-gradient(circle at left center, ${tpl.color}33 0%, transparent 65%)`
+                        }}
+                      ></div>
+
+                      <div className="relative z-10 flex items-center gap-3 min-w-0">
+                        {/* Иконка с цветным свечением ниши */}
+                        <div
+                          style={{
+                            color: tpl.color,
+                            borderColor: isActive ? `${tpl.color}80` : 'rgba(255,255,255,0.12)',
+                            backgroundColor: isActive ? `${tpl.color}22` : 'rgba(255,255,255,0.04)',
+                            boxShadow: isActive ? `0 0 16px ${tpl.glow}` : 'none'
+                          }}
+                          className="w-9 h-9 rounded-xl border flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-105 [&>svg]:w-4 [&>svg]:h-4"
+                        >
+                          {tpl.icon}
+                        </div>
+
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-2">
+                            <span
+                              className="w-1.5 h-1.5 rounded-full shrink-0"
+                              style={{
+                                backgroundColor: tpl.color,
+                                boxShadow: `0 0 8px ${tpl.color}`
+                              }}
+                            ></span>
+                            <h4 className="font-serif text-sm xl:text-[15px] text-white font-medium tracking-wide truncate">
+                              {tpl.name}
+                            </h4>
+                          </div>
+                          <p className="text-[11px] text-[#A1A1AA] truncate mt-0.5">
+                            {tpl.subtitle}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Индикатор LIVE 3D */}
+                      <div className="relative z-10 shrink-0 flex items-center gap-1.5">
+                        <span
+                          style={{
+                            borderColor: isActive ? `${tpl.color}66` : 'rgba(255,255,255,0.1)',
+                            backgroundColor: isActive ? `${tpl.color}20` : 'rgba(255,255,255,0.03)',
+                            color: isActive ? '#FFFFFF' : '#A1A1AA'
+                          }}
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[9px] uppercase tracking-widest font-semibold transition-all duration-300"
+                        >
+                          <span
+                            className={`w-1.5 h-1.5 rounded-full ${isActive ? 'animate-pulse' : 'opacity-60'}`}
+                            style={{
+                              backgroundColor: tpl.color,
+                              boxShadow: isActive ? `0 0 8px ${tpl.color}` : 'none'
+                            }}
+                          ></span>
+                          LIVE 3D
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Нижний блок кастомизации на десктопе */}
+              <div className="hidden lg:flex items-center justify-between gap-3 pt-4 mt-3 border-t border-white/10">
+                <div className="text-left">
+                  <p className="text-xs font-medium text-white">Своя ниша или личный бренд?</p>
+                  <p className="text-[11px] text-[#A1A1AA]">Создадим индивидуальную 3D-архитектуру</p>
+                </div>
+                <button
+                  onClick={() => {
+                    handleCloseGallery();
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                  }}
+                  className="px-4 py-2 rounded-xl bg-white text-black hover:bg-gray-200 transition-all text-xs font-semibold shrink-0 shadow-[0_0_20px_rgba(255,255,255,0.18)] cursor-pointer interactive-elem"
                 >
-                  <span>Открыть на весь экран</span>
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              )}
-
-              <button
-                onClick={handleCloseGallery}
-                aria-label="Закрыть"
-                className="w-10 h-10 rounded-full bg-white/[0.06] hover:bg-white/[0.14] border border-white/15 flex items-center justify-center text-white/70 hover:text-white transition-all interactive-elem cursor-pointer shrink-0"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+                  Обсудить ➔
+                </button>
+              </div>
             </div>
 
-            {/* Основной контент: Сетка 9 ниш ИЛИ Живой интерактивный предпросмотр */}
-            {!activeTemplate ? (
-              <div className="relative z-10">
-                <div className="text-center max-w-2xl mx-auto mb-8">
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-white mb-3">
-                    Галерея дизайнов <span className="italic text-[#00F5D4]">Infinity</span>
-                  </h3>
-                  <p className="text-xs sm:text-sm md:text-base text-[#D4D4D8] leading-relaxed">
-                    Выберите любую из 9 готовых ниш, чтобы протестировать живую 3D-визитку с переворотом и звуком прямо внутри этого окна.
-                  </p>
-                </div>
+            {/* ================= ПРАВАЯ КОЛОНКА (60% на десктопе / Сцена 75vh на мобилках) ================= */}
+            <div className="w-full lg:w-[60%] flex-1 flex flex-col items-center justify-center relative z-10 px-3 py-2 sm:px-6 sm:py-4 lg:p-8 overflow-hidden">
+              {/* Мягкое объемное свечение позади смартфона в цвет выбранной ниши */}
+              <div
+                className="
+                  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                  w-[280px] h-[380px] sm:w-[360px] sm:h-[500px] rounded-full
+                  blur-[95px] pointer-events-none transition-all duration-700 opacity-45
+                "
+                style={{ backgroundColor: currentTemplate.color }}
+              ></div>
 
-                {/* Сетка 9 готовых демо-визиток */}
-                <div className="equal-subcards-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-3.5 sm:gap-4">
-                  {INFINITY_TEMPLATES.map((tpl, idx) => {
-                    const isCyan = tpl.accent === 'cyan';
-                    return (
-                      <button
-                        key={tpl.id}
-                        onClick={() => {
-                          setIframeLoaded(false);
-                          setActiveTemplate(tpl);
-                        }}
-                        className={`luxury-subcard p-5 text-left flex flex-col justify-between group cursor-pointer interactive-elem ${
-                          isCyan
-                            ? 'hover:border-[#00F5D4]/50 hover:shadow-[0_15px_35px_rgba(0,245,212,0.14),inset_0_1px_0_rgba(255,255,255,0.25)]'
-                            : 'hover:border-[#E50940]/50 hover:shadow-[0_15px_35px_rgba(229,9,64,0.16),inset_0_1px_0_rgba(255,255,255,0.25)]'
-                        }`}
-                      >
-                        <div
-                          className={`absolute inset-0 rounded-[inherit] pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity ${
-                            isCyan
-                              ? 'bg-[radial-gradient(circle_at_top_right,rgba(0,245,212,0.14)_0%,transparent_60%)]'
-                              : 'bg-[radial-gradient(circle_at_top_right,rgba(229,9,64,0.15)_0%,transparent_60%)]'
-                          }`}
-                        ></div>
-
-                        <div className="relative z-10 flex items-start justify-between gap-3 mb-4">
-                          <div className="flex items-center gap-3.5">
-                            <div
-                              className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 ${
-                                isCyan
-                                  ? 'bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.15)]'
-                                  : 'bg-gradient-to-br from-[#E50940]/25 to-[#E50940]/5 border border-[#E50940]/40 text-[#E50940] shadow-[0_0_15px_rgba(229,9,64,0.18)]'
-                              }`}
-                            >
-                              {tpl.icon}
-                            </div>
-                            <div>
-                              <span className="text-[10px] font-light tracking-widest text-[#A1A1AA] block mb-0.5">
-                                0{idx + 1} / НИША
-                              </span>
-                              <h4 className="font-serif text-lg text-white tracking-wide group-hover:text-white">
-                                {tpl.name}
-                              </h4>
-                            </div>
-                          </div>
-
-                          <span
-                            className={`text-[9px] uppercase tracking-widest px-2.5 py-1 rounded-full font-semibold shrink-0 border ${
-                              isCyan
-                                ? 'bg-[#00F5D4]/10 border-[#00F5D4]/30 text-[#00F5D4]'
-                                : 'bg-[#E50940]/10 border-[#E50940]/30 text-[#E50940]'
-                            }`}
-                          >
-                            LIVE 3D
-                          </span>
-                        </div>
-
-                        <div className="relative z-10 flex items-center justify-between pt-3 border-t border-white/10">
-                          <span className="text-xs text-[#D4D4D8]">{tpl.subtitle}</span>
-                          <span
-                            className={`text-xs font-semibold flex items-center gap-1 transform group-hover:translate-x-1 transition-transform ${
-                              isCyan ? 'text-[#00F5D4]' : 'text-[#E50940]'
-                            }`}
-                          >
-                            Открыть ➔
-                          </span>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Посыл «Не нашли свою сферу? Адаптируем под вас» */}
-                <div className="mt-8 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-white/[0.04] via-[#E50940]/10 to-[#00F5D4]/10 border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-                  <div>
-                    <h5 className="font-serif text-lg sm:text-xl text-white mb-1">
-                      Не нашли свою сферу? <span className="italic text-[#00F5D4]">Адаптируем любой шаблон под вас</span>
-                    </h5>
-                    <p className="text-xs sm:text-sm text-[#D4D4D8]">
-                      Индивидуальная архитектура, фирменные цвета, ваш прайс и смарт-кнопки на обороте 3D-карты.
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => {
-                      handleCloseGallery();
-                      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+              {/* Деликатная стеклянная пилюля над мокапом смартфона */}
+              <div className="relative z-30 mb-2.5 sm:mb-4 flex items-center justify-center">
+                <a
+                  href={`${currentTemplate.url}?ref=catalog`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    borderColor: `${currentTemplate.color}55`,
+                    boxShadow: `0 10px 30px -6px ${currentTemplate.glow}, inset 0 1px 0 rgba(255,255,255,0.22)`
+                  }}
+                  className="inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/[0.06] hover:bg-white/[0.12] backdrop-blur-xl border text-xs sm:text-[13px] font-medium text-white transition-all duration-300 hover:scale-[1.03] active:scale-95 interactive-elem"
+                >
+                  <span
+                    className="w-2 h-2 rounded-full shrink-0"
+                    style={{
+                      backgroundColor: currentTemplate.color,
+                      boxShadow: `0 0 8px ${currentTemplate.color}`
                     }}
-                    className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white text-black hover:bg-gray-200 transition-colors text-xs sm:text-sm font-semibold shrink-0 shadow-[0_0_20px_rgba(255,255,255,0.2)] cursor-pointer"
-                  >
-                    Обсудить свою нишу ➔
-                  </button>
-                </div>
+                  ></span>
+                  <span className="lg:hidden">Открыть во весь экран ↗</span>
+                  <span className="hidden lg:inline">Развернуть на весь экран ↗</span>
+                </a>
               </div>
-            ) : (
-              /* Живой интерактивный предпросмотр выбранной визитки прямо внутри окна */
-              <div className="relative z-10 flex flex-col items-center">
-                <div className="text-center mb-4">
-                  <span className="text-[11px] uppercase tracking-widest text-[#00F5D4] font-semibold">
-                    Живое демо • {activeTemplate.name}
-                  </span>
-                  <p className="text-xs text-[#D4D4D8] mt-0.5">
-                    Нажимайте на визитку, переворачивайте её со звуком и тестируйте меню прямо внутри экрана
-                  </p>
-                </div>
 
-                <div className="relative w-full max-w-[420px] h-[72vh] min-h-[520px] max-h-[760px] rounded-[2.5rem] overflow-hidden border-2 border-white/20 bg-[#050505] shadow-[0_25px_70px_rgba(0,0,0,0.95),0_0_40px_rgba(0,245,212,0.18)]">
-                  {!iframeLoaded && (
-                    <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-[#050505]">
-                      <div className="w-10 h-10 border-2 border-[#00F5D4]/30 border-t-[#00F5D4] rounded-full animate-spin"></div>
-                      <span className="text-xs uppercase tracking-widest text-[#D4D4D8] animate-pulse">
-                        Загрузка 3D-шоурума {activeTemplate.name}...
-                      </span>
+              {/* Парящий объемный мокап смартфона в титановой рамке (75vh на смартфонах) */}
+              <div
+                style={{
+                  boxShadow: `0 35px 90px -15px rgba(0, 0, 0, 0.95), 0 0 70px -15px ${currentTemplate.glow}, inset 0 1px 2px rgba(255, 255, 255, 0.45), inset 0 -1px 2px rgba(255, 255, 255, 0.2)`
+                }}
+                className="relative w-full max-w-[360px] sm:max-w-[385px] h-[75vh] lg:h-[74vh] max-h-[730px] rounded-[2.9rem] sm:rounded-[3.2rem] p-[9px] sm:p-[11px] bg-gradient-to-b from-[#3f3f46] via-[#18181b] to-[#27272a] border border-white/25 transition-shadow duration-700 flex flex-col shrink-0"
+              >
+                {/* Боковые титановые кнопки (декоративные) */}
+                <div className="hidden sm:block absolute -left-[3px] top-28 w-[3px] h-8 bg-gradient-to-b from-white/40 to-white/10 rounded-l-full"></div>
+                <div className="hidden sm:block absolute -left-[3px] top-40 w-[3px] h-12 bg-gradient-to-b from-white/40 to-white/10 rounded-l-full"></div>
+                <div className="hidden sm:block absolute -right-[3px] top-36 w-[3px] h-16 bg-gradient-to-b from-white/40 to-white/10 rounded-r-full"></div>
+
+                {/* Внутренняя черная рамка дисплея */}
+                <div className="relative w-full h-full rounded-[2.4rem] sm:rounded-[2.65rem] bg-[#050505] overflow-hidden border border-black shadow-inner flex flex-col">
+                  {/* Dynamic Island */}
+                  <div className="absolute top-2.5 left-1/2 -translate-x-1/2 z-30 w-24 h-5 rounded-full bg-black border border-white/[0.08] flex items-center justify-between px-2.5 pointer-events-none shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+                    <span className="w-2 h-2 rounded-full bg-[#111115] border border-white/10"></span>
+                    <span
+                      className="w-1.5 h-1.5 rounded-full transition-colors duration-500"
+                      style={{
+                        backgroundColor: currentTemplate.color,
+                        boxShadow: `0 0 6px ${currentTemplate.color}`
+                      }}
+                    ></span>
+                  </div>
+
+                  {/* Красивый лоадер-пульсар в цвет выбранной ниши, пока iframe подгружается */}
+                  <div
+                    className={`absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-[#050505] transition-opacity duration-500 ${
+                      iframeLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                    }`}
+                  >
+                    <div className="relative flex items-center justify-center w-20 h-20">
+                      <span
+                        className="absolute inset-0 rounded-full animate-ping opacity-25"
+                        style={{ backgroundColor: currentTemplate.color }}
+                      ></span>
+                      <span
+                        className="absolute inset-2 rounded-full animate-pulse opacity-30 blur-md"
+                        style={{ backgroundColor: currentTemplate.color }}
+                      ></span>
+                      <div
+                        style={{
+                          borderColor: `${currentTemplate.color}40`,
+                          borderTopColor: currentTemplate.color,
+                          boxShadow: `0 0 25px ${currentTemplate.glow}`
+                        }}
+                        className="relative w-12 h-12 rounded-full border-2 animate-spin flex items-center justify-center"
+                      ></div>
+                      <div
+                        className="absolute flex items-center justify-center [&>svg]:w-4 [&>svg]:h-4"
+                        style={{ color: currentTemplate.color }}
+                      >
+                        {currentTemplate.icon}
+                      </div>
                     </div>
-                  )}
 
+                    <div className="text-center px-6">
+                      <p className="text-xs font-serif tracking-wider text-white">
+                        {currentTemplate.name}
+                      </p>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-[#A1A1AA] mt-1 animate-pulse">
+                        Загрузка 3D-сцены...
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Живой iframe выбранной визитки с плавным fade/scale переходом */}
                   <iframe
-                    src={activeTemplate.url}
-                    title={activeTemplate.name}
+                    key={currentTemplate.id}
+                    src={currentTemplate.url}
+                    title={currentTemplate.name}
                     onLoad={() => setIframeLoaded(true)}
-                    className={`w-full h-full border-0 transition-opacity duration-500 bg-[#050505] ${
-                      iframeLoaded ? 'opacity-100' : 'opacity-0'
+                    className={`w-full h-full border-0 bg-[#050505] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      iframeLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.96]'
                     }`}
                     allow="autoplay; clipboard-write"
                   />
+
+                  {/* Нижний стеклянный индикатор Home Bar */}
+                  <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-28 h-1 rounded-full bg-white/25 pointer-events-none"></div>
                 </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
       )}
