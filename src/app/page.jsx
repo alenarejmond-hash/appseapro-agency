@@ -431,20 +431,20 @@ const HORECA_CONFIG = {
   classic: {
     id: 'classic',
     tabLabel: '🛎️ Классика: Меню + Вызовы',
-    url: 'https://restaurant.appseapro.com?mode=classic',
+    url: 'https://restaurant-light.appseapro.com/',
     accent: '#00F5D4',
     glow: 'rgba(0, 245, 212, 0.32)',
-    pushTitle: 'AppSeaPro Bot • Стол №4',
-    pushText: '🛎 Гость запросил счёт (Оплата картой). Нажмите, чтобы увидеть уведомление в чате официантов ➔'
+    pushTitle: '🛎 Telegram Персонала • Стол №4',
+    pushText: 'Гость запросил счёт (Оплата картой). Нажмите, чтобы увидеть вызов в группе официантов ➔'
   },
   flagship: {
     id: 'flagship',
-    tabLabel: '🛒 Флагман: Корзина + Заказы',
+    tabLabel: '🛒 Флагман: Заказ к столу',
     url: 'https://restaurant.appseapro.com',
     accent: '#E50940',
     glow: 'rgba(229, 9, 64, 0.35)',
-    pushTitle: 'AppSeaPro Bot • Стол №4',
-    pushText: '🛒 Оформлен заказ на 3 200 ₽ (Том Ям, Стейк). Нажмите, чтобы открыть чат кухни ➔'
+    pushTitle: '🛎 Telegram Персонала • Стол №4',
+    pushText: 'Новый заказ: Куриный шашлык на углях, Хоровац из летних овощей, Толма в виноградных листьях. Нажмите, чтобы увидеть чек в чате кухни ➔'
   }
 };
 
@@ -648,7 +648,7 @@ export default function LandingPage() {
     }
   }, [activeTemplate, isGalleryModalOpen]);
 
-  // Таймер для умного iOS Push-уведомления («Магия Telegram») — 7 секунд после открытия или смены таба
+  // Таймер для умного Telegram-уведомления — 7 секунд после открытия или смены таба
   useEffect(() => {
     let tgTimer;
     if (isHorecaModalOpen) {
@@ -1730,268 +1730,219 @@ export default function LandingPage() {
         </div>
       )}
 
-      {/* Smart HoReCa Interactive iPhone 16 Pro Modal + Segmented Tariff Switcher + Adaptive iOS Push Notifications */}
+      {/* Smart HoReCa Frameless Modal (Mobile < lg: 100% Edge-to-Edge | Desktop lg: max-w-2xl h-[82vh] Floating Window + Segmented Control + Telegram Sync Banner + Real-Time Telegram Notification) */}
       {isHorecaModalOpen && (
         <div
-          className="fixed inset-0 z-[115] flex flex-col items-center justify-center p-2 sm:p-4 md:p-6 overflow-hidden overscroll-none"
+          className="fixed inset-0 z-[115] flex flex-col items-center justify-between lg:justify-center p-0 lg:px-8 lg:py-5 overflow-hidden overscroll-none bg-[#050505] lg:bg-[#050505]/95 lg:backdrop-blur-3xl"
           onClick={handleCloseHorecaDemo}
         >
-          {/* Глубокий матовый фон */}
-          <div className="fixed inset-0 bg-[#050505]/90 backdrop-blur-2xl transition-opacity duration-500"></div>
-
-          {/* Фоновое динамическое свечение позади iPhone 16 Pro */}
+          {/* Мягкое рассеянное фоновое свечение на десктопе */}
           <div
-            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[440px] h-[540px] rounded-full blur-[130px] pointer-events-none transition-all duration-700 opacity-35"
+            className="hidden lg:block fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full blur-[150px] pointer-events-none transition-all duration-700 opacity-25"
             style={{ backgroundColor: activeHorecaConfig.accent }}
           ></div>
 
-          {/* Парящий минималистичный крестик закрытия в правом верхнем углу */}
-          <button
-            onClick={handleCloseHorecaDemo}
-            aria-label="Закрыть демо меню"
-            className="fixed top-3.5 right-3.5 sm:top-6 sm:right-6 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/[0.08] hover:bg-white/[0.16] backdrop-blur-[20px] border border-white/20 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-300 hover:scale-105 active:scale-95 interactive-elem cursor-pointer"
-          >
-            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-
-          {/* Внешняя панель управления над корпусом iPhone 16 Pro */}
+          {/* 1. ШАПКА ШОУРУМА, ПЕРЕКЛЮЧАТЕЛЬ ТАРИФОВ И ПЛАШКА TELEGRAM-СИНХРОНИЗАЦИИ */}
           <div
-            className="relative z-30 w-full max-w-2xl mb-3 sm:mb-4 px-2 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3"
+            className="relative z-30 w-full lg:max-w-5xl shrink-0 px-3 pt-2.5 pb-2 lg:px-0 lg:pt-0 lg:pb-3.5 bg-[#050505]/95 lg:bg-transparent border-b border-white/[0.07] lg:border-0 flex flex-col items-center gap-2 lg:gap-2.5"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Элегантный стеклянный переключатель (Segmented Control) со скользящей кареткой */}
-            <div className="relative p-1 rounded-full bg-white/[0.05] backdrop-blur-2xl border border-white/15 shadow-[0_16px_40px_rgba(0,0,0,0.75),inset_0_1px_0_rgba(255,255,255,0.18)] grid grid-cols-2 items-center w-full sm:w-auto min-w-[290px] sm:min-w-[460px]">
-              {/* Скользящая стеклянная подсветка активного таба */}
-              <div
-                style={{
-                  transform: horecaMode === 'classic' ? 'translateX(0%)' : 'translateX(100%)',
-                  borderColor: horecaMode === 'classic' ? 'rgba(0, 245, 212, 0.65)' : 'rgba(229, 9, 64, 0.7)',
-                  boxShadow:
-                    horecaMode === 'classic'
-                      ? '0 0 24px rgba(0, 245, 212, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.45)'
-                      : '0 0 24px rgba(229, 9, 64, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.45)'
-                }}
-                className="pointer-events-none absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-full bg-white/[0.14] backdrop-blur-xl border transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-              />
-
-              {/* Таб 1: Классика */}
-              <button
-                type="button"
-                onClick={() => handleSwitchHorecaMode('classic')}
-                className={`relative z-10 px-3 sm:px-5 py-2 rounded-full text-[11px] sm:text-xs font-medium tracking-wide transition-colors duration-300 text-center whitespace-nowrap cursor-pointer interactive-elem ${
-                  horecaMode === 'classic' ? 'text-white font-semibold' : 'text-white/60 hover:text-white/90'
-                }`}
-              >
-                🛎️ Классика: Меню + Вызовы
-              </button>
-
-              {/* Таб 2: Флагман */}
-              <button
-                type="button"
-                onClick={() => handleSwitchHorecaMode('flagship')}
-                className={`relative z-10 px-3 sm:px-5 py-2 rounded-full text-[11px] sm:text-xs font-medium tracking-wide transition-colors duration-300 text-center whitespace-nowrap cursor-pointer interactive-elem ${
-                  horecaMode === 'flagship' ? 'text-white font-semibold' : 'text-white/60 hover:text-white/90'
-                }`}
-              >
-                🛒 Флагман: Корзина + Заказы
-              </button>
-            </div>
-
-            {/* Аккуратная кнопка «На весь экран ↗» */}
-            <a
-              href={activeHorecaConfig.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                borderColor: `${activeHorecaConfig.accent}55`,
-                boxShadow: `0 10px 28px -6px ${activeHorecaConfig.glow}, inset 0 1px 0 rgba(255,255,255,0.22)`
-              }}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/[0.07] hover:bg-white/[0.14] backdrop-blur-xl border text-xs font-medium text-white transition-all duration-300 hover:scale-[1.03] active:scale-95 interactive-elem shrink-0"
-            >
-              <span>На весь экран ↗</span>
-            </a>
-          </div>
-
-          {/* Премиальный корпус iPhone 16 Pro (матовый титан, rounded-[3rem], Dynamic Island, статус-бар 9:41) */}
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              boxShadow: `0 40px 100px -15px rgba(0,0,0,0.95), 0 0 60px -15px ${activeHorecaConfig.glow}, inset 0 1px 2px rgba(255,255,255,0.45), inset 0 -1px 2px rgba(255,255,255,0.2)`
-            }}
-            className="relative z-20 w-full max-w-[385px] sm:max-w-[405px] h-[82vh] sm:h-[81vh] max-h-[810px] rounded-[3rem] p-[10px] sm:p-[12px] bg-gradient-to-b from-[#43434B] via-[#1C1C21] to-[#2B2B33] border border-white/25 transition-all duration-500 flex flex-col shrink-0"
-          >
-            {/* Физические титановые кнопки корпуса iPhone 16 Pro */}
-            <div className="hidden sm:block absolute -left-[3px] top-24 w-[3px] h-6 bg-gradient-to-b from-white/45 to-white/15 rounded-l-full"></div>
-            <div className="hidden sm:block absolute -left-[3px] top-36 w-[3px] h-11 bg-gradient-to-b from-white/45 to-white/15 rounded-l-full"></div>
-            <div className="hidden sm:block absolute -left-[3px] top-52 w-[3px] h-11 bg-gradient-to-b from-white/45 to-white/15 rounded-l-full"></div>
-            <div className="hidden sm:block absolute -right-[3px] top-40 w-[3px] h-16 bg-gradient-to-b from-white/45 to-white/15 rounded-r-full"></div>
-
-            {/* Внутренний OLED-дисплей iPhone 16 Pro */}
-            <div className="relative w-full h-full flex-1 rounded-[2.45rem] bg-[#050505] overflow-hidden border border-black flex flex-col">
-              
-              {/* Верхний статус-бар iOS (9:41 + Dynamic Island + иконки связи и батареи) */}
-              <div className="relative z-30 h-11 px-6 pt-2 pb-1 bg-[#050505]/90 backdrop-blur-md border-b border-white/[0.05] flex items-center justify-between select-none shrink-0">
-                {/* Время 9:41 */}
-                <span className="text-[12px] font-semibold tracking-tight text-white">9:41</span>
-
-                {/* Dynamic Island */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-2 w-28 h-[22px] rounded-full bg-black border border-white/[0.08] flex items-center justify-between px-2.5 shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#0d0d14] border border-white/10"></span>
-                  <span
-                    className="w-1.5 h-1.5 rounded-full transition-colors duration-500 animate-pulse"
-                    style={{
-                      backgroundColor: activeHorecaConfig.accent,
-                      boxShadow: `0 0 8px ${activeHorecaConfig.accent}`
-                    }}
-                  ></span>
-                </div>
-
-                {/* Иконки сотовой сети, Wi-Fi и заряда 100% */}
-                <div className="flex items-center gap-1.5 text-white/90">
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 16 12" fill="currentColor">
-                    <rect x="1" y="8" width="2.2" height="3.5" rx="0.6" />
-                    <rect x="4.5" y="6" width="2.2" height="5.5" rx="0.6" />
-                    <rect x="8" y="3.5" width="2.2" height="8" rx="0.6" />
-                    <rect x="11.5" y="1" width="2.2" height="10.5" rx="0.6" />
-                  </svg>
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 16 12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
-                    <path d="M1.5 4.2C5.2 1.1 10.8 1.1 14.5 4.2" />
-                    <path d="M4 7C6.4 5 9.6 5 12 7" />
-                    <circle cx="8" cy="10" r="1" fill="currentColor" stroke="none" />
-                  </svg>
-                  <div className="flex items-center gap-0.5">
-                    <div className="w-5 h-2.5 rounded-[3px] border border-white/60 p-[1.5px] flex items-center">
-                      <div className="w-full h-full bg-white rounded-[1px]"></div>
-                    </div>
-                    <div className="w-[1.5px] h-1 bg-white/60 rounded-r-full"></div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Умное стеклянное iOS Push-уведомление, выезжающее из Dynamic Island через 7 секунд */}
-              <div
-                onTouchStart={handlePushTouchStart}
-                onTouchMove={handlePushTouchMove}
-                className={`absolute top-12 left-3 right-3 z-40 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] origin-top ${
-                  showTgPopup
-                    ? 'translate-y-0 scale-100 opacity-100 pointer-events-auto'
-                    : '-translate-y-12 scale-50 opacity-0 pointer-events-none'
-                }`}
-              >
+            <div className="w-full flex items-center justify-between lg:justify-center relative gap-2">
+              {/* Элегантный стеклянный Segmented Control переключения тарифов по центру */}
+              <div className="relative p-1 rounded-full bg-white/[0.05] backdrop-blur-2xl border border-white/15 shadow-[0_14px_36px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.18)] grid grid-cols-2 items-center flex-1 lg:flex-none lg:min-w-[490px]">
+                {/* Скользящая стеклянная каретка активного тарифа */}
                 <div
                   style={{
-                    borderColor: `${activeHorecaConfig.accent}55`,
-                    boxShadow: `0 20px 45px rgba(0,0,0,0.88), 0 0 28px -6px ${activeHorecaConfig.glow}, inset 0 1px 0 rgba(255,255,255,0.28)`
+                    transform: horecaMode === 'classic' ? 'translateX(0%)' : 'translateX(100%)',
+                    borderColor: horecaMode === 'classic' ? 'rgba(0, 245, 212, 0.6)' : 'rgba(229, 9, 64, 0.65)',
+                    boxShadow:
+                      horecaMode === 'classic'
+                        ? '0 0 22px rgba(0, 245, 212, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4)'
+                        : '0 0 22px rgba(229, 9, 64, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.4)'
                   }}
-                  className="relative rounded-[1.35rem] bg-[#101016]/88 backdrop-blur-2xl border p-3.5 text-left transition-all duration-300 hover:bg-[#14141d]/95 group"
-                >
-                  {/* Кнопка закрытия пуша крестиком (не блокирует меню) */}
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setShowTgPopup(false);
-                    }}
-                    aria-label="Скрыть уведомление"
-                    className="absolute top-2.5 right-2.5 z-20 w-6 h-6 rounded-full bg-white/[0.08] hover:bg-white/[0.18] border border-white/10 flex items-center justify-center text-white/60 hover:text-white transition-colors cursor-pointer"
-                  >
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-
-                  {/* Ссылка на реальный общий Telegram-канал песочницы */}
-                  <a
-                    href="https://t.me/restaurant_appseapro"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-3 pr-5 cursor-pointer interactive-elem"
-                  >
-                    {/* Иконка Telegram Bot в стиле iOS-уведомления */}
-                    <div
-                      style={{
-                        borderColor: `${activeHorecaConfig.accent}66`,
-                        backgroundColor: `${activeHorecaConfig.accent}20`,
-                        boxShadow: `0 0 16px ${activeHorecaConfig.glow}`
-                      }}
-                      className="w-10 h-10 rounded-2xl border flex items-center justify-center shrink-0 mt-0.5"
-                    >
-                      <svg
-                        className="w-5 h-5 -ml-0.5"
-                        style={{ color: activeHorecaConfig.accent }}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-                      </svg>
-                    </div>
-
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2 mb-0.5">
-                        <span className="text-[11px] font-semibold text-white tracking-tight truncate">
-                          {activeHorecaConfig.pushTitle}
-                        </span>
-                        <span className="text-[9px] uppercase tracking-wider text-white/45 shrink-0">
-                          сейчас
-                        </span>
-                      </div>
-                      <p className="text-[11.5px] leading-snug text-[#E4E4E7] group-hover:text-white transition-colors">
-                        {activeHorecaConfig.pushText}
-                      </p>
-                    </div>
-                  </a>
-
-                  {/* Нижний микро-индикатор свайпа вверх */}
-                  <div className="w-8 h-0.5 rounded-full bg-white/20 mx-auto mt-2"></div>
-                </div>
-              </div>
-
-              {/* Рабочая область дисплея с iframe выбранного тарифа ('classic' или 'flagship') */}
-              <div className="relative flex-1 w-full bg-[#050505] overflow-hidden flex flex-col">
-                {/* Лоадер во время загрузки или переключения тарифа */}
-                <div
-                  className={`absolute inset-0 z-20 flex flex-col items-center justify-center gap-3.5 bg-[#050505] transition-opacity duration-500 ${
-                    horecaIframeLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
-                  }`}
-                >
-                  <div
-                    style={{
-                      borderColor: `${activeHorecaConfig.accent}35`,
-                      borderTopColor: activeHorecaConfig.accent,
-                      boxShadow: `0 0 24px ${activeHorecaConfig.glow}`
-                    }}
-                    className="w-10 h-10 border-2 rounded-full animate-spin"
-                  ></div>
-                  <div className="text-center px-6">
-                    <p className="text-xs font-serif text-white tracking-wider">
-                      {horecaMode === 'classic' ? 'Классика: Меню + Вызовы' : 'Флагман: Корзина + Заказы'}
-                    </p>
-                    <p className="text-[10px] text-[#A1A1AA] uppercase tracking-[0.2em] mt-1 animate-pulse">
-                      Загрузка интерфейса...
-                    </p>
-                  </div>
-                </div>
-
-                {/* Iframe выбранного режима */}
-                <iframe
-                  key={horecaMode}
-                  src={activeHorecaConfig.url}
-                  title={`Smart HoReCa — ${horecaMode}`}
-                  onLoad={() => setHorecaIframeLoaded(true)}
-                  className={`w-full h-full flex-1 border-0 bg-[#050505] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    horecaIframeLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.985]'
-                  }`}
-                  sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                  className="pointer-events-none absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-full bg-white/[0.13] backdrop-blur-xl border transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
                 />
 
-                {/* Нижний Home Indicator iPhone 16 Pro */}
-                <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-32 h-1 rounded-full bg-white/30 pointer-events-none"></div>
+                {/* Таб 1: Классика */}
+                <button
+                  type="button"
+                  onClick={() => handleSwitchHorecaMode('classic')}
+                  className={`relative z-10 px-2.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs tracking-wide transition-colors duration-300 text-center whitespace-nowrap truncate cursor-pointer interactive-elem ${
+                    horecaMode === 'classic' ? 'text-white font-semibold' : 'text-white/60 hover:text-white/90 font-medium'
+                  }`}
+                >
+                  🛎️ Классика: Меню + Вызовы
+                </button>
+
+                {/* Таб 2: Флагман */}
+                <button
+                  type="button"
+                  onClick={() => handleSwitchHorecaMode('flagship')}
+                  className={`relative z-10 px-2.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs tracking-wide transition-colors duration-300 text-center whitespace-nowrap truncate cursor-pointer interactive-elem ${
+                    horecaMode === 'flagship' ? 'text-white font-semibold' : 'text-white/60 hover:text-white/90 font-medium'
+                  }`}
+                >
+                  🛒 Флагман: Заказ к столу
+                </button>
+              </div>
+
+              {/* Справа — кнопка «На весь экран ↗» и парящий минималистичный крестик закрытия */}
+              <div className="lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 flex items-center gap-2 shrink-0">
+                <a
+                  href={activeHorecaConfig.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full bg-white/[0.05] hover:bg-white/[0.12] backdrop-blur-xl border border-white/15 hover:border-white/30 text-[11px] sm:text-xs font-medium text-[#E4E4E7] hover:text-white transition-all duration-300 interactive-elem shrink-0"
+                >
+                  <span className="hidden sm:inline">На весь экран</span>
+                  <span>↗</span>
+                </a>
+
+                <button
+                  onClick={handleCloseHorecaDemo}
+                  aria-label="Закрыть демо меню"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/[0.06] hover:bg-white/[0.14] backdrop-blur-[20px] border border-white/15 hover:border-white/30 flex items-center justify-center text-white/80 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 interactive-elem cursor-pointer shrink-0"
+                >
+                  <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
             </div>
+
+            {/* 2. ТОНКАЯ МАТОВАЯ ИНФОРМАЦИОННАЯ ПЛАШКА О TELEGRAM-ГРУППЕ ПЕРСОНАЛА */}
+            <div className="w-full max-w-2xl px-3.5 py-1.5 rounded-full bg-white/[0.035] backdrop-blur-xl border border-white/10 flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 text-[11px] sm:text-xs text-[#D4D4D8] text-center leading-snug">
+              <span>
+                🟢 <strong className="text-white font-medium">Онлайн-синхронизация:</strong> Все заказы и вызовы со столов мгновенно поступают в Telegram-группу персонала в реальном времени.
+              </span>
+              <a
+                href="https://t.me/restaurant_appseapro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#00F5D4] hover:text-white font-medium underline underline-offset-4 decoration-[#00F5D4]/50 hover:decoration-white transition-colors whitespace-nowrap interactive-elem"
+              >
+                Открыть чат официантов ➔
+              </a>
+            </div>
+          </div>
+
+          {/* 3. СВОБОДНАЯ РАБОЧАЯ ОБЛАСТЬ С ЖИВЫМ МЕНЮ (Мобильные < lg: 100% Edge-to-Edge | Десктоп lg: просторное парящее окно max-w-2xl h-[82vh]) */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative z-20 w-full flex-1 lg:flex-none lg:max-w-2xl lg:h-[82vh] bg-[#050505] lg:rounded-3xl lg:border lg:border-white/10 lg:shadow-[0_35px_100px_rgba(0,0,0,0.92)] overflow-hidden flex flex-col"
+          >
+            {/* 4. РЕАЛИСТИЧНОЕ TELEGRAM-УВЕДОМЛЕНИЕ О ЗАКАЗЕ / ВЫЗОВЕ (через 7 секунд, не блокирует экран) */}
+            <div
+              onTouchStart={handlePushTouchStart}
+              onTouchMove={handlePushTouchMove}
+              className={`absolute top-3 left-3 right-3 sm:left-5 sm:right-5 z-40 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] origin-top ${
+                showTgPopup
+                  ? 'translate-y-0 scale-100 opacity-100 pointer-events-auto'
+                  : '-translate-y-8 scale-95 opacity-0 pointer-events-none'
+              }`}
+            >
+              <div
+                style={{
+                  borderColor: `${activeHorecaConfig.accent}55`,
+                  boxShadow: `0 22px 50px rgba(0,0,0,0.9), 0 0 30px -8px ${activeHorecaConfig.glow}, inset 0 1px 0 rgba(255,255,255,0.25)`
+                }}
+                className="relative rounded-2xl bg-[#101218]/90 backdrop-blur-2xl border p-3.5 sm:p-4 text-left transition-all duration-300 hover:bg-[#141720]/95 group"
+              >
+                {/* Крестик скрытия уведомления */}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setShowTgPopup(false);
+                  }}
+                  aria-label="Скрыть уведомление"
+                  className="absolute top-2.5 right-2.5 z-20 w-6 h-6 rounded-full bg-white/[0.08] hover:bg-white/[0.18] border border-white/10 flex items-center justify-center text-white/60 hover:text-white transition-colors cursor-pointer"
+                >
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                {/* Клик по уведомлению переводит в реальную группу: https://t.me/restaurant_appseapro */}
+                <a
+                  href="https://t.me/restaurant_appseapro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 pr-6 cursor-pointer interactive-elem"
+                >
+                  {/* Иконка Telegram */}
+                  <div
+                    style={{
+                      borderColor: `${activeHorecaConfig.accent}66`,
+                      backgroundColor: `${activeHorecaConfig.accent}20`,
+                      boxShadow: `0 0 16px ${activeHorecaConfig.glow}`
+                    }}
+                    className="w-10 h-10 rounded-2xl border flex items-center justify-center shrink-0 mt-0.5"
+                  >
+                    <svg
+                      className="w-5 h-5 -ml-0.5"
+                      style={{ color: activeHorecaConfig.accent }}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                    </svg>
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <span className="text-xs font-semibold text-white tracking-tight truncate">
+                        {activeHorecaConfig.pushTitle}
+                      </span>
+                      <span className="text-[10px] uppercase tracking-wider text-white/45 shrink-0">
+                        сейчас
+                      </span>
+                    </div>
+                    <p className="text-xs leading-relaxed text-[#E4E4E7] group-hover:text-white transition-colors">
+                      {activeHorecaConfig.pushText}
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* Лоадер во время загрузки или переключения тарифа */}
+            <div
+              className={`absolute inset-0 z-20 flex flex-col items-center justify-center gap-3.5 bg-[#050505] transition-opacity duration-500 ${
+                horecaIframeLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
+              }`}
+            >
+              <div
+                style={{
+                  borderColor: `${activeHorecaConfig.accent}35`,
+                  borderTopColor: activeHorecaConfig.accent,
+                  boxShadow: `0 0 24px ${activeHorecaConfig.glow}`
+                }}
+                className="w-10 h-10 border-2 rounded-full animate-spin"
+              ></div>
+              <div className="text-center px-6">
+                <p className="text-xs font-serif text-white tracking-wider">
+                  {activeHorecaConfig.tabLabel}
+                </p>
+                <p className="text-[10px] text-[#A1A1AA] uppercase tracking-[0.2em] mt-1 animate-pulse">
+                  Загрузка меню...
+                </p>
+              </div>
+            </div>
+
+            {/* Чистый контейнер живого меню (iframe) без внутренних рамок дисплея */}
+            <iframe
+              key={horecaMode}
+              src={activeHorecaConfig.url}
+              title={`Smart HoReCa — ${horecaMode}`}
+              onLoad={() => setHorecaIframeLoaded(true)}
+              className={`w-full h-full flex-1 border-0 bg-[#050505] transition-opacity duration-500 ease-out ${
+                horecaIframeLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+            />
           </div>
         </div>
       )}
