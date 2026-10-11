@@ -634,15 +634,15 @@ export default function LandingPage() {
 
         {/* Showroom */}
         <section id="showroom" className="py-24 md:py-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
-          <div className="mb-12 md:mb-24 fade-up-elem text-center md:text-left">
+          <div className="mb-12 md:mb-24 fade-up-elem text-center lg:text-left">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Выберите свое <span className="italic text-[#00F5D4]">Решение</span></h2>
-            <p className="text-[#8B8D98] text-base md:text-lg max-w-lg mx-auto md:mx-0">Безупречная эстетика и функциональность в каждом продукте. Разработано специально под вашу нишу.</p>
+            <p className="text-[#8B8D98] text-base md:text-lg max-w-lg mx-auto lg:mx-0">Безупречная эстетика и функциональность в каждом продукте. Разработано специально под вашу нишу.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             {/* Карточка 01: Цифровые PWA-визитки */}
-            <div className="glass-card md:col-span-3 p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
+            <div className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
               <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#E50940]/15 rounded-full blur-[90px] pointer-events-none"></div>
               <div className="glass-content flex-1 z-10 text-left w-full">
                 <div className="flex items-center justify-between mb-4">
@@ -654,7 +654,7 @@ export default function LandingPage() {
                 <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Цифровые PWA-визитки</h3>
                 <p className="text-[#8B8D98] mb-8 text-sm md:text-base max-w-2xl leading-relaxed">Устанавливаются на рабочий стол телефона как приложение в один клик. БЕЗ скачивания из App Store или Google Play. Ваш статус и контакты всегда под рукой.</p>
                 
-                <div className="equal-subcards-grid grid-cols-1 md:grid-cols-3 auto-rows-fr gap-4 md:gap-5 text-left">
+                <div className="equal-subcards-grid grid-cols-1 lg:grid-cols-3 auto-rows-fr gap-4 md:gap-5 text-left">
                    {/* Classic */}
                    <div className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-start group">
                       <div className="absolute -top-12 -right-12 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
@@ -704,7 +704,7 @@ export default function LandingPage() {
             </div>
 
             {/* Карточка 02: Smart QR-Меню */}
-            <div className="glass-card md:col-span-3 p-6 sm:p-8 md:p-12 flex flex-col md:flex-row-reverse items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} onClick={() => setIsHorecaModalOpen(true)} style={{ transitionDelay: '0.1s' }}>
+            <div className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row-reverse items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} onClick={() => setIsHorecaModalOpen(true)} style={{ transitionDelay: '0.1s' }}>
               <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[#00F5D4]/15 rounded-full blur-[90px] pointer-events-none"></div>
               <div className="glass-content flex-1 z-10 text-left w-full">
                 <div className="flex items-center justify-between mb-4">
@@ -755,10 +755,10 @@ export default function LandingPage() {
             </div>
 
             {/* Карточка 03: Эстетика и Онлайн-запись */}
-            <div className="glass-card md:col-span-3 p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-stretch gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
+            <div className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
                <div className="absolute -top-24 -left-24 w-72 h-72 bg-pink-500/15 rounded-full blur-[90px] pointer-events-none"></div>
                
-               <div className="w-full md:w-5/12 h-64 sm:h-72 md:h-auto min-h-[260px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0">
+               <div className="w-full lg:w-5/12 h-64 sm:h-72 lg:h-auto min-h-[260px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0">
                  <img src="beauty-bg.jpg" alt="Beauty Spa" className="absolute inset-0 w-full h-full object-cover opacity-85 scale-105 hover:scale-100 transition-transform duration-700" />
                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/25 to-transparent"></div>
                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3.5 py-2 rounded-xl bg-black/50 backdrop-blur-md border border-white/10 text-[11px] text-white/80">
@@ -805,10 +805,10 @@ export default function LandingPage() {
 
         {/* NFC Breloq */}
         <section id="nfc" className="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
-          <div className="glass-card p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-stretch gap-8 interactive-elem fade-up-elem overflow-hidden cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
+          <div className="glass-card p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem overflow-hidden cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
             <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-amber-500/15 rounded-full blur-[90px] pointer-events-none"></div>
 
-            <div className="w-full md:w-5/12 h-64 sm:h-72 md:h-auto min-h-[260px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0">
+            <div className="w-full lg:w-5/12 h-64 sm:h-72 lg:h-auto min-h-[260px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0">
                <img src="nfc-keychain.jpg" alt="Leather NFC Keychain" className="absolute inset-0 w-full h-full object-cover opacity-80 grayscale hover:grayscale-0 transition-all duration-700" />
                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/30 to-transparent pointer-events-none"></div>
                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3.5 py-2 rounded-xl bg-black/55 backdrop-blur-md border border-white/10 text-[11px] text-white/80">
@@ -817,14 +817,14 @@ export default function LandingPage() {
                </div>
             </div>
             
-            <div className="glass-content w-full md:w-7/12 z-10 text-left flex flex-col justify-center">
+            <div className="glass-content w-full lg:w-7/12 z-10 text-left flex flex-col justify-center">
               <div className="flex items-center justify-between mb-4">
                 <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-500 text-[11px] uppercase tracking-widest font-semibold">
                   Физический носитель
                 </span>
                 <span className="font-serif italic text-white/25 text-lg md:text-xl">04</span>
               </div>
-              <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">NFC-брелоки <br className="hidden md:block"/>из кожи <span className="italic text-amber-400">Crazy Horse</span></h3>
+              <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">NFC-брелоки <br className="hidden lg:block"/>из кожи <span className="italic text-amber-400">Crazy Horse</span></h3>
               <p className="text-[#8B8D98] text-sm md:text-base leading-relaxed mb-6 max-w-2xl">
                 Физическое воплощение вашего цифрового статуса. Я вручную шью премиальные NFC-брелоки из натуральной винтажной кожи для каждой визитки. Одно касание брелоком к смартфону партнера — и ваши контакты уже на его экране.
               </p>
@@ -855,20 +855,20 @@ export default function LandingPage() {
 
         {/* About */}
         <section id="about" className="py-24 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
-          <div className="glass-card p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 interactive-elem fade-up-elem">
+          <div className="glass-card p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8 interactive-elem fade-up-elem">
             <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-[#111] to-[#222] border border-[#00F5D4]/30 overflow-hidden shrink-0 shadow-[0_0_30px_rgba(0,245,212,0.15)] p-2">
               <div className="w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center">
                  <img src="elena-photo.jpg" alt="Айти-архитектор" className="w-full h-full object-cover opacity-90 grayscale hover:grayscale-0 transition-all duration-500" />
               </div>
             </div>
-            <div className="text-center md:text-left glass-content">
+            <div className="text-center lg:text-left glass-content">
               <h2 className="text-3xl md:text-4xl font-serif mb-4">Привет, я Елена</h2>
               <p className="text-[#00F5D4] font-medium tracking-widest text-xs uppercase mb-6">IT-Архитектор</p>
               <p className="text-[#8B8D98] text-sm md:text-base leading-relaxed mb-6 max-w-3xl">
                 Я проектирую премиальные IT-экосистемы и занимаюсь кастомной веб-разработкой. Моя главная цель — создавать цифровые продукты, подчеркивающие статус владельца. Продукты, которые не стыдно показать на закрытой встрече или бизнес-ужине. 
                 При этом вы получаете технологии уровня корпораций <strong className="text-white">без вытягивания денег за кабальные подписки</strong>. Управление происходит через интуитивную панель и Telegram. Это логично, дорого выглядит и не требует найма IT-специалиста.
               </p>
-              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                 <span className="px-4 py-2 bg-white/5 rounded-lg text-xs border border-white/10">✓ Размещение под ключ</span>
                 <span className="px-4 py-2 bg-white/5 rounded-lg text-xs border border-white/10">✓ Индивидуальный дизайн</span>
                 <span className="px-4 py-2 bg-white/5 rounded-lg text-xs border border-white/10">✓ Интуитивная система управления</span>
@@ -884,7 +884,7 @@ export default function LandingPage() {
             <p className="text-[#8B8D98] text-base md:text-lg">Мы не используем конструкторы вроде Tilda. Только чистый код и передовые архитектуры.</p>
           </div>
 
-          <div className="equal-subcards-grid grid-cols-1 md:grid-cols-3 auto-rows-fr gap-4 md:gap-6">
+          <div className="equal-subcards-grid grid-cols-1 lg:grid-cols-3 auto-rows-fr gap-4 md:gap-6">
             <div className="glass-card p-8 h-full flex flex-col items-center justify-center text-center interactive-elem group fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
               <div className="glass-content">
                 <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 mx-auto group-hover:scale-110 group-hover:bg-[#E50940]/20 transition-all duration-300">
