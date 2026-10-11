@@ -24,7 +24,7 @@ const styles = `
     width: 100%;
     margin: 0;
     padding: 0;
-    cursor: none; /* Скрываем стандартный курсор на ПК */
+    cursor: auto; /* Системный нативный курсор всегда активен без задержек */
     font-family: 'Inter', sans-serif;
   }
 
@@ -37,7 +37,7 @@ const styles = `
     font-family: 'Playfair Display', serif;
   }
 
-  /* Полностью отключаем кастомный курсор на мобильных и возвращаем системный */
+  /* Полностью отключаем кастомный ореол на мобильных и тач-устройствах */
   @media (hover: none) and (pointer: coarse) {
     body {
       cursor: auto !important;
@@ -52,27 +52,51 @@ const styles = `
     color: #F3F4F6;
   }
 
-  /* Кастомный курсор */
+  /* Премиальный фоновый ореол вокруг системного курсора (GPU translate3d без лагов) */
   .custom-cursor {
-    width: 20px;
-    height: 20px;
-    background-color: #00F5D4;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     position: fixed;
     top: 0;
     left: 0;
     pointer-events: none;
-    mix-blend-mode: difference;
     z-index: 9999;
+    transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+    border: 1px solid rgba(0, 245, 212, 0.35);
+    background: radial-gradient(circle, rgba(0, 245, 212, 0.1) 0%, rgba(0, 245, 212, 0) 70%);
+    box-shadow: 0 0 24px rgba(0, 245, 212, 0.2), inset 0 0 12px rgba(0, 245, 212, 0.1);
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), height 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+    will-change: transform, width, height;
+  }
+
+  .custom-cursor::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 220px;
+    height: 220px;
     transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s, background-color 0.3s;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 245, 212, 0.12) 0%, rgba(229, 9, 64, 0.04) 45%, transparent 70%);
+    filter: blur(20px);
+    pointer-events: none;
+    transition: width 0.4s ease, height 0.4s ease, background 0.4s ease;
   }
   
   .custom-cursor.hover {
-    width: 60px;
-    height: 60px;
-    background-color: #E50940;
-    filter: blur(10px);
+    width: 64px;
+    height: 64px;
+    border-color: rgba(229, 9, 64, 0.55);
+    background: radial-gradient(circle, rgba(229, 9, 64, 0.16) 0%, rgba(229, 9, 64, 0) 72%);
+    box-shadow: 0 0 36px rgba(229, 9, 64, 0.32), inset 0 0 16px rgba(229, 9, 64, 0.15);
+  }
+
+  .custom-cursor.hover::before {
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(229, 9, 64, 0.18) 0%, rgba(0, 245, 212, 0.05) 45%, transparent 70%);
   }
 
   /* Фоновые градиенты (Glow) */
@@ -248,8 +272,7 @@ const styles = `
 `;
 
 export default function LandingPage() {
-  const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 });
-  const [isHovering, setIsHovering] = useState(false);
+  const cursorRef = useRef(null);
   const [isHorecaModalOpen, setIsHorecaModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHeroInteracting, setIsHeroInteracting] = useState(false);
@@ -367,21 +390,59 @@ export default function LandingPage() {
     };
   }, []);
 
+  // Прямое GPU-позиционирование фонового ореола курсора через requestAnimationFrame (без ре-рендеров React)
   useEffect(() => {
     const isTouchDevice = (('ontouchstart' in window) || (navigator.maxTouchPoints > 0));
+    if (isTouchDevice) return;
 
-    const moveCursor = (e) => setCursorPos({ x: e.clientX, y: e.clientY });
-    const checkHover = (e) => setIsHovering(!!e.target.closest('.interactive-elem, a, button, input, summary, details'));
+    let targetX = -100;
+    let targetY = -100;
+    let currentX = -100;
+    let currentY = -100;
+    let rafId = null;
+    let isInitialized = false;
 
-    if (!isTouchDevice) {
-      window.addEventListener('mousemove', moveCursor);
-      window.addEventListener('mouseover', checkHover);
-    }
-    return () => {
-      if (!isTouchDevice) {
-        window.removeEventListener('mousemove', moveCursor);
-        window.removeEventListener('mouseover', checkHover);
+    const renderLoop = () => {
+      currentX += (targetX - currentX) * 0.35;
+      currentY += (targetY - currentY) * 0.35;
+
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0) translate(-50%, -50%)`;
       }
+
+      if (Math.hypot(targetX - currentX, targetY - currentY) > 0.15) {
+        rafId = requestAnimationFrame(renderLoop);
+      } else {
+        rafId = null;
+      }
+    };
+
+    const moveCursor = (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      if (!isInitialized) {
+        currentX = targetX;
+        currentY = targetY;
+        isInitialized = true;
+      }
+      if (!rafId) {
+        rafId = requestAnimationFrame(renderLoop);
+      }
+    };
+
+    const checkHover = (e) => {
+      if (!cursorRef.current) return;
+      const isInteractive = !!e.target.closest('.interactive-elem, a, button, input, summary, details');
+      cursorRef.current.classList.toggle('hover', isInteractive);
+    };
+
+    window.addEventListener('mousemove', moveCursor, { passive: true });
+    window.addEventListener('mouseover', checkHover, { passive: true });
+
+    return () => {
+      window.removeEventListener('mousemove', moveCursor);
+      window.removeEventListener('mouseover', checkHover);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
 
@@ -476,7 +537,7 @@ export default function LandingPage() {
     <div className="antialiased min-h-screen text-[#F3F4F6] bg-[#050505] w-full">
       <style>{styles}</style>
 
-      <div className={`custom-cursor ${isHovering ? 'hover' : ''}`} style={{ left: cursorPos.x, top: cursorPos.y }} />
+      <div ref={cursorRef} className="custom-cursor" />
       <div className="bg-glow wine"></div>
       <div className="bg-glow cyan"></div>
 
@@ -794,7 +855,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Карточка 03: Эстетика и Онлайн-запись (деликатный акцент без визуального спора с доминантами) */}
+            {/* Карточка 03: Эстетика и Онлайн-запись */}
             <div id="product-beauty" className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15 scroll-mt-28" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
                <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_left,rgba(229,9,64,0.1)_0%,transparent_55%)] pointer-events-none"></div>
                
