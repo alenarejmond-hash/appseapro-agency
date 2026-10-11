@@ -9,12 +9,17 @@ import React, { useState, useEffect, useRef } from 'react';
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 
-  body {
+  html, body {
     background-color: #050505;
     color: #F3F4F6;
     overflow-x: hidden;
+    overscroll-behavior-y: none; /* Отключаем обновление страницы свайпом вниз */
+    touch-action: pan-y; /* Запрещаем раскачивание и зум страницы */
+    width: 100%;
+    position: relative;
     cursor: none; /* Скрываем стандартный курсор на ПК */
     font-family: 'Inter', sans-serif;
+    -webkit-text-size-adjust: 100%;
   }
 
   .font-serif {
@@ -69,6 +74,7 @@ const styles = `
     z-index: -1;
     opacity: 0.4;
     animation: float 20s infinite ease-in-out alternate;
+    pointer-events: none;
   }
   .bg-glow.wine { background: #E50940; top: -10%; left: -10%; }
   .bg-glow.cyan { background: #00F5D4; bottom: -20%; right: -10%; animation-delay: -5s; }
@@ -121,9 +127,12 @@ const styles = `
     z-index: 1;
   }
 
-  /* 3D элемент в Hero */
+  /* 3D элемент в Hero (заблокирован скролл и обновление страницы при вращении пальцем) */
   .hero-3d-wrapper {
     perspective: 1000px;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
   }
   .hero-3d-element {
     transform-style: preserve-3d;
@@ -154,6 +163,7 @@ export default function LandingPage() {
   const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
   const [isHorecaModalOpen, setIsHorecaModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const [menuItems, setMenuItems] = useState([
     { id: 1, name: 'Том Ям с креветками', desc: 'Острота: средняя', price: 850 },
@@ -165,6 +175,34 @@ export default function LandingPage() {
   
   const footerRef = useRef(null);
   const spacerRef = useRef(null);
+
+  // Фиксация масштаба (запрет зума двумя пальцами и шатания экрана на мобильных)
+  useEffect(() => {
+    let meta = document.querySelector('meta[name="viewport"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = 'viewport';
+      document.head.appendChild(meta);
+    }
+    meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+
+    const preventMultiTouchZoom = (e) => {
+      if (e.touches && e.touches.length > 1) {
+        e.preventDefault();
+      }
+    };
+    const preventGestureZoom = (e) => {
+      e.preventDefault();
+    };
+
+    document.addEventListener('touchmove', preventMultiTouchZoom, { passive: false });
+    document.addEventListener('gesturestart', preventGestureZoom, { passive: false });
+
+    return () => {
+      document.removeEventListener('touchmove', preventMultiTouchZoom);
+      document.removeEventListener('gesturestart', preventGestureZoom);
+    };
+  }, []);
 
   useEffect(() => {
     const isTouchDevice = (('ontouchstart' in window) || (navigator.maxTouchPoints > 0));
@@ -225,7 +263,9 @@ export default function LandingPage() {
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
     const x = (clientX - rect.left - rect.width / 2) / (rect.width / 2);
     const y = (clientY - rect.top - rect.height / 2) / (rect.height / 2);
-    e.currentTarget.querySelector('.hero-3d-element').style.transform = `rotateY(${x * 15}deg) rotateX(${-y * 15}deg)`;
+    const clampedX = Math.max(-1.5, Math.min(1.5, x));
+    const clampedY = Math.max(-1.5, Math.min(1.5, y));
+    e.currentTarget.querySelector('.hero-3d-element').style.transform = `rotateY(${clampedX * 15}deg) rotateX(${-clampedY * 15}deg)`;
   };
 
   const handleHeroLeave = (e) => {
@@ -253,28 +293,90 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="antialiased min-h-screen text-[#F3F4F6] bg-[#050505] selection:bg-[#E50940] selection:text-white">
+    <div className="antialiased min-h-screen text-[#F3F4F6] bg-[#050505] selection:bg-[#E50940] selection:text-white overflow-x-hidden w-full">
       <style>{styles}</style>
 
       <div className={`custom-cursor ${isHovering ? 'hover' : ''}`} style={{ left: cursorPos.x, top: cursorPos.y }} />
       <div className="bg-glow wine"></div>
       <div className="bg-glow cyan"></div>
 
-      <header className="fixed w-full top-0 z-50 transition-all duration-300 backdrop-blur-md bg-[#050505]/50 border-b border-white/5 py-4 px-4 md:px-12 flex justify-between items-center">
-        <div className="text-xl md:text-2xl font-serif font-semibold tracking-tighter interactive-elem cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-          AppSea<span className="text-[#E50940] italic">Pro</span>
+      <header className="fixed w-full top-0 z-50 transition-all duration-300 backdrop-blur-md bg-[#050505]/70 border-b border-white/5 py-4 px-4 md:px-12">
+        <div className="flex justify-between items-center">
+          <div className="text-xl md:text-2xl font-serif font-semibold tracking-tighter interactive-elem cursor-pointer" onClick={() => { window.scrollTo({top: 0, behavior: 'smooth'}); setIsMobileMenuOpen(false); }}>
+            AppSea<span className="text-[#E50940] italic">Pro</span>
+          </div>
+          
+          <nav className="hidden md:flex gap-8 text-sm font-medium text-[#8B8D98]">
+            <a href="#showroom" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Продукты</a>
+            <a href="#nfc" className="hover:text-[#F3F4F6] transition-colors interactive-elem">NFC Брелоки</a>
+            <a href="#about" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Подход</a>
+            <a href="#investments" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Инвестиции</a>
+          </nav>
+
+          <div className="flex items-center gap-2.5">
+            <button onClick={() => { setIsMobileMenuOpen(false); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="glass-card px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-medium hover:bg-white/10 transition-colors interactive-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
+              <span className="glass-content">Связаться</span>
+            </button>
+
+            {/* Кнопка мобильного меню */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Меню"
+              className="md:hidden glass-card w-9 h-9 rounded-full flex items-center justify-center border border-white/10 text-white/80 hover:text-white transition-colors interactive-elem cursor-pointer"
+            >
+              <span className="glass-content flex flex-col justify-center items-center w-4 h-4 relative">
+                <span className={`block w-4 h-[1.5px] bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-[1.5px] text-[#00F5D4]' : '-translate-y-1'}`}></span>
+                <span className={`block w-4 h-[1.5px] bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+                <span className={`block w-4 h-[1.5px] bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-[1.5px] text-[#00F5D4]' : 'translate-y-1'}`}></span>
+              </span>
+            </button>
+          </div>
         </div>
-        <nav className="hidden md:flex gap-8 text-sm font-medium text-[#8B8D98]">
-          <a href="#showroom" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Продукты</a>
-          <a href="#nfc" className="hover:text-[#F3F4F6] transition-colors interactive-elem">NFC Брелоки</a>
-          <a href="#about" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Подход</a>
-          <a href="#investments" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Инвестиции</a>
-        </nav>
-        <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="glass-card px-5 md:px-6 py-2 rounded-full text-xs md:text-sm font-medium hover:bg-white/10 transition-colors interactive-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
-          <span className="glass-content">Связаться</span>
-        </button>
+
+        {/* Выпадающее мобильное меню в стиле Glassmorphism */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
+            isMobileMenuOpen ? 'max-h-72 opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0 pointer-events-none'
+          }`}
+        >
+          <nav className="glass-card p-4 rounded-2xl border border-white/10 bg-[#0A0A0A]/95 flex flex-col gap-1 text-sm font-medium">
+            <a
+              href="#showroom"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-between px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
+            >
+              <span>Продукты</span>
+              <span className="text-[#E50940] text-xs">01</span>
+            </a>
+            <a
+              href="#nfc"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-between px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
+            >
+              <span>NFC Брелоки</span>
+              <span className="text-amber-500 text-xs">02</span>
+            </a>
+            <a
+              href="#about"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-between px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
+            >
+              <span>Подход</span>
+              <span className="text-[#00F5D4] text-xs">03</span>
+            </a>
+            <a
+              href="#investments"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-between px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
+            >
+              <span>Инвестиции</span>
+              <span className="text-pink-400 text-xs">04</span>
+            </a>
+          </nav>
+        </div>
       </header>
 
+      {}
       {/* Main Content */}
       <main className="relative z-10 bg-[#050505] pb-10" style={{ boxShadow: '0 30px 60px rgba(0,0,0,0.8)' }}>
         
@@ -283,7 +385,7 @@ export default function LandingPage() {
             <p className="text-[#00F5D4] text-xs md:text-sm font-medium tracking-widest uppercase mb-4 md:mb-6 fade-up-elem" style={{ transitionDelay: '0s' }}>
               Digital Boutique
             </p>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-medium leading-tight mb-6 md:mb-8 fade-up-elem" style={{ transitionDelay: '0.1s' }}>
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-serif font-medium leading-tight mb-6 md:mb-8 fade-up-elem" style={{ transitionDelay: '0.1s' }}>
               Ваш цифровой <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#E50940] to-pink-500">статус</span>.
             </h1>
             <p className="text-[#8B8D98] text-base md:text-xl max-w-2xl mx-auto mb-10 md:mb-12 font-light fade-up-elem px-2" style={{ transitionDelay: '0.2s' }}>
@@ -293,7 +395,7 @@ export default function LandingPage() {
             <div 
               className="hero-3d-wrapper w-56 h-72 md:w-64 md:h-80 mx-auto mt-4 md:mt-10 mb-8 md:mb-10 fade-up-elem cursor-pointer relative z-20" 
               style={{ transitionDelay: '0.3s' }}
-              onMouseMove={handleHeroMove} onMouseLeave={handleHeroLeave} onTouchMove={handleHeroMove} onTouchEnd={handleHeroLeave}
+              onMouseMove={handleHeroMove} onMouseLeave={handleHeroLeave} onTouchMove={handleHeroMove} onTouchEnd={handleHeroLeave} onTouchCancel={handleHeroLeave}
             >
               <div className="hero-3d-element glass-card w-full h-full flex items-center justify-center rounded-[2rem] border border-white/10 shadow-2xl relative overflow-hidden group interactive-elem" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
@@ -313,6 +415,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* Showroom */}
         <section id="showroom" className="py-24 md:py-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="mb-12 md:mb-24 fade-up-elem text-center md:text-left">
@@ -401,6 +504,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* NFC Breloq */}
         <section id="nfc" className="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="glass-card flex flex-col md:flex-row items-center interactive-elem fade-up-elem overflow-hidden cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
@@ -489,6 +593,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* Pricing */}
         <section id="investments" className="py-24 md:py-32 px-4 md:px-8 relative z-10 overflow-hidden">
           <div className="max-w-7xl mx-auto text-center mb-12 md:mb-16 fade-up-elem">
@@ -648,6 +753,7 @@ export default function LandingPage() {
 
       </main>
 
+      {}
       {/* Footer */}
       <footer ref={footerRef} id="contact" className="fixed bottom-0 w-full min-h-[60vh] md:min-h-[70vh] h-auto bg-[#050505] flex flex-col justify-between p-6 md:p-12 z-0 border-t border-white/5 pb-20 md:pb-6">
         <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center text-center mt-12 md:mt-10 flex-1">
