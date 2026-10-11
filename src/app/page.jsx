@@ -486,7 +486,7 @@ export default function LandingPage() {
             AppSea<span className="text-[#E50940] italic">Pro</span>
           </div>
           
-          <nav className="hidden md:flex gap-8 text-sm font-medium text-[#8B8D98]">
+          <nav className="hidden md:flex gap-8 text-sm font-medium text-[#A1A1AA]">
             <a href="#showroom" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Продукты</a>
             <a href="#nfc" className="hover:text-[#F3F4F6] transition-colors interactive-elem">NFC Брелоки</a>
             <a href="#about" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Подход</a>
@@ -517,7 +517,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* Выпадающее мобильное меню в бутиковом Bento-стиле */}
+        {/* Выпадающее мобильное меню в бутиковом Bento-стиле (строгая цветовая дисциплина: Wine, Cyan и благородная платина) */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
             isMobileMenuOpen ? 'max-h-[420px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0 pointer-events-none'
@@ -537,7 +537,7 @@ export default function LandingPage() {
                   <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#E50940]/25 to-[#E50940]/5 border border-[#E50940]/40 flex items-center justify-center text-[#E50940] shadow-[0_0_15px_rgba(229,9,64,0.2)]">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
                   </div>
-                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
+                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
                 </div>
                 <div className="mt-3 text-left">
                   <span className="block text-[9px] uppercase tracking-widest text-[#E50940] font-semibold">Showroom</span>
@@ -548,17 +548,17 @@ export default function LandingPage() {
               <a
                 href="#nfc"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="luxury-subcard p-4 flex flex-col justify-between min-h-[104px] group border-amber-500/25 active:scale-[0.98] transition-all"
+                className="luxury-subcard p-4 flex flex-col justify-between min-h-[104px] group border-white/15 active:scale-[0.98] transition-all"
               >
-                <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.18)_0%,transparent_65%)] pointer-events-none"></div>
+                <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08)_0%,transparent_65%)] pointer-events-none"></div>
                 <div className="flex items-center justify-between">
-                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500/25 to-amber-500/5 border border-amber-500/40 flex items-center justify-center text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 flex items-center justify-center text-white shadow-inner">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                   </div>
-                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
+                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
                 </div>
                 <div className="mt-3 text-left">
-                  <span className="block text-[9px] uppercase tracking-widest text-amber-400 font-semibold">Crazy Horse</span>
+                  <span className="block text-[9px] uppercase tracking-widest text-[#D4D4D8] font-semibold">Crazy Horse</span>
                   <span className="font-serif text-base text-white tracking-wide">NFC Брелоки</span>
                 </div>
               </a>
@@ -573,7 +573,7 @@ export default function LandingPage() {
                   <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.2)]">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
                   </div>
-                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
+                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
                 </div>
                 <div className="mt-3 text-left">
                   <span className="block text-[9px] uppercase tracking-widest text-[#00F5D4] font-semibold">Architecture</span>
@@ -584,17 +584,17 @@ export default function LandingPage() {
               <a
                 href="#investments"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="luxury-subcard p-4 flex flex-col justify-between min-h-[104px] group border-pink-400/25 active:scale-[0.98] transition-all"
+                className="luxury-subcard p-4 flex flex-col justify-between min-h-[104px] group border-white/15 active:scale-[0.98] transition-all"
               >
-                <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(244,114,182,0.18)_0%,transparent_65%)] pointer-events-none"></div>
+                <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08)_0%,transparent_65%)] pointer-events-none"></div>
                 <div className="flex items-center justify-between">
-                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-pink-500/25 to-pink-500/5 border border-pink-400/40 flex items-center justify-center text-pink-400 shadow-[0_0_15px_rgba(244,114,182,0.2)]">
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 flex items-center justify-center text-white shadow-inner">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                   </div>
-                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
+                  <span className="w-6 h-6 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:text-white group-hover:border-white/25 transition-colors text-xs">↗</span>
                 </div>
                 <div className="mt-3 text-left">
-                  <span className="block text-[9px] uppercase tracking-widest text-pink-400 font-semibold">Brand Capital</span>
+                  <span className="block text-[9px] uppercase tracking-widest text-[#D4D4D8] font-semibold">Brand Capital</span>
                   <span className="font-serif text-base text-white tracking-wide">Инвестиции</span>
                 </div>
               </a>
@@ -603,7 +603,6 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {}
       {/* Main Content */}
       <main className="relative z-10 bg-[#050505] mb-[60vh] md:mb-[70vh] shadow-[0_20px_50px_rgba(0,0,0,1)] rounded-b-[2rem] md:rounded-b-[3rem] border-b border-white/10 pb-10">
         
@@ -612,15 +611,42 @@ export default function LandingPage() {
             <p className="text-[#00F5D4] text-xs md:text-sm font-medium tracking-widest uppercase mb-4 md:mb-6 fade-up-elem" style={{ transitionDelay: '0s' }}>
               Digital Boutique
             </p>
-            <h1 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-serif font-medium leading-tight mb-6 md:mb-8 fade-up-elem" style={{ transitionDelay: '0.1s' }}>
-              Ваш цифровой <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#E50940] to-pink-500">статус</span>.
+            <h1 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-serif font-medium leading-tight mb-5 md:mb-6 fade-up-elem" style={{ transitionDelay: '0.1s' }}>
+              Ваш цифровой <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#E50940] to-[#ff2a60]">статус</span>.
             </h1>
-            <p className="text-[#8B8D98] text-base md:text-xl max-w-2xl mx-auto mb-8 md:mb-12 font-light fade-up-elem px-2" style={{ transitionDelay: '0.2s' }}>
-              Премиальные бизнес-экосистемы и PWA-визитки. Секретные Z-жесты, перелистывание 3D-визиток со звуком и физические NFC-брелоки из кожи Crazy Horse. Продукты, которыми хочется хвастаться перед партнерами.
-            </p>
+
+            <div className="max-w-2xl mx-auto mb-6 md:mb-8 fade-up-elem px-2" style={{ transitionDelay: '0.2s' }}>
+              <p className="text-[#F3F4F6] text-lg sm:text-xl md:text-2xl font-serif tracking-wide mb-4 md:mb-5">
+                Премиальные бизнес-экосистемы. <span className="italic text-[#D4D4D8]">Под ключ.</span>
+              </p>
+
+              {/* Монохромные стеклянные пилюли («тихая роскошь») */}
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+                <a
+                  href="#product-pwa"
+                  className="px-4 sm:px-5 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-white/10 text-xs sm:text-sm text-[#D4D4D8] hover:text-white hover:bg-white/[0.09] hover:border-white/25 hover:shadow-[0_0_20px_rgba(255,255,255,0.12)] transition-all duration-300 tracking-wide interactive-elem cursor-pointer"
+                >
+                  Экспертам
+                </a>
+
+                <a
+                  href="#product-horeca"
+                  className="px-4 sm:px-5 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-white/10 text-xs sm:text-sm text-[#D4D4D8] hover:text-white hover:bg-white/[0.09] hover:border-white/25 hover:shadow-[0_0_20px_rgba(255,255,255,0.12)] transition-all duration-300 tracking-wide interactive-elem cursor-pointer"
+                >
+                  Ресторанам
+                </a>
+
+                <a
+                  href="#product-beauty"
+                  className="px-4 sm:px-5 py-2 rounded-full bg-white/[0.04] backdrop-blur-md border border-white/10 text-xs sm:text-sm text-[#D4D4D8] hover:text-white hover:bg-white/[0.09] hover:border-white/25 hover:shadow-[0_0_20px_rgba(255,255,255,0.12)] transition-all duration-300 tracking-wide interactive-elem cursor-pointer"
+                >
+                  Бьюти
+                </a>
+              </div>
+            </div>
 
             <div 
-              className="hero-3d-wrapper w-60 h-80 md:w-64 md:h-80 mx-auto mt-2 md:mt-10 mb-8 md:mb-10 fade-up-elem cursor-pointer relative z-20" 
+              className="hero-3d-wrapper w-60 h-80 md:w-64 md:h-80 mx-auto mt-2 md:mt-4 mb-8 md:mb-10 fade-up-elem cursor-pointer relative z-20" 
               style={{ transitionDelay: '0.3s' }}
               onClick={handleCardFlip}
               onMouseMove={handleHeroMove}
@@ -645,7 +671,7 @@ export default function LandingPage() {
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"></path></svg>
                       </div>
                       <h3 className="font-serif text-xl text-white tracking-wide">AppSeaPro</h3>
-                      <p className="text-xs text-[#8B8D98] mt-2 uppercase tracking-widest">Digital Agency</p>
+                      <p className="text-xs text-[#D4D4D8] mt-2 uppercase tracking-widest">Digital Agency</p>
                     </div>
                   </div>
 
@@ -668,24 +694,23 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-          <div className="absolute bottom-4 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 fade-up-elem z-10" style={{ transitionDelay: '0.5s' }}>
-            <span className="text-xs tracking-widest uppercase text-[#8B8D98]">Scroll</span>
+          <div className="absolute bottom-4 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 fade-up-elem z-10" style={{ transitionDelay: '0.5s' }}>
+            <span className="text-xs tracking-widest uppercase text-[#A1A1AA]">Scroll</span>
             <div className="w-px h-10 md:h-12 bg-gradient-to-b from-white/50 to-transparent"></div>
           </div>
         </section>
 
-        {}
         {/* Showroom */}
         <section id="showroom" className="pt-24 md:pt-32 pb-0 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="mb-12 md:mb-24 fade-up-elem text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Выберите свое <span className="italic text-[#00F5D4]">Решение</span></h2>
-            <p className="text-[#8B8D98] text-base md:text-lg max-w-lg mx-auto">Безупречная эстетика и функциональность в каждом продукте. Разработано специально под вашу нишу.</p>
+            <p className="text-[#D4D4D8] text-base md:text-lg max-w-lg mx-auto">Безупречная эстетика и функциональность в каждом продукте. Разработано специально под вашу нишу.</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             {/* Карточка 01: Цифровые PWA-визитки */}
-            <div className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
+            <div id="product-pwa" className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15 scroll-mt-28" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
               <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(229,9,64,0.14)_0%,transparent_55%)] pointer-events-none"></div>
               <div className="glass-content flex-1 z-10 text-left w-full">
                 <div className="flex items-center justify-between mb-4">
@@ -695,7 +720,7 @@ export default function LandingPage() {
                   <span className="font-serif italic text-white/25 text-lg md:text-xl">01</span>
                 </div>
                 <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Цифровые PWA-визитки</h3>
-                <p className="text-[#8B8D98] mb-8 text-sm md:text-base max-w-2xl leading-relaxed">Устанавливаются на рабочий стол телефона как приложение в один клик. БЕЗ скачивания из App Store или Google Play. Ваш статус и контакты всегда под рукой.</p>
+                <p className="text-[#D4D4D8] mb-8 text-sm md:text-base max-w-2xl leading-relaxed">Устанавливаются на рабочий стол телефона как приложение в один клик. БЕЗ скачивания из App Store или Google Play. Ваш статус и контакты всегда под рукой.</p>
                 
                 <div className="equal-subcards-grid grid-cols-1 lg:grid-cols-3 auto-rows-fr gap-4 md:gap-5 text-left">
                    {/* Classic */}
@@ -708,9 +733,9 @@ export default function LandingPage() {
                           </div>
                           <h4 className="text-white font-serif text-lg tracking-wide">Classic</h4>
                         </div>
-                        <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 font-medium shrink-0">VCF • QR</span>
+                        <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[#D4D4D8] font-medium shrink-0">VCF • QR</span>
                       </div>
-                      <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Лаконичная визитка. 7 премиальных дизайн-тем, мультиязычность, кинематографичные анимации и умное сохранение VCF контакта прямо в телефонную книгу.</p>
+                      <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">Лаконичная визитка. 7 премиальных дизайн-тем, мультиязычность, кинематографичные анимации и умное сохранение VCF контакта прямо в телефонную книгу.</p>
                    </div>
 
                    {/* Infinity */}
@@ -725,7 +750,7 @@ export default function LandingPage() {
                         </div>
                         <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] font-semibold shrink-0">3D • Sound</span>
                       </div>
-                      <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Интерактивная 3D-визитка с переворотом, звуком и тактильным откликом. На обороте: блок доверия, прайс и смарт-кнопки. Адаптация под любую нишу.</p>
+                      <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">Интерактивная 3D-визитка с переворотом, звуком и тактильным откликом. На обороте: блок доверия, прайс и смарт-кнопки. Адаптация под любую нишу.</p>
                    </div>
 
                    {/* Twin ID */}
@@ -733,21 +758,21 @@ export default function LandingPage() {
                       <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(229,9,64,0.22)_0%,transparent_60%)] pointer-events-none"></div>
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E50940] to-pink-600 border border-white/25 flex items-center justify-center text-white shadow-[0_0_20px_rgba(229,9,64,0.45)] shrink-0">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E50940] to-[#9e062c] border border-white/25 flex items-center justify-center text-white shadow-[0_0_20px_rgba(229,9,64,0.45)] shrink-0">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
                           </div>
                           <h4 className="text-white font-serif text-lg tracking-wide">Twin ID</h4>
                         </div>
-                        <span className="bg-gradient-to-r from-[#E50940] to-pink-600 text-white text-[10px] px-2.5 py-1 rounded-full font-bold tracking-wider shadow-[0_0_12px_rgba(229,9,64,0.5)] shrink-0">EXCLUSIVE</span>
+                        <span className="bg-[#E50940] text-white text-[10px] px-2.5 py-1 rounded-full font-bold tracking-wider shadow-[0_0_12px_rgba(229,9,64,0.5)] shrink-0">EXCLUSIVE</span>
                       </div>
-                      <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Авторская разработка: Личный и Рабочий профиль в одном. Умная авто-смена стороны по времени суток и секретный Z-жест для вызова Facecontrol.</p>
+                      <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">Авторская разработка: Личный и Рабочий профиль в одном. Умная авто-смена стороны по времени суток и секретный Z-жест для вызова Facecontrol.</p>
                    </div>
                 </div>
               </div>
             </div>
 
             {/* Карточка 02: Smart QR-Меню */}
-            <div className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row-reverse items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} onClick={() => setIsHorecaModalOpen(true)} style={{ transitionDelay: '0.1s' }}>
+            <div id="product-horeca" className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row-reverse items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15 scroll-mt-28" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} onClick={() => setIsHorecaModalOpen(true)} style={{ transitionDelay: '0.1s' }}>
               <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_bottom_left,rgba(0,245,212,0.14)_0%,transparent_55%)] pointer-events-none"></div>
               <div className="glass-content flex-1 z-10 text-left w-full">
                 <div className="flex items-center justify-between mb-4">
@@ -757,7 +782,7 @@ export default function LandingPage() {
                   <span className="font-serif italic text-white/25 text-lg md:text-xl">02</span>
                 </div>
                 <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Smart <span className="italic text-[#00F5D4]">QR-Меню</span></h3>
-                <p className="text-[#8B8D98] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">Интуитивная облачная панель управления. Все заказы, вызовы официанта и запросы счета моментально прилетают в Telegram-группу персонала.</p>
+                <p className="text-[#D4D4D8] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">Интуитивная облачная панель управления. Все заказы, вызовы официанта и запросы счета моментально прилетают в Telegram-группу персонала.</p>
                 
                 <div className="equal-subcards-grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-4 md:gap-5 text-left">
                   <div className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-start border-[#00F5D4]/25">
@@ -771,7 +796,7 @@ export default function LandingPage() {
                        </div>
                        <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] font-medium shrink-0">Instant Call</span>
                      </div>
-                     <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Бесконтактное меню с кинематографичным дизайном. Мультиязычность, умный стоп-лист блюд и плавная навигация. Мгновенный вызов официанта и запрос счета в 1 клик с тактильным откликом.</p>
+                     <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">Бесконтактное меню с кинематографичным дизайном. Мультиязычность, умный стоп-лист блюд и плавная навигация. Мгновенный вызов официанта и запрос счета в 1 клик с тактильным откликом.</p>
                   </div>
 
                   <div className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-start border-[#E50940]/40 bg-gradient-to-br from-[#E50940]/15 via-[#E50940]/5 to-transparent shadow-[0_15px_35px_rgba(229,9,64,0.12),inset_0_1px_0_rgba(255,255,255,0.2)]">
@@ -785,7 +810,7 @@ export default function LandingPage() {
                        </div>
                        <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#E50940]/20 border border-[#E50940]/40 text-[#E50940] font-bold shrink-0">PRO • AI Sell</span>
                      </div>
-                     <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Полноценная автоматизация с умными допродажами (Cross-sell). Гость собирает корзину, оставляет комментарии повару и оформляет заказ. Умный QR-код сам определяет номер столика.</p>
+                     <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">Полноценная автоматизация с умными допродажами (Cross-sell). Гость собирает корзину, оставляет комментарии повару и оформляет заказ. Умный QR-код сам определяет номер столика.</p>
                   </div>
                 </div>
 
@@ -797,47 +822,47 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Карточка 03: Эстетика и Онлайн-запись */}
-            <div className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
-               <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_left,rgba(236,72,153,0.14)_0%,transparent_55%)] pointer-events-none"></div>
+            {/* Карточка 03: Эстетика и Онлайн-запись (деликатный акцент без визуального спора с доминантами) */}
+            <div id="product-beauty" className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15 scroll-mt-28" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
+               <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_left,rgba(229,9,64,0.1)_0%,transparent_55%)] pointer-events-none"></div>
                
                <div className="w-full lg:w-5/12 h-64 sm:h-72 lg:h-auto min-h-[260px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0 group">
                  <img src="beauty-bg.jpg" alt="Beauty Spa" draggable={false} className="absolute inset-0 w-full h-full object-cover opacity-85 scale-105 group-hover:scale-100 transition-transform duration-700" />
                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/25 to-transparent"></div>
-                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3.5 py-2 rounded-xl bg-black/50 backdrop-blur-md border border-white/10 text-[11px] text-white/80">
+                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3.5 py-2 rounded-xl bg-black/55 backdrop-blur-md border border-white/10 text-[11px] text-[#D4D4D8]">
                    <span>Beauty & SPA Ecosystem</span>
-                   <span className="text-pink-400 font-semibold">24/7 Live</span>
+                   <span className="text-pink-300 font-semibold">24/7 Live</span>
                  </div>
                </div>
                
                <div className="glass-content flex-1 z-10 text-left w-full flex flex-col justify-center">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-pink-500/10 border border-pink-400/30 text-pink-400 text-[11px] uppercase tracking-widest font-semibold">
+                  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-pink-300/25 text-pink-300 text-[11px] uppercase tracking-widest font-semibold">
                     Салоны & Мастера
                   </span>
                   <span className="font-serif italic text-white/25 text-lg md:text-xl">03</span>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Эстетика и <span className="italic text-pink-400">Онлайн-запись</span></h3>
-                <p className="text-[#8B8D98] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">Premium визитка-лендинг с умным онлайн-бронированием. Идеальная синхронизация с вашим расписанием без диких ежемесячных комиссий агрегаторам.</p>
+                <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Эстетика и <span className="italic text-pink-300">Онлайн-запись</span></h3>
+                <p className="text-[#D4D4D8] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">Premium визитка-лендинг с умным онлайн-бронированием. Идеальная синхронизация с вашим расписанием без диких ежемесячных комиссий агрегаторам.</p>
                 
                 <div className="equal-subcards-grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-4 md:gap-5 text-left">
-                   <div className="luxury-subcard p-6 h-full min-h-[168px] flex flex-col justify-start border-pink-400/25">
+                   <div className="luxury-subcard p-6 h-full min-h-[168px] flex flex-col justify-start border-white/12">
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500/25 to-pink-500/5 border border-pink-400/40 flex items-center justify-center text-pink-400 shrink-0 shadow-[0_0_15px_rgba(244,114,182,0.2)]">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-400/20 to-white/5 border border-pink-300/30 flex items-center justify-center text-pink-300 shrink-0">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                         </div>
                         <h4 className="text-white text-base md:text-lg font-serif">Smart-бронирование</h4>
                       </div>
-                      <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Live-календарь с умным поиском свободных окон, расчетом времени услуг и автоматическим режимом «предупреждение об отпуске».</p>
+                      <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">Live-календарь с умным поиском свободных окон, расчетом времени услуг и автоматическим режимом «предупреждение об отпуске».</p>
                    </div>
-                   <div className="luxury-subcard p-6 h-full min-h-[168px] flex flex-col justify-start border-pink-400/25">
+                   <div className="luxury-subcard p-6 h-full min-h-[168px] flex flex-col justify-start border-white/12">
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500/25 to-pink-500/5 border border-pink-400/40 flex items-center justify-center text-pink-400 shrink-0 shadow-[0_0_15px_rgba(244,114,182,0.2)]">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-400/20 to-white/5 border border-pink-300/30 flex items-center justify-center text-pink-300 shrink-0">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
                         </div>
                         <h4 className="text-white text-base md:text-lg font-serif">Дизайн & Telegram-забота</h4>
                       </div>
-                      <p className="text-[#8B8D98] text-xs md:text-sm leading-relaxed">Уникальный дизайн, настроенный под ваш бренд. Мгновенные уведомления о записях и заботливая утренняя Telegram-сводка вашего расписания на день за чашкой кофе.</p>
+                      <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">Уникальный дизайн, настроенный под ваш бренд. Мгновенные уведомления о записях и заботливая утренняя Telegram-сводка вашего расписания на день за чашкой кофе.</p>
                    </div>
                 </div>
               </div>
@@ -846,48 +871,47 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {}
         {/* NFC Breloq */}
         <section id="nfc" className="pt-8 pb-24 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10 scroll-mt-24">
           <div className="glass-card p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem overflow-hidden cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
-            <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.14)_0%,transparent_55%)] pointer-events-none"></div>
+            <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.09)_0%,transparent_55%)] pointer-events-none"></div>
 
             <div className="w-full lg:w-5/12 h-64 sm:h-72 lg:h-auto min-h-[260px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0 group">
                <img src="nfc-keychain.jpg" alt="Leather NFC Keychain" draggable={false} className="absolute inset-0 w-full h-full object-cover opacity-85 scale-105 group-hover:scale-100 transition-all duration-700" />
                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/30 to-transparent pointer-events-none"></div>
-               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3.5 py-2 rounded-xl bg-black/55 backdrop-blur-md border border-white/10 text-[11px] text-white/80">
+               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3.5 py-2 rounded-xl bg-black/55 backdrop-blur-md border border-white/10 text-[11px] text-[#D4D4D8]">
                  <span>Handcrafted Leather</span>
-                 <span className="text-amber-500 font-semibold">NFC Inside</span>
+                 <span className="text-amber-400/90 font-semibold">NFC Inside</span>
                </div>
             </div>
             
             <div className="glass-content w-full lg:w-7/12 z-10 text-left flex flex-col justify-center">
               <div className="flex items-center justify-between mb-4">
-                <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-500 text-[11px] uppercase tracking-widest font-semibold">
+                <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-amber-400/25 text-amber-400/90 text-[11px] uppercase tracking-widest font-semibold">
                   Физический носитель
                 </span>
                 <span className="font-serif italic text-white/25 text-lg md:text-xl">04</span>
               </div>
-              <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">NFC-брелоки <br className="hidden lg:block"/>из кожи <span className="italic text-amber-400">Crazy Horse</span></h3>
-              <p className="text-[#8B8D98] text-sm md:text-base leading-relaxed mb-6 max-w-2xl">
+              <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">NFC-брелоки <br className="hidden lg:block"/>из кожи <span className="italic text-amber-400/90">Crazy Horse</span></h3>
+              <p className="text-[#D4D4D8] text-sm md:text-base leading-relaxed mb-6 max-w-2xl">
                 Физическое воплощение вашего цифрового статуса. Я вручную шью премиальные NFC-брелоки из натуральной винтажной кожи для каждой визитки. Одно касание брелоком к смартфону партнера — и ваши контакты уже на его экране.
               </p>
               
-              <ul className="equal-subcards-grid grid-cols-1 auto-rows-fr gap-3.5 mb-0 text-sm text-[#8B8D98] text-left">
-                 <li className="luxury-subcard p-4 h-full min-h-[92px] flex items-center gap-3.5 border-amber-500/20">
-                   <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 text-amber-500">
+              <ul className="equal-subcards-grid grid-cols-1 auto-rows-fr gap-3.5 mb-0 text-sm text-[#D4D4D8] text-left">
+                 <li className="luxury-subcard p-4 h-full min-h-[92px] flex items-center gap-3.5 border-white/12">
+                   <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-400/25 flex items-center justify-center shrink-0 text-amber-400">
                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                    </div>
                    <span className="text-xs md:text-sm leading-relaxed"><strong className="text-white">Полная автономность:</strong> внутри зашит чип, который работает без батареек и его не нужно заряжать.</span>
                  </li>
-                 <li className="luxury-subcard p-4 h-full min-h-[92px] flex items-center gap-3.5 border-amber-500/20">
-                   <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 text-amber-500">
+                 <li className="luxury-subcard p-4 h-full min-h-[92px] flex items-center gap-3.5 border-white/12">
+                   <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-400/25 flex items-center justify-center shrink-0 text-amber-400">
                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.121 14.121L19 19m-7-7l-7-7m7 7L5 19m7-7l7-7"></path></svg>
                    </div>
                    <span className="text-xs md:text-sm leading-relaxed"><strong className="text-white">Ручная работа:</strong> каждый брелок кроится и прошивается вручную седельным швом.</span>
                  </li>
-                 <li className="luxury-subcard p-4 h-full min-h-[92px] flex items-center gap-3.5 border-amber-500/20">
-                   <div className="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 text-amber-500">
+                 <li className="luxury-subcard p-4 h-full min-h-[92px] flex items-center gap-3.5 border-white/12">
+                   <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-400/25 flex items-center justify-center shrink-0 text-amber-400">
                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
                    </div>
                    <span className="text-xs md:text-sm leading-relaxed"><strong className="text-white">Безупречный статус:</strong> винтажная кожа красиво стареет, покрываясь благородной патиной.</span>
@@ -908,25 +932,24 @@ export default function LandingPage() {
             <div className="text-center lg:text-left glass-content">
               <h2 className="text-3xl md:text-4xl font-serif mb-4">Привет, я Елена</h2>
               <p className="text-[#00F5D4] font-medium tracking-widest text-xs uppercase mb-6">IT-Архитектор</p>
-              <p className="text-[#8B8D98] text-sm md:text-base leading-relaxed mb-6 max-w-3xl">
+              <p className="text-[#D4D4D8] text-sm md:text-base leading-relaxed mb-6 max-w-3xl">
                 Я проектирую премиальные IT-экосистемы и занимаюсь кастомной веб-разработкой. Моя главная цель — создавать цифровые продукты, подчеркивающие статус владельца. Продукты, которые не стыдно показать на закрытой встрече или бизнес-ужине. 
                 При этом вы получаете технологии уровня корпораций <strong className="text-white">без вытягивания денег за кабальные подписки</strong>. Управление происходит через интуитивную панель и Telegram. Это логично, дорого выглядит и не требует найма IT-специалиста.
               </p>
               <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <span className="px-4 py-2 bg-white/5 rounded-lg text-xs border border-white/10">✓ Размещение под ключ</span>
-                <span className="px-4 py-2 bg-white/5 rounded-lg text-xs border border-white/10">✓ Индивидуальный дизайн</span>
-                <span className="px-4 py-2 bg-white/5 rounded-lg text-xs border border-white/10">✓ Интуитивная система управления</span>
+                <span className="px-4 py-2 bg-white/5 rounded-lg text-xs text-[#D4D4D8] border border-white/10">✓ Размещение под ключ</span>
+                <span className="px-4 py-2 bg-white/5 rounded-lg text-xs text-[#D4D4D8] border border-white/10">✓ Индивидуальный дизайн</span>
+                <span className="px-4 py-2 bg-white/5 rounded-lg text-xs text-[#D4D4D8] border border-white/10">✓ Интуитивная система управления</span>
               </div>
             </div>
           </div>
         </section>
 
-        {}
         {/* Technology */}
         <section id="technology" className="py-12 px-4 md:px-8 max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-12 md:mb-16 fade-up-elem">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Технологии <span className="italic text-[#E50940]">Превосходства</span></h2>
-            <p className="text-[#8B8D98] text-base md:text-lg">Мы не используем конструкторы вроде Tilda. Только чистый код и передовые архитектуры.</p>
+            <p className="text-[#D4D4D8] text-base md:text-lg">Мы не используем конструкторы вроде Tilda. Только чистый код и передовые архитектуры.</p>
           </div>
 
           <div className="equal-subcards-grid grid-cols-1 lg:grid-cols-3 auto-rows-fr gap-4 md:gap-6">
@@ -936,7 +959,7 @@ export default function LandingPage() {
                   <svg className="w-8 h-8 text-white group-hover:text-[#E50940] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                 </div>
                 <h4 className="text-xl font-medium mb-3">Технология PWA</h4>
-                <p className="text-[#8B8D98] text-sm leading-relaxed">Без App Store и Google Play. Иконка вашего бизнеса устанавливается за 1 секунду по прямой ссылке прямо в телефон.</p>
+                <p className="text-[#D4D4D8] text-sm leading-relaxed">Без App Store и Google Play. Иконка вашего бизнеса устанавливается за 1 секунду по прямой ссылке прямо в телефон.</p>
               </div>
             </div>
 
@@ -946,7 +969,7 @@ export default function LandingPage() {
                   <svg className="w-10 h-10 text-[#00F5D4] absolute bottom-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                 </div>
                 <h4 className="text-xl font-medium mb-3">100/100 PageSpeed</h4>
-                <p className="text-[#8B8D98] text-sm leading-relaxed">Чистая архитектура. Ваш цифровой продукт загружается и работает быстрее, чем клиент успеет моргнуть.</p>
+                <p className="text-[#D4D4D8] text-sm leading-relaxed">Чистая архитектура. Ваш цифровой продукт загружается и работает быстрее, чем клиент успеет моргнуть.</p>
               </div>
             </div>
 
@@ -956,7 +979,7 @@ export default function LandingPage() {
                   <svg className="w-8 h-8 text-white group-hover:text-gray-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                 </div>
                 <h4 className="text-xl font-medium mb-3">Размещение под ключ</h4>
-                <p className="text-[#8B8D98] text-sm leading-relaxed">Предоставляем готовый продукт на нашем поддомене или помогаем с интеграцией вашего премиального домена.</p>
+                <p className="text-[#D4D4D8] text-sm leading-relaxed">Предоставляем готовый продукт на нашем поддомене или помогаем с интеграцией вашего премиального домена.</p>
               </div>
             </div>
           </div>
@@ -966,18 +989,18 @@ export default function LandingPage() {
         <section id="investments" className="py-24 md:py-32 px-4 md:px-8 relative z-10 overflow-hidden">
           <div className="max-w-7xl mx-auto text-center mb-12 md:mb-16 fade-up-elem">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Инвестиции в <span className="italic text-[#00F5D4]">Капитал Бренда</span></h2>
-            <p className="text-[#8B8D98] text-base md:text-lg max-w-xl mx-auto">Разовая оплата за разработку. Никаких скрытых ежемесячных платежей.</p>
+            <p className="text-[#D4D4D8] text-base md:text-lg max-w-xl mx-auto">Разовая оплата за разработку. Никаких скрытых ежемесячных платежей.</p>
           </div>
 
           <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-6">
             
             <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
               <div className="glass-content h-full flex flex-col">
-                <span className="text-white/50 text-xs font-semibold uppercase tracking-wider">PWA Визитка</span>
+                <span className="text-[#A1A1AA] text-xs font-semibold uppercase tracking-wider">PWA Визитка</span>
                 <h3 className="text-2xl font-serif mt-2 mb-4">Classic</h3>
                 <div className="mb-6"><span className="text-3xl font-serif text-white">от $150</span></div>
                 
-                <ul className="space-y-3 mb-6 text-sm text-[#8B8D98] flex-1">
+                <ul className="space-y-3 mb-6 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>7 премиальных дизайн-концептов</span></li>
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Встроенная мультиязычность</span></li>
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Кинематографичные анимации</span></li>
@@ -994,7 +1017,7 @@ export default function LandingPage() {
                 <h3 className="text-2xl font-serif mt-2 mb-4">Infinity</h3>
                 <div className="mb-6"><span className="text-3xl font-serif text-[#00F5D4]">от $300</span></div>
                 
-                <ul className="space-y-3 mb-6 text-sm text-[#8B8D98] flex-1">
+                <ul className="space-y-3 mb-6 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Интерактивная 3D-архитектура (2 стороны)</span></li>
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Вау-эффекты: звук переворота и вибрация</span></li>
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Блок доверия (услуги и прайс на обороте)</span></li>
@@ -1012,7 +1035,7 @@ export default function LandingPage() {
                 <h3 className="text-2xl font-serif mt-2 mb-4">Twin ID</h3>
                 <div className="mb-6"><span className="text-3xl font-serif text-white">от $500</span></div>
                 
-                <ul className="space-y-3 mb-6 text-sm text-[#8B8D98] flex-1">
+                <ul className="space-y-3 mb-6 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Два независимых профиля в одном приложении</span></li>
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Умная автосмена стороны по времени суток</span></li>
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Секретный Z-жест владельца для Facecontrol</span></li>
@@ -1029,16 +1052,16 @@ export default function LandingPage() {
                 <h3 className="text-2xl md:text-3xl font-serif mb-4">Smart HoReCa</h3>
                 <div className="flex flex-col gap-2 mb-6 text-left max-w-xs mx-auto w-full">
                   <div className="flex justify-between items-center border-b border-white/10 pb-2">
-                    <span className="text-sm text-gray-300">Классика</span>
+                    <span className="text-sm text-[#D4D4D8]">Классика</span>
                     <span className="font-serif text-xl">от $400</span>
                   </div>
                   <div className="flex justify-between items-center pt-1">
-                    <span className="text-sm text-gray-300">Флагман</span>
+                    <span className="text-sm text-[#D4D4D8]">Флагман</span>
                     <span className="font-serif text-xl text-[#00F5D4]">от $800</span>
                   </div>
                 </div>
                 
-                <ul className="space-y-3 mb-6 text-sm text-[#8B8D98] flex-1 text-left">
+                <ul className="space-y-3 mb-6 text-sm text-[#D4D4D8] flex-1 text-left">
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Интеллектуальные допродажи (Cross-sell)</span></li>
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Сборка заказов с комментариями повару</span></li>
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Умная привязка к столику через QR-код</span></li>
@@ -1052,44 +1075,43 @@ export default function LandingPage() {
 
             <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.4s' }}>
               <div className="glass-content h-full flex flex-col text-center">
-                <span className="text-pink-400 text-xs font-semibold uppercase tracking-wider mb-2">Салоны и Мастера</span>
+                <span className="text-[#A1A1AA] text-xs font-semibold uppercase tracking-wider mb-2">Салоны и Мастера</span>
                 <h3 className="text-2xl md:text-3xl font-serif mb-4">Beauty & SPA</h3>
                 <div className="mb-4"><span className="text-3xl font-serif">от $450</span></div>
-                <p className="text-sm text-[#8B8D98] mb-4">Premium PWA-лендинг с онлайн-бронированием. Идеальный инструмент без комиссий.</p>
+                <p className="text-sm text-[#D4D4D8] mb-4">Premium PWA-лендинг с онлайн-бронированием. Идеальный инструмент без комиссий.</p>
                 
-                <ul className="space-y-3 mb-6 text-sm text-[#8B8D98] flex-1 text-left max-w-sm mx-auto">
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-pink-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Live-поиск свободных окон и умный режим «Отпуск»</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-pink-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Сборка проекта в 1 из 6 уникальных визуальных тем</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-pink-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Мультиязычность для клиентов (RU, EN, AM)</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-pink-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Заботливая утренняя Telegram-сводка вашего расписания на день за чашкой кофе</span></li>
+                <ul className="space-y-3 mb-6 text-sm text-[#D4D4D8] flex-1 text-left max-w-sm mx-auto">
+                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Live-поиск свободных окон и умный режим «Отпуск»</span></li>
+                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Сборка проекта в 1 из 6 уникальных визуальных тем</span></li>
+                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Мультиязычность для клиентов (RU, EN, AM)</span></li>
+                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Заботливая утренняя Telegram-сводка вашего расписания на день за чашкой кофе</span></li>
                 </ul>
 
-                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full sm:w-2/3 mx-auto py-3 rounded-xl border border-pink-400/30 hover:bg-pink-400/10 transition-colors text-sm font-semibold">Обсудить проект</button>
+                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full sm:w-2/3 mx-auto py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Обсудить проект</button>
               </div>
             </div>
 
             <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.5s' }}>
               <div className="glass-content h-full flex flex-col text-center">
-                <span className="text-amber-500 text-xs font-semibold uppercase tracking-wider mb-2">Физический носитель</span>
+                <span className="text-[#A1A1AA] text-xs font-semibold uppercase tracking-wider mb-2">Физический носитель</span>
                 <h3 className="text-2xl md:text-3xl font-serif mb-4">NFC Брелок</h3>
                 <div className="mb-4"><span className="text-3xl font-serif text-white">от $60</span></div>
-                <p className="text-sm text-[#8B8D98] mb-4">Кожа Crazy Horse. Идеальное дополнение к вашей цифровой визитке.</p>
+                <p className="text-sm text-[#D4D4D8] mb-4">Кожа Crazy Horse. Идеальное дополнение к вашей цифровой визитке.</p>
                 
-                <ul className="space-y-3 mb-6 text-sm text-[#8B8D98] flex-1 text-left max-w-sm mx-auto w-full">
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Одно касание:</strong> передача контактов без проводов</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Вечный чип:</strong> работает без батареек и зарядок</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Ручная работа:</strong> каждый экземпляр шьется индивидуально</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong>Статусность:</strong> винтажная кожа благородно стареет</span></li>
+                <ul className="space-y-3 mb-6 text-sm text-[#D4D4D8] flex-1 text-left max-w-sm mx-auto w-full">
+                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong className="text-white">Одно касание:</strong> передача контактов без проводов</span></li>
+                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong className="text-white">Вечный чип:</strong> работает без батареек и зарядок</span></li>
+                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong className="text-white">Ручная работа:</strong> каждый экземпляр шьется индивидуально</span></li>
+                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong className="text-white">Статусность:</strong> винтажная кожа благородно стареет</span></li>
                 </ul>
 
-                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full sm:w-2/3 mx-auto py-3 rounded-xl border border-amber-500/30 hover:bg-amber-500/10 transition-colors text-sm font-semibold">Заказать</button>
+                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full sm:w-2/3 mx-auto py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Заказать</button>
               </div>
             </div>
 
           </div>
         </section>
 
-        {}
         {/* FAQ */}
         <section id="faq" className="py-24 px-4 md:px-8 max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12 fade-up-elem">
@@ -1101,21 +1123,21 @@ export default function LandingPage() {
                  Есть ли ежемесячная абонентская плата?
                  <span className="text-2xl group-open:rotate-45 transition-transform text-[#00F5D4]">+</span>
                </summary>
-               <p className="text-[#8B8D98] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">Нет. Мой главный принцип — вы платите один раз за разработку и настройку продукта под ключ. Вы не подсаживаетесь на иглу сервисов по подписке. Продукт полностью ваш навсегда.</p>
+               <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">Нет. Мой главный принцип — вы платите один раз за разработку и настройку продукта под ключ. Вы не подсаживаетесь на иглу сервисов по подписке. Продукт полностью ваш навсегда.</p>
              </details>
              <details className="glass-card p-6 cursor-pointer group interactive-elem">
                <summary className="font-medium text-lg outline-none flex justify-between items-center">
                  Кому принадлежит сайт и база клиентов?
                  <span className="text-2xl group-open:rotate-45 transition-transform text-[#00F5D4]">+</span>
                </summary>
-               <p className="text-[#8B8D98] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">Полностью вам. Приложение разворачивается на надежном хостинге, а все данные и заказы поступают в вашу интуитивную систему управления и Telegram, доступ к которым есть только у вас.</p>
+               <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">Полностью вам. Приложение разворачивается на надежном хостинге, а все данные и заказы поступают в вашу интуитивную систему управления и Telegram, доступ к которым есть только у вас.</p>
              </details>
              <details className="glass-card p-6 cursor-pointer group interactive-elem">
                <summary className="font-medium text-lg outline-none flex justify-between items-center">
                  Как мне менять цены или добавлять услуги?
                  <span className="text-2xl group-open:rotate-45 transition-transform text-[#00F5D4]">+</span>
                </summary>
-               <p className="text-[#8B8D98] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">Через вашу персональную облачную панель управления. Вы заходите в неё с телефона или компьютера, меняете цифру, и она моментально обновляется в приложении. Никакого программирования.</p>
+               <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">Через вашу персональную облачную панель управления. Вы заходите в неё с телефона или компьютера, меняете цифру, и она моментально обновляется в приложении. Никакого программирования.</p>
              </details>
           </div>
         </section>
@@ -1133,16 +1155,16 @@ export default function LandingPage() {
             <input 
               type="text" 
               placeholder="Ваш Telegram или Телефон" 
-              className="w-full min-h-[44px] bg-[#121212] border border-white/10 rounded-full py-3 md:py-4 pl-6 pr-28 md:pr-32 text-sm md:text-base text-white placeholder-white/30 focus:outline-none focus:border-[#00F5D4]/50 transition-colors"
+              className="w-full min-h-[44px] bg-[#121212] border border-white/10 rounded-full py-3 md:py-4 pl-6 pr-28 md:pr-32 text-sm md:text-base text-white placeholder-white/40 focus:outline-none focus:border-[#00F5D4]/50 transition-colors"
             />
             <button className="absolute right-1 top-1 bottom-1 bg-white text-black px-4 md:px-6 rounded-full font-medium text-xs md:text-sm hover:bg-gray-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.2)]">
               Отправить
             </button>
           </div>
-          <p className="text-xs text-[#8B8D98] mt-4 md:mt-6">Или напишите мне напрямую в Telegram для быстрой связи.</p>
+          <p className="text-xs text-[#D4D4D8] mt-4 md:mt-6">Или напишите мне напрямую в Telegram для быстрой связи.</p>
         </div>
         
-        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-[#8B8D98] max-w-7xl w-full mx-auto pt-8 md:pb-4 gap-4 md:gap-0">
+        <div className="flex flex-col md:flex-row justify-between items-center text-xs text-[#A1A1AA] max-w-7xl w-full mx-auto pt-8 md:pb-4 gap-4 md:gap-0">
           <span>&copy; 2026 AppSeaPro. All rights reserved.</span>
           <div className="flex gap-4">
             <a href="#" className="hover:text-white transition-colors interactive-elem cursor-pointer">Telegram</a>
@@ -1151,7 +1173,6 @@ export default function LandingPage() {
         </div>
       </footer>
 
-      {}
       {/* Sandbox Modal */}
       {isHorecaModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 fade-up-elem visible !overflow-y-auto overscroll-contain" style={{ transitionDuration: '0.3s' }}>
@@ -1165,23 +1186,23 @@ export default function LandingPage() {
                 .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
               `}</style>
 
-              <button onClick={() => setIsHorecaModalOpen(false)} className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors interactive-elem p-2 z-20 bg-black/50 rounded-full">
+              <button onClick={() => setIsHorecaModalOpen(false)} className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors interactive-elem p-2 z-20 bg-black/50 rounded-full">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
               </button>
               
               <div className="text-center mb-10 mt-2">
                 <span className="text-[#00F5D4] text-xs uppercase tracking-widest font-semibold mb-2 block">Smart HoReCa</span>
                 <h3 className="text-3xl md:text-4xl font-serif mb-4">Цифровизация ресторанов без абонплат</h3>
-                <p className="text-[#8B8D98] text-sm md:text-base max-w-2xl mx-auto">Интуитивная облачная панель управления. Вы меняете цены в панели — они меняются в приложении. Гость делает заказ — официант видит его в Telegram.</p>
+                <p className="text-[#D4D4D8] text-sm md:text-base max-w-2xl mx-auto">Интуитивная облачная панель управления. Вы меняете цены в панели — они меняются в приложении. Гость делает заказ — официант видит его в Telegram.</p>
               </div>
 
               <div className="border-t border-white/10 pt-10 pb-6">
                 <h4 className="text-2xl font-serif text-center mb-2">Интерактивная Песочница</h4>
-                <p className="text-center text-sm text-[#8B8D98] mb-8">Умные допродажи и корзина: попробуйте сами поменять цену, добавить блюдо и оформить заказ.</p>
+                <p className="text-center text-sm text-[#D4D4D8] mb-8">Умные допродажи и корзина: попробуйте сами поменять цену, добавить блюдо и оформить заказ.</p>
                 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 bg-[#080808] rounded-3xl p-6 md:p-8 border border-white/5 relative">
                   
-                  <div className="hidden lg:block absolute top-1/2 left-4 right-4 h-0.5 bg-gradient-to-r from-[#0F9D58]/20 via-[#00F5D4] to-[#2AABEE] z-0 opacity-40"></div>
+                  <div className="hidden lg:block absolute top-1/2 left-4 right-4 h-0.5 bg-gradient-to-r from-[#00F5D4]/20 via-[#00F5D4] to-white/20 z-0 opacity-40"></div>
 
                   <div className="flex-1 border border-[#00F5D4]/30 rounded-[2rem] bg-[#0A0A0A] text-white overflow-hidden relative z-10 shadow-[0_0_30px_rgba(0,245,212,0.1)] flex flex-col mx-auto w-full max-w-sm">
                       <div className="bg-black/50 backdrop-blur-md py-3 px-4 flex items-center gap-2 border-b border-white/10">
@@ -1189,13 +1210,13 @@ export default function LandingPage() {
                         <span className="text-xs font-bold text-white tracking-wider">ПАНЕЛЬ УПРАВЛЕНИЯ</span>
                       </div>
                       <div className="p-5 flex-1 bg-[#080808]">
-                          <p className="text-[11px] text-[#00F5D4]/70 mb-4 font-medium uppercase tracking-wider">Управление ценами</p>
+                          <p className="text-[11px] text-[#00F5D4] mb-4 font-medium uppercase tracking-wider">Управление ценами</p>
                           <div className="space-y-3">
                             {menuItems.map(item => (
                                <div key={item.id} className="bg-white/5 p-3 rounded-xl border border-white/10 shadow-sm transition-all hover:border-[#00F5D4]/30">
                                  <div className="text-xs font-semibold text-white mb-2">{item.name}</div>
                                  <div className="flex items-center gap-2">
-                                    <span className="text-xs text-white/50">Цена (₽):</span>
+                                    <span className="text-xs text-[#D4D4D8]">Цена (₽):</span>
                                     <input 
                                       type="number" 
                                       value={item.price} 
@@ -1211,17 +1232,17 @@ export default function LandingPage() {
 
                   <div className="flex-1 border border-white/10 rounded-[2rem] bg-black overflow-hidden relative z-10 shadow-2xl flex flex-col mx-auto w-full max-w-sm">
                       <div className="bg-[#111] py-2 px-4 flex justify-between items-center border-b border-white/5">
-                        <span className="text-[10px] font-semibold text-white/50 tracking-wider">ЭКРАН ГОСТЯ (ТЕЛЕФОН)</span>
+                        <span className="text-[10px] font-semibold text-[#A1A1AA] tracking-wider">ЭКРАН ГОСТЯ (ТЕЛЕФОН)</span>
                         <div className="flex gap-1.5"><div className="w-2 h-2 rounded-full bg-white/20"></div><div className="w-2 h-2 rounded-full bg-white/20"></div><div className="w-2 h-2 rounded-full bg-white/20"></div></div>
                       </div>
                       <div className="p-5 space-y-4 flex-1">
                           <h5 className="text-lg font-serif font-medium mb-4">Меню ресторана</h5>
                            {menuItems.map(item => (
                              <div key={item.id} className="flex gap-4 items-center bg-white/5 p-3 rounded-xl cursor-pointer hover:bg-white/10 transition group interactive-elem" onClick={() => handleAddToCart(item)}>
-                                <div className="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg shrink-0 flex items-center justify-center text-white/20 text-xs">Фото</div>
+                                <div className="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg shrink-0 flex items-center justify-center text-white/30 text-xs">Фото</div>
                                 <div className="flex-1">
                                   <div className="text-sm font-medium mb-1 group-hover:text-[#00F5D4] transition-colors leading-tight">{item.name}</div>
-                                  <div className="text-[10px] text-white/50 mb-2">{item.desc}</div>
+                                  <div className="text-[10px] text-[#D4D4D8] mb-2">{item.desc}</div>
                                   <div className="text-sm font-bold text-[#00F5D4]">{item.price} ₽</div>
                                 </div>
                                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white shrink-0 group-hover:bg-[#00F5D4] group-hover:text-black transition-colors font-bold">+</div>
@@ -1230,7 +1251,7 @@ export default function LandingPage() {
                       </div>
                       <div className="p-4 bg-gradient-to-t from-black to-transparent pt-10 border-t border-white/5">
                         <div className="flex justify-between items-center mb-3 px-1">
-                          <span className="text-xs text-gray-400">В корзине: {sandboxCart.length} шт.</span>
+                          <span className="text-xs text-[#D4D4D8]">В корзине: {sandboxCart.length} шт.</span>
                           <span className="text-sm font-bold">{sandboxCart.reduce((s, i) => s + i.price, 0)} ₽</span>
                         </div>
                         <button 
@@ -1242,27 +1263,27 @@ export default function LandingPage() {
                       </div>
                   </div>
 
-                  <div className="flex-1 border border-[#2AABEE]/30 rounded-[2rem] bg-[#0e1621] overflow-hidden relative z-10 shadow-[0_0_40px_rgba(42,171,238,0.15)] flex flex-col mx-auto w-full max-w-sm">
+                  <div className="flex-1 border border-white/15 rounded-[2rem] bg-[#0e1621] overflow-hidden relative z-10 shadow-2xl flex flex-col mx-auto w-full max-w-sm">
                       <div className="bg-[#17212b] py-3 px-4 flex items-center gap-3 border-b border-black">
                         <svg className="w-6 h-6 text-[#2AABEE]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.833.94z"/></svg>
                         <div className="flex-1">
                           <div className="text-sm font-semibold text-white">AppSeaPro Заказы</div>
-                          <div className="text-[10px] text-[#2AABEE]">Бот (ЭКРАН ПЕРСОНАЛА)</div>
+                          <div className="text-[10px] text-[#D4D4D8]">Бот (ЭКРАН ПЕРСОНАЛА)</div>
                         </div>
                       </div>
-                      <div className="p-4 flex-1 flex flex-col justify-end bg-[#0e1621] bg-opacity-90 overflow-y-auto" style={{ backgroundImage: 'radial-gradient(circle at center, rgba(42,171,238,0.05) 0%, transparent 70%)' }}>
+                      <div className="p-4 flex-1 flex flex-col justify-end bg-[#0e1621] bg-opacity-90 overflow-y-auto" style={{ backgroundImage: 'radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%)' }}>
                           
                           {tgMessages.length === 0 ? (
-                            <div className="text-center text-gray-500 text-xs my-auto">
+                            <div className="text-center text-[#A1A1AA] text-xs my-auto">
                               Оформите заказ в приложении,<br/>чтобы он прилетел сюда
                             </div>
                           ) : (
                             <div className="space-y-4 flex flex-col-reverse">
                               {tgMessages.map(msg => (
-                                <div key={msg.id} className="bg-[#182533] rounded-2xl rounded-tl-sm p-4 w-[85%] border border-[#2b5278] shadow-lg relative ml-2 fade-up-elem visible">
-                                    <div className="text-[#2AABEE] text-xs font-bold mb-2">AppSeaPro Bot</div>
+                                <div key={msg.id} className="bg-[#182533] rounded-2xl rounded-tl-sm p-4 w-[85%] border border-white/10 shadow-lg relative ml-2 fade-up-elem visible">
+                                    <div className="text-[#00F5D4] text-xs font-bold mb-2">AppSeaPro Bot</div>
                                     <div className="text-white text-sm font-medium mb-1">🛎 Новый заказ!</div>
-                                    <div className="text-white/80 text-sm mb-3">📍 Стол: <span className="font-bold text-white">№4</span></div>
+                                    <div className="text-[#D4D4D8] text-sm mb-3">📍 Стол: <span className="font-bold text-white">№4</span></div>
                                     <div className="bg-black/30 rounded-lg p-2 text-xs text-white/90 mb-3 border border-white/5 space-y-1">
                                       {msg.items.reduce((acc, item) => {
                                         const found = acc.find(i => i.id === item.id);
