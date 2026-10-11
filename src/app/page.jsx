@@ -15,6 +15,9 @@ const styles = `
     overscroll-behavior-y: none; /* Отключаем обновление страницы свайпом вниз */
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
   }
 
   body {
@@ -28,6 +31,28 @@ const styles = `
     padding: 0;
     cursor: none; /* Скрываем стандартный курсор на ПК */
     font-family: 'Inter', sans-serif;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  *, *::before, *::after {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  input, textarea {
+    -webkit-user-select: text !important;
+    user-select: text !important;
+    -webkit-touch-callout: default !important;
+  }
+
+  img {
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-touch-callout: none;
+    pointer-events: none;
   }
 
   .font-serif {
@@ -45,8 +70,7 @@ const styles = `
   }
 
   ::selection {
-    background: #E50940;
-    color: #fff;
+    background: transparent;
   }
 
   /* Кастомный курсор */
@@ -95,6 +119,7 @@ const styles = `
   /* Продвинутый Glassmorphism Карточек */
   .glass-card {
     background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+    background-clip: padding-box;
     backdrop-filter: blur(28px) saturate(140%);
     -webkit-backdrop-filter: blur(28px) saturate(140%);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -102,6 +127,7 @@ const styles = `
     border-radius: 28px;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
   }
 
@@ -119,11 +145,13 @@ const styles = `
   /* Премиальные подкарточки в едином бутиковом стиле */
   .luxury-subcard {
     background: linear-gradient(160deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.015) 100%);
+    background-clip: padding-box;
     border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
     height: 100%;
     transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
   }
@@ -333,7 +361,7 @@ export default function LandingPage() {
     setIsCardFlipped(prev => !prev);
   };
 
-  // Старт страницы строго с самого верха + фиксация масштаба
+  // Старт страницы строго с самого верха + фиксация масштаба + защита от копирования и скачивания фото
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
@@ -354,12 +382,26 @@ export default function LandingPage() {
       e.preventDefault();
     };
 
+    const preventContextAndCopy = (e) => {
+      const tag = e.target?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      e.preventDefault();
+    };
+
     document.addEventListener('gesturestart', preventGestureZoom, { passive: false });
     document.addEventListener('gesturechange', preventGestureZoom, { passive: false });
+    document.addEventListener('contextmenu', preventContextAndCopy);
+    document.addEventListener('copy', preventContextAndCopy);
+    document.addEventListener('cut', preventContextAndCopy);
+    document.addEventListener('dragstart', preventContextAndCopy);
 
     return () => {
       document.removeEventListener('gesturestart', preventGestureZoom);
       document.removeEventListener('gesturechange', preventGestureZoom);
+      document.removeEventListener('contextmenu', preventContextAndCopy);
+      document.removeEventListener('copy', preventContextAndCopy);
+      document.removeEventListener('cut', preventContextAndCopy);
+      document.removeEventListener('dragstart', preventContextAndCopy);
     };
   }, []);
 
@@ -480,7 +522,13 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="antialiased min-h-screen text-[#F3F4F6] bg-[#050505] selection:bg-[#E50940] selection:text-white w-full">
+    <div
+      className="antialiased min-h-screen text-[#F3F4F6] bg-[#050505] select-none w-full"
+      onContextMenu={(e) => {
+        const tag = e.target?.tagName;
+        if (tag !== 'INPUT' && tag !== 'TEXTAREA') e.preventDefault();
+      }}
+    >
       <style>{styles}</style>
 
       <div className={`custom-cursor ${isHovering ? 'hover' : ''}`} style={{ left: cursorPos.x, top: cursorPos.y }} />
@@ -530,34 +578,30 @@ export default function LandingPage() {
             <a
               href="#showroom"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-between px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
+              className="flex items-center px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
             >
               <span>Продукты</span>
-              <span className="text-[#E50940] text-xs">01</span>
             </a>
             <a
               href="#nfc"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-between px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
+              className="flex items-center px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
             >
               <span>NFC Брелоки</span>
-              <span className="text-amber-500 text-xs">02</span>
             </a>
             <a
               href="#about"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-between px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
+              className="flex items-center px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
             >
               <span>Подход</span>
-              <span className="text-[#00F5D4] text-xs">03</span>
             </a>
             <a
               href="#investments"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-between px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
+              className="flex items-center px-4 py-3 rounded-xl text-[#F3F4F6] hover:bg-white/5 active:bg-white/10 transition-colors"
             >
               <span>Инвестиции</span>
-              <span className="text-pink-400 text-xs">04</span>
             </a>
           </nav>
         </div>
@@ -571,7 +615,7 @@ export default function LandingPage() {
             <p className="text-[#00F5D4] text-xs md:text-sm font-medium tracking-widest uppercase mb-4 md:mb-6 fade-up-elem" style={{ transitionDelay: '0s' }}>
               Digital Boutique
             </p>
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-serif font-medium leading-tight mb-6 md:mb-8 fade-up-elem" style={{ transitionDelay: '0.1s' }}>
+            <h1 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-serif font-medium leading-tight mb-6 md:mb-8 fade-up-elem" style={{ transitionDelay: '0.1s' }}>
               Ваш цифровой <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#E50940] to-pink-500">статус</span>.
             </h1>
             <p className="text-[#8B8D98] text-base md:text-xl max-w-2xl mx-auto mb-8 md:mb-12 font-light fade-up-elem px-2" style={{ transitionDelay: '0.2s' }}>
@@ -613,6 +657,7 @@ export default function LandingPage() {
                     <img
                       src="elena-photo.jpg"
                       alt="Елена — IT-Архитектор"
+                      draggable={false}
                       className="absolute inset-0 w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/25 to-transparent"></div>
@@ -633,17 +678,17 @@ export default function LandingPage() {
         </section>
 
         {/* Showroom */}
-        <section id="showroom" className="py-24 md:py-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
-          <div className="mb-12 md:mb-24 fade-up-elem text-center lg:text-left">
+        <section id="showroom" className="pt-24 md:pt-32 pb-0 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
+          <div className="mb-12 md:mb-24 fade-up-elem text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Выберите свое <span className="italic text-[#00F5D4]">Решение</span></h2>
-            <p className="text-[#8B8D98] text-base md:text-lg max-w-lg mx-auto lg:mx-0">Безупречная эстетика и функциональность в каждом продукте. Разработано специально под вашу нишу.</p>
+            <p className="text-[#8B8D98] text-base md:text-lg max-w-lg mx-auto">Безупречная эстетика и функциональность в каждом продукте. Разработано специально под вашу нишу.</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             {/* Карточка 01: Цифровые PWA-визитки */}
             <div className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
-              <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#E50940]/15 rounded-full blur-[90px] pointer-events-none"></div>
+              <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(229,9,64,0.14)_0%,transparent_55%)] pointer-events-none"></div>
               <div className="glass-content flex-1 z-10 text-left w-full">
                 <div className="flex items-center justify-between mb-4">
                   <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-[#E50940]/10 border border-[#E50940]/30 text-[#E50940] text-[11px] uppercase tracking-widest font-semibold">
@@ -657,7 +702,7 @@ export default function LandingPage() {
                 <div className="equal-subcards-grid grid-cols-1 lg:grid-cols-3 auto-rows-fr gap-4 md:gap-5 text-left">
                    {/* Classic */}
                    <div className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-start group">
-                      <div className="absolute -top-12 -right-12 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+                      <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08)_0%,transparent_60%)] pointer-events-none"></div>
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 flex items-center justify-center text-white shadow-inner shrink-0">
@@ -672,7 +717,7 @@ export default function LandingPage() {
 
                    {/* Infinity */}
                    <div className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-start group border-[#00F5D4]/25">
-                      <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#00F5D4]/15 rounded-full blur-2xl pointer-events-none"></div>
+                      <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(0,245,212,0.14)_0%,transparent_60%)] pointer-events-none"></div>
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.2)] shrink-0">
@@ -687,7 +732,7 @@ export default function LandingPage() {
 
                    {/* Twin ID */}
                    <div className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-start group border-[#E50940]/40 bg-gradient-to-br from-[#E50940]/15 via-[#E50940]/5 to-transparent shadow-[0_15px_35px_rgba(229,9,64,0.15),inset_0_1px_0_rgba(255,255,255,0.22)]">
-                      <div className="absolute -top-12 -right-12 w-40 h-40 bg-[#E50940]/25 rounded-full blur-2xl pointer-events-none"></div>
+                      <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(229,9,64,0.22)_0%,transparent_60%)] pointer-events-none"></div>
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E50940] to-pink-600 border border-white/25 flex items-center justify-center text-white shadow-[0_0_20px_rgba(229,9,64,0.45)] shrink-0">
@@ -705,7 +750,7 @@ export default function LandingPage() {
 
             {/* Карточка 02: Smart QR-Меню */}
             <div className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row-reverse items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} onClick={() => setIsHorecaModalOpen(true)} style={{ transitionDelay: '0.1s' }}>
-              <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[#00F5D4]/15 rounded-full blur-[90px] pointer-events-none"></div>
+              <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_bottom_left,rgba(0,245,212,0.14)_0%,transparent_55%)] pointer-events-none"></div>
               <div className="glass-content flex-1 z-10 text-left w-full">
                 <div className="flex items-center justify-between mb-4">
                   <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] text-[11px] uppercase tracking-widest font-semibold">
@@ -718,7 +763,7 @@ export default function LandingPage() {
                 
                 <div className="equal-subcards-grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-4 md:gap-5 text-left">
                   <div className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-start border-[#00F5D4]/25">
-                     <div className="absolute -top-12 -right-12 w-32 h-32 bg-[#00F5D4]/15 rounded-full blur-2xl pointer-events-none"></div>
+                     <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(0,245,212,0.14)_0%,transparent_60%)] pointer-events-none"></div>
                      <div className="flex items-center justify-between mb-4">
                        <div className="flex items-center gap-3">
                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.15)] shrink-0">
@@ -732,7 +777,7 @@ export default function LandingPage() {
                   </div>
 
                   <div className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-start border-[#E50940]/40 bg-gradient-to-br from-[#E50940]/15 via-[#E50940]/5 to-transparent shadow-[0_15px_35px_rgba(229,9,64,0.12),inset_0_1px_0_rgba(255,255,255,0.2)]">
-                     <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#E50940]/20 rounded-full blur-2xl pointer-events-none"></div>
+                     <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(229,9,64,0.2)_0%,transparent_60%)] pointer-events-none"></div>
                      <div className="flex items-center justify-between mb-4">
                        <div className="flex items-center gap-3">
                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E50940]/30 to-[#E50940]/10 border border-[#E50940]/50 flex items-center justify-center text-[#E50940] shadow-[0_0_18px_rgba(229,9,64,0.3)] shrink-0">
@@ -756,10 +801,10 @@ export default function LandingPage() {
 
             {/* Карточка 03: Эстетика и Онлайн-запись */}
             <div className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
-               <div className="absolute -top-24 -left-24 w-72 h-72 bg-pink-500/15 rounded-full blur-[90px] pointer-events-none"></div>
+               <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_left,rgba(236,72,153,0.14)_0%,transparent_55%)] pointer-events-none"></div>
                
-               <div className="w-full lg:w-5/12 h-64 sm:h-72 lg:h-auto min-h-[260px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0">
-                 <img src="beauty-bg.jpg" alt="Beauty Spa" className="absolute inset-0 w-full h-full object-cover opacity-85 scale-105 hover:scale-100 transition-transform duration-700" />
+               <div className="w-full lg:w-5/12 h-64 sm:h-72 lg:h-auto min-h-[260px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0 group">
+                 <img src="beauty-bg.jpg" alt="Beauty Spa" draggable={false} className="absolute inset-0 w-full h-full object-cover opacity-85 scale-105 group-hover:scale-100 transition-transform duration-700" />
                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/25 to-transparent"></div>
                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3.5 py-2 rounded-xl bg-black/50 backdrop-blur-md border border-white/10 text-[11px] text-white/80">
                    <span>Beauty & SPA Ecosystem</span>
@@ -804,12 +849,12 @@ export default function LandingPage() {
         </section>
 
         {/* NFC Breloq */}
-        <section id="nfc" className="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
+        <section id="nfc" className="pt-8 pb-24 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10 scroll-mt-24">
           <div className="glass-card p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem overflow-hidden cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
-            <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-amber-500/15 rounded-full blur-[90px] pointer-events-none"></div>
+            <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.14)_0%,transparent_55%)] pointer-events-none"></div>
 
-            <div className="w-full lg:w-5/12 h-64 sm:h-72 lg:h-auto min-h-[260px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0">
-               <img src="nfc-keychain.jpg" alt="Leather NFC Keychain" className="absolute inset-0 w-full h-full object-cover opacity-80 grayscale hover:grayscale-0 transition-all duration-700" />
+            <div className="w-full lg:w-5/12 h-64 sm:h-72 lg:h-auto min-h-[260px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0 group">
+               <img src="nfc-keychain.jpg" alt="Leather NFC Keychain" draggable={false} className="absolute inset-0 w-full h-full object-cover opacity-85 scale-105 group-hover:scale-100 transition-all duration-700" />
                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/30 to-transparent pointer-events-none"></div>
                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3.5 py-2 rounded-xl bg-black/55 backdrop-blur-md border border-white/10 text-[11px] text-white/80">
                  <span>Handcrafted Leather</span>
@@ -856,9 +901,9 @@ export default function LandingPage() {
         {/* About */}
         <section id="about" className="py-24 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="glass-card p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8 interactive-elem fade-up-elem">
-            <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-[#111] to-[#222] border border-[#00F5D4]/30 overflow-hidden shrink-0 shadow-[0_0_30px_rgba(0,245,212,0.15)] p-2">
+            <div className="w-40 h-40 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-[#111] to-[#222] border border-[#00F5D4]/30 overflow-hidden shrink-0 shadow-[0_0_30px_rgba(0,245,212,0.15)] p-2 group">
               <div className="w-full h-full rounded-full overflow-hidden bg-black flex items-center justify-center">
-                 <img src="elena-photo.jpg" alt="Айти-архитектор" className="w-full h-full object-cover opacity-90 grayscale hover:grayscale-0 transition-all duration-500" />
+                 <img src="elena-photo.jpg" alt="Айти-архитектор" draggable={false} className="w-full h-full object-cover opacity-90 grayscale group-hover:grayscale-0 transition-all duration-500" />
               </div>
             </div>
             <div className="text-center lg:text-left glass-content">
