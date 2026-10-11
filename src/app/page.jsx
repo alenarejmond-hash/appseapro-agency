@@ -430,21 +430,17 @@ const INFINITY_TEMPLATES = [
 const HORECA_CONFIG = {
   classic: {
     id: 'classic',
-    tabLabel: '🛎️ Классика: Меню + Вызовы',
+    tabLabel: '🛎️ Классика',
     url: 'https://restaurant-light.appseapro.com/',
-    accent: '#00F5D4',
-    glow: 'rgba(0, 245, 212, 0.32)',
-    pushTitle: '🛎 Telegram Персонала • Стол №4',
-    pushText: 'Гость запросил счёт (Оплата картой). Нажмите, чтобы увидеть вызов в группе официантов ➔'
+    pushTitle: '🛎 Telegram • Стол №4',
+    pushText: 'Гость запросил счёт (Оплата картой). Официант вызван ➔'
   },
   flagship: {
     id: 'flagship',
-    tabLabel: '🛒 Флагман: Заказ к столу',
+    tabLabel: '🛒 Флагман',
     url: 'https://restaurant.appseapro.com',
-    accent: '#E50940',
-    glow: 'rgba(229, 9, 64, 0.35)',
-    pushTitle: '🛎 Telegram Персонала • Стол №4',
-    pushText: 'Новый заказ: Куриный шашлык на углях, Хоровац из летних овощей, Толма в виноградных листьях. Нажмите, чтобы увидеть чек в чате кухни ➔'
+    pushTitle: '🛎 Telegram • Стол №4',
+    pushText: 'Новый заказ: Куриный шашлык на углях, Хоровац из летних овощей, Толма в виноградных листьях. Чек отправлен на кухню ➔'
   }
 };
 
@@ -1014,6 +1010,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* Showroom */}
         <section id="showroom" className="pt-24 md:pt-32 pb-0 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="mb-12 md:mb-24 fade-up-elem text-center">
@@ -1098,44 +1095,56 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Карточка 02: Smart QR-Меню */}
-            <div id="product-horeca" className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row-reverse items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15 scroll-mt-28" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} onClick={() => handleOpenHorecaDemo('flagship')} style={{ transitionDelay: '0.1s' }}>
-              <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_bottom_left,rgba(0,245,212,0.14)_0%,transparent_55%)] pointer-events-none"></div>
+            {/* Карточка 02: Smart QR-Меню (Монохромная эстетика Quiet Luxury) */}
+            <div
+              id="product-horeca"
+              className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row-reverse items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/10 scroll-mt-28"
+              onMouseMove={handleGlassMove}
+              onTouchMove={handleGlassMove}
+              onClick={() => handleOpenHorecaDemo('flagship')}
+              style={{ transitionDelay: '0.1s' }}
+            >
+              <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.06)_0%,transparent_55%)] pointer-events-none"></div>
               <div className="glass-content flex-1 z-10 text-left w-full">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] text-[11px] uppercase tracking-widest font-semibold">
+                  <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/15 text-[#D4D4D8] text-[11px] uppercase tracking-widest font-semibold">
                     Для ресторанов и кафе
                   </span>
                   <span className="font-serif italic text-white/25 text-lg md:text-xl">02</span>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Smart <span className="italic text-[#00F5D4]">QR-Меню</span></h3>
-                <p className="text-[#D4D4D8] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">Интуитивная облачная панель управления. Все заказы, вызовы официанта и запросы счета моментально прилетают в Telegram-группу персонала.</p>
+                <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">
+                  Smart <span className="italic text-[#D4D4D8]">QR-Меню</span>
+                </h3>
+                <p className="text-[#D4D4D8] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">
+                  Интуитивная облачная панель управления. Все заказы, вызовы официанта и запросы счета моментально прилетают в Telegram-группу персонала.
+                </p>
                 
                 <div className="equal-subcards-grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-4 md:gap-5 text-left">
                   {/* Классика */}
                   <div
                     onClick={(e) => { e.stopPropagation(); handleOpenHorecaDemo('classic'); }}
-                    className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-between group border-[#00F5D4]/25 hover:border-[#00F5D4]/65 hover:shadow-[0_18px_40px_rgba(0,245,212,0.14),inset_0_1px_0_rgba(255,255,255,0.26)] cursor-pointer interactive-elem"
+                    className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-between group border-white/10 hover:border-white/25 hover:shadow-[0_18px_40px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.22)] cursor-pointer interactive-elem"
                   >
-                     <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(0,245,212,0.14)_0%,transparent_60%)] pointer-events-none"></div>
+                     <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.07)_0%,transparent_60%)] pointer-events-none"></div>
                      <div>
-                       <div className="flex items-center justify-between mb-4">
+                       <div className="flex items-center justify-between mb-4 gap-2">
                          <div className="flex items-center gap-3">
-                           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 flex items-center justify-center text-[#00F5D4] shadow-[0_0_15px_rgba(0,245,212,0.15)] group-hover:scale-105 transition-transform shrink-0">
+                           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-white/15 flex items-center justify-center text-white/90 shadow-inner group-hover:scale-105 transition-transform shrink-0">
                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
                            </div>
-                           <h4 className="text-white text-lg font-serif group-hover:text-[#00F5D4] transition-colors">Классика</h4>
+                           <h4 className="text-white text-lg font-serif tracking-wide">Классика</h4>
                          </div>
-                         <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#00F5D4]/10 border border-[#00F5D4]/30 text-[#00F5D4] font-medium shrink-0">Instant Call</span>
+                         <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/15 text-[#D4D4D8] font-medium shrink-0">
+                           QR-Витрина • Instant Call
+                         </span>
                        </div>
-                       <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">Бесконтактное меню с кинематографичным дизайном. Мультиязычность, умный стоп-лист блюд и плавная навигация. Мгновенный вызов официанта и запрос счета в 1 клик с тактильным откликом.</p>
+                       <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
+                         Бесконтактное меню с кинематографичным дизайном. Мультиязычность, умный стоп-лист блюд и плавная навигация. Мгновенный вызов официанта и запрос счета в 1 клик с тактильным откликом.
+                       </p>
                      </div>
 
-                     <div className="mt-5 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-medium text-[#00F5D4] group-hover:text-white transition-colors">
-                       <span className="flex items-center gap-2">
-                         <span className="w-1.5 h-1.5 rounded-full bg-[#00F5D4] shadow-[0_0_8px_#00F5D4]"></span>
-                         Демо Классика
-                       </span>
+                     <div className="mt-5 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-medium text-[#D4D4D8] group-hover:text-white transition-colors">
+                       <span>Тестировать Классику</span>
                        <span className="transform group-hover:translate-x-1 transition-transform">➔</span>
                      </div>
                   </div>
@@ -1143,40 +1152,31 @@ export default function LandingPage() {
                   {/* Флагман */}
                   <div
                     onClick={(e) => { e.stopPropagation(); handleOpenHorecaDemo('flagship'); }}
-                    className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-between group border-[#E50940]/40 hover:border-[#E50940]/75 bg-gradient-to-br from-[#E50940]/15 via-[#E50940]/5 to-transparent shadow-[0_15px_35px_rgba(229,9,64,0.12),inset_0_1px_0_rgba(255,255,255,0.2)] hover:shadow-[0_18px_40px_rgba(229,9,64,0.22),inset_0_1px_0_rgba(255,255,255,0.28)] cursor-pointer interactive-elem"
+                    className="luxury-subcard p-6 h-full min-h-[176px] flex flex-col justify-between group border-white/10 hover:border-white/25 hover:shadow-[0_18px_40px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.22)] cursor-pointer interactive-elem"
                   >
-                     <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(229,9,64,0.2)_0%,transparent_60%)] pointer-events-none"></div>
+                     <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.07)_0%,transparent_60%)] pointer-events-none"></div>
                      <div>
-                       <div className="flex items-center justify-between mb-4">
+                       <div className="flex items-center justify-between mb-4 gap-2">
                          <div className="flex items-center gap-3">
-                           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E50940]/30 to-[#E50940]/10 border border-[#E50940]/50 flex items-center justify-center text-[#E50940] shadow-[0_0_18px_rgba(229,9,64,0.3)] group-hover:scale-105 transition-transform shrink-0">
+                           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-white/15 flex items-center justify-center text-white/90 shadow-inner group-hover:scale-105 transition-transform shrink-0">
                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                            </div>
-                           <h4 className="text-white text-lg font-serif group-hover:text-[#E50940] transition-colors">Флагман</h4>
+                           <h4 className="text-white text-lg font-serif tracking-wide">Флагман</h4>
                          </div>
-                         <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-[#E50940]/20 border border-[#E50940]/40 text-[#E50940] font-bold shrink-0">PRO • AI Sell</span>
+                         <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/[0.08] border border-white/20 text-white font-medium shrink-0">
+                           PRO • С корзиной
+                         </span>
                        </div>
-                       <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">Полноценная автоматизация с умными допродажами (Cross-sell). Гость собирает корзину, оставляет комментарии повару и оформляет заказ. Умный QR-код сам определяет номер столика.</p>
+                       <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
+                         Полноценная автоматизация с умными допродажами (Cross-sell). Гость собирает корзину, оставляет комментарии повару и оформляет заказ. Умный QR-код сам определяет номер столика.
+                       </p>
                      </div>
 
-                     <div className="mt-5 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-medium text-[#E50940] group-hover:text-white transition-colors">
-                       <span className="flex items-center gap-2">
-                         <span className="w-1.5 h-1.5 rounded-full bg-[#E50940] shadow-[0_0_8px_#E50940]"></span>
-                         Демо Флагман
-                       </span>
+                     <div className="mt-5 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-medium text-[#D4D4D8] group-hover:text-white transition-colors">
+                       <span>Тестировать Флагман</span>
                        <span className="transform group-hover:translate-x-1 transition-transform">➔</span>
                      </div>
                   </div>
-                </div>
-
-                <div className="mt-7 flex flex-wrap items-center gap-3 justify-start">
-                  <button
-                    onClick={(e) => { e.stopPropagation(); handleOpenHorecaDemo('flagship'); }}
-                    className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-[#00F5D4]/20 via-white/10 to-white/5 hover:from-[#00F5D4]/30 hover:to-white/15 rounded-2xl text-sm font-medium text-white transition-all border border-[#00F5D4]/40 shadow-[0_10px_25px_rgba(0,245,212,0.15)] flex items-center justify-center gap-2.5 cursor-pointer"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-[#00F5D4] shadow-[0_0_8px_#00F5D4] animate-pulse"></span>
-                    <span>Смотреть живое демо меню ➔</span>
-                  </button>
                 </div>
               </div>
             </div>
@@ -1230,6 +1230,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* NFC Breloq */}
         <section id="nfc" className="pt-8 pb-24 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10 scroll-mt-24">
           <div className="glass-card p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem overflow-hidden cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
@@ -1513,6 +1514,7 @@ export default function LandingPage() {
 
       </main>
 
+      {}
       {/* Footer (Curtain Reveal) */}
       <footer id="contact" className="fixed bottom-0 left-0 w-full h-[60vh] md:h-[70vh] bg-[#050505] flex flex-col justify-between p-6 md:p-12 z-0 pb-20 md:pb-6">
         <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center text-center mt-12 md:mt-10 flex-1">
@@ -1730,108 +1732,79 @@ export default function LandingPage() {
         </div>
       )}
 
-      {/* Smart HoReCa Frameless Modal (Mobile < lg: 100% Edge-to-Edge | Desktop lg: max-w-2xl h-[82vh] Floating Window + Segmented Control + Telegram Sync Banner + Real-Time Telegram Notification) */}
+      {/* Smart HoReCa Frameless Modal — Quiet Luxury (Mobile < lg: 100% Edge-to-Edge | Desktop lg: max-w-2xl h-[84vh] + Single-Line Control Bar + Delicate Glass Push) */}
       {isHorecaModalOpen && (
         <div
-          className="fixed inset-0 z-[115] flex flex-col items-center justify-between lg:justify-center p-0 lg:px-8 lg:py-5 overflow-hidden overscroll-none bg-[#050505] lg:bg-[#050505]/95 lg:backdrop-blur-3xl"
+          className="fixed inset-0 z-[115] flex flex-col items-center justify-between lg:justify-center p-0 lg:px-8 lg:py-4 overflow-hidden overscroll-none bg-[#050505] lg:bg-[#050505]/96 lg:backdrop-blur-3xl"
           onClick={handleCloseHorecaDemo}
         >
-          {/* Мягкое рассеянное фоновое свечение на десктопе */}
-          <div
-            className="hidden lg:block fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full blur-[150px] pointer-events-none transition-all duration-700 opacity-25"
-            style={{ backgroundColor: activeHorecaConfig.accent }}
-          ></div>
+          {/* Сдержанный монохромный дымчатый свет позади холста на десктопе */}
+          <div className="hidden lg:block fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full bg-white/[0.03] blur-[150px] pointer-events-none"></div>
 
-          {/* 1. ШАПКА ШОУРУМА, ПЕРЕКЛЮЧАТЕЛЬ ТАРИФОВ И ПЛАШКА TELEGRAM-СИНХРОНИЗАЦИИ */}
+          {/* 1. ОДНА КОМПАКТНАЯ ЧИСТАЯ ЛИНИЯ УПРАВЛЕНИЯ СВЕРХУ */}
           <div
-            className="relative z-30 w-full lg:max-w-5xl shrink-0 px-3 pt-2.5 pb-2 lg:px-0 lg:pt-0 lg:pb-3.5 bg-[#050505]/95 lg:bg-transparent border-b border-white/[0.07] lg:border-0 flex flex-col items-center gap-2 lg:gap-2.5"
+            className="relative z-30 w-full lg:max-w-2xl shrink-0 px-3 py-2.5 lg:px-0 lg:py-0 lg:mb-3 bg-[#050505] lg:bg-transparent border-b border-white/10 lg:border-0 flex items-center justify-between lg:justify-center gap-2"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="w-full flex items-center justify-between lg:justify-center relative gap-2">
-              {/* Элегантный стеклянный Segmented Control переключения тарифов по центру */}
-              <div className="relative p-1 rounded-full bg-white/[0.05] backdrop-blur-2xl border border-white/15 shadow-[0_14px_36px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.18)] grid grid-cols-2 items-center flex-1 lg:flex-none lg:min-w-[490px]">
-                {/* Скользящая стеклянная каретка активного тарифа */}
-                <div
-                  style={{
-                    transform: horecaMode === 'classic' ? 'translateX(0%)' : 'translateX(100%)',
-                    borderColor: horecaMode === 'classic' ? 'rgba(0, 245, 212, 0.6)' : 'rgba(229, 9, 64, 0.65)',
-                    boxShadow:
-                      horecaMode === 'classic'
-                        ? '0 0 22px rgba(0, 245, 212, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4)'
-                        : '0 0 22px rgba(229, 9, 64, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.4)'
-                  }}
-                  className="pointer-events-none absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-full bg-white/[0.13] backdrop-blur-xl border transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                />
+            {/* По центру: минималистичный Segmented Control [ 🛎️ Классика ] [ 🛒 Флагман ] из графитового стекла */}
+            <div className="relative p-1 rounded-full bg-white/[0.05] backdrop-blur-2xl border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.12)] grid grid-cols-2 items-center min-w-[215px] sm:min-w-[260px]">
+              {/* Скользящая каретка с мягким белым свечением */}
+              <div
+                style={{
+                  transform: horecaMode === 'classic' ? 'translateX(0%)' : 'translateX(100%)'
+                }}
+                className="pointer-events-none absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-full bg-white/[0.14] border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.12),inset_0_1px_0_rgba(255,255,255,0.3)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              />
 
-                {/* Таб 1: Классика */}
-                <button
-                  type="button"
-                  onClick={() => handleSwitchHorecaMode('classic')}
-                  className={`relative z-10 px-2.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs tracking-wide transition-colors duration-300 text-center whitespace-nowrap truncate cursor-pointer interactive-elem ${
-                    horecaMode === 'classic' ? 'text-white font-semibold' : 'text-white/60 hover:text-white/90 font-medium'
-                  }`}
-                >
-                  🛎️ Классика: Меню + Вызовы
-                </button>
+              <button
+                type="button"
+                onClick={() => handleSwitchHorecaMode('classic')}
+                className={`relative z-10 px-3 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs tracking-wide transition-colors duration-300 text-center whitespace-nowrap cursor-pointer interactive-elem ${
+                  horecaMode === 'classic' ? 'text-white font-semibold' : 'text-[#A1A1AA] hover:text-white font-medium'
+                }`}
+              >
+                🛎️ Классика
+              </button>
 
-                {/* Таб 2: Флагман */}
-                <button
-                  type="button"
-                  onClick={() => handleSwitchHorecaMode('flagship')}
-                  className={`relative z-10 px-2.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs tracking-wide transition-colors duration-300 text-center whitespace-nowrap truncate cursor-pointer interactive-elem ${
-                    horecaMode === 'flagship' ? 'text-white font-semibold' : 'text-white/60 hover:text-white/90 font-medium'
-                  }`}
-                >
-                  🛒 Флагман: Заказ к столу
-                </button>
-              </div>
-
-              {/* Справа — кнопка «На весь экран ↗» и парящий минималистичный крестик закрытия */}
-              <div className="lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 flex items-center gap-2 shrink-0">
-                <a
-                  href={activeHorecaConfig.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full bg-white/[0.05] hover:bg-white/[0.12] backdrop-blur-xl border border-white/15 hover:border-white/30 text-[11px] sm:text-xs font-medium text-[#E4E4E7] hover:text-white transition-all duration-300 interactive-elem shrink-0"
-                >
-                  <span className="hidden sm:inline">На весь экран</span>
-                  <span>↗</span>
-                </a>
-
-                <button
-                  onClick={handleCloseHorecaDemo}
-                  aria-label="Закрыть демо меню"
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/[0.06] hover:bg-white/[0.14] backdrop-blur-[20px] border border-white/15 hover:border-white/30 flex items-center justify-center text-white/80 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 interactive-elem cursor-pointer shrink-0"
-                >
-                  <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => handleSwitchHorecaMode('flagship')}
+                className={`relative z-10 px-3 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs tracking-wide transition-colors duration-300 text-center whitespace-nowrap cursor-pointer interactive-elem ${
+                  horecaMode === 'flagship' ? 'text-white font-semibold' : 'text-[#A1A1AA] hover:text-white font-medium'
+                }`}
+              >
+                🛒 Флагман
+              </button>
             </div>
 
-            {/* 2. ТОНКАЯ МАТОВАЯ ИНФОРМАЦИОННАЯ ПЛАШКА О TELEGRAM-ГРУППЕ ПЕРСОНАЛА */}
-            <div className="w-full max-w-2xl px-3.5 py-1.5 rounded-full bg-white/[0.035] backdrop-blur-xl border border-white/10 flex flex-wrap items-center justify-center gap-x-2 gap-y-0.5 text-[11px] sm:text-xs text-[#D4D4D8] text-center leading-snug">
-              <span>
-                🟢 <strong className="text-white font-medium">Онлайн-синхронизация:</strong> Все заказы и вызовы со столов мгновенно поступают в Telegram-группу персонала в реальном времени.
-              </span>
+            {/* Справа: стеклянная пилюля «✈️ Чат персонала ↗» и минималистичный крестик закрытия ✕ */}
+            <div className="lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 flex items-center gap-2 shrink-0">
               <a
                 href="https://t.me/restaurant_appseapro"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#00F5D4] hover:text-white font-medium underline underline-offset-4 decoration-[#00F5D4]/50 hover:decoration-white transition-colors whitespace-nowrap interactive-elem"
+                className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-white/[0.05] hover:bg-white/[0.12] backdrop-blur-xl border border-white/15 hover:border-white/30 text-[11px] sm:text-xs font-medium text-[#D4D4D8] hover:text-white transition-all duration-300 whitespace-nowrap interactive-elem"
               >
-                Открыть чат официантов ➔
+                <span>✈️ Чат персонала ↗</span>
               </a>
+
+              <button
+                type="button"
+                onClick={handleCloseHorecaDemo}
+                aria-label="Закрыть демо меню"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/[0.05] hover:bg-white/[0.12] backdrop-blur-xl border border-white/15 hover:border-white/30 flex items-center justify-center text-white/75 hover:text-white text-xs transition-all duration-300 active:scale-95 interactive-elem cursor-pointer shrink-0"
+              >
+                ✕
+              </button>
             </div>
           </div>
 
-          {/* 3. СВОБОДНАЯ РАБОЧАЯ ОБЛАСТЬ С ЖИВЫМ МЕНЮ (Мобильные < lg: 100% Edge-to-Edge | Десктоп lg: просторное парящее окно max-w-2xl h-[82vh]) */}
+          {/* 2. СВОБОДНЫЙ ЭКРАН ЖИВОГО МЕНЮ (Мобильные < lg: 100% Edge-to-Edge | Десктоп lg: max-w-2xl h-[84vh]) */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative z-20 w-full flex-1 lg:flex-none lg:max-w-2xl lg:h-[82vh] bg-[#050505] lg:rounded-3xl lg:border lg:border-white/10 lg:shadow-[0_35px_100px_rgba(0,0,0,0.92)] overflow-hidden flex flex-col"
+            className="relative z-20 w-full flex-1 lg:flex-none lg:max-w-2xl lg:h-[84vh] bg-[#050505] lg:rounded-3xl lg:border lg:border-white/10 lg:shadow-[0_35px_100px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col"
           >
-            {/* 4. РЕАЛИСТИЧНОЕ TELEGRAM-УВЕДОМЛЕНИЕ О ЗАКАЗЕ / ВЫЗОВЕ (через 7 секунд, не блокирует экран) */}
+            {/* 3. ДЕЛИКАТНОЕ iOS PUSH-УВЕДОМЛЕНИЕ ИЗ ТЕМНОГО СТЕКЛА (через 7 секунд) */}
             <div
               onTouchStart={handlePushTouchStart}
               onTouchMove={handlePushTouchMove}
@@ -1841,14 +1814,8 @@ export default function LandingPage() {
                   : '-translate-y-8 scale-95 opacity-0 pointer-events-none'
               }`}
             >
-              <div
-                style={{
-                  borderColor: `${activeHorecaConfig.accent}55`,
-                  boxShadow: `0 22px 50px rgba(0,0,0,0.9), 0 0 30px -8px ${activeHorecaConfig.glow}, inset 0 1px 0 rgba(255,255,255,0.25)`
-                }}
-                className="relative rounded-2xl bg-[#101218]/90 backdrop-blur-2xl border p-3.5 sm:p-4 text-left transition-all duration-300 hover:bg-[#141720]/95 group"
-              >
-                {/* Крестик скрытия уведомления */}
+              <div className="relative rounded-2xl bg-[#0a0a0e]/90 backdrop-blur-2xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.14)] p-3.5 sm:p-4 text-left transition-colors duration-300 hover:border-white/25 group">
+                {/* Крестик смахивания в правом верхнем углу пуша */}
                 <button
                   type="button"
                   onClick={(e) => {
@@ -1857,37 +1824,21 @@ export default function LandingPage() {
                     setShowTgPopup(false);
                   }}
                   aria-label="Скрыть уведомление"
-                  className="absolute top-2.5 right-2.5 z-20 w-6 h-6 rounded-full bg-white/[0.08] hover:bg-white/[0.18] border border-white/10 flex items-center justify-center text-white/60 hover:text-white transition-colors cursor-pointer"
+                  className="absolute top-2.5 right-2.5 z-20 w-6 h-6 rounded-full bg-white/[0.06] hover:bg-white/[0.15] border border-white/10 flex items-center justify-center text-white/60 hover:text-white text-[10px] transition-colors cursor-pointer"
                 >
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  ✕
                 </button>
 
-                {/* Клик по уведомлению переводит в реальную группу: https://t.me/restaurant_appseapro */}
+                {/* Клик по пушу переводит в канал: https://t.me/restaurant_appseapro */}
                 <a
                   href="https://t.me/restaurant_appseapro"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-3 pr-6 cursor-pointer interactive-elem"
                 >
-                  {/* Иконка Telegram */}
-                  <div
-                    style={{
-                      borderColor: `${activeHorecaConfig.accent}66`,
-                      backgroundColor: `${activeHorecaConfig.accent}20`,
-                      boxShadow: `0 0 16px ${activeHorecaConfig.glow}`
-                    }}
-                    className="w-10 h-10 rounded-2xl border flex items-center justify-center shrink-0 mt-0.5"
-                  >
-                    <svg
-                      className="w-5 h-5 -ml-0.5"
-                      style={{ color: activeHorecaConfig.accent }}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                  <div className="w-9 h-9 rounded-xl bg-white/[0.06] border border-white/15 flex items-center justify-center shrink-0 mt-0.5 text-white/85">
+                    <svg className="w-4 h-4 -ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
                     </svg>
                   </div>
 
@@ -1896,11 +1847,11 @@ export default function LandingPage() {
                       <span className="text-xs font-semibold text-white tracking-tight truncate">
                         {activeHorecaConfig.pushTitle}
                       </span>
-                      <span className="text-[10px] uppercase tracking-wider text-white/45 shrink-0">
+                      <span className="text-[10px] uppercase tracking-wider text-white/40 shrink-0">
                         сейчас
                       </span>
                     </div>
-                    <p className="text-xs leading-relaxed text-[#E4E4E7] group-hover:text-white transition-colors">
+                    <p className="text-xs leading-relaxed text-[#D4D4D8] group-hover:text-white transition-colors">
                       {activeHorecaConfig.pushText}
                     </p>
                   </div>
@@ -1908,31 +1859,24 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Лоадер во время загрузки или переключения тарифа */}
+            {/* Сдержанный монохромный лоадер во время подгрузки iframe */}
             <div
               className={`absolute inset-0 z-20 flex flex-col items-center justify-center gap-3.5 bg-[#050505] transition-opacity duration-500 ${
                 horecaIframeLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
               }`}
             >
-              <div
-                style={{
-                  borderColor: `${activeHorecaConfig.accent}35`,
-                  borderTopColor: activeHorecaConfig.accent,
-                  boxShadow: `0 0 24px ${activeHorecaConfig.glow}`
-                }}
-                className="w-10 h-10 border-2 rounded-full animate-spin"
-              ></div>
+              <div className="w-9 h-9 border border-white/15 border-t-white/80 rounded-full animate-spin"></div>
               <div className="text-center px-6">
                 <p className="text-xs font-serif text-white tracking-wider">
                   {activeHorecaConfig.tabLabel}
                 </p>
-                <p className="text-[10px] text-[#A1A1AA] uppercase tracking-[0.2em] mt-1 animate-pulse">
+                <p className="text-[10px] text-[#A1A1AA] uppercase tracking-[0.2em] mt-1">
                   Загрузка меню...
                 </p>
               </div>
             </div>
 
-            {/* Чистый контейнер живого меню (iframe) без внутренних рамок дисплея */}
+            {/* Чистый контейнер живого меню (iframe) */}
             <iframe
               key={horecaMode}
               src={activeHorecaConfig.url}
