@@ -567,9 +567,9 @@ export default function LandingPage() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = (isHorecaModalOpen || isGalleryModalOpen) ? 'hidden' : '';
+    document.body.style.overflow = (isHorecaModalOpen || isGalleryModalOpen || isMobileMenuOpen) ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
-  }, [isHorecaModalOpen, isGalleryModalOpen]);
+  }, [isHorecaModalOpen, isGalleryModalOpen, isMobileMenuOpen]);
 
   // Таймер для всплывающего окна «Магия изнутри 🪄» при открытии живого демо Smart-меню (как в визитке — 5 секунд)
   useEffect(() => {
@@ -667,9 +667,21 @@ export default function LandingPage() {
       <div className="bg-glow wine"></div>
       <div className="bg-glow cyan"></div>
 
-      <header className="fixed w-full top-0 z-50 transition-all duration-300 backdrop-blur-md bg-[#050505]/70 border-b border-white/5 py-4 px-4 md:px-12">
+      <header
+        className={`fixed w-full top-0 z-[60] transition-colors duration-300 py-4 px-5 md:px-12 ${
+          isMobileMenuOpen
+            ? 'bg-transparent border-b border-transparent'
+            : 'backdrop-blur-md bg-[#050505]/70 border-b border-white/5'
+        }`}
+      >
         <div className="flex justify-between items-center">
-          <div className="text-xl md:text-2xl font-serif font-semibold tracking-tighter interactive-elem cursor-pointer" onClick={() => { window.scrollTo({top: 0, behavior: 'smooth'}); setIsMobileMenuOpen(false); }}>
+          <div
+            className="text-xl md:text-2xl font-serif font-semibold tracking-tighter interactive-elem cursor-pointer"
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          >
             AppSea<span className="text-[#E50940] italic">Pro</span>
           </div>
           
@@ -680,87 +692,116 @@ export default function LandingPage() {
             <a href="#investments" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Инвестиции</a>
           </nav>
 
-          <div className="flex items-center gap-2.5">
-            <button onClick={() => { setIsMobileMenuOpen(false); window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }} className="glass-card px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-medium hover:bg-white/10 transition-colors interactive-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
-              <span className="glass-content">Связаться</span>
-            </button>
-
-            {/* Кнопка мобильного меню */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Меню"
-              className={`md:hidden glass-card w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-300 interactive-elem cursor-pointer ${
-                isMobileMenuOpen
-                  ? 'border-white/30 text-white'
-                  : 'border-white/10 text-white/80 hover:text-white'
-              }`}
-            >
-              <span className="glass-content flex flex-col justify-center items-center w-4 h-4 relative">
-                <span className={`block w-4 h-[1.5px] bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-[1.5px]' : '-translate-y-1'}`}></span>
-                <span className={`block w-4 h-[1.5px] bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-                <span className={`block w-4 h-[1.5px] bg-current rounded-full transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-[1.5px]' : 'translate-y-1'}`}></span>
-              </span>
-            </button>
-          </div>
-        </div>
-
-        {/* Выпадающее мобильное меню в бутиковом стиле (Apple / Balenciaga / Porsche) */}
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            isMobileMenuOpen ? 'max-h-[460px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0 pointer-events-none'
-          }`}
-        >
-          <nav className="glass-card px-6 py-5 rounded-[24px] border border-white/10 bg-[#08080A]/95 backdrop-blur-2xl shadow-[0_28px_60px_rgba(0,0,0,0.95),inset_0_1px_0_rgba(255,255,255,0.12)]">
-            <div className="flex flex-col">
-              <a
-                href="#showroom"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-baseline gap-4 py-4 border-b border-white/5 group transition-colors active:opacity-70"
-              >
-                <span className="text-xs font-light tracking-widest text-[#A1A1AA] group-hover:text-white transition-colors w-6 shrink-0">01.</span>
-                <span className="font-serif text-lg sm:text-xl text-[#F3F4F6] group-hover:text-white tracking-wide text-left">Продукты и визитки</span>
-              </a>
-
-              <a
-                href="#nfc"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-baseline gap-4 py-4 border-b border-white/5 group transition-colors active:opacity-70"
-              >
-                <span className="text-xs font-light tracking-widest text-[#A1A1AA] group-hover:text-white transition-colors w-6 shrink-0">02.</span>
-                <span className="font-serif text-lg sm:text-xl text-[#F3F4F6] group-hover:text-white tracking-wide text-left">NFC Брелоки Crazy Horse</span>
-              </a>
-
-              <a
-                href="#about"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-baseline gap-4 py-4 border-b border-white/5 group transition-colors active:opacity-70"
-              >
-                <span className="text-xs font-light tracking-widest text-[#A1A1AA] group-hover:text-white transition-colors w-6 shrink-0">03.</span>
-                <span className="font-serif text-lg sm:text-xl text-[#F3F4F6] group-hover:text-white tracking-wide text-left">Подход и технологии</span>
-              </a>
-
-              <a
-                href="#investments"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-baseline gap-4 py-4 border-b border-white/5 group transition-colors active:opacity-70"
-              >
-                <span className="text-xs font-light tracking-widest text-[#A1A1AA] group-hover:text-white transition-colors w-6 shrink-0">04.</span>
-                <span className="font-serif text-lg sm:text-xl text-[#F3F4F6] group-hover:text-white tracking-wide text-left">Инвестиции (Цены)</span>
-              </a>
-            </div>
-
+          <div className="flex items-center">
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
               }}
-              className="mt-5 w-full py-3.5 px-5 rounded-xl bg-white text-black hover:bg-gray-200 active:scale-[0.99] transition-all text-xs sm:text-sm font-semibold tracking-wide flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(255,255,255,0.15)] cursor-pointer"
+              className="hidden md:block glass-card px-6 py-2 rounded-full text-sm font-medium hover:bg-white/10 transition-colors interactive-elem cursor-pointer"
+              onMouseMove={handleGlassMove}
+              onTouchMove={handleGlassMove}
             >
-              <span>Написать лично в Telegram ➔</span>
+              <span className="glass-content">Связаться</span>
             </button>
-          </nav>
+
+            {/* Две тонкие минималистичные линии бургера (без рамок и фона) */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Меню"
+              className="md:hidden relative w-8 h-8 flex items-center justify-end text-[#F3F4F6] hover:text-white transition-colors interactive-elem cursor-pointer focus:outline-none"
+            >
+              <span className="relative w-6 h-3 flex flex-col justify-between items-end">
+                <span
+                  className={`block h-[1.5px] bg-current rounded-full transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    isMobileMenuOpen ? 'w-6 translate-y-[5.25px] rotate-45' : 'w-6'
+                  }`}
+                ></span>
+                <span
+                  className={`block h-[1.5px] bg-current rounded-full transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    isMobileMenuOpen ? 'w-6 -translate-y-[5.25px] -rotate-45' : 'w-4'
+                  }`}
+                ></span>
+              </span>
+            </button>
+          </div>
         </div>
       </header>
+
+      {/* Полноэкранный кинематографичный оверлей мобильного меню (Эталон люкса: Apple / Cartier / Balenciaga) */}
+      <div
+        className={`fixed inset-0 z-[55] md:hidden bg-[#050505]/98 backdrop-blur-2xl flex flex-col justify-between px-6 pt-24 pb-10 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          isMobileMenuOpen
+            ? 'opacity-100 pointer-events-auto translate-y-0'
+            : 'opacity-0 pointer-events-none -translate-y-2'
+        }`}
+      >
+        <div className="flex-1 flex flex-col justify-center max-w-md mx-auto w-full">
+          <a
+            href="#showroom"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-baseline gap-5 py-5 border-b border-white/5 group transition-colors active:opacity-70"
+          >
+            <span className="text-xs font-light tracking-[0.2em] text-[#A1A1AA] group-hover:text-white transition-colors w-7 shrink-0">
+              01.
+            </span>
+            <span className="font-serif text-3xl sm:text-4xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
+              Продукты
+            </span>
+          </a>
+
+          <a
+            href="#nfc"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-baseline gap-5 py-5 border-b border-white/5 group transition-colors active:opacity-70"
+          >
+            <span className="text-xs font-light tracking-[0.2em] text-[#A1A1AA] group-hover:text-white transition-colors w-7 shrink-0">
+              02.
+            </span>
+            <span className="font-serif text-3xl sm:text-4xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
+              Брелоки Crazy Horse
+            </span>
+          </a>
+
+          <a
+            href="#about"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-baseline gap-5 py-5 border-b border-white/5 group transition-colors active:opacity-70"
+          >
+            <span className="text-xs font-light tracking-[0.2em] text-[#A1A1AA] group-hover:text-white transition-colors w-7 shrink-0">
+              03.
+            </span>
+            <span className="font-serif text-3xl sm:text-4xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
+              Подход
+            </span>
+          </a>
+
+          <a
+            href="#investments"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-baseline gap-5 py-5 border-b border-white/5 group transition-colors active:opacity-70"
+          >
+            <span className="text-xs font-light tracking-[0.2em] text-[#A1A1AA] group-hover:text-white transition-colors w-7 shrink-0">
+              04.
+            </span>
+            <span className="font-serif text-3xl sm:text-4xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
+              Инвестиции
+            </span>
+          </a>
+        </div>
+
+        <div className="max-w-md mx-auto w-full pt-6">
+          <button
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }}
+            className="w-full py-4 px-6 rounded-2xl bg-white text-black hover:bg-gray-200 active:scale-[0.99] transition-all text-sm font-semibold tracking-wide flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(255,255,255,0.18)] cursor-pointer"
+          >
+            <span>Написать лично в Telegram ➔</span>
+          </button>
+        </div>
+      </div>
 
       {}
       {/* Main Content */}
@@ -1164,6 +1205,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* Pricing */}
         <section id="investments" className="py-24 md:py-32 px-4 md:px-8 relative z-10 overflow-hidden">
           <div className="max-w-7xl mx-auto text-center mb-12 md:mb-16 fade-up-elem">
@@ -1570,20 +1612,19 @@ export default function LandingPage() {
         </div>
       )}
 
-      {}
       {/* Smart HoReCa Live Demo Modal + «Магия изнутри 🪄» Telegram Popup */}
       {isHorecaModalOpen && (
         <div
-          className="fixed inset-0 z-[115] flex items-center justify-center p-0 sm:p-4 md:p-6 fade-up-elem visible"
+          className="fixed inset-0 z-[115] flex items-center justify-center p-2 sm:p-4 md:p-6 fade-up-elem visible"
           style={{ transitionDuration: '0.3s' }}
           onClick={handleCloseHorecaDemo}
         >
           {/* Затемнение фона */}
           <div className="fixed inset-0 bg-black/85 backdrop-blur-md"></div>
 
-          {/* Бутиковый контейнер живого демо (как в визитке, но в палитре лендинга) */}
+          {/* Полноформатный бутиковый контейнер живого демо (как в окне галереи визиток) */}
           <div
-            className="glass-card relative w-full h-full sm:w-[430px] sm:h-[86vh] sm:max-h-[820px] rounded-none sm:rounded-[2.75rem] z-10 flex flex-col border-0 sm:border border-white/20 bg-[#060608]/95 shadow-[0_30px_90px_rgba(0,0,0,0.95),0_0_60px_rgba(0,245,212,0.16)] overflow-hidden"
+            className="glass-card relative w-full max-w-6xl h-[92vh] sm:h-[88vh] max-h-[880px] rounded-[2rem] sm:rounded-[2.5rem] z-10 flex flex-col border border-white/20 bg-[#060608]/95 shadow-[0_30px_90px_rgba(0,0,0,0.95),0_0_60px_rgba(0,245,212,0.16)] overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Фоновые свечения */}
@@ -1591,7 +1632,7 @@ export default function LandingPage() {
             <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[#E50940]/12 blur-[90px] pointer-events-none"></div>
 
             {/* Верхняя шапка окна: заголовок Меню, кнопка Открыть и кнопка Закрыть */}
-            <div className="relative z-20 h-14 sm:h-16 px-4 sm:px-5 border-b border-white/10 bg-[#08080C]/90 backdrop-blur-xl flex items-center justify-between shrink-0">
+            <div className="relative z-20 h-14 sm:h-16 px-4 sm:px-6 border-b border-white/10 bg-[#08080C]/90 backdrop-blur-xl flex items-center justify-between shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-full bg-[#00F5D4]/15 border border-[#00F5D4]/35 flex items-center justify-center text-[#00F5D4] shadow-[0_0_12px_rgba(0,245,212,0.2)]">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
