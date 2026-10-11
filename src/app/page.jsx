@@ -386,20 +386,14 @@ const INFINITY_TEMPLATES = [
 export default function LandingPage() {
   const cursorRef = useRef(null);
   const [isHorecaModalOpen, setIsHorecaModalOpen] = useState(false);
+  const [horecaIframeLoaded, setHorecaIframeLoaded] = useState(false);
+  const [showTgPopup, setShowTgPopup] = useState(false);
   const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
   const [activeTemplate, setActiveTemplate] = useState(null);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHeroInteracting, setIsHeroInteracting] = useState(false);
   const [isCardFlipped, setIsCardFlipped] = useState(false);
-  
-  const [menuItems, setMenuItems] = useState([
-    { id: 1, name: 'Том Ям с креветками', desc: 'Острота: средняя', price: 850 },
-    { id: 2, name: 'Стейк Рибай', desc: 'Прожарка: Medium', price: 2100 },
-    { id: 3, name: 'Капучино на миндальном', desc: 'Объем: 300мл', price: 350 }
-  ]);
-  const [sandboxCart, setSandboxCart] = useState([]);
-  const [tgMessages, setTgMessages] = useState([]);
   
   const audioCtxRef = useRef(null);
 
@@ -577,6 +571,31 @@ export default function LandingPage() {
     return () => { document.body.style.overflow = ''; };
   }, [isHorecaModalOpen, isGalleryModalOpen]);
 
+  // Таймер для всплывающего окна «Магия изнутри 🪄» при открытии живого демо Smart-меню (как в визитке — 5 секунд)
+  useEffect(() => {
+    let tgTimer;
+    if (isHorecaModalOpen) {
+      tgTimer = setTimeout(() => {
+        setShowTgPopup(true);
+      }, 5000);
+    } else {
+      setShowTgPopup(false);
+    }
+    return () => clearTimeout(tgTimer);
+  }, [isHorecaModalOpen]);
+
+  const handleOpenHorecaDemo = () => {
+    setHorecaIframeLoaded(false);
+    setShowTgPopup(false);
+    setIsHorecaModalOpen(true);
+  };
+
+  const handleCloseHorecaDemo = () => {
+    setIsHorecaModalOpen(false);
+    setShowTgPopup(false);
+    setHorecaIframeLoaded(false);
+  };
+
   const handleOpenGallery = () => {
     setActiveTemplate(null);
     setIframeLoaded(false);
@@ -638,26 +657,6 @@ export default function LandingPage() {
       glareEl.style.opacity = '0.35';
       glareEl.style.transform = `translate3d(0%, 0%, 0)`;
     });
-  };
-
-  const handlePriceChange = (id, newPrice) => {
-    setMenuItems(items => items.map(item => item.id === id ? { ...item, price: Number(newPrice) || 0 } : item));
-  };
-  
-  const handleAddToCart = (item) => {
-    setSandboxCart([...sandboxCart, item]);
-  };
-  
-  const handleSandboxOrder = () => {
-    if (sandboxCart.length === 0) return;
-    const total = sandboxCart.reduce((sum, item) => sum + item.price, 0);
-    const msg = {
-      id: Date.now(),
-      total,
-      items: [...sandboxCart]
-    };
-    setTgMessages(prev => [msg, ...prev]);
-    setSandboxCart([]);
   };
 
   return (
@@ -763,6 +762,7 @@ export default function LandingPage() {
         </div>
       </header>
 
+      {}
       {/* Main Content */}
       <main className="relative z-10 bg-[#050505] mb-[60vh] md:mb-[70vh] shadow-[0_20px_50px_rgba(0,0,0,1)] rounded-b-[2rem] md:rounded-b-[3rem] border-b border-white/10 pb-10">
         
@@ -860,6 +860,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* Showroom */}
         <section id="showroom" className="pt-24 md:pt-32 pb-0 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="mb-12 md:mb-24 fade-up-elem text-center">
@@ -945,7 +946,7 @@ export default function LandingPage() {
             </div>
 
             {/* Карточка 02: Smart QR-Меню */}
-            <div id="product-horeca" className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row-reverse items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15 scroll-mt-28" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} onClick={() => setIsHorecaModalOpen(true)} style={{ transitionDelay: '0.1s' }}>
+            <div id="product-horeca" className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row-reverse items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15 scroll-mt-28" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} onClick={handleOpenHorecaDemo} style={{ transitionDelay: '0.1s' }}>
               <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_bottom_left,rgba(0,245,212,0.14)_0%,transparent_55%)] pointer-events-none"></div>
               <div className="glass-content flex-1 z-10 text-left w-full">
                 <div className="flex items-center justify-between mb-4">
@@ -987,9 +988,13 @@ export default function LandingPage() {
                   </div>
                 </div>
 
-                <div className="mt-7 flex justify-start">
-                  <button className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-[#00F5D4]/20 via-white/10 to-white/5 hover:from-[#00F5D4]/30 hover:to-white/15 rounded-2xl text-sm font-medium text-white transition-all border border-[#00F5D4]/40 shadow-[0_10px_25px_rgba(0,245,212,0.15)] flex items-center justify-center gap-2">
-                    <span>Попробовать песочницу ➔</span>
+                <div className="mt-7 flex flex-wrap items-center gap-3 justify-start">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); handleOpenHorecaDemo(); }}
+                    className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-[#00F5D4]/20 via-white/10 to-white/5 hover:from-[#00F5D4]/30 hover:to-white/15 rounded-2xl text-sm font-medium text-white transition-all border border-[#00F5D4]/40 shadow-[0_10px_25px_rgba(0,245,212,0.15)] flex items-center justify-center gap-2.5 cursor-pointer"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-[#00F5D4] shadow-[0_0_8px_#00F5D4] animate-pulse"></span>
+                    <span>Смотреть живое демо меню ➔</span>
                   </button>
                 </div>
               </div>
@@ -1044,6 +1049,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* NFC Breloq */}
         <section id="nfc" className="pt-8 pb-24 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10 scroll-mt-24">
           <div className="glass-card p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem overflow-hidden cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
@@ -1247,7 +1253,12 @@ export default function LandingPage() {
                   <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Мультиязычность и Telegram-оповещения</span></li>
                 </ul>
 
-                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full sm:w-2/3 mx-auto py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Обсудить проект</button>
+                <div className="flex flex-col gap-2.5">
+                  <button onClick={(e) => { e.stopPropagation(); handleOpenHorecaDemo(); }} className="w-full py-2.5 rounded-xl bg-[#00F5D4]/10 border border-[#00F5D4]/40 hover:bg-[#00F5D4]/20 transition-all text-xs font-semibold text-[#00F5D4] flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,245,212,0.12)]">
+                    <span>Смотреть демо меню ➔</span>
+                  </button>
+                  <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Обсудить проект</button>
+                </div>
               </div>
             </div>
 
@@ -1322,6 +1333,7 @@ export default function LandingPage() {
 
       </main>
 
+      {}
       {/* Footer (Curtain Reveal) */}
       <footer id="contact" className="fixed bottom-0 left-0 w-full h-[60vh] md:h-[70vh] bg-[#050505] flex flex-col justify-between p-6 md:p-12 z-0 pb-20 md:pb-6">
         <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center text-center mt-12 md:mt-10 flex-1">
@@ -1558,140 +1570,162 @@ export default function LandingPage() {
         </div>
       )}
 
-      {/* Sandbox Modal */}
+      {}
+      {/* Smart HoReCa Live Demo Modal + «Магия изнутри 🪄» Telegram Popup */}
       {isHorecaModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 fade-up-elem visible !overflow-y-auto overscroll-contain" style={{ transitionDuration: '0.3s' }}>
-           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm fixed" onClick={() => setIsHorecaModalOpen(false)}></div>
-           <div className="glass-card relative w-full max-w-7xl my-auto p-6 md:p-10 z-10 flex flex-col border border-white/20 shadow-[0_0_50px_rgba(0,245,212,0.1)] custom-scrollbar">
-              
-              <style>{`
-                .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-                .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-                .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
-                .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
-              `}</style>
+        <div
+          className="fixed inset-0 z-[115] flex items-center justify-center p-0 sm:p-4 md:p-6 fade-up-elem visible"
+          style={{ transitionDuration: '0.3s' }}
+          onClick={handleCloseHorecaDemo}
+        >
+          {/* Затемнение фона */}
+          <div className="fixed inset-0 bg-black/85 backdrop-blur-md"></div>
 
-              <button onClick={() => setIsHorecaModalOpen(false)} className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors interactive-elem p-2 z-20 bg-black/50 rounded-full">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-              </button>
-              
-              <div className="text-center mb-10 mt-2">
-                <span className="text-[#00F5D4] text-xs uppercase tracking-widest font-semibold mb-2 block">Smart HoReCa</span>
-                <h3 className="text-3xl md:text-4xl font-serif mb-4">Цифровизация ресторанов без абонплат</h3>
-                <p className="text-[#D4D4D8] text-sm md:text-base max-w-2xl mx-auto">Интуитивная облачная панель управления. Вы меняете цены в панели — они меняются в приложении. Гость делает заказ — официант видит его в Telegram.</p>
-              </div>
+          {/* Бутиковый контейнер живого демо (как в визитке, но в палитре лендинга) */}
+          <div
+            className="glass-card relative w-full h-full sm:w-[430px] sm:h-[86vh] sm:max-h-[820px] rounded-none sm:rounded-[2.75rem] z-10 flex flex-col border-0 sm:border border-white/20 bg-[#060608]/95 shadow-[0_30px_90px_rgba(0,0,0,0.95),0_0_60px_rgba(0,245,212,0.16)] overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Фоновые свечения */}
+            <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-[#00F5D4]/12 blur-[90px] pointer-events-none"></div>
+            <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[#E50940]/12 blur-[90px] pointer-events-none"></div>
 
-              <div className="border-t border-white/10 pt-10 pb-6">
-                <h4 className="text-2xl font-serif text-center mb-2">Интерактивная Песочница</h4>
-                <p className="text-center text-sm text-[#D4D4D8] mb-8">Умные допродажи и корзина: попробуйте сами поменять цену, добавить блюдо и оформить заказ.</p>
-                
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 bg-[#080808] rounded-3xl p-6 md:p-8 border border-white/5 relative">
-                  
-                  <div className="hidden lg:block absolute top-1/2 left-4 right-4 h-0.5 bg-gradient-to-r from-[#00F5D4]/20 via-[#00F5D4] to-white/20 z-0 opacity-40"></div>
-
-                  <div className="flex-1 border border-[#00F5D4]/30 rounded-[2rem] bg-[#0A0A0A] text-white overflow-hidden relative z-10 shadow-[0_0_30px_rgba(0,245,212,0.1)] flex flex-col mx-auto w-full max-w-sm">
-                      <div className="bg-black/50 backdrop-blur-md py-3 px-4 flex items-center gap-2 border-b border-white/10">
-                        <svg className="w-5 h-5 text-[#00F5D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
-                        <span className="text-xs font-bold text-white tracking-wider">ПАНЕЛЬ УПРАВЛЕНИЯ</span>
-                      </div>
-                      <div className="p-5 flex-1 bg-[#080808]">
-                          <p className="text-[11px] text-[#00F5D4] mb-4 font-medium uppercase tracking-wider">Управление ценами</p>
-                          <div className="space-y-3">
-                            {menuItems.map(item => (
-                               <div key={item.id} className="bg-white/5 p-3 rounded-xl border border-white/10 shadow-sm transition-all hover:border-[#00F5D4]/30">
-                                 <div className="text-xs font-semibold text-white mb-2">{item.name}</div>
-                                 <div className="flex items-center gap-2">
-                                    <span className="text-xs text-[#D4D4D8]">Цена (₽):</span>
-                                    <input 
-                                      type="number" 
-                                      value={item.price} 
-                                      onChange={(e) => handlePriceChange(item.id, e.target.value)} 
-                                      className="flex-1 p-1.5 bg-black border border-white/20 rounded text-sm font-bold text-[#00F5D4] outline-none focus:border-[#00F5D4] transition-colors text-right"
-                                    />
-                                 </div>
-                               </div>
-                            ))}
-                          </div>
-                      </div>
-                  </div>
-
-                  <div className="flex-1 border border-white/10 rounded-[2rem] bg-black overflow-hidden relative z-10 shadow-2xl flex flex-col mx-auto w-full max-w-sm">
-                      <div className="bg-[#111] py-2 px-4 flex justify-between items-center border-b border-white/5">
-                        <span className="text-[10px] font-semibold text-[#A1A1AA] tracking-wider">ЭКРАН ГОСТЯ (ТЕЛЕФОН)</span>
-                        <div className="flex gap-1.5"><div className="w-2 h-2 rounded-full bg-white/20"></div><div className="w-2 h-2 rounded-full bg-white/20"></div><div className="w-2 h-2 rounded-full bg-white/20"></div></div>
-                      </div>
-                      <div className="p-5 space-y-4 flex-1">
-                          <h5 className="text-lg font-serif font-medium mb-4">Меню ресторана</h5>
-                           {menuItems.map(item => (
-                             <div key={item.id} className="flex gap-4 items-center bg-white/5 p-3 rounded-xl cursor-pointer hover:bg-white/10 transition group interactive-elem" onClick={() => handleAddToCart(item)}>
-                                <div className="w-16 h-16 bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg shrink-0 flex items-center justify-center text-white/30 text-xs">Фото</div>
-                                <div className="flex-1">
-                                  <div className="text-sm font-medium mb-1 group-hover:text-[#00F5D4] transition-colors leading-tight">{item.name}</div>
-                                  <div className="text-[10px] text-[#D4D4D8] mb-2">{item.desc}</div>
-                                  <div className="text-sm font-bold text-[#00F5D4]">{item.price} ₽</div>
-                                </div>
-                                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white shrink-0 group-hover:bg-[#00F5D4] group-hover:text-black transition-colors font-bold">+</div>
-                             </div>
-                           ))}
-                      </div>
-                      <div className="p-4 bg-gradient-to-t from-black to-transparent pt-10 border-t border-white/5">
-                        <div className="flex justify-between items-center mb-3 px-1">
-                          <span className="text-xs text-[#D4D4D8]">В корзине: {sandboxCart.length} шт.</span>
-                          <span className="text-sm font-bold">{sandboxCart.reduce((s, i) => s + i.price, 0)} ₽</span>
-                        </div>
-                        <button 
-                          onClick={handleSandboxOrder}
-                          className={`w-full py-3 font-semibold rounded-xl transition-all ${sandboxCart.length > 0 ? 'bg-[#00F5D4] text-black shadow-[0_0_20px_rgba(0,245,212,0.3)] hover:scale-[1.02] interactive-elem' : 'bg-gray-800 text-gray-500 cursor-not-allowed'}`}
-                        >
-                          Оформить заказ на Стол №4
-                        </button>
-                      </div>
-                  </div>
-
-                  <div className="flex-1 border border-white/15 rounded-[2rem] bg-[#0e1621] overflow-hidden relative z-10 shadow-2xl flex flex-col mx-auto w-full max-w-sm">
-                      <div className="bg-[#17212b] py-3 px-4 flex items-center gap-3 border-b border-black">
-                        <svg className="w-6 h-6 text-[#2AABEE]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.833.94z"/></svg>
-                        <div className="flex-1">
-                          <div className="text-sm font-semibold text-white">AppSeaPro Заказы</div>
-                          <div className="text-[10px] text-[#D4D4D8]">Бот (ЭКРАН ПЕРСОНАЛА)</div>
-                        </div>
-                      </div>
-                      <div className="p-4 flex-1 flex flex-col justify-end bg-[#0e1621] bg-opacity-90 overflow-y-auto" style={{ backgroundImage: 'radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%)' }}>
-                          
-                          {tgMessages.length === 0 ? (
-                            <div className="text-center text-[#A1A1AA] text-xs my-auto">
-                              Оформите заказ в приложении,<br/>чтобы он прилетел сюда
-                            </div>
-                          ) : (
-                            <div className="space-y-4 flex flex-col-reverse">
-                              {tgMessages.map(msg => (
-                                <div key={msg.id} className="bg-[#182533] rounded-2xl rounded-tl-sm p-4 w-[85%] border border-white/10 shadow-lg relative ml-2 fade-up-elem visible">
-                                    <div className="text-[#00F5D4] text-xs font-bold mb-2">AppSeaPro Bot</div>
-                                    <div className="text-white text-sm font-medium mb-1">🛎 Новый заказ!</div>
-                                    <div className="text-[#D4D4D8] text-sm mb-3">📍 Стол: <span className="font-bold text-white">№4</span></div>
-                                    <div className="bg-black/30 rounded-lg p-2 text-xs text-white/90 mb-3 border border-white/5 space-y-1">
-                                      {msg.items.reduce((acc, item) => {
-                                        const found = acc.find(i => i.id === item.id);
-                                        if (found) found.count += 1;
-                                        else acc.push({ ...item, count: 1 });
-                                        return acc;
-                                      }, []).map(i => (
-                                        <div key={i.id}>{i.count}x {i.name}</div>
-                                      ))}
-                                    </div>
-                                    <div className="text-sm font-medium text-white">Итого: {msg.total} ₽</div>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-
-                      </div>
-                  </div>
-
+            {/* Верхняя шапка окна: заголовок Меню, кнопка Открыть и кнопка Закрыть */}
+            <div className="relative z-20 h-14 sm:h-16 px-4 sm:px-5 border-b border-white/10 bg-[#08080C]/90 backdrop-blur-xl flex items-center justify-between shrink-0">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full bg-[#00F5D4]/15 border border-[#00F5D4]/35 flex items-center justify-center text-[#00F5D4] shadow-[0_0_12px_rgba(0,245,212,0.2)]">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-white font-serif tracking-wider text-xs sm:text-sm uppercase font-semibold leading-none">
+                    Меню
+                  </span>
+                  <span className="text-[9px] text-[#00F5D4] tracking-widest uppercase mt-0.5">
+                    Smart HoReCa Live
+                  </span>
                 </div>
               </div>
 
-           </div>
+              {/* Центральная кнопка «Открыть» на весь экран */}
+              <a
+                href="https://restaurant.appseapro.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-[#E50940] to-[#ff2a60] border border-white/20 text-white text-[10px] sm:text-[11px] font-bold tracking-widest uppercase shadow-[0_0_20px_rgba(229,9,64,0.4)] hover:brightness-110 transition-all active:scale-95 interactive-elem"
+              >
+                <span>Открыть</span>
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+
+              {/* Кнопки справа: вызов подсказки «Магия изнутри 🪄» и Закрыть */}
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={() => setShowTgPopup(true)}
+                  title="Магия изнутри — посмотреть Telegram-чат заказов"
+                  className="w-8 h-8 rounded-full bg-[#00F5D4]/10 hover:bg-[#00F5D4]/20 border border-[#00F5D4]/30 flex items-center justify-center text-[#00F5D4] transition-all active:scale-95 interactive-elem cursor-pointer"
+                >
+                  <svg className="w-4 h-4 -ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={handleCloseHorecaDemo}
+                  aria-label="Закрыть"
+                  className="w-8 h-8 rounded-full bg-white/[0.06] hover:bg-white/[0.14] border border-white/10 flex items-center justify-center text-white/60 hover:text-white transition-all active:scale-95 interactive-elem cursor-pointer"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Рабочая область с живым iframe https://restaurant.appseapro.com */}
+            <div className="flex-1 w-full relative bg-[#050505] z-10 overflow-hidden">
+              {!horecaIframeLoaded && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3.5 bg-[#050505] z-0 pointer-events-none">
+                  <div className="w-9 h-9 border-2 border-[#00F5D4]/30 border-t-[#00F5D4] rounded-full animate-spin"></div>
+                  <div className="text-[#D4D4D8] text-[10px] font-serif tracking-widest uppercase animate-pulse">
+                    Загрузка живого меню...
+                  </div>
+                </div>
+              )}
+
+              <iframe
+                src="https://restaurant.appseapro.com"
+                title="Smart HoReCa Live Demo"
+                onLoad={() => setHorecaIframeLoaded(true)}
+                className={`w-full h-full border-0 relative z-10 bg-transparent transition-opacity duration-500 ${
+                  horecaIframeLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+              />
+
+              {/* ВСПЛЫВАЮЩЕЕ ОКНО «МАГИЯ ИЗНУТРИ 🪄» (появляется через 5 секунд) */}
+              {showTgPopup && (
+                <div
+                  className="fixed inset-0 z-[9999] flex items-center justify-center p-6 bg-black/55 backdrop-blur-md transition-opacity duration-500"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowTgPopup(false);
+                  }}
+                >
+                  <div
+                    className="w-full max-w-[335px] bg-[#08080C]/90 backdrop-blur-2xl border border-[#00F5D4]/35 rounded-3xl p-6 flex flex-col items-center text-center shadow-[0_25px_70px_rgba(0,0,0,0.95),0_0_45px_rgba(0,245,212,0.2)] relative overflow-hidden"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {/* Деликатные фоновые блики внутри карточки */}
+                    <div className="absolute -top-16 -right-16 w-36 h-36 rounded-full bg-[#00F5D4]/15 blur-2xl pointer-events-none"></div>
+                    <div className="absolute -bottom-16 -left-16 w-36 h-36 rounded-full bg-[#E50940]/15 blur-2xl pointer-events-none"></div>
+
+                    <button
+                      onClick={() => setShowTgPopup(false)}
+                      aria-label="Закрыть подсказку"
+                      className="absolute top-4 right-4 text-white/40 hover:text-white bg-white/5 hover:bg-white/15 border border-white/10 rounded-full p-1.5 transition-colors cursor-pointer z-10"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+
+                    {/* Медальон с иконкой Telegram */}
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#00F5D4]/25 to-[#00F5D4]/5 border border-[#00F5D4]/40 flex items-center justify-center mb-4 shadow-[0_0_25px_rgba(0,245,212,0.25)] relative z-10">
+                      <svg className="w-6 h-6 text-[#00F5D4] -ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                      </svg>
+                    </div>
+
+                    <h4 className="font-serif text-xl text-white font-semibold mb-2.5 tracking-wide relative z-10">
+                      Магия изнутри 🪄
+                    </h4>
+
+                    <p className="text-[#D4D4D8] text-xs sm:text-[13px] leading-relaxed mb-6 font-light relative z-10">
+                      Хотите увидеть, как этот заказ прямо сейчас прилетает в Telegram-чат персонала? Перейдите в канал, чтобы увидеть работу системы своими глазами, а затем возвращайтесь обратно!
+                    </p>
+
+                    <a
+                      href="https://t.me/restaurant_appseapro"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setShowTgPopup(false)}
+                      className="relative z-10 w-full py-3.5 px-5 bg-gradient-to-r from-[#00F5D4]/20 via-[#00F5D4]/15 to-white/5 hover:from-[#00F5D4]/30 hover:to-white/15 border border-[#00F5D4]/50 text-white font-semibold text-xs uppercase tracking-wider rounded-xl transition-all active:scale-95 shadow-[0_0_25px_rgba(0,245,212,0.2)] flex justify-center items-center gap-2 interactive-elem"
+                    >
+                      <svg className="w-3.5 h-3.5 text-[#00F5D4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                      </svg>
+                      <span>Посмотреть чат</span>
+                    </a>
+                  </div>
+                </div>
+              )}
+              {/* КОНЕЦ ВСПЛЫВАЮЩЕГО ОКНА «МАГИЯ ИЗНУТРИ 🪄» */}
+            </div>
+          </div>
         </div>
       )}
     </div>
