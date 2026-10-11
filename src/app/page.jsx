@@ -283,7 +283,7 @@ const styles = `
     0% { transform: translateY(0px); }
     100% { transform: translateY(-7px); }
   }
-  . titanium-phone-float {
+  .titanium-phone-float {
     animation: phoneFloat 4.5s ease-in-out infinite alternate;
   }
 `;
@@ -429,6 +429,7 @@ const INFINITY_TEMPLATES = [
 
 export default function LandingPage() {
   const cursorRef = useRef(null);
+  const mobileSwitcherRef = useRef(null);
   const [isHorecaModalOpen, setIsHorecaModalOpen] = useState(false);
   const [horecaIframeLoaded, setHorecaIframeLoaded] = useState(false);
   const [showTgPopup, setShowTgPopup] = useState(false);
@@ -615,6 +616,15 @@ export default function LandingPage() {
     return () => { document.body.style.overflow = ''; };
   }, [isHorecaModalOpen, isGalleryModalOpen, isMobileMenuOpen]);
 
+  // Авто-центрирование выбранной ниши в нижнем переключателе (как в Камере iOS) на смартфонах
+  useEffect(() => {
+    if (!isGalleryModalOpen || !mobileSwitcherRef.current || !activeTemplate) return;
+    const activeEl = mobileSwitcherRef.current.querySelector(`[data-niche-id="${activeTemplate.id}"]`);
+    if (activeEl) {
+      activeEl.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  }, [activeTemplate, isGalleryModalOpen]);
+
   // Таймер для всплывающего окна «Магия изнутри 🪄» при открытии живого демо Smart-меню (как в визитке — 5 секунд)
   useEffect(() => {
     let tgTimer;
@@ -655,6 +665,12 @@ export default function LandingPage() {
     if (activeTemplate?.id === tpl.id) return;
     setIframeLoaded(false);
     setActiveTemplate(tpl);
+  };
+
+  const handleStepNiche = (direction) => {
+    const currentIndex = INFINITY_TEMPLATES.findIndex(t => t.id === (activeTemplate?.id || INFINITY_TEMPLATES[0].id));
+    const nextIndex = (currentIndex + direction + INFINITY_TEMPLATES.length) % INFINITY_TEMPLATES.length;
+    handleSelectNiche(INFINITY_TEMPLATES[nextIndex]);
   };
 
   const handleGlassMove = (e) => {
@@ -854,7 +870,6 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {}
       {/* Main Content */}
       <main className="relative z-10 bg-[#050505] mb-[60vh] md:mb-[70vh] shadow-[0_20px_50px_rgba(0,0,0,1)] rounded-b-[2rem] md:rounded-b-[3rem] border-b border-white/10 pb-10">
         
@@ -1140,7 +1155,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {}
         {/* NFC Breloq */}
         <section id="nfc" className="pt-8 pb-24 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10 scroll-mt-24">
           <div className="glass-card p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem overflow-hidden cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
@@ -1255,7 +1269,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {}
         {/* Pricing */}
         <section id="investments" className="py-24 md:py-32 px-4 md:px-8 relative z-10 overflow-hidden">
           <div className="max-w-7xl mx-auto text-center mb-12 md:mb-16 fade-up-elem">
@@ -1425,7 +1438,6 @@ export default function LandingPage() {
 
       </main>
 
-      {}
       {/* Footer (Curtain Reveal) */}
       <footer id="contact" className="fixed bottom-0 left-0 w-full h-[60vh] md:h-[70vh] bg-[#050505] flex flex-col justify-between p-6 md:p-12 z-0 pb-20 md:pb-6">
         <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center text-center mt-12 md:mt-10 flex-1">
@@ -1455,47 +1467,47 @@ export default function LandingPage() {
         </div>
       </footer>
 
-      {/* Infinity 3D Showroom Modal (Apple Keynote 2-in-1 Split Architecture) */}
+      {/* Infinity 3D Showroom Modal (Mobile: Edge-to-Edge + iOS Camera Bottom Switcher | Desktop: Split 2-in-1 Showroom) */}
       {isGalleryModalOpen && (
         <div
-          className="fixed inset-0 z-[110] flex items-center justify-center p-2 sm:p-4 lg:p-6 overflow-hidden overscroll-none"
+          className="fixed inset-0 z-[110] flex items-center justify-center p-0 lg:p-6 overflow-hidden overscroll-none"
         >
           {/* Глубокий матовый фон */}
           <div
-            className="fixed inset-0 bg-[#050505]/85 backdrop-blur-2xl transition-opacity duration-500"
+            className="fixed inset-0 bg-[#050505]/90 backdrop-blur-2xl transition-opacity duration-500"
             onClick={handleCloseGallery}
           ></div>
 
-          {/* Главная капсула 3D-шоурума */}
+          {/* Главная капсула шоурума: на мобильных Edge-to-Edge 100% экрана без рамок, на десктопе — двухколоночный сплит */}
           <div
-            className="relative z-10 w-full max-w-6xl h-[95vh] lg:h-[88vh] max-h-[860px] rounded-[2rem] sm:rounded-[2.5rem] border border-white/15 bg-[#070709]/90 backdrop-blur-3xl shadow-[0_40px_120px_rgba(0,0,0,0.98),inset_0_1px_0_rgba(255,255,255,0.2)] flex flex-col lg:flex-row overflow-hidden"
+            className="relative z-10 w-full max-w-6xl h-[100dvh] lg:h-[88vh] lg:max-h-[860px] rounded-none lg:rounded-[2.5rem] border-0 lg:border lg:border-white/15 bg-[#050505] lg:bg-[#070709]/90 lg:backdrop-blur-3xl shadow-none lg:shadow-[0_40px_120px_rgba(0,0,0,0.98),inset_0_1px_0_rgba(255,255,255,0.2)] flex flex-col lg:flex-row overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Динамическое фоновое свечение шоурума, реагирующее на цвет выбранной ниши */}
+            {/* Динамическое фоновое свечение шоурума на десктопе */}
             <div
-              className="absolute -top-36 -left-36 w-96 h-96 rounded-full blur-[130px] pointer-events-none transition-all duration-700 opacity-30"
+              className="hidden lg:block absolute -top-36 -left-36 w-96 h-96 rounded-full blur-[130px] pointer-events-none transition-all duration-700 opacity-30"
               style={{ backgroundColor: currentTemplate.color }}
             ></div>
             <div
-              className="absolute -bottom-36 -right-24 w-[28rem] h-[28rem] rounded-full blur-[150px] pointer-events-none transition-all duration-700 opacity-35"
+              className="hidden lg:block absolute -bottom-36 -right-24 w-[28rem] h-[28rem] rounded-full blur-[150px] pointer-events-none transition-all duration-700 opacity-35"
               style={{ backgroundColor: currentTemplate.color }}
             ></div>
 
-            {/* Единственный элегантный круглый крестик закрытия из матового стекла (blur 20px) в правом верхнем углу */}
+            {/* Единственный полупрозрачный парящий крестик закрытия в углу */}
             <button
               onClick={handleCloseGallery}
               aria-label="Закрыть шоурум"
-              className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/[0.08] hover:bg-white/[0.16] backdrop-blur-[20px] border border-white/20 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-300 hover:scale-105 active:scale-95 interactive-elem cursor-pointer"
+              className="absolute top-4 right-4 lg:top-5 lg:right-5 z-50 w-10 h-10 lg:w-11 lg:h-11 rounded-full bg-black/55 lg:bg-white/[0.08] hover:bg-white/[0.16] backdrop-blur-[20px] border border-white/20 flex items-center justify-center text-white/85 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-300 hover:scale-105 active:scale-95 interactive-elem cursor-pointer"
             >
               <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
 
-            {/* ================= ЛЕВАЯ КОЛОНКА (40% на десктопе / Компактный свайп-бар на смартфонах) ================= */}
-            <div className="w-full lg:w-[40%] shrink-0 flex flex-col justify-between lg:border-r border-b lg:border-b-0 border-white/10 bg-white/[0.015] relative z-20 px-4 pt-4 pb-3 sm:px-6 sm:pt-6 lg:p-7 lg:overflow-hidden">
-              {/* Заголовок шоурума */}
-              <div className="pr-12 lg:pr-4 mb-3 lg:mb-5">
+            {/* ================= ЛЕВАЯ КОЛОНКА (ТОЛЬКО ДЕСКТОП lg: 40% ширины) ================= */}
+            <div className="hidden lg:flex lg:w-[40%] shrink-0 flex-col justify-between border-r border-white/10 bg-white/[0.015] relative z-20 p-7 overflow-hidden">
+              {/* Заголовок шоурума на десктопе */}
+              <div className="pr-4 mb-5">
                 <div className="flex items-center gap-2 mb-1.5">
                   <span
                     className="w-2 h-2 rounded-full transition-colors duration-500"
@@ -1504,58 +1516,20 @@ export default function LandingPage() {
                       boxShadow: `0 0 10px ${currentTemplate.color}`
                     }}
                   ></span>
-                  <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-[#A1A1AA] font-semibold">
+                  <span className="text-[11px] uppercase tracking-[0.22em] text-[#A1A1AA] font-semibold">
                     Apple-Grade Interactive
                   </span>
                 </div>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif text-white tracking-tight leading-tight">
+                <h3 className="text-3xl font-serif text-white tracking-tight leading-tight">
                   Infinity <span className="italic font-normal text-white/90">3D Showroom</span>
                 </h3>
-                <p className="hidden lg:block text-xs text-[#A1A1AA] mt-1.5 leading-relaxed">
+                <p className="text-xs text-[#A1A1AA] mt-1.5 leading-relaxed">
                   Переключайте ниши в реальном времени — тестируйте переворот 3D-карты, звук и микро-анимации.
                 </p>
               </div>
 
-              {/* МОБИЛЬНЫЙ ГОРИЗОНТАЛЬНЫЙ СВАЙП-БАР С ПИЛЮЛЯМИ НИШ (только на смартфонах и планшетах < lg) */}
-              <div className="lg:hidden -mx-4 px-4 sm:-mx-6 sm:px-6 overflow-x-auto no-scrollbar flex items-center gap-2 pb-1">
-                {INFINITY_TEMPLATES.map((tpl) => {
-                  const isActive = currentTemplate.id === tpl.id;
-                  return (
-                    <button
-                      key={tpl.id}
-                      onClick={() => handleSelectNiche(tpl)}
-                      style={{
-                        borderColor: isActive ? tpl.color : 'rgba(255,255,255,0.1)',
-                        background: isActive ? tpl.softBg : 'rgba(255,255,255,0.03)',
-                        boxShadow: isActive ? `0 0 20px -4px ${tpl.glow}, inset 0 1px 0 rgba(255,255,255,0.25)` : 'none'
-                      }}
-                      className={`shrink-0 flex items-center gap-2 px-3.5 py-2 rounded-full border backdrop-blur-xl transition-all duration-300 cursor-pointer interactive-elem ${
-                        isActive ? 'scale-[1.02] saturate-150' : 'opacity-75 hover:opacity-100'
-                      }`}
-                    >
-                      <span
-                        className="w-2 h-2 rounded-full shrink-0"
-                        style={{
-                          backgroundColor: tpl.color,
-                          boxShadow: isActive ? `0 0 8px ${tpl.color}` : 'none'
-                        }}
-                      ></span>
-                      <span
-                        className="w-4 h-4 flex items-center justify-center shrink-0 [&>svg]:w-3.5 [&>svg]:h-3.5"
-                        style={{ color: isActive ? tpl.color : '#D4D4D8' }}
-                      >
-                        {tpl.icon}
-                      </span>
-                      <span className={`text-xs font-medium whitespace-nowrap ${isActive ? 'text-white' : 'text-[#D4D4D8]'}`}>
-                        {tpl.name}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* ДЕСКТОПНЫЙ СПИСОК КАРТОЧЕК 9 НИШ С ИНДИВИДУАЛЬНЫМ МИКРО-ГРАДИЕНТОМ И ПОДСВЕТКОЙ */}
-              <div className="hidden lg:flex flex-col gap-2 flex-1 overflow-y-auto no-scrollbar pr-1 py-0.5">
+              {/* Десктопный список 9 ниш */}
+              <div className="flex flex-col gap-2 flex-1 overflow-y-auto no-scrollbar pr-1 py-0.5">
                 {INFINITY_TEMPLATES.map((tpl) => {
                   const isActive = currentTemplate.id === tpl.id;
                   return (
@@ -1577,7 +1551,6 @@ export default function LandingPage() {
                           : 'hover:border-white/20 hover:bg-white/[0.05]'
                       }`}
                     >
-                      {/* Индивидуальный микро-градиент темы внутри карточки */}
                       <div
                         className="absolute inset-0 opacity-25 group-hover:opacity-45 transition-opacity pointer-events-none"
                         style={{
@@ -1586,7 +1559,6 @@ export default function LandingPage() {
                       ></div>
 
                       <div className="relative z-10 flex items-center gap-3 min-w-0">
-                        {/* Иконка с цветным свечением ниши */}
                         <div
                           style={{
                             color: tpl.color,
@@ -1618,7 +1590,6 @@ export default function LandingPage() {
                         </div>
                       </div>
 
-                      {/* Индикатор LIVE 3D */}
                       <div className="relative z-10 shrink-0 flex items-center gap-1.5">
                         <span
                           style={{
@@ -1644,7 +1615,7 @@ export default function LandingPage() {
               </div>
 
               {/* Нижний блок кастомизации на десктопе */}
-              <div className="hidden lg:flex items-center justify-between gap-3 pt-4 mt-3 border-t border-white/10">
+              <div className="flex items-center justify-between gap-3 pt-4 mt-3 border-t border-white/10">
                 <div className="text-left">
                   <p className="text-xs font-medium text-white">Своя ниша или личный бренд?</p>
                   <p className="text-[11px] text-[#A1A1AA]">Создадим индивидуальную 3D-архитектуру</p>
@@ -1661,20 +1632,16 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* ================= ПРАВАЯ КОЛОНКА (60% на десктопе / Сцена 75vh на мобилках) ================= */}
-            <div className="w-full lg:w-[60%] flex-1 flex flex-col items-center justify-center relative z-10 px-3 py-2 sm:px-6 sm:py-4 lg:p-8 overflow-hidden">
-              {/* Мягкое объемное свечение позади смартфона в цвет выбранной ниши */}
+            {/* ================= ПРАВАЯ КОЛОНКА (Мобильные: 100% Edge-to-Edge без рамок | Десктоп: 60% с титановым макетом) ================= */}
+            <div className="w-full lg:w-[60%] flex-1 h-full flex flex-col items-center justify-between lg:justify-center relative z-10 p-0 lg:p-8 overflow-hidden">
+              {/* Мягкое объемное свечение позади смартфона (только десктоп) */}
               <div
-                className="
-                  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                  w-[280px] h-[380px] sm:w-[360px] sm:h-[500px] rounded-full
-                  blur-[95px] pointer-events-none transition-all duration-700 opacity-45
-                "
+                className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] h-[500px] rounded-full blur-[95px] pointer-events-none transition-all duration-700 opacity-45"
                 style={{ backgroundColor: currentTemplate.color }}
               ></div>
 
-              {/* Деликатная стеклянная пилюля над мокапом смартфона */}
-              <div className="relative z-30 mb-2.5 sm:mb-4 flex items-center justify-center">
+              {/* Деликатная стеклянная пилюля над мокапом смартфона (только десктоп) */}
+              <div className="hidden lg:flex relative z-30 mb-4 items-center justify-center">
                 <a
                   href={`${currentTemplate.url}?ref=catalog`}
                   target="_blank"
@@ -1683,7 +1650,7 @@ export default function LandingPage() {
                     borderColor: `${currentTemplate.color}55`,
                     boxShadow: `0 10px 30px -6px ${currentTemplate.glow}, inset 0 1px 0 rgba(255,255,255,0.22)`
                   }}
-                  className="inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white/[0.06] hover:bg-white/[0.12] backdrop-blur-xl border text-xs sm:text-[13px] font-medium text-white transition-all duration-300 hover:scale-[1.03] active:scale-95 interactive-elem"
+                  className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/[0.06] hover:bg-white/[0.12] backdrop-blur-xl border text-[13px] font-medium text-white transition-all duration-300 hover:scale-[1.03] active:scale-95 interactive-elem"
                 >
                   <span
                     className="w-2 h-2 rounded-full shrink-0"
@@ -1692,27 +1659,26 @@ export default function LandingPage() {
                       boxShadow: `0 0 8px ${currentTemplate.color}`
                     }}
                   ></span>
-                  <span className="lg:hidden">Открыть во весь экран ↗</span>
-                  <span className="hidden lg:inline">Развернуть на весь экран ↗</span>
+                  <span>Развернуть на весь экран ↗</span>
                 </a>
               </div>
 
-              {/* Парящий объемный мокап смартфона в титановой рамке (75vh на смартфонах) */}
+              {/* Контейнер визитки: на смартфонах Edge-to-Edge (100% ширины и высоты без рамок), на десктопе — титановый мокап */}
               <div
                 style={{
-                  boxShadow: `0 35px 90px -15px rgba(0, 0, 0, 0.95), 0 0 70px -15px ${currentTemplate.glow}, inset 0 1px 2px rgba(255, 255, 255, 0.45), inset 0 -1px 2px rgba(255, 255, 255, 0.2)`
+                  '-- device-glow': currentTemplate.glow
                 }}
-                className="relative w-full max-w-[360px] sm:max-w-[385px] h-[75vh] lg:h-[74vh] max-h-[730px] rounded-[2.9rem] sm:rounded-[3.2rem] p-[9px] sm:p-[11px] bg-gradient-to-b from-[#3f3f46] via-[#18181b] to-[#27272a] border border-white/25 transition-shadow duration-700 flex flex-col shrink-0"
+                className="relative w-full flex-1 lg:flex-none lg:max-w-[385px] lg:h-[74vh] lg:max-h-[730px] rounded-none lg:rounded-[3.2rem] p-0 lg:p-[11px] bg-transparent lg:bg-gradient-to-b lg:from-[#3f3f46] lg:via-[#18181b] lg:to-[#27272a] border-0 lg:border lg:border-white/25 lg:shadow-[0_35px_90px_-15px_rgba(0,0,0,0.95),inset_0_1px_2px_rgba(255,255,255,0.45),inset_0_-1px_2px_rgba(255,255,255,0.2)] transition-shadow duration-700 flex flex-col overflow-hidden"
               >
-                {/* Боковые титановые кнопки (декоративные) */}
-                <div className="hidden sm:block absolute -left-[3px] top-28 w-[3px] h-8 bg-gradient-to-b from-white/40 to-white/10 rounded-l-full"></div>
-                <div className="hidden sm:block absolute -left-[3px] top-40 w-[3px] h-12 bg-gradient-to-b from-white/40 to-white/10 rounded-l-full"></div>
-                <div className="hidden sm:block absolute -right-[3px] top-36 w-[3px] h-16 bg-gradient-to-b from-white/40 to-white/10 rounded-r-full"></div>
+                {/* Боковые титановые кнопки (только десктоп) */}
+                <div className="hidden lg:block absolute -left-[3px] top-28 w-[3px] h-8 bg-gradient-to-b from-white/40 to-white/10 rounded-l-full"></div>
+                <div className="hidden lg:block absolute -left-[3px] top-40 w-[3px] h-12 bg-gradient-to-b from-white/40 to-white/10 rounded-l-full"></div>
+                <div className="hidden lg:block absolute -right-[3px] top-36 w-[3px] h-16 bg-gradient-to-b from-white/40 to-white/10 rounded-r-full"></div>
 
-                {/* Внутренняя черная рамка дисплея */}
-                <div className="relative w-full h-full rounded-[2.4rem] sm:rounded-[2.65rem] bg-[#050505] overflow-hidden border border-black shadow-inner flex flex-col">
-                  {/* Dynamic Island */}
-                  <div className="absolute top-2.5 left-1/2 -translate-x-1/2 z-30 w-24 h-5 rounded-full bg-black border border-white/[0.08] flex items-center justify-between px-2.5 pointer-events-none shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+                {/* Экран: без рамок на мобильных, скругленный дисплей на десктопе */}
+                <div className="relative w-full h-full flex-1 rounded-none lg:rounded-[2.65rem] bg-[#050505] overflow-hidden border-0 lg:border lg:border-black flex flex-col">
+                  {/* Dynamic Island (только десктоп) */}
+                  <div className="hidden lg:flex absolute top-2.5 left-1/2 -translate-x-1/2 z-30 w-24 h-5 rounded-full bg-black border border-white/[0.08] items-center justify-between px-2.5 pointer-events-none shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
                     <span className="w-2 h-2 rounded-full bg-[#111115] border border-white/10"></span>
                     <span
                       className="w-1.5 h-1.5 rounded-full transition-colors duration-500"
@@ -1723,7 +1689,7 @@ export default function LandingPage() {
                     ></span>
                   </div>
 
-                  {/* Красивый лоадер-пульсар в цвет выбранной ниши, пока iframe подгружается */}
+                  {/* Лоадер-пульсар в цвет выбранной ниши, пока iframe подгружается */}
                   <div
                     className={`absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-[#050505] transition-opacity duration-500 ${
                       iframeLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
@@ -1764,20 +1730,95 @@ export default function LandingPage() {
                     </div>
                   </div>
 
-                  {/* Живой iframe выбранной визитки с плавным fade/scale переходом */}
+                  {/* Живой iframe выбранной визитки (занимает весь экран на мобильных) */}
                   <iframe
                     key={currentTemplate.id}
                     src={currentTemplate.url}
                     title={currentTemplate.name}
                     onLoad={() => setIframeLoaded(true)}
-                    className={`w-full h-full border-0 bg-[#050505] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                      iframeLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.96]'
+                    className={`w-full h-full flex-1 border-0 bg-[#050505] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      iframeLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.98]'
                     }`}
                     allow="autoplay; clipboard-write"
                   />
 
-                  {/* Нижний стеклянный индикатор Home Bar */}
-                  <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-28 h-1 rounded-full bg-white/25 pointer-events-none"></div>
+                  {/* Нижний стеклянный индикатор Home Bar (только десктоп) */}
+                  <div className="hidden lg:block absolute bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-28 h-1 rounded-full bg-white/25 pointer-events-none"></div>
+                </div>
+              </div>
+
+              {/* ================= НИЖНИЙ ПЕРЕКЛЮЧАТЕЛЬ НИШ НА СМАРТФОНАХ (как режимы в Камере iOS) ================= */}
+              <div className="lg:hidden w-full shrink-0 px-3 pt-2 pb-4 bg-gradient-to-t from-[#050505] via-[#050505]/95 to-transparent relative z-40">
+                <div
+                  style={{
+                    boxShadow: `0 12px 35px rgba(0,0,0,0.9), 0 0 25px -8px ${currentTemplate.glow}, inset 0 1px 0 rgba(255,255,255,0.18)`
+                  }}
+                  className="mx-auto max-w-md h-12 rounded-full bg-[#0B0B0F]/85 backdrop-blur-2xl border border-white/15 flex items-center justify-between px-1.5"
+                >
+                  {/* Кнопка влево ‹ */}
+                  <button
+                    onClick={() => handleStepNiche(-1)}
+                    aria-label="Предыдущая ниша"
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-white/60 hover:text-white active:scale-90 transition-all shrink-0 cursor-pointer"
+                  >
+                    <span className="text-lg leading-none font-light">‹</span>
+                  </button>
+
+                  {/* Свайп-лента режимов: Эзотерика • [ Психолог ] • Турагент */}
+                  <div
+                    ref={mobileSwitcherRef}
+                    className="flex-1 overflow-x-auto no-scrollbar flex items-center gap-1 px-2 scroll-smooth snap-x snap-mandatory"
+                  >
+                    {INFINITY_TEMPLATES.map((tpl, index) => {
+                      const isActive = currentTemplate.id === tpl.id;
+                      return (
+                        <React.Fragment key={tpl.id}>
+                          <button
+                            data-niche-id={tpl.id}
+                            onClick={() => handleSelectNiche(tpl)}
+                            style={
+                              isActive
+                                ? {
+                                    borderColor: `${tpl.color}88`,
+                                    background: tpl.softBg,
+                                    boxShadow: `0 0 16px -3px ${tpl.glow}, inset 0 1px 0 rgba(255,255,255,0.25)`
+                                  }
+                                : undefined
+                            }
+                            className={`snap-center shrink-0 px-3 py-1 rounded-full text-xs tracking-wide transition-all duration-300 flex items-center gap-1.5 cursor-pointer ${
+                              isActive
+                                ? 'border text-white font-semibold scale-105'
+                                : 'border border-transparent text-white/55 hover:text-white/85 font-normal'
+                            }`}
+                          >
+                            {isActive && (
+                              <span
+                                className="w-1.5 h-1.5 rounded-full shrink-0"
+                                style={{
+                                  backgroundColor: tpl.color,
+                                  boxShadow: `0 0 8px ${tpl.color}`
+                                }}
+                              ></span>
+                            )}
+                            <span className="whitespace-nowrap">{tpl.name}</span>
+                          </button>
+
+                          {index < INFINITY_TEMPLATES.length - 1 && (
+                            <span className="text-white/20 text-[10px] select-none shrink-0">•</span>
+                          )}
+                        </React.Fragment>
+                      );
+                    })}
+                  </div>
+
+                  {/* Кнопка вправо › */}
+                  <button
+                    onClick={() => handleStepNiche(1)}
+                    aria-label="Следующая ниша"
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-white/60 hover:text-white active:scale-90 transition-all shrink-0 cursor-pointer"
+                  >
+                    <span className="text-lg leading-none font-light">›</span>
+                  </button>
                 </div>
               </div>
             </div>
