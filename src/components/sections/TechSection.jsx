@@ -28,7 +28,7 @@ export default function TechSection({ onGlassMove }) {
             </div>
             <h4 className="text-xl font-medium mb-3">Технология PWA</h4>
             <p className="text-[#D4D4D8] text-sm leading-relaxed">
-              Без App Store и Google Play. Иконка вашего бизнеса устанавливается за 1 секунду по прямой ссылке прямо в телефон.
+              Без App Store и Google Play. Установка в 1 клик, мгновенное сохранение контакта в телефон и работа без VPN.
             </p>
           </div>
         </div>
@@ -45,9 +45,9 @@ export default function TechSection({ onGlassMove }) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h4 className="text-xl font-medium mb-3">100/100 PageSpeed</h4>
+            <h4 className="text-xl font-medium mb-3">100/100 PageSpeed & WOW</h4>
             <p className="text-[#D4D4D8] text-sm leading-relaxed">
-              Чистая архитектура. Ваш цифровой продукт загружается и работает быстрее, чем клиент успеет моргнуть.
+              Чистый код без тяжелых конструкторов. Молниеносный отклик, кинематографичные 3D-анимации и рост среднего чека на +25%.
             </p>
           </div>
         </div>
@@ -64,9 +64,9 @@ export default function TechSection({ onGlassMove }) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
               </svg>
             </div>
-            <h4 className="text-xl font-medium mb-3">Размещение под ключ</h4>
+            <h4 className="text-xl font-medium mb-3">Быстрый старт от 3 дней</h4>
             <p className="text-[#D4D4D8] text-sm leading-relaxed">
-              Предоставляем готовый продукт на нашем поддомене или помогаем с интеграцией вашего премиального домена.
+              Разработка под ключ в вашу собственность. Полная автономия без кабальных абонентских плат и привязки к сторонним сервисам.
             </p>
           </div>
         </div>

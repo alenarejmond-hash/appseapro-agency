@@ -18,11 +18,15 @@ const playfair = Playfair_Display({
 export const metadata = {
   title: "AppSeaPro | IT-Бутик цифровых экосистем Елены",
   description:
-    "Премиальные PWA-визитки, Smart QR-меню и NFC-аксессуары из кожи Crazy Horse под ключ. Без ежемесячных абонентских плат.",
+    "Премиальные PWA-визитки, Smart QR-меню и NFC-аксессуары из кожи Crazy Horse под ключ. Разработка в вашу собственность: без процентов с заказов и кабальных подписок.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "AppSeaPro | IT-Бутик цифровых экосистем Елены",
     description:
-      "Премиальные PWA-визитки, Smart QR-меню и NFC-аксессуары из кожи Crazy Horse под ключ. Без ежемесячных абонентских плат.",
+      "Премиальные PWA-визитки, Smart QR-меню и NFC-аксессуары из кожи Crazy Horse под ключ. Разработка в вашу собственность: без процентов с заказов и кабальных подписок.",
     url: "https://agency.appseapro.com",
     siteName: "AppSeaPro",
     locale: "ru_RU",
@@ -32,7 +36,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "AppSeaPro | IT-Бутик цифровых экосистем Елены",
     description:
-      "Премиальные PWA-визитки, Smart QR-меню и NFC-аксессуары из кожи Crazy Horse под ключ. Без ежемесячных абонентских плат.",
+      "Премиальные PWA-визитки, Smart QR-меню и NFC-аксессуары из кожи Crazy Horse под ключ. Разработка в вашу собственность: без процентов с заказов и кабальных подписок.",
   },
 };
 

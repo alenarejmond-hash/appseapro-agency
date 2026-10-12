@@ -11,7 +11,7 @@ export default function Footer({
   return (
     <footer
       id="contact"
-      className="relative md:fixed bottom-0 left-0 w-full md:h-[70vh] bg-[#050505] flex flex-col justify-between p-6 md:p-12 pb-12 md:pb-6 z-10 md:z-0"
+      className="relative w-full min-h-[50vh] md:min-h-[60vh] bg-[#050505] flex flex-col justify-between p-6 md:p-12 pb-12 md:pb-8 z-10"
     >
       <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center text-center mt-12 md:mt-10 flex-1">
         <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-serif font-medium mb-6 md:mb-8">

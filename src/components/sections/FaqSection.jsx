@@ -13,11 +13,11 @@ export default function FaqSection() {
       <div className="space-y-4 fade-up-elem">
         <details className="glass-card p-6 cursor-pointer group interactive-elem">
           <summary className="font-medium text-lg outline-none flex justify-between items-center">
-            Есть ли ежемесячная абонентская плата?
+            Нужно ли платить ежемесячную абонентскую плату?
             <span className="text-2xl group-open:rotate-45 transition-transform text-[#D4D4D8]">+</span>
           </summary>
           <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">
-            Нет. Мой главный принцип — вы платите один раз за разработку и настройку продукта под ключ. Вы не подсаживаетесь на иглу сервисов по подписке. Продукт полностью ваш навсегда.
+            Агентству AppSeaPro вы платите только за индивидуальную разработку и запуск под ключ. Я не беру абонентскую плату и проценты с ваших заказов. Базовое облачное размещение уже настроено в проекте, а продукт переходит в вашу полную собственность.
           </p>
         </details>
         
@@ -27,7 +27,7 @@ export default function FaqSection() {
             <span className="text-2xl group-open:rotate-45 transition-transform text-[#D4D4D8]">+</span>
           </summary>
           <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">
-            Полностью вам. Приложение разворачивается на надежном хостинге, а все данные и заказы поступают в вашу интуитивную систему управления и Telegram, доступ к которым есть только у вас.
+            Полностью вам. Приложение размещается на отказоустойчивой облачной инфраструктуре, а все данные, заявки и заказы поступают напрямую в вашу панель управления и Telegram, доступ к которым есть только у вас.
           </p>
         </details>
         

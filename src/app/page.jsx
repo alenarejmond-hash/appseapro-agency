@@ -16,6 +16,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import Showroom from '@/components/sections/Showroom';
 import AboutSection from '@/components/sections/AboutSection';
 import TechSection from '@/components/sections/TechSection';
+import ReviewsSection from '@/components/sections/ReviewsSection';
 import PricingSection from '@/components/sections/PricingSection';
 import FaqSection from '@/components/sections/FaqSection';
 
@@ -263,8 +264,9 @@ const styles = `
 
   .fade-up-elem {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(16px);
+    transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+    will-change: opacity, transform;
   }
   .fade-up-elem.visible {
     opacity: 1;
@@ -488,13 +490,16 @@ export default function LandingPage() {
     };
   }, []);
 
-  // Анимация появления секций при скролле
+  // Анимация появления секций при скролле (срабатывает заранее, чтобы блоки не прыгали)
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
       });
-    }, { threshold: 0.1 });
+    }, { rootMargin: '250px 0px', threshold: 0.05 });
 
     document.querySelectorAll('.fade-up-elem').forEach(el => observer.observe(el));
     return () => observer.disconnect();
@@ -661,7 +666,7 @@ export default function LandingPage() {
       />
 
       {/* Основной контент */}
-      <main className="relative z-10 bg-[#050505] mb-[60vh] md:mb-[70vh] shadow-[0_20px_50px_rgba(0,0,0,1)] rounded-b-[2rem] md:rounded-b-[3rem] border-b border-white/10 pb-10">
+      <main className="relative z-10 bg-[#050505] pb-10">
         
         {/* Первый экран (Hero) */}
         <HeroSection
@@ -686,6 +691,9 @@ export default function LandingPage() {
 
         {/* Блок «Технологии Превосходства» */}
         <TechSection onGlassMove={handleGlassMove} />
+
+        {/* Блок отзывов клиентов (Social Proof) */}
+        <ReviewsSection onGlassMove={handleGlassMove} />
 
         {/* Блок «Инвестиции в Капитал Бренда» */}
         <PricingSection

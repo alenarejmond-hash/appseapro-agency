@@ -92,19 +92,27 @@ export default function HeroSection({
                 {/* Динамический световой блик при наклоне */}
                 <div className="hero-glare absolute -inset-12 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.28)_0%,rgba(229,9,64,0.12)_35%,transparent_70%)] opacity-35 pointer-events-none transition-transform duration-75"></div>
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                <div className="glass-content text-center px-6" style={{ transform: 'translateZ(35px)' }}>
-                  <div className="w-16 h-16 rounded-full border border-[#E50940]/60 flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-[#E50940]/25 to-black/60 text-[#E50940] shadow-[0_0_25px_rgba(229,9,64,0.35)]">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"></path></svg>
+                <div className="glass-content text-center px-4 w-full flex flex-col items-center justify-center" style={{ transform: 'translateZ(35px)' }}>
+                  <img
+                    src="/1.png"
+                    alt="AppSeaPro"
+                    draggable={false}
+                    className="w-44 sm:w-48 max-w-full h-auto object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
+                  />
+                  <p className="text-[10px] text-[#D4D4D8] mt-1 uppercase tracking-[0.22em] font-medium">Digital Boutique</p>
+                  <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] text-[#A1A1AA] tracking-wider uppercase">
+                    <span>Перевернуть</span>
+                    <svg className="w-2.5 h-2.5 text-white/60 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
                   </div>
-                  <h3 className="font-serif text-xl text-white tracking-wide">AppSeaPro</h3>
-                  <p className="text-xs text-[#D4D4D8] mt-2 uppercase tracking-widest">Digital Agency</p>
                 </div>
               </div>
 
               {/* Обратная сторона визитки с фотографией */}
               <div className="hero-card-face hero-card-back glass-card rounded-[2rem] border border-white/25 shadow-[0_25px_60px_rgba(229,9,64,0.28),inset_0_1px_1px_rgba(255,255,255,0.35)] overflow-hidden">
                 <img
-                  src="elena-photo.jpg"
+                  src="/elena-photo.jpg"
                   alt="Елена — IT-Архитектор"
                   draggable={false}
                   className="absolute inset-0 w-full h-full object-cover"

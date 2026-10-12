@@ -14,7 +14,7 @@ export default function PricingSection({
           Инвестиции в <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Капитал Бренда</span>
         </h2>
         <p className="text-[#D4D4D8] text-base md:text-lg max-w-xl mx-auto">
-          Разовая оплата за разработку. Никаких скрытых ежемесячных платежей.
+          Фиксированная инвестиция в разработку под ключ. Продукт становится вашим цифровым активом — без процентов с чеков и комиссий агрегаторам.
         </p>
       </div>
 
@@ -34,14 +34,14 @@ export default function PricingSection({
             </div>
             <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Classic</h3>
             <div className="mb-6 p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex items-baseline justify-between">
-              <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">Разовый платеж</span>
+              <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">Разработка под ключ</span>
               <span className="text-2xl md:text-3xl font-serif text-white">от $150</span>
             </div>
             
             <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                <span>Пожизненное владение без абонентской платы</span>
+                <span>100% владение кодом и экосистемой: без абонентской платы агентству</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -81,14 +81,14 @@ export default function PricingSection({
             </div>
             <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Infinity</h3>
             <div className="mb-6 p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex items-baseline justify-between">
-              <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">Разовый платеж</span>
+              <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">Разработка под ключ</span>
               <span className="text-2xl md:text-3xl font-serif text-white">от $300</span>
             </div>
             
             <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                <span>Пожизненное владение без абонентской платы</span>
+                <span>Полная автономия бизнеса: без абонентской платы агентству</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -140,14 +140,14 @@ export default function PricingSection({
             </div>
             <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Twin ID</h3>
             <div className="mb-6 p-3.5 rounded-2xl bg-white/[0.05] border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] flex items-baseline justify-between">
-              <span className="text-xs text-[#D4D4D8] uppercase tracking-wider">Разовый платеж</span>
+              <span className="text-xs text-[#D4D4D8] uppercase tracking-wider">Разработка под ключ</span>
               <span className="text-2xl md:text-3xl font-serif text-white">от $500</span>
             </div>
             
             <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                <span>Пожизненное владение без абонентской платы</span>
+                <span>Владение обоими профилями: без абонентской платы агентству</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -200,7 +200,7 @@ export default function PricingSection({
             <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                <span>Пожизненное владение без абонентской платы и комиссий</span>
+                <span>0% комиссии с заказов: без арендной платы за столики агрегаторам</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -251,14 +251,14 @@ export default function PricingSection({
             </div>
             <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Beauty & SPA</h3>
             <div className="mb-6 p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex items-baseline justify-between">
-              <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">Разовый платеж</span>
+              <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">Разработка под ключ</span>
               <span className="text-2xl md:text-3xl font-serif text-white">от $450</span>
             </div>
             
             <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                <span>Пожизненное владение без абонентской платы агрегаторам</span>
+                <span>Прямая запись клиентов: без абонентской платы агрегаторам</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -298,14 +298,14 @@ export default function PricingSection({
             </div>
             <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">NFC Брелок</h3>
             <div className="mb-6 p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex items-baseline justify-between">
-              <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">Разовый платеж</span>
+              <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">Фиксированная цена</span>
               <span className="text-2xl md:text-3xl font-serif text-white">от $60</span>
             </div>
             
             <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                <span>Пожизненное владение без абонентской платы и зарядок</span>
+                <span>Пассивный NFC-чип: работает автономно, без батареек и подписок</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
