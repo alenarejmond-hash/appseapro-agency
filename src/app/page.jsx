@@ -456,6 +456,7 @@ export default function LandingPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHeroInteracting, setIsHeroInteracting] = useState(false);
   const [isCardFlipped, setIsCardFlipped] = useState(false);
+  const [isSoundEnabled, setIsSoundEnabled] = useState(true);
   const [contactValue, setContactValue] = useState('');
   const [isContactSent, setIsContactSent] = useState(false);
   
@@ -477,6 +478,7 @@ export default function LandingPage() {
 
   // Реалистичный звук переворота 3D-визитки (Web Audio API)
   const playCardFlipSound = () => {
+    if (!isSoundEnabled) return;
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtx) return;
@@ -983,6 +985,29 @@ export default function LandingPage() {
               onTouchEnd={handleHeroLeave}
               onTouchCancel={handleHeroLeave}
             >
+              <button
+                type="button"
+                aria-label={isSoundEnabled ? 'Выключить звук переворота' : 'Включить звук переворота'}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsSoundEnabled(!isSoundEnabled);
+                }}
+                onTouchStart={(e) => e.stopPropagation()}
+                className="absolute top-3 right-3 z-30 w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:border-white/20 backdrop-blur-md flex items-center justify-center text-xs text-white/70 hover:text-white transition-all interactive-elem cursor-pointer"
+              >
+                {isSoundEnabled ? (
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M11 5L6 9H2v6h4l5 4V5z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" />
+                  </svg>
+                ) : (
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M11 5L6 9H2v6h4l5 4V5z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M22 9l-6 6M16 9l6 6" />
+                  </svg>
+                )}
+              </button>
+
               <div className={`hero-3d-element ${!isHeroInteracting ? 'is-idle' : ''} w-full h-full relative interactive-elem`}>
                 <div
                   className="hero-flip-inner w-full h-full relative"
