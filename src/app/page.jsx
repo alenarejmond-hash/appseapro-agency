@@ -1027,6 +1027,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* Showroom */}
         <section id="showroom" className="pt-24 md:pt-32 pb-0 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="mb-12 md:mb-24 fade-up-elem text-center">
@@ -1243,6 +1244,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* NFC Breloq */}
         <section id="nfc" className="pt-8 pb-24 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto relative z-10 scroll-mt-24">
           <div className="glass-card p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem overflow-hidden cursor-pointer border-white/15" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
@@ -1357,6 +1359,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {}
         {/* Pricing */}
         <section id="investments" className="py-24 md:py-32 px-4 md:px-8 relative z-10 overflow-hidden">
           <div className="max-w-7xl mx-auto text-center mb-12 md:mb-16 fade-up-elem">
@@ -1366,140 +1369,255 @@ export default function LandingPage() {
 
           <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-6">
             
-            <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
-              <div className="glass-content h-full flex flex-col">
-                <span className="text-[#A1A1AA] text-xs font-semibold uppercase tracking-wider">PWA Визитка</span>
-                <h3 className="text-2xl font-serif mt-2 mb-4">Classic</h3>
-                <div className="mb-6"><span className="text-3xl font-serif text-white">от $150</span></div>
+            {/* 1. Classic */}
+            <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col border-white/15 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove}>
+              <div className="glass-content h-full flex flex-col text-left">
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[10px] font-medium uppercase tracking-widest">
+                    PWA Визитка
+                  </span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Classic</h3>
+                <div className="mb-6 p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex items-baseline justify-between">
+                  <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">Разовый платеж</span>
+                  <span className="text-2xl md:text-3xl font-serif text-white">от $150</span>
+                </div>
                 
-                <ul className="space-y-3 mb-6 text-sm text-[#D4D4D8] flex-1">
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>7 премиальных дизайн-концептов</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Встроенная мультиязычность</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Кинематографичные анимации</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Умный шеринг (QR и VCF)</span></li>
+                <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Пожизненное владение без абонентской платы</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Персональная панель управления без программирования</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Размещение и настройка под ключ за 1–2 дня</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Синхронизация с вашим Telegram и телефонной книгой</span>
+                  </li>
                 </ul>
 
-                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Оставить заявку</button>
+                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/10 hover:border-white/30 transition-all text-sm font-semibold text-white">Обсудить проект</button>
               </div>
             </div>
 
-            <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
-              <div className="glass-content h-full flex flex-col">
-                <span className="text-[#00F5D4] text-xs font-semibold uppercase tracking-wider">PWA Визитка</span>
-                <h3 className="text-2xl font-serif mt-2 mb-4">Infinity</h3>
-                <div className="mb-6"><span className="text-3xl font-serif text-[#00F5D4]">от $300</span></div>
+            {/* 2. Infinity */}
+            <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col border-white/15 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.1s' }}>
+              <div className="glass-content h-full flex flex-col text-left">
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[10px] font-medium uppercase tracking-widest">
+                    PWA Визитка • 3D
+                  </span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Infinity</h3>
+                <div className="mb-6 p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex items-baseline justify-between">
+                  <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">Разовый платеж</span>
+                  <span className="text-2xl md:text-3xl font-serif text-white">от $300</span>
+                </div>
                 
-                <ul className="space-y-3 mb-6 text-sm text-[#D4D4D8] flex-1">
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Интерактивная 3D-архитектура (2 стороны)</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Вау-эффекты: звук переворота и вибрация</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Блок доверия (услуги и прайс на обороте)</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Адаптация под любую нишу (Врачи, Риелторы)</span></li>
+                <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Пожизненное владение без абонентской платы</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Персональная панель управления без программирования</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Размещение и настройка под ключ за 2–3 дня</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Синхронизация заявок и лидов с вашим Telegram</span>
+                  </li>
                 </ul>
 
                 <div className="flex flex-col gap-2.5">
-                  <button onClick={(e) => { e.stopPropagation(); handleOpenGallery(); }} className="w-full py-2.5 rounded-xl bg-[#00F5D4]/10 border border-[#00F5D4]/40 hover:bg-[#00F5D4]/20 transition-all text-xs font-semibold text-[#00F5D4] flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,245,212,0.12)]">
+                  <button onClick={(e) => { e.stopPropagation(); handleOpenGallery(); }} className="w-full py-2.5 rounded-xl bg-white/[0.06] border border-white/15 hover:bg-white/[0.12] hover:border-white/30 transition-all text-xs font-semibold text-[#F3F4F6] flex items-center justify-center gap-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]">
                     <span>Галерея дизайнов (9 ниш)</span>
                     <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-6-6l6 6-6 6" />
                     </svg>
                   </button>
-                  <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold text-white">Оставить заявку</button>
+                  <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/10 hover:border-white/30 transition-all text-sm font-semibold text-white">Обсудить проект</button>
                 </div>
               </div>
             </div>
 
-            <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col border-[#E50940]/40 shadow-[0_0_30px_rgba(229,9,64,0.15)] relative interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-[#E50940] rounded-b-lg shadow-[0_0_20px_#E50940]"></div>
-              <div className="glass-content h-full flex flex-col">
-                <span className="text-[#E50940] text-xs font-semibold uppercase tracking-wider">Эксклюзив</span>
-                <h3 className="text-2xl font-serif mt-2 mb-4">Twin ID</h3>
-                <div className="mb-6"><span className="text-3xl font-serif text-white">от $500</span></div>
+            {/* 3. Twin ID */}
+            <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col border-white/25 shadow-[0_24px_60px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(255,255,255,0.28)] relative interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.2s' }}>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-0.5 bg-gradient-to-r from-transparent via-white/60 to-transparent"></div>
+              <div className="glass-content h-full flex flex-col text-left">
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.08] border border-white/20 text-white text-[10px] font-semibold uppercase tracking-widest">
+                    Эксклюзив
+                  </span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Twin ID</h3>
+                <div className="mb-6 p-3.5 rounded-2xl bg-white/[0.05] border border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] flex items-baseline justify-between">
+                  <span className="text-xs text-[#D4D4D8] uppercase tracking-wider">Разовый платеж</span>
+                  <span className="text-2xl md:text-3xl font-serif text-white">от $500</span>
+                </div>
                 
-                <ul className="space-y-3 mb-6 text-sm text-[#D4D4D8] flex-1">
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Два независимых профиля в одном приложении</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Умная автосмена стороны по времени суток</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Секретный Z-жест владельца для Facecontrol</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Раздельные базы контактов (VCF) и соцсети</span></li>
+                <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Пожизненное владение без абонентской платы</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Персональная панель управления двумя профилями</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Размещение и настройка под ключ за 3–5 дней</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Приватная синхронизация с вашим личным и рабочим Telegram</span>
+                  </li>
                 </ul>
 
-                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl bg-white text-black hover:bg-gray-200 transition-colors text-sm font-semibold shadow-[0_0_15px_rgba(255,255,255,0.2)]">Оставить заявку</button>
+                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl bg-white text-black hover:bg-gray-200 transition-colors text-sm font-semibold shadow-[0_0_20px_rgba(255,255,255,0.18)]">Обсудить проект</button>
               </div>
             </div>
 
-            <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.3s' }}>
-              <div className="glass-content h-full flex flex-col text-center">
-                <span className="text-[#00F5D4] text-xs font-semibold uppercase tracking-wider mb-2">Для ресторанов</span>
-                <h3 className="text-2xl md:text-3xl font-serif mb-4">Smart HoReCa</h3>
-                <div className="flex flex-col gap-2 mb-6 text-left max-w-xs mx-auto w-full">
-                  <div className="flex justify-between items-center border-b border-white/10 pb-2">
-                    <span className="text-sm text-[#D4D4D8]">Классика</span>
-                    <span className="font-serif text-xl">от $400</span>
+            {/* 4. Smart HoReCa */}
+            <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col border-white/15 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.3s' }}>
+              <div className="glass-content h-full flex flex-col text-left">
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[10px] font-medium uppercase tracking-widest">
+                    Для ресторанов
+                  </span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Smart HoReCa</h3>
+                <div className="mb-6 p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex flex-col gap-2">
+                  <div className="flex justify-between items-baseline border-b border-white/10 pb-2">
+                    <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">Классика</span>
+                    <span className="font-serif text-xl text-white">от $400</span>
                   </div>
-                  <div className="flex justify-between items-center pt-1">
-                    <span className="text-sm text-[#D4D4D8]">Флагман</span>
-                    <span className="font-serif text-xl text-[#00F5D4]">от $800</span>
+                  <div className="flex justify-between items-baseline pt-0.5">
+                    <span className="text-xs text-[#D4D4D8] uppercase tracking-wider">Флагман</span>
+                    <span className="font-serif text-xl text-white">от $800</span>
                   </div>
                 </div>
                 
-                <ul className="space-y-3 mb-6 text-sm text-[#D4D4D8] flex-1 text-left">
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Интеллектуальные допродажи (Cross-sell)</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Сборка заказов с комментариями повару</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Умная привязка к столику через QR-код</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Защита от спам-вызовов и тактильный отклик</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Мультиязычность и Telegram-оповещения</span></li>
+                <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Пожизненное владение без абонентской платы и комиссий</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Персональная панель управления ценами и стоп-листом</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Размещение и настройка меню под ключ за 5–7 дней</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Мгновенная синхронизация заказов с Telegram персонала</span>
+                  </li>
                 </ul>
 
                 <div className="flex flex-col gap-2.5">
-                  <button onClick={(e) => { e.stopPropagation(); handleOpenHorecaDemo('flagship'); }} className="w-full py-2.5 rounded-xl bg-[#00F5D4]/10 border border-[#00F5D4]/40 hover:bg-[#00F5D4]/20 transition-all text-xs font-semibold text-[#00F5D4] flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,245,212,0.12)]">
+                  <button onClick={(e) => { e.stopPropagation(); handleOpenHorecaDemo('flagship'); }} className="w-full py-2.5 rounded-xl bg-white/[0.06] border border-white/15 hover:bg-white/[0.12] hover:border-white/30 transition-all text-xs font-semibold text-[#F3F4F6] flex items-center justify-center gap-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]">
                     <span>Смотреть демо меню</span>
                     <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-6-6l6 6-6 6" />
                     </svg>
                   </button>
-                  <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Обсудить проект</button>
+                  <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/10 hover:border-white/30 transition-all text-sm font-semibold text-white">Обсудить проект</button>
                 </div>
               </div>
             </div>
 
-            <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.4s' }}>
-              <div className="glass-content h-full flex flex-col text-center">
-                <span className="text-[#A1A1AA] text-xs font-semibold uppercase tracking-wider mb-2">Салоны и Мастера</span>
-                <h3 className="text-2xl md:text-3xl font-serif mb-4">Beauty & SPA</h3>
-                <div className="mb-4"><span className="text-3xl font-serif">от $450</span></div>
-                <p className="text-sm text-[#D4D4D8] mb-4">Premium PWA-лендинг с онлайн-бронированием. Идеальный инструмент без комиссий.</p>
+            {/* 5. Beauty & SPA */}
+            <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col border-white/15 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.4s' }}>
+              <div className="glass-content h-full flex flex-col text-left">
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[10px] font-medium uppercase tracking-widest">
+                    Салоны и Мастера
+                  </span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Beauty & SPA</h3>
+                <div className="mb-6 p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex items-baseline justify-between">
+                  <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">Разовый платеж</span>
+                  <span className="text-2xl md:text-3xl font-serif text-white">от $450</span>
+                </div>
                 
-                <ul className="space-y-3 mb-6 text-sm text-[#D4D4D8] flex-1 text-left max-w-sm mx-auto">
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Live-поиск свободных окон и умный режим «Отпуск»</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Сборка проекта в 1 из 6 уникальных визуальных тем</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Мультиязычность для клиентов (RU, EN, AM)</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#E50940] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span>Заботливая утренняя Telegram-сводка вашего расписания на день за чашкой кофе</span></li>
+                <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Пожизненное владение без абонентской платы агрегаторам</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Персональная панель управления графиком без программирования</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Размещение и настройка под ключ за 3–5 дней</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Синхронизация записей и сводок с вашим Telegram</span>
+                  </li>
                 </ul>
 
-                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full sm:w-2/3 mx-auto py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Обсудить проект</button>
+                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/10 hover:border-white/30 transition-all text-sm font-semibold text-white">Обсудить проект</button>
               </div>
             </div>
 
-            <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.5s' }}>
-              <div className="glass-content h-full flex flex-col text-center">
-                <span className="text-[#A1A1AA] text-xs font-semibold uppercase tracking-wider mb-2">Физический носитель</span>
-                <h3 className="text-2xl md:text-3xl font-serif mb-4">NFC Брелок</h3>
-                <div className="mb-4"><span className="text-3xl font-serif text-white">от $60</span></div>
-                <p className="text-sm text-[#D4D4D8] mb-4">Кожа Crazy Horse. Идеальное дополнение к вашей цифровой визитке.</p>
+            {/* 6. NFC Брелок */}
+            <div className="glass-card p-6 md:p-8 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col border-white/15 interactive-elem fade-up-elem cursor-pointer" onMouseMove={handleGlassMove} onTouchMove={handleGlassMove} style={{ transitionDelay: '0.5s' }}>
+              <div className="glass-content h-full flex flex-col text-left">
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[10px] font-medium uppercase tracking-widest">
+                    Физический носитель
+                  </span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">NFC Брелок</h3>
+                <div className="mb-6 p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] flex items-baseline justify-between">
+                  <span className="text-xs text-[#A1A1AA] uppercase tracking-wider">Разовый платеж</span>
+                  <span className="text-2xl md:text-3xl font-serif text-white">от $60</span>
+                </div>
                 
-                <ul className="space-y-3 mb-6 text-sm text-[#D4D4D8] flex-1 text-left max-w-sm mx-auto w-full">
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong className="text-white">Одно касание:</strong> передача контактов без проводов</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong className="text-white">Вечный чип:</strong> работает без батареек и зарядок</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong className="text-white">Ручная работа:</strong> каждый экземпляр шьется индивидуально</span></li>
-                  <li className="flex items-start gap-2"><svg className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg> <span><strong className="text-white">Статусность:</strong> винтажная кожа благородно стареет</span></li>
+                <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Пожизненное владение без абонентской платы и зарядок</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Управление привязанной ссылкой через панель без перепрошивки</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Индивидуальный пошив и программирование под ключ за 2–3 дня</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Мгновенный переход на вашу визитку и Telegram в одно касание</span>
+                  </li>
                 </ul>
 
-                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full sm:w-2/3 mx-auto py-3 rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-sm font-semibold">Заказать</button>
+                <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="w-full py-3 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/10 hover:border-white/30 transition-all text-sm font-semibold text-white">Обсудить проект</button>
               </div>
             </div>
 
           </div>
         </section>
 
+        {}
         {/* FAQ */}
         <section id="faq" className="py-24 px-4 md:px-8 max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12 fade-up-elem">
