@@ -456,8 +456,24 @@ export default function LandingPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHeroInteracting, setIsHeroInteracting] = useState(false);
   const [isCardFlipped, setIsCardFlipped] = useState(false);
+  const [contactValue, setContactValue] = useState('');
+  const [isContactSent, setIsContactSent] = useState(false);
   
   const audioCtxRef = useRef(null);
+
+  const handleContactSubmit = () => {
+    const trimmed = contactValue.trim();
+    const targetUrl = trimmed
+      ? `https://t.me/appseapro?text=${encodeURIComponent('Здравствуйте, Елена! Хочу обсудить проект: ' + trimmed)}`
+      : 'https://t.me/appseapro';
+
+    setIsContactSent(true);
+    window.open(targetUrl, '_blank', 'noopener,noreferrer');
+
+    setTimeout(() => {
+      setIsContactSent(false);
+    }, 2000);
+  };
 
   // Реалистичный звук переворота 3D-визитки (Web Audio API)
   const playCardFlipSound = () => {
@@ -915,7 +931,7 @@ export default function LandingPage() {
       </div>
 
       {/* Main Content */}
-      <main className="relative z-10 bg-[#050505] mb-[60vh] md:mb-[70vh] shadow-[0_20px_50px_rgba(0,0,0,1)] rounded-b-[2rem] md:rounded-b-[3rem] border-b border-white/10 pb-10">
+      <main className="relative z-10 bg-[#050505] mb-0 md:mb-[70vh] shadow-[0_20px_50px_rgba(0,0,0,1)] rounded-b-[2rem] md:rounded-b-[3rem] border-b border-white/10 pb-10">
         
         <section className="min-h-screen flex flex-col items-center justify-start md:justify-center relative px-4 md:px-6 pt-24 md:pt-24 pb-16 md:pb-0">
           <div className="max-w-5xl mx-auto text-center z-10 flex-1 flex flex-col justify-start md:justify-center items-center w-full pt-2 md:pt-0 pb-14 md:pb-28">
@@ -1516,8 +1532,8 @@ export default function LandingPage() {
 
       </main>
 
-      {/* Footer (Curtain Reveal) */}
-      <footer id="contact" className="fixed bottom-0 left-0 w-full h-[60vh] md:h-[70vh] bg-[#050505] flex flex-col justify-between p-6 md:p-12 z-0 pb-20 md:pb-6">
+      {/* Footer (Curtain Reveal on Desktop, Natural Flow on Mobile) */}
+      <footer id="contact" className="relative md:fixed bottom-0 left-0 w-full md:h-[70vh] bg-[#050505] flex flex-col justify-between p-6 md:p-12 pb-12 md:pb-6 z-10 md:z-0">
         <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center text-center mt-12 md:mt-10 flex-1">
           <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-serif font-medium mb-6 md:mb-8">
             Начнем <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">проект</span>?
@@ -1526,11 +1542,23 @@ export default function LandingPage() {
           <div className="w-full max-w-md relative interactive-elem">
             <input 
               type="text" 
+              value={contactValue}
+              onChange={(e) => setContactValue(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  handleContactSubmit();
+                }
+              }}
               placeholder="Ваш Telegram или Телефон" 
-              className="w-full min-h-[44px] bg-[#121212] border border-white/10 rounded-full py-3 md:py-4 pl-6 pr-28 md:pr-32 text-sm md:text-base text-white placeholder-white/40 focus:outline-none focus:border-[#00F5D4]/50 transition-colors"
+              className="w-full min-h-[44px] bg-[#121212] border border-white/10 rounded-full py-3 md:py-4 pl-6 pr-32 md:pr-36 text-sm md:text-base text-white placeholder-white/40 focus:outline-none focus:border-[#00F5D4]/50 transition-colors"
             />
-            <button className="absolute right-1 top-1 bottom-1 bg-white text-black px-4 md:px-6 rounded-full font-medium text-xs md:text-sm hover:bg-gray-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-              Отправить
+            <button
+              type="button"
+              onClick={handleContactSubmit}
+              className="absolute right-1 top-1 bottom-1 bg-white text-black px-4 md:px-6 rounded-full font-medium text-xs md:text-sm hover:bg-gray-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.2)] cursor-pointer whitespace-nowrap"
+            >
+              {isContactSent ? 'Переходим в Telegram... ✓' : 'Отправить'}
             </button>
           </div>
           <p className="text-xs text-[#D4D4D8] mt-4 md:mt-6">Или напишите мне напрямую в Telegram для быстрой связи.</p>
@@ -1539,8 +1567,8 @@ export default function LandingPage() {
         <div className="flex flex-col md:flex-row justify-between items-center text-xs text-[#A1A1AA] max-w-7xl w-full mx-auto pt-8 md:pb-4 gap-4 md:gap-0">
           <span>&copy; 2026 AppSeaPro. All rights reserved.</span>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-white transition-colors interactive-elem cursor-pointer">Telegram</a>
-            <a href="#" className="hover:text-white transition-colors interactive-elem cursor-pointer">Instagram</a>
+            <a href="https://t.me/appseapro" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors interactive-elem cursor-pointer">Telegram</a>
+            <a href="https://t.me/restaurant_appseapro" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors interactive-elem cursor-pointer">Канал ресторанов</a>
           </div>
         </div>
       </footer>
