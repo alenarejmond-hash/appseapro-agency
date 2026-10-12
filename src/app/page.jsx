@@ -61,9 +61,9 @@ const styles = `
     pointer-events: none;
     z-index: 9999;
     transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
-    border: 1px solid rgba(0, 245, 212, 0.35);
-    background: radial-gradient(circle, rgba(0, 245, 212, 0.1) 0%, rgba(0, 245, 212, 0) 70%);
-    box-shadow: 0 0 24px rgba(0, 245, 212, 0.2), inset 0 0 12px rgba(0, 245, 212, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.12);
     transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), height 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
     will-change: transform, width, height;
   }
@@ -77,7 +77,7 @@ const styles = `
     height: 220px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 245, 212, 0.12) 0%, rgba(229, 9, 64, 0.04) 45%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 45%, transparent 70%);
     filter: blur(20px);
     pointer-events: none;
     transition: width 0.4s ease, height 0.4s ease, background 0.4s ease;
@@ -86,15 +86,15 @@ const styles = `
   .custom-cursor.hover {
     width: 64px;
     height: 64px;
-    border-color: rgba(229, 9, 64, 0.55);
-    background: radial-gradient(circle, rgba(229, 9, 64, 0.16) 0%, rgba(229, 9, 64, 0) 72%);
-    box-shadow: 0 0 36px rgba(229, 9, 64, 0.32), inset 0 0 16px rgba(229, 9, 64, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.14) 0%, transparent 70%);
+    box-shadow: 0 0 32px rgba(255, 255, 255, 0.18), inset 0 0 12px rgba(255, 255, 255, 0.08);
   }
 
   .custom-cursor.hover::before {
     width: 280px;
     height: 280px;
-    background: radial-gradient(circle, rgba(229, 9, 64, 0.18) 0%, rgba(0, 245, 212, 0.05) 45%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 45%, transparent 70%);
   }
 
   /* Фоновые градиенты (Glow) */
@@ -105,12 +105,12 @@ const styles = `
     border-radius: 50%;
     filter: blur(150px);
     z-index: -1;
-    opacity: 0.4;
+    opacity: 0.15;
     animation: float 20s infinite ease-in-out alternate;
     pointer-events: none;
   }
-  .bg-glow.wine { background: #E50940; top: -10%; left: -10%; }
-  .bg-glow.cyan { background: #00F5D4; bottom: -20%; right: -10%; animation-delay: -5s; }
+  .bg-glow.wine { background: radial-gradient(circle, #A1A1AA 0%, #3F3F46 70%); top: -10%; left: -10%; opacity: 0.16; }
+  .bg-glow.cyan { background: radial-gradient(circle, #E4E4E7 0%, #52525B 70%); bottom: -20%; right: -10%; animation-delay: -5s; opacity: 0.14; }
 
   @keyframes float {
     0% { transform: translate(0, 0) scale(1); }
@@ -923,7 +923,7 @@ export default function LandingPage() {
               Digital Boutique
             </p>
             <h1 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-serif font-medium leading-tight mb-5 md:mb-6 fade-up-elem" style={{ transitionDelay: '0.1s' }}>
-              Ваш цифровой <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#E50940] to-[#ff2a60]">статус</span>.
+              Ваш цифровой <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">статус</span>.
             </h1>
 
             <div className="max-w-2xl mx-auto mb-6 md:mb-8 fade-up-elem px-2" style={{ transitionDelay: '0.2s' }}>
@@ -1014,7 +1014,7 @@ export default function LandingPage() {
         {/* Showroom */}
         <section id="showroom" className="pt-24 md:pt-32 pb-0 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
           <div className="mb-12 md:mb-24 fade-up-elem text-center">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Выберите свое <span className="italic text-[#00F5D4]">Решение</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Выберите свое <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Решение</span></h2>
             <p className="text-[#D4D4D8] text-base md:text-lg max-w-lg mx-auto">Безупречная эстетика и функциональность в каждом продукте. Разработано специально под вашу нишу.</p>
           </div>
 
@@ -1114,7 +1114,7 @@ export default function LandingPage() {
                   </span>
                   <span className="font-serif italic text-white/25 text-lg md:text-xl">02</span>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Smart <span className="italic text-[#00F5D4]">QR-Меню</span></h3>
+                <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Smart <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">QR-Меню</span></h3>
                 <p className="text-[#D4D4D8] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">Интуитивная облачная панель управления. Все заказы, вызовы официанта и запросы счета моментально прилетают в Telegram-группу персонала.</p>
                 
                 <div className="equal-subcards-grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-4 md:gap-5 text-left">
@@ -1198,7 +1198,7 @@ export default function LandingPage() {
                   </span>
                   <span className="font-serif italic text-white/25 text-lg md:text-xl">03</span>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Эстетика и <span className="italic text-pink-300">Онлайн-запись</span></h3>
+                <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Эстетика и <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Онлайн-запись</span></h3>
                 <p className="text-[#D4D4D8] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">Premium визитка-лендинг с умным онлайн-бронированием. Идеальная синхронизация с вашим расписанием без диких ежемесячных комиссий агрегаторам.</p>
                 
                 <div className="equal-subcards-grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-4 md:gap-5 text-left">
@@ -1248,7 +1248,7 @@ export default function LandingPage() {
                 </span>
                 <span className="font-serif italic text-white/25 text-lg md:text-xl">04</span>
               </div>
-              <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">NFC-брелоки <br className="hidden lg:block"/>из кожи <span className="italic text-amber-400/90">Crazy Horse</span></h3>
+              <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">NFC-брелоки <br className="hidden lg:block"/>из кожи <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Crazy Horse</span></h3>
               <p className="text-[#D4D4D8] text-sm md:text-base leading-relaxed mb-6 max-w-2xl">
                 Физическое воплощение вашего цифрового статуса. Я вручную шью премиальные NFC-брелоки из натуральной винтажной кожи для каждой визитки. Одно касание брелоком к смартфону партнера — и ваши контакты уже на его экране.
               </p>
@@ -1304,7 +1304,7 @@ export default function LandingPage() {
         {/* Technology */}
         <section id="technology" className="py-12 px-4 md:px-8 max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-12 md:mb-16 fade-up-elem">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Технологии <span className="italic text-[#E50940]">Превосходства</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Технологии <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Превосходства</span></h2>
             <p className="text-[#D4D4D8] text-base md:text-lg">Мы не используем конструкторы вроде Tilda. Только чистый код и передовые архитектуры.</p>
           </div>
 
@@ -1344,7 +1344,7 @@ export default function LandingPage() {
         {/* Pricing */}
         <section id="investments" className="py-24 md:py-32 px-4 md:px-8 relative z-10 overflow-hidden">
           <div className="max-w-7xl mx-auto text-center mb-12 md:mb-16 fade-up-elem">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Инвестиции в <span className="italic text-[#00F5D4]">Капитал Бренда</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">Инвестиции в <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Капитал Бренда</span></h2>
             <p className="text-[#D4D4D8] text-base md:text-lg max-w-xl mx-auto">Разовая оплата за разработку. Никаких скрытых ежемесячных платежей.</p>
           </div>
 
@@ -1487,7 +1487,7 @@ export default function LandingPage() {
         {/* FAQ */}
         <section id="faq" className="py-24 px-4 md:px-8 max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12 fade-up-elem">
-            <h2 className="text-3xl md:text-5xl font-serif mb-4">Частые <span className="italic text-[#00F5D4]">Вопросы</span></h2>
+            <h2 className="text-3xl md:text-5xl font-serif mb-4">Частые <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Вопросы</span></h2>
           </div>
           <div className="space-y-4 fade-up-elem">
              <details className="glass-card p-6 cursor-pointer group interactive-elem">
@@ -1520,7 +1520,7 @@ export default function LandingPage() {
       <footer id="contact" className="fixed bottom-0 left-0 w-full h-[60vh] md:h-[70vh] bg-[#050505] flex flex-col justify-between p-6 md:p-12 z-0 pb-20 md:pb-6">
         <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center text-center mt-12 md:mt-10 flex-1">
           <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-serif font-medium mb-6 md:mb-8">
-            Начнем <span className="italic text-[#E50940]">проект</span>?
+            Начнем <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">проект</span>?
           </h2>
           
           <div className="w-full max-w-md relative interactive-elem">
