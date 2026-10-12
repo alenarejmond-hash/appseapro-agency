@@ -1,29 +1,47 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const inter = Inter({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-sans",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const playfair = Playfair_Display({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-serif",
+  style: ["normal", "italic"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata = {
-  title: 'AppSeaPro | Цифровые визитки и QR-меню премиум класса',
-  description: 'Закажите премиальную цифровую визитку в телефон, NFC-брелок или электронное QR-меню для ресторана. WOW-эффект для бизнеса с первого клика.',
-  keywords: ['цифровая визитка', 'электронная визитка в телефон', 'nfc визитка брелок', 'qr меню для ресторана', 'разработка сайтов', 'premium web'],
+  title: "AppSeaPro | IT-Бутик цифровых экосистем Елены",
+  description:
+    "Премиальные PWA-визитки, Smart QR-меню и NFC-аксессуары из кожи Crazy Horse под ключ. Без ежемесячных абонентских плат.",
+  openGraph: {
+    title: "AppSeaPro | IT-Бутик цифровых экосистем Елены",
+    description:
+      "Премиальные PWA-визитки, Smart QR-меню и NFC-аксессуары из кожи Crazy Horse под ключ. Без ежемесячных абонентских плат.",
+    url: "https://agency.appseapro.com",
+    siteName: "AppSeaPro",
+    locale: "ru_RU",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AppSeaPro | IT-Бутик цифровых экосистем Елены",
+    description:
+      "Премиальные PWA-визитки, Smart QR-меню и NFC-аксессуары из кожи Crazy Horse под ключ. Без ежемесячных абонентских плат.",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="ru" className={`${inter.variable} ${playfair.variable}`}>
+      <body className="antialiased bg-[#050505] text-[#F3F4F6]">
+        {children}
+      </body>
     </html>
   );
 }

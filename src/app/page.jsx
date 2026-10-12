@@ -7,8 +7,6 @@ import React, { useState, useEffect, useRef } from 'react';
 // Вставляем их прямо сюда, чтобы не ломать основной конфиг
 // ==========================================
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
-
   html {
     background-color: #050505;
     color: #F3F4F6;
@@ -25,7 +23,7 @@ const styles = `
     margin: 0;
     padding: 0;
     cursor: auto; /* Системный нативный курсор всегда активен без задержек */
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-sans), sans-serif;
   }
 
   img {
@@ -34,7 +32,7 @@ const styles = `
   }
 
   .font-serif {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-serif), serif;
   }
 
   /* Полностью отключаем кастомный ореол на мобильных и тач-устройствах */
