@@ -52,7 +52,7 @@ export default function HeroSection({
         </div>
 
         <div 
-          className="hero-3d-wrapper w-56 h-72 sm:w-60 sm:h-80 md:w-60 md:h-[19.5rem] mx-auto mt-1 md:mt-2 mb-2 md:mb-3 fade-up-elem cursor-pointer relative z-20" 
+          className="hero-3d-wrapper touch-none w-56 h-72 sm:w-60 sm:h-80 md:w-60 md:h-[19.5rem] mx-auto mt-1 md:mt-2 mb-2 md:mb-3 fade-up-elem cursor-pointer relative z-20" 
           style={{ transitionDelay: '0.3s' }}
           onClick={onCardFlip}
           onMouseMove={onHeroMove}
@@ -65,8 +65,19 @@ export default function HeroSection({
           <button
             type="button"
             aria-label={isSoundEnabled ? 'Выключить звук переворота' : 'Включить звук переворота'}
-            onClick={onToggleSound}
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleSound(e);
+              if (onHeroLeave) onHeroLeave(e);
+            }}
             onTouchStart={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+            onTouchEnd={(e) => {
+              e.stopPropagation();
+              if (onHeroLeave) onHeroLeave(e);
+            }}
+            onMouseDown={(e) => e.stopPropagation()}
+            onMouseMove={(e) => e.stopPropagation()}
             className="absolute top-0.5 -right-9 sm:-right-10 z-30 w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:border-white/20 backdrop-blur-md flex items-center justify-center text-xs text-white/60 hover:text-white transition-all interactive-elem cursor-pointer"
           >
             {isSoundEnabled ? (

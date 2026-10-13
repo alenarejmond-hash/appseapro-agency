@@ -13,12 +13,12 @@ export default function MobileMenu({ isOpen, onClose }) {
         <a
           href="#showroom"
           onClick={onClose}
-          className="flex items-baseline gap-5 py-5 border-b border-white/5 group transition-colors active:opacity-70"
+          className="flex items-baseline gap-4 py-3 sm:py-3.5 border-b border-white/5 group transition-colors active:opacity-70"
         >
           <span className="text-xs font-light tracking-[0.2em] text-[#A1A1AA] group-hover:text-white transition-colors w-7 shrink-0">
             01.
           </span>
-          <span className="font-serif text-3xl sm:text-4xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
+          <span className="font-serif text-2xl sm:text-3xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
             Продукты
           </span>
         </a>
@@ -26,12 +26,12 @@ export default function MobileMenu({ isOpen, onClose }) {
         <a
           href="#about"
           onClick={onClose}
-          className="flex items-baseline gap-5 py-5 border-b border-white/5 group transition-colors active:opacity-70"
+          className="flex items-baseline gap-4 py-3 sm:py-3.5 border-b border-white/5 group transition-colors active:opacity-70"
         >
           <span className="text-xs font-light tracking-[0.2em] text-[#A1A1AA] group-hover:text-white transition-colors w-7 shrink-0">
             02.
           </span>
-          <span className="font-serif text-3xl sm:text-4xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
+          <span className="font-serif text-2xl sm:text-3xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
             Обо мне
           </span>
         </a>
@@ -39,12 +39,12 @@ export default function MobileMenu({ isOpen, onClose }) {
         <a
           href="#pricing"
           onClick={onClose}
-          className="flex items-baseline gap-5 py-5 border-b border-white/5 group transition-colors active:opacity-70"
+          className="flex items-baseline gap-4 py-3 sm:py-3.5 border-b border-white/5 group transition-colors active:opacity-70"
         >
           <span className="text-xs font-light tracking-[0.2em] text-[#A1A1AA] group-hover:text-white transition-colors w-7 shrink-0">
             03.
           </span>
-          <span className="font-serif text-3xl sm:text-4xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
+          <span className="font-serif text-2xl sm:text-3xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
             Цены
           </span>
         </a>
@@ -52,13 +52,39 @@ export default function MobileMenu({ isOpen, onClose }) {
         <a
           href="#reviews"
           onClick={onClose}
-          className="flex items-baseline gap-5 py-5 border-b border-white/5 group transition-colors active:opacity-70"
+          className="flex items-baseline gap-4 py-3 sm:py-3.5 border-b border-white/5 group transition-colors active:opacity-70"
         >
           <span className="text-xs font-light tracking-[0.2em] text-[#A1A1AA] group-hover:text-white transition-colors w-7 shrink-0">
             04.
           </span>
-          <span className="font-serif text-3xl sm:text-4xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
+          <span className="font-serif text-2xl sm:text-3xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
             Отзывы
+          </span>
+        </a>
+
+        <a
+          href="#faq"
+          onClick={onClose}
+          className="flex items-baseline gap-4 py-3 sm:py-3.5 border-b border-white/5 group transition-colors active:opacity-70"
+        >
+          <span className="text-xs font-light tracking-[0.2em] text-[#A1A1AA] group-hover:text-white transition-colors w-7 shrink-0">
+            05.
+          </span>
+          <span className="font-serif text-2xl sm:text-3xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
+            FAQ
+          </span>
+        </a>
+
+        <a
+          href="#contact"
+          onClick={onClose}
+          className="flex items-baseline gap-4 py-3 sm:py-3.5 border-b border-white/5 group transition-colors active:opacity-70"
+        >
+          <span className="text-xs font-light tracking-[0.2em] text-[#A1A1AA] group-hover:text-white transition-colors w-7 shrink-0">
+            06.
+          </span>
+          <span className="font-serif text-2xl sm:text-3xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
+            Контакты
           </span>
         </a>
       </div>

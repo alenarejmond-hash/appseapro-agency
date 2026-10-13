@@ -203,7 +203,7 @@ const styles = `
 
   .hero-3d-wrapper {
     perspective: 650px;
-    touch-action: pan-y;
+    touch-action: none;
     user-select: none;
     -webkit-user-select: none;
     width: 15rem;
@@ -395,7 +395,8 @@ export default function LandingPage() {
   };
 
   const handleToggleSound = (e) => {
-    e.stopPropagation();
+    if (e && e.stopPropagation) e.stopPropagation();
+    setIsHeroInteracting(false);
     setIsSoundEnabled(prev => !prev);
   };
 
@@ -593,6 +594,9 @@ export default function LandingPage() {
 
   // 3D-наклон Hero-визитки
   const handleHeroMove = (e) => {
+    if (e.cancelable && e.touches) {
+      e.preventDefault();
+    }
     setIsHeroInteracting(true);
     const rect = e.currentTarget.getBoundingClientRect();
     const isTouch = !!e.touches;
@@ -623,11 +627,12 @@ export default function LandingPage() {
 
   const handleHeroLeave = (e) => {
     setIsHeroInteracting(false);
-    const cardEl = e.currentTarget.querySelector('.hero-3d-element');
+    const wrapper = e?.currentTarget?.closest ? (e.currentTarget.closest('.hero-3d-wrapper') || e.currentTarget) : e?.currentTarget;
+    const cardEl = wrapper?.querySelector ? wrapper.querySelector('.hero-3d-element') : null;
     if (cardEl) {
       cardEl.style.transform = `rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)`;
     }
-    const glareEls = e.currentTarget.querySelectorAll('.hero-glare');
+    const glareEls = wrapper?.querySelectorAll ? wrapper.querySelectorAll('.hero-glare') : [];
     glareEls.forEach(glareEl => {
       glareEl.style.opacity = '0.35';
       glareEl.style.transform = `translate3d(0%, 0%, 0)`;
@@ -733,6 +738,21 @@ export default function LandingPage() {
         onTouchStart={handlePushTouchStart}
         onTouchMove={handlePushTouchMove}
       />
+
+      {/* Плавающая полупрозрачная кнопка связи в Telegram на мобильных */}
+      <a
+        href="https://t.me/elenlime"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Написать в Telegram"
+        className="md:hidden fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 z-40 w-12 h-12 rounded-full glass-card bg-black/60 backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.7)] flex items-center justify-center text-white/90 hover:text-white transition-transform active:scale-95 interactive-elem cursor-pointer"
+      >
+        <span className="glass-content flex items-center justify-center">
+          <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.313 4.693c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
+          </svg>
+        </span>
+      </a>
 
     </div>
   );

@@ -220,7 +220,7 @@ export default function Showroom({
                 className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/25 hover:bg-white/[0.04] transition-all flex flex-col justify-between group cursor-pointer"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between items-start gap-2.5 mb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-center text-white/90 group-hover:scale-105 transition-transform shrink-0">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -229,7 +229,7 @@ export default function Showroom({
                       </div>
                       <h4 className="text-white text-lg font-semibold tracking-wide">Классика</h4>
                     </div>
-                    <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/70 font-medium">
+                    <span className="text-[9px] sm:text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/70 font-medium whitespace-nowrap self-start sm:self-auto">
                       БЕЗ КОРЗИНЫ • БЫСТРЫЙ СТАРТ
                     </span>
                   </div>
@@ -254,7 +254,7 @@ export default function Showroom({
                 className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-[#E50940]/10 to-white/[0.02] border border-[#E50940]/30 hover:border-[#E50940]/55 hover:bg-white/[0.04] transition-all flex flex-col justify-between group cursor-pointer"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between items-start gap-2.5 mb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-xl bg-[#E50940]/20 border border-[#E50940]/40 flex items-center justify-center text-[#E50940] group-hover:scale-105 transition-transform shrink-0">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -263,7 +263,7 @@ export default function Showroom({
                       </div>
                       <h4 className="text-white text-lg font-semibold tracking-wide">Флагман</h4>
                     </div>
-                    <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#E50940]/15 border border-[#E50940]/30 text-[#E50940] font-semibold">
+                    <span className="text-[9px] sm:text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#E50940]/15 border border-[#E50940]/30 text-[#E50940] font-semibold whitespace-nowrap self-start sm:self-auto">
                       С КОРЗИНОЙ • РОСТ ЧЕКА +25%
                     </span>
                   </div>
@@ -540,7 +540,7 @@ export default function Showroom({
       {/* Модальное окно внутрисайтового демо Classic и Twin ID (в точности как Infinity: без смартфона, свободный холст) */}
       {typeof document !== 'undefined' && activeDemoModal && createPortal(
         <div
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-between p-0 lg:px-10 lg:py-7 overflow-hidden overscroll-none bg-[#050505] lg:bg-[#050505]/96 lg:backdrop-blur-3xl animate-in fade-in duration-300"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-between p-3 pt-[max(4.25rem,calc(env(safe-area-inset-top)+3.5rem))] pb-[max(1.5rem,env(safe-area-inset-bottom))] lg:p-0 lg:px-10 lg:py-7 overflow-hidden overscroll-none bg-[#050505] lg:bg-[#050505]/96 lg:backdrop-blur-3xl animate-in fade-in duration-300"
           onClick={() => setActiveDemoModal(null)}
         >
           {/* Мягкое кинематографичное рассеянное свечение в центре космоса на десктопе */}
@@ -603,7 +603,7 @@ export default function Showroom({
             className="w-full flex-1 flex flex-col items-center justify-between lg:justify-center relative z-10 overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative w-full max-w-[390px] sm:max-w-[400px] flex-1 lg:flex-none lg:w-full lg:max-w-[400px] h-full lg:h-[84vh] max-h-[850px] bg-transparent border-0 flex flex-col overflow-hidden mx-auto">
+            <div className="relative w-full max-w-[340px] sm:max-w-[380px] h-[76vh] max-h-[680px] rounded-3xl border border-white/15 bg-[#09090b] shadow-[0_20px_50px_rgba(0,0,0,0.85)] lg:rounded-none lg:border-0 lg:bg-transparent lg:shadow-none lg:flex-none lg:w-full lg:max-w-[400px] lg:h-[84vh] lg:max-h-[850px] flex flex-col overflow-hidden mx-auto my-auto">
               {/* Деликатный лоадер в открытом пространстве во время подгрузки iframe */}
               <div
                 className={`absolute inset-0 z-20 flex flex-col items-center justify-center gap-3.5 bg-[#050505] lg:bg-transparent transition-opacity duration-500 ${

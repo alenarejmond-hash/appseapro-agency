@@ -51,7 +51,7 @@ export default function Header({ isMobileMenuOpen, setIsMobileMenuOpen, onGlassM
 
           {/* Иконка прямого перехода в Telegram для мобильных в 1 клик */}
           <a
-            href="https://t.me/appseapro"
+            href="https://t.me/elenlime"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Написать в Telegram"
