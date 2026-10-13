@@ -42,7 +42,6 @@ const REVIEWS = [
 
 export default function ReviewsSection({ onGlassMove }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
 
@@ -54,16 +53,7 @@ export default function ReviewsSection({ onGlassMove }) {
     setCurrentIndex((prev) => (prev === REVIEWS.length - 1 ? 0 : prev + 1));
   };
 
-  // Автоматическое перелистывание каждые 6 секунд (пауза при наведении)
-  useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => {
-      nextReview();
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [isPaused]);
-
-  // Обработка свайпов пальцем на смартфоне
+  // Обработка свайпов пальцем на смартфоне (листается ТОЛЬКО руками пользователя)
   const handleTouchStart = (e) => {
     touchStartX.current = e.targetTouches[0].clientX;
   };
@@ -102,8 +92,6 @@ export default function ReviewsSection({ onGlassMove }) {
       {/* Компактный карусельный контейнер */}
       <div
         className="relative max-w-3xl mx-auto"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -126,8 +114,8 @@ export default function ReviewsSection({ onGlassMove }) {
                 >
                   <div className="glass-content">
                     <div className="flex items-center justify-between mb-4">
-                      {/* Звёздный рейтинг */}
-                      <div className="flex items-center gap-1 text-[#E50940]">
+                      {/* Звёздный рейтинг: благородный монохром */}
+                      <div className="flex items-center gap-1 text-white/80">
                         {[...Array(review.rating)].map((_, i) => (
                           <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />

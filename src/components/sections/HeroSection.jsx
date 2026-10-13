@@ -87,41 +87,53 @@ export default function HeroSection({
               className="hero-flip-inner w-full h-full relative"
               style={{ transform: isCardFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
             >
-              {/* Лицевая сторона визитки */}
-              <div className="hero-card-face hero-card-front glass-card flex items-center justify-center rounded-[2rem] border border-white/20 shadow-[0_25px_60px_rgba(229,9,64,0.22),inset_0_1px_1px_rgba(255,255,255,0.3)] overflow-hidden group">
+              {/* Лицевая сторона визитки: темный титан и платина */}
+              <div className="hero-card-face hero-card-front bg-gradient-to-br from-[#1c1c21] via-[#121216] to-[#08080a] flex flex-col justify-between p-5 rounded-[2rem] border border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.25)] overflow-hidden group">
                 {/* Динамический световой блик при наклоне */}
-                <div className="hero-glare absolute -inset-12 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.28)_0%,rgba(229,9,64,0.12)_35%,transparent_70%)] opacity-35 pointer-events-none transition-transform duration-75"></div>
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                <div className="glass-content text-center px-4 w-full flex flex-col items-center justify-center" style={{ transform: 'translateZ(35px)' }}>
+                <div className="hero-glare absolute -inset-12 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.22)_0%,transparent_65%)] opacity-35 pointer-events-none transition-transform duration-75"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/15 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+
+                {/* Верхняя микро-гравировка карты */}
+                <div className="w-full flex items-center justify-between text-[9px] uppercase tracking-[0.22em] text-[#A1A1AA] z-10 font-sans">
+                  <span>PWA • 2026</span>
+                  <span className="flex items-center gap-1.5 text-white/80">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E50940] shadow-[0_0_6px_#E50940]"></span>
+                    NFC INSIDE
+                  </span>
+                </div>
+
+                {/* Центр: логотип и статус бренда */}
+                <div className="glass-content text-center px-2 w-full flex flex-col items-center justify-center my-auto z-10" style={{ transform: 'translateZ(30px)' }}>
                   <img
                     src="/1.png"
                     alt="AppSeaPro"
                     draggable={false}
-                    className="w-44 sm:w-48 max-w-full h-auto object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
+                    className="w-40 sm:w-44 max-w-full h-auto object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.8)]"
                   />
-                  <p className="text-[10px] text-[#D4D4D8] mt-1 uppercase tracking-[0.22em] font-medium">Digital Boutique</p>
-                  <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] text-[#A1A1AA] tracking-wider uppercase">
-                    <span>Перевернуть</span>
-                    <svg className="w-2.5 h-2.5 text-white/60 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                    </svg>
+                  <p className="text-[10px] text-[#D4D4D8] mt-2 uppercase tracking-[0.25em] font-medium font-sans">Digital Boutique</p>
+                </div>
+
+                {/* Нижняя строгая плашка */}
+                <div className="w-full flex items-center justify-center pt-2 z-10">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[9px] uppercase tracking-[0.2em] text-[#A1A1AA] font-medium">
+                    <span>Нажмите, чтобы перевернуть</span>
                   </div>
                 </div>
               </div>
 
               {/* Обратная сторона визитки с фотографией */}
-              <div className="hero-card-face hero-card-back glass-card rounded-[2rem] border border-white/25 shadow-[0_25px_60px_rgba(229,9,64,0.28),inset_0_1px_1px_rgba(255,255,255,0.35)] overflow-hidden">
+              <div className="hero-card-face hero-card-back rounded-[2rem] border border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.85),inset_0_1px_1px_rgba(255,255,255,0.25)] overflow-hidden bg-[#09090b]">
                 <img
-                  src="/elena-photo.jpg"
-                  alt="Елена — IT-Архитектор"
+                  src="/elena-portrait.jpg"
+                  alt="Елена Сотникова — IT-Архитектор"
                   draggable={false}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/25 to-transparent"></div>
-                <div className="hero-glare absolute -inset-12 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.26)_0%,rgba(229,9,64,0.12)_35%,transparent_70%)] opacity-35 pointer-events-none transition-transform duration-75"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/30 to-transparent"></div>
+                <div className="hero-glare absolute -inset-12 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.22)_0%,transparent_65%)] opacity-35 pointer-events-none transition-transform duration-75"></div>
                 <div className="absolute bottom-5 left-4 right-4 text-center z-10">
-                  <h3 className="font-serif text-xl text-white tracking-wide drop-shadow-md">Елена</h3>
-                  <p className="text-[10px] text-[#D4D4D8] mt-1 uppercase tracking-widest font-medium">IT-Архитектор</p>
+                  <h3 className="font-serif text-xl sm:text-2xl text-white tracking-wide drop-shadow-md">Елена Сотникова</h3>
+                  <p className="text-[10px] text-[#D4D4D8] mt-1 uppercase tracking-widest font-medium">IT-Архитектор • Основатель</p>
                 </div>
               </div>
             </div>

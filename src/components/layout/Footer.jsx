@@ -14,8 +14,8 @@ export default function Footer({
       className="relative w-full min-h-[50vh] md:min-h-[60vh] bg-[#050505] flex flex-col justify-between p-6 md:p-12 pb-12 md:pb-8 z-10"
     >
       <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center text-center mt-12 md:mt-10 flex-1">
-        <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-serif font-medium mb-6 md:mb-8">
-          Начнем <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">проект</span>?
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal mb-4 md:mb-6 tracking-tight">
+          Обсудим ваш <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">проект</span>?
         </h2>
         
         <div className="w-full max-w-md relative interactive-elem">

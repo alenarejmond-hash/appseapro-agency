@@ -204,7 +204,7 @@ const styles = `
 
   .hero-3d-wrapper {
     perspective: 650px;
-    touch-action: none;
+    touch-action: pan-y;
     user-select: none;
     -webkit-user-select: none;
     width: 15rem;
@@ -257,9 +257,9 @@ const styles = `
   }
 
   @keyframes heroIdleTilt {
-    0% { transform: rotateY(-8deg) rotateX(6deg) translateY(0px); }
-    50% { transform: rotateY(8deg) rotateX(-5deg) translateY(-6px); }
-    100% { transform: rotateY(-4deg) rotateX(8deg) translateY(2px); }
+    0% { transform: rotateY(-2.5deg) rotateX(2deg) translateY(0px); }
+    50% { transform: rotateY(2.5deg) rotateX(-1.5deg) translateY(-2px); }
+    100% { transform: rotateY(-1deg) rotateX(2.5deg) translateY(1px); }
   }
 
   .fade-up-elem {

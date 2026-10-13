@@ -66,15 +66,15 @@ export default function MobileMenu({ isOpen, onClose }) {
       </div>
 
       <div className="max-w-md mx-auto w-full pt-6">
-        <button
-          onClick={() => {
-            onClose();
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-          }}
+        <a
+          href="https://t.me/elenlime"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={onClose}
           className="w-full py-4 px-6 rounded-2xl bg-white text-black hover:bg-gray-200 active:scale-[0.99] transition-all text-sm font-semibold tracking-wide flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(255,255,255,0.18)] cursor-pointer"
         >
           <span>Написать лично в Telegram ➔</span>
-        </button>
+        </a>
       </div>
     </div>
   );
