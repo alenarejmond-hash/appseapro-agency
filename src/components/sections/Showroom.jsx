@@ -37,7 +37,7 @@ export default function Showroom({
             </div>
             <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Цифровые PWA-визитки</h3>
             <p className="text-[#D4D4D8] mb-8 text-sm md:text-base max-w-2xl leading-relaxed">
-              Устанавливаются на рабочий стол телефона как приложение в один клик. БЕЗ скачивания из App Store или Google Play. Ваш статус и контакты всегда под рукой.
+              Масштабируемый цифровой продукт: PWA-приложение на экране телефона, персональный QR-код и прямая ссылка. Разовый запуск под ключ — никаких скрытых подписок.
             </p>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 text-left">
@@ -58,7 +58,7 @@ export default function Showroom({
                     </span>
                   </div>
                   <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                    Лаконичная визитка. 7 премиальных дизайн-тем, кинематографичные микроанимации и мгновенное сохранение VCF-контакта в записную книжку собеседника.
+                    Масштабируемый цифровой продукт: PWA-приложение, QR-код и ссылка. 7 премиальных дизайн-тем, микроанимации и мгновенное сохранение VCF-контакта в телефон собеседника.
                   </p>
                 </div>
                 <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center text-xs text-white/40">
@@ -150,7 +150,7 @@ export default function Showroom({
               Smart <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">QR-Меню</span>
             </h3>
             <p className="text-[#D4D4D8] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">
-              Интуитивная облачная панель управления. Все заказы, вызовы официанта и запросы счета моментально прилетают в Telegram-группу персонала.
+              Собственная автономная система заказов без процентов с чека и скрытых плат. Управление меню из привычной таблицы на телефоне, а все заказы и вызовы официанта моментально приходят в ваш Telegram.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 text-left">
@@ -169,11 +169,11 @@ export default function Showroom({
                       <h4 className="text-white text-lg font-serif tracking-wide">Классика</h4>
                     </div>
                     <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 font-medium">
-                      Без корзины
+                      Вариант 1 • Без корзины
                     </span>
                   </div>
                   <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                    Бесконтактное интерактивное меню с кинематографичным дизайном. Мультиязычность, умный стоп-лист и мгновенный вызов официанта или запрос счета в 1 клик с тактильным откликом.
+                    Электронное QR-меню для ознакомления. Мультиязычность, умный стоп-лист и мгновенный вызов официанта или запрос счета в 1 клик с тактильным откликом.
                   </p>
                 </div>
 
@@ -203,11 +203,11 @@ export default function Showroom({
                       <h4 className="text-white text-lg font-serif tracking-wide">Флагман</h4>
                     </div>
                     <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#E50940]/15 border border-[#E50940]/30 text-[#E50940] font-semibold">
-                      PRO • С корзиной
+                      Вариант 2 • С корзиной
                     </span>
                   </div>
                   <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                    Полноценная автоматизация с умными допродажами (Cross-sell). Гость собирает корзину, оставляет комментарии повару и оформляет заказ. Умный QR-код сам определяет номер столика.
+                    Полная автоматизация заказов с умными допродажами (Cross-sell). Гость собирает корзину, а умный QR-код определяет номер столика. Заказ падает сразу в Telegram персонала.
                   </p>
                 </div>
 
@@ -221,6 +221,15 @@ export default function Showroom({
                   </svg>
                 </div>
               </div>
+            </div>
+
+            {/* Спец-пакет: AI-фудфотосессия */}
+            <div className="mt-5 p-3.5 sm:p-4 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs md:text-sm text-[#D4D4D8]">
+              <div className="flex items-center gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-[#E50940] shrink-0"></span>
+                <span><strong>Спец-пакет «AI-фудфотосессия»:</strong> создание фотореалистичных иллюстраций для вашего меню с помощью нейросетей</span>
+              </div>
+              <span className="text-white font-medium whitespace-nowrap pl-4.5 sm:pl-0">от $70 за пакет блюд</span>
             </div>
           </div>
         </div>
@@ -247,7 +256,7 @@ export default function Showroom({
           <div className="glass-content flex-1 z-10 text-left w-full flex flex-col justify-center">
             <div className="flex items-center justify-between mb-4">
               <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[11px] uppercase tracking-widest font-semibold">
-                Салоны & Мастера
+                Для мастеров и бьюти-сферы
               </span>
               <span className="font-serif italic text-white/25 text-lg md:text-xl">03</span>
             </div>
@@ -255,7 +264,7 @@ export default function Showroom({
               Эстетика и <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Онлайн-запись</span>
             </h3>
             <p className="text-[#D4D4D8] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">
-              Premium визитка-лендинг с умным онлайн-бронированием. Идеальная синхронизация с вашим расписанием без диких ежемесячных комиссий агрегаторам.
+              Вся прибыль остается вам: прямая онлайн-запись без ежемесячной аренды сервисов. Удобное управление расписанием и прайсом из таблицы на телефоне, а брони и клиенты сразу поступают в ваш Telegram.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 text-left">
@@ -269,7 +278,7 @@ export default function Showroom({
                   <h4 className="text-white text-base md:text-lg font-serif">Smart-бронирование</h4>
                 </div>
                 <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                  Live-календарь с умным поиском свободных окон, расчетом времени услуг и автоматическим режимом отпуска мастера.
+                  Live-календарь со свободными окнами, временем услуг и режимом отпуска — прямая запись клиентов без ежемесячных платежей агрегаторам.
                 </p>
               </div>
 
@@ -280,10 +289,10 @@ export default function Showroom({
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
                     </svg>
                   </div>
-                  <h4 className="text-white text-base md:text-lg font-serif">Дизайн & Telegram-забота</h4>
+                  <h4 className="text-white text-base md:text-lg font-serif">Таблица & Telegram-забота</h4>
                 </div>
                 <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                  Уникальный дизайн под ваш бренд. Мгновенные уведомления о записях и заботливая утренняя Telegram-сводка расписания за чашкой кофе.
+                  Управление ценами из обычной таблицы на телефоне (не нужен программист на зарплату, чтобы поменять цену на стрижку). Все записи сразу в ваш Telegram.
                 </p>
               </div>
             </div>
@@ -311,7 +320,7 @@ export default function Showroom({
           <div className="glass-content w-full lg:w-7/12 z-10 text-left flex flex-col justify-center">
             <div className="flex items-center justify-between mb-4">
               <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[11px] uppercase tracking-widest font-semibold">
-                Физический носитель
+                Премиальный аксессуар • По желанию
               </span>
               <span className="font-serif italic text-white/25 text-lg md:text-xl">04</span>
             </div>
@@ -319,7 +328,7 @@ export default function Showroom({
               NFC-брелоки <br className="hidden lg:block"/>из кожи <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Crazy Horse</span>
             </h3>
             <p className="text-[#D4D4D8] text-sm md:text-base leading-relaxed mb-6 max-w-2xl">
-              Физическое воплощение вашего цифрового статуса. Я вручную шью премиальные NFC-брелоки из натуральной винтажной кожи для каждой визитки. Одно касание брелоком к смартфону партнера — и ваши контакты уже на его экране.
+              Отдельный премиальный аксессуар ручной работы — штучный апгрейд к вашей цифровой визитке за отдельную доплату. Натуральная винтажная кожа, ручной седельный шов. Одно касание брелоком к смартфону — и ваши контакты уже на экране партнера.
             </p>
             
             <div className="space-y-3.5 text-left">

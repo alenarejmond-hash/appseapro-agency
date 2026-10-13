@@ -15,7 +15,6 @@ import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
 import Showroom from '@/components/sections/Showroom';
 import AboutSection from '@/components/sections/AboutSection';
-import TechSection from '@/components/sections/TechSection';
 import ReviewsSection from '@/components/sections/ReviewsSection';
 import PricingSection from '@/components/sections/PricingSection';
 import FaqSection from '@/components/sections/FaqSection';
@@ -688,9 +687,6 @@ export default function LandingPage() {
 
         {/* Блок «Привет, я Елена» (About) */}
         <AboutSection />
-
-        {/* Блок «Технологии Превосходства» */}
-        <TechSection onGlassMove={handleGlassMove} />
 
         {/* Блок отзывов клиентов (Social Proof) */}
         <ReviewsSection onGlassMove={handleGlassMove} />

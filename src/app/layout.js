@@ -19,7 +19,7 @@ export const metadata = {
   metadataBase: new URL("https://agency.appseapro.com"),
   title: "AppSeaPro | IT-Бутик цифровых экосистем Елены Сотниковой",
   description:
-    "Премиальные PWA-визитки, Smart QR-меню и NFC-аксессуары из кожи Crazy Horse под ключ. Разработка в вашу собственность: без процентов с заказов и кабальных подписок.",
+    "Премиальные PWA-визитки, Smart QR-меню и кожаные NFC-аксессуары Crazy Horse под ключ. Без регулярной абонплаты за платформу, заказы сразу в Telegram.",
   keywords: [
     "PWA визитка",
     "цифровая визитка",
@@ -48,7 +48,7 @@ export const metadata = {
   openGraph: {
     title: "AppSeaPro | IT-Бутик цифровых экосистем Елены Сотниковой",
     description:
-      "Премиальные PWA-визитки, Smart QR-меню и NFC-аксессуары из кожи Crazy Horse под ключ. Разработка в вашу собственность: без процентов с заказов и кабальных подписок.",
+      "Премиальные PWA-визитки, Smart QR-меню и кожаные NFC-аксессуары Crazy Horse под ключ. Без регулярной абонплаты за платформу, заказы сразу в Telegram.",
     url: "https://agency.appseapro.com",
     siteName: "AppSeaPro",
     locale: "ru_RU",
@@ -66,7 +66,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "AppSeaPro | IT-Бутик цифровых экосистем Елены Сотниковой",
     description:
-      "Премиальные PWA-визитки, Smart QR-меню и NFC-аксессуары из кожи Crazy Horse под ключ. Разработка в вашу собственность: без процентов с заказов и кабальных подписок.",
+      "Премиальные PWA-визитки, Smart QR-меню и кожаные NFC-аксессуары Crazy Horse под ключ. Без регулярной абонплаты за платформу, заказы сразу в Telegram.",
     images: ["/elena-portrait.jpg"],
     creator: "@elenlime",
   },

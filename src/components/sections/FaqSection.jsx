@@ -17,7 +17,7 @@ export default function FaqSection() {
             <span className="text-2xl group-open:rotate-45 transition-transform text-[#D4D4D8]">+</span>
           </summary>
           <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">
-            Агентству AppSeaPro вы платите только за индивидуальную разработку и запуск под ключ. Я не беру абонентскую плату и проценты с ваших заказов. Базовое облачное размещение уже настроено в проекте, а продукт переходит в вашу полную собственность.
+            Нет. Вы оплачиваете разработку под ключ один раз и спокойно пользуетесь продуктом без регулярной абонплаты за платформу. Все заявки, заказы и брони клиентов поступают напрямую в ваш Telegram.
           </p>
         </details>
         
@@ -27,7 +27,7 @@ export default function FaqSection() {
             <span className="text-2xl group-open:rotate-45 transition-transform text-[#D4D4D8]">+</span>
           </summary>
           <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">
-            Полностью вам. Приложение размещается на отказоустойчивой облачной инфраструктуре, а все данные, заявки и заказы поступают напрямую в вашу панель управления и Telegram, доступ к которым есть только у вас.
+            Полностью вам. Ваши контакты, меню и записи не заблокируют сторонние конструкторы, а все клиенты, заявки и брони поступают напрямую в ваш Telegram.
           </p>
         </details>
         
@@ -37,7 +37,7 @@ export default function FaqSection() {
             <span className="text-2xl group-open:rotate-45 transition-transform text-[#D4D4D8]">+</span>
           </summary>
           <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">
-            Через вашу персональную облачную панель управления. Вы заходите в неё с телефона или компьютера, меняете цифру, и она моментально обновляется в приложении. Никакого программирования.
+            Управление ценами из обычной таблицы на телефоне. Вам не нужен программист на зарплату, чтобы поменять цену на кофе, блюдо или стрижку — изменили строчку в таблице со смартфона, и она моментально обновилась.
           </p>
         </details>
       </div>

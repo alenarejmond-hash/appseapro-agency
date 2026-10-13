@@ -10,7 +10,7 @@ export default function TechSection({ onGlassMove }) {
           Технологии <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Превосходства</span>
         </h2>
         <p className="text-[#D4D4D8] text-base md:text-lg">
-          Мы не используем конструкторы вроде Tilda. Только чистый код и передовые архитектуры.
+          Мы не используем шаблонные конструкторы. Только чистый код и передовые веб-архитектуры.
         </p>
       </div>
 
@@ -66,7 +66,7 @@ export default function TechSection({ onGlassMove }) {
             </div>
             <h4 className="text-xl font-medium mb-3">Быстрый старт от 3 дней</h4>
             <p className="text-[#D4D4D8] text-sm leading-relaxed">
-              Разработка под ключ в вашу собственность. Полная автономия без кабальных абонентских плат и привязки к сторонним сервисам.
+              Полная независимость: сайт работает автономно и не зависит от ограничений чужих платформ.
             </p>
           </div>
         </div>

@@ -18,7 +18,7 @@ export default function PricingSection({
           Тарифы и <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Стоимость</span>
         </h2>
         <p className="text-[#D4D4D8] text-base md:text-lg max-w-xl mx-auto">
-          Фиксированная стоимость разработки под ключ. Продукт становится вашим цифровым активом — без процентов с чеков и комиссий агрегаторам.
+          Разовый платеж под ключ без обязательной абонплаты за платформу. Все заказы, брони и клиенты сразу поступают в ваш Telegram.
         </p>
       </div>
 
@@ -86,22 +86,22 @@ export default function PricingSection({
                 
                 <div className="mb-6 pb-5 border-b border-white/10 flex items-baseline justify-between">
                   <div>
-                    <span className="text-2xl md:text-3xl font-serif text-white tracking-tight">от $150</span>
+                    <span className="text-2xl md:text-3xl font-serif text-white tracking-tight">$40</span>
                     <span className="text-[11px] text-[#A1A1AA] block mt-0.5">разовый платеж • под ключ</span>
                   </div>
                   <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60">
-                    0% комиссий
+                    Без абонплат
                   </span>
                 </div>
                 
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>100% владение кодом: без абонентской платы агентству</span>
+                    <span>Разовый платеж под ключ • Никаких скрытых подписок</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Персональная панель управления без программирования</span>
+                    <span>Удобное обновление контактов без программистов и лишних трат</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -109,7 +109,7 @@ export default function PricingSection({
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Синхронизация с вашим Telegram и сохранение VCF контакта</span>
+                    <span>Заявки сразу в ваш Telegram и сохранение VCF-контакта</span>
                   </li>
                 </ul>
 
@@ -138,11 +138,11 @@ export default function PricingSection({
                 
                 <div className="mb-6 pb-5 border-b border-white/10 flex items-baseline justify-between">
                   <div>
-                    <span className="text-2xl md:text-3xl font-serif text-white tracking-tight">от $300</span>
+                    <span className="text-2xl md:text-3xl font-serif text-white tracking-tight">$80</span>
                     <span className="text-[11px] text-[#A1A1AA] block mt-0.5">разовый платеж • под ключ</span>
                   </div>
                   <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60">
-                    0% комиссий
+                    Без абонплат
                   </span>
                 </div>
                 
@@ -153,7 +153,7 @@ export default function PricingSection({
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Персональная панель управления без программирования</span>
+                    <span>Удобное обновление прайса без программистов и лишних трат</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -161,7 +161,7 @@ export default function PricingSection({
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Синхронизация заявок и лидов с вашим Telegram</span>
+                    <span>Заказы и заявки сразу в ваш Telegram (без сложных админок)</span>
                   </li>
                 </ul>
 
@@ -201,7 +201,7 @@ export default function PricingSection({
                 
                 <div className="mb-6 pb-5 border-b border-white/10 flex items-baseline justify-between">
                   <div>
-                    <span className="text-2xl md:text-3xl font-serif text-white tracking-tight">от $500</span>
+                    <span className="text-2xl md:text-3xl font-serif text-white tracking-tight">$130</span>
                     <span className="text-[11px] text-[#A1A1AA] block mt-0.5">разовый платеж • под ключ</span>
                   </div>
                   <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#E50940]/15 border border-[#E50940]/30 text-[#E50940]">
@@ -212,7 +212,7 @@ export default function PricingSection({
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Личный и Деловой профиль в одной визитке без абонплат</span>
+                    <span>Личный и Деловой профиль: разовый запуск без абонплаты</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -224,7 +224,7 @@ export default function PricingSection({
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Приватная синхронизация с вашим личным и рабочим Telegram</span>
+                    <span>Заказы и контакты сразу в ваш Telegram: раздельно для работы и жизни</span>
                   </li>
                 </ul>
 
@@ -241,7 +241,7 @@ export default function PricingSection({
           {/* Аккуратная подсказка про NFC брелок */}
           <div className="mt-8 p-4 rounded-2xl bg-white/[0.02] border border-white/10 text-center max-w-xl mx-auto flex items-center justify-center gap-3 text-xs md:text-sm text-[#D4D4D8]">
             <span className="w-2 h-2 rounded-full bg-white/40"></span>
-            <span>К любой визитке доступен физический NFC-брелок из винтажной кожи Crazy Horse — <strong>от $60</strong></span>
+            <span>Кожаный брелок Crazy Horse (ручная работа): апгрейд к визитке <strong>$40</strong></span>
           </div>
         </div>
       )}
@@ -259,25 +259,25 @@ export default function PricingSection({
               <div className="glass-content h-full flex flex-col text-left">
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[10px] font-medium uppercase tracking-widest">
-                    Без корзины
+                    Вариант 1 • Без корзины
                   </span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Классика</h3>
                 
                 <div className="mb-6 pb-5 border-b border-white/10 flex items-baseline justify-between">
                   <div>
-                    <span className="text-2xl md:text-3xl font-serif text-white tracking-tight">от $400</span>
+                    <span className="text-2xl md:text-3xl font-serif text-white tracking-tight">$220</span>
                     <span className="text-[11px] text-[#A1A1AA] block mt-0.5">разовый платеж • под ключ</span>
                   </div>
                   <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60">
-                    0% с чеков
+                    Под ключ
                   </span>
                 </div>
                 
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Бесконтактное интерактивное меню с кинематографичным дизайном</span>
+                    <span>Бесконтактное электронное меню: кинематографичный дизайн и QR-код</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -285,11 +285,11 @@ export default function PricingSection({
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Персональная панель управления ценами и стоп-листом блюд</span>
+                    <span>Управление ценами из обычной таблицы на телефоне (без программистов)</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Синхронизация запросов с Telegram персонала заведения</span>
+                    <span>Запросы счета и вызовы официанта сразу в Telegram персонала</span>
                   </li>
                 </ul>
 
@@ -320,18 +320,18 @@ export default function PricingSection({
               <div className="glass-content h-full flex flex-col text-left">
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#E50940]/15 border border-[#E50940]/30 text-[#E50940] text-[10px] font-semibold uppercase tracking-widest">
-                    PRO • С корзиной
+                    Вариант 2 • С корзиной
                   </span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Флагман</h3>
                 
                 <div className="mb-6 pb-5 border-b border-white/10 flex items-baseline justify-between">
                   <div>
-                    <span className="text-2xl md:text-3xl font-serif text-white tracking-tight">от $800</span>
+                    <span className="text-2xl md:text-3xl font-serif text-white tracking-tight">$350</span>
                     <span className="text-[11px] text-[#A1A1AA] block mt-0.5">разовый платеж • под ключ</span>
                   </div>
                   <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#E50940]/15 border border-[#E50940]/30 text-[#E50940]">
-                    Cross-sell
+                    Под ключ
                   </span>
                 </div>
                 
@@ -346,11 +346,11 @@ export default function PricingSection({
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Комментарии шеф-повару и моментальные заказы в Telegram</span>
+                    <span>Заказы гостей и комментарии кухне сразу в ваш Telegram</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>0% комиссии с оборота: никакой абонплаты сторонним сервисам</span>
+                    <span>Собственная система: без комиссий с заказов и без скрытых плат</span>
                   </li>
                 </ul>
 
@@ -372,6 +372,18 @@ export default function PricingSection({
               </div>
             </div>
           </div>
+
+          {/* В базовую стоимость входит */}
+          <div className="mt-8 p-4 rounded-2xl bg-white/[0.02] border border-white/10 text-center max-w-2xl mx-auto flex items-center justify-center gap-3 text-xs md:text-sm text-[#D4D4D8]">
+            <span className="w-2 h-2 rounded-full bg-white/40 shrink-0"></span>
+            <span><strong>В базовую стоимость входит:</strong> запуск системы, дизайн под стиль ресторана, настройка Telegram-бота, QR-коды для столов и перенос до 10–15 позиций</span>
+          </div>
+
+          {/* Отдельная услуга: AI-фудфотосессия */}
+          <div className="mt-4 p-4 rounded-2xl bg-white/[0.02] border border-white/10 text-center max-w-2xl mx-auto flex items-center justify-center gap-3 text-xs md:text-sm text-[#D4D4D8]">
+            <span className="w-2 h-2 rounded-full bg-[#E50940] shrink-0"></span>
+            <span><strong>Спец-пакет «AI-фудфотосессия»:</strong> создание фотореалистичных иллюстраций для вашего меню с помощью нейросетей — <strong>от $70 за пакет блюд</strong></span>
+          </div>
         </div>
       )}
 
@@ -386,15 +398,15 @@ export default function PricingSection({
             <div className="glass-content h-full flex flex-col text-left">
               <div className="flex items-center justify-between gap-2 mb-4">
                 <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[10px] font-medium uppercase tracking-widest">
-                  Салоны и Эксперты
+                  Для частных бьюти-мастеров
                 </span>
               </div>
               <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Beauty & SPA Ecosystem</h3>
               
               <div className="mb-6 pb-5 border-b border-white/10 flex items-baseline justify-between">
                 <div>
-                  <span className="text-2xl md:text-3xl font-serif text-white tracking-tight">от $450</span>
-                  <span className="text-[11px] text-[#A1A1AA] block mt-0.5">разовый платеж • под ключ</span>
+                  <span className="text-2xl md:text-3xl font-serif text-white tracking-tight">$50</span>
+                  <span className="text-[11px] text-[#A1A1AA] block mt-0.5">доступно каждому мастеру с 1–2 процедур</span>
                 </div>
                 <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60">
                   Без абонплат
@@ -404,19 +416,19 @@ export default function PricingSection({
               <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                 <li className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span>Прямая онлайн-запись клиентов: без комиссий агрегаторам</span>
+                  <span>Прямая онлайн-запись: вся прибыль с процедур остается вам</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span>Live-календарь с умным поиском свободных окон и режимом отпуска</span>
+                  <span>Live-календарь со свободными окнами и режимом отпуска мастера</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span>Уникальный дизайн под ваш бренд и эстетику услуг</span>
+                  <span>Управление ценами из обычной таблицы на телефоне (без программистов)</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span>Мгновенные уведомления о бронях и утренняя сводка в Telegram</span>
+                  <span>Записи и брони сразу в ваш Telegram: никаких сложных админок</span>
                 </li>
               </ul>
 
@@ -472,7 +484,7 @@ export default function PricingSection({
                 </li>
                 <li className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span><strong>100% права и владение:</strong> полная передача всех исходников и базы данных заказчику</span>
+                  <span><strong>Полная автономность:</strong> разработка под ключ без регулярной абонплаты за платформу</span>
                 </li>
               </ul>
 

@@ -41,15 +41,15 @@ export default function AboutSection() {
           </p>
 
           <p className="text-[#D4D4D8] text-sm md:text-base leading-relaxed mb-8 max-w-3xl">
-            Моя цель — чтобы ваш цифровой продукт вызывал неподдельный интерес на закрытых встречах и бизнес-ужинах. Вы получаете технологии корпоративного уровня в <strong className="text-white">полную собственность</strong>: без зависимости от конструкторов, без кабальных ежемесячных подписок и без необходимости нанимать технический персонал.
+            Моя цель — чтобы ваш цифровой продукт вызывал неподдельный интерес на закрытых встречах и бизнес-ужинах. Вы получаете премиальные технологии <strong className="text-white">в полную автономию</strong>: разовый запуск без обязательной арендной платы, с удобным управлением ценами и заявками прямо со своего телефона.
           </p>
 
           {/* 3 авторских принципа */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
             <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all">
               <span className="text-[10px] uppercase tracking-wider text-white/50 block mb-1">Принцип 01</span>
-              <h4 className="text-white font-medium text-sm mb-1.5">Полная автономия</h4>
-              <p className="text-[#D4D4D8] text-xs leading-relaxed">0% комиссий сервисам. Код, база данных и контакты принадлежат вам навсегда.</p>
+              <h4 className="text-white font-medium text-sm mb-1.5">Чистая автономия</h4>
+              <p className="text-[#D4D4D8] text-xs leading-relaxed">Никаких скрытых подписок: вы не платите ежемесячную аренду чужому сервису и полностью контролируете свой проект.</p>
             </div>
 
             <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all">
@@ -60,8 +60,8 @@ export default function AboutSection() {
 
             <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all">
               <span className="text-[10px] uppercase tracking-wider text-white/50 block mb-1">Принцип 03</span>
-              <h4 className="text-white font-medium text-sm mb-1.5">Telegram-забота</h4>
-              <p className="text-[#D4D4D8] text-xs leading-relaxed">Все заказы, брони и сводки прилетают прямо в ваш мессенджер без сложных админок.</p>
+              <h4 className="text-white font-medium text-sm mb-1.5">Заказы в Telegram</h4>
+              <p className="text-[#D4D4D8] text-xs leading-relaxed">Заказы и брони сразу в ваш Telegram: никаких сложных админок, всё приходит в привычный мессенджер.</p>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@ export default function AboutSection() {
             <div>
               <div className="flex items-center justify-between mb-4">
                 <h4 className="text-white/80 font-serif text-lg">Конструкторы сайтов</h4>
-                <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/50">Tilda • Taplink</span>
+                <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/50">Аренда платформы</span>
               </div>
               <ul className="space-y-3 text-xs md:text-sm text-[#D4D4D8]">
                 <li className="flex items-start gap-2.5">
@@ -154,15 +154,15 @@ export default function AboutSection() {
               <ul className="space-y-3 text-xs md:text-sm text-white/90">
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#E50940] font-bold mt-0.5 shrink-0">✓</span>
-                  <span><strong className="text-white">Разовый платеж под ключ:</strong> без комиссий и без ежемесячных плат</span>
+                  <span><strong className="text-white">Разовый платеж под ключ:</strong> без абонентской платы за использование платформы</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#E50940] font-bold mt-0.5 shrink-0">✓</span>
-                  <span><strong className="text-white">PWA-визитка в 1 клик:</strong> установка на экран без App Store + NFC в коже</span>
+                  <span><strong className="text-white">Цифровой продукт:</strong> PWA-визитка на экране + кожаный брелок как штучный апгрейд</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#E50940] font-bold mt-0.5 shrink-0">✓</span>
-                  <span><strong className="text-white">Управление в Telegram:</strong> заказы и брони прилетают прямо в ваш телефон</span>
+                  <span><strong className="text-white">Заказы сразу в Telegram:</strong> никаких сложных админок, а цены — из обычной таблицы</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-[#E50940] font-bold mt-0.5 shrink-0">✓</span>
@@ -171,8 +171,8 @@ export default function AboutSection() {
               </ul>
             </div>
             <div className="mt-6 pt-3.5 border-t border-white/10 text-[11px] text-[#E50940] font-medium flex items-center justify-between">
-              <span>Итог: ваш собственный актив навсегда</span>
-              <span>100% владение</span>
+              <span>Итог: ваш независимый цифровой актив</span>
+              <span>Без абонплат</span>
             </div>
           </div>
         </div>
