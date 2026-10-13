@@ -12,17 +12,17 @@ export default function HeroSection({
   onHeroLeave
 }) {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-start md:justify-center relative px-4 md:px-6 pt-24 md:pt-24 pb-16 md:pb-0">
-      <div className="max-w-5xl mx-auto text-center z-10 flex-1 flex flex-col justify-start md:justify-center items-center w-full pt-2 md:pt-0 pb-14 md:pb-28">
-        <p className="text-[#D4D4D8] text-xs md:text-sm font-medium tracking-widest uppercase mb-4 md:mb-6 fade-up-elem" style={{ transitionDelay: '0s' }}>
+    <section className="min-h-screen flex flex-col items-center justify-start md:justify-center relative px-4 md:px-6 pt-20 md:pt-20 pb-12 md:pb-6">
+      <div className="max-w-5xl mx-auto text-center z-10 flex-1 flex flex-col justify-start md:justify-center items-center w-full pt-1 md:pt-0 pb-6 md:pb-8">
+        <p className="text-[#D4D4D8] text-xs md:text-sm font-medium tracking-widest uppercase mb-2 md:mb-3 fade-up-elem" style={{ transitionDelay: '0s' }}>
           Digital Boutique
         </p>
-        <h1 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-serif font-medium leading-tight mb-5 md:mb-6 fade-up-elem" style={{ transitionDelay: '0.1s' }}>
+        <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-serif font-medium leading-tight mb-2 md:mb-3 fade-up-elem" style={{ transitionDelay: '0.1s' }}>
           Ваш цифровой <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">статус</span>.
         </h1>
 
-        <div className="max-w-2xl mx-auto mb-6 md:mb-8 fade-up-elem px-2" style={{ transitionDelay: '0.2s' }}>
-          <p className="text-[#F3F4F6] text-lg sm:text-xl md:text-2xl font-serif tracking-wide mb-4 md:mb-5">
+        <div className="max-w-2xl mx-auto mb-4 md:mb-5 fade-up-elem px-2" style={{ transitionDelay: '0.2s' }}>
+          <p className="text-[#F3F4F6] text-base sm:text-lg md:text-xl font-serif tracking-wide mb-3 md:mb-3.5">
             Премиальные бизнес-экосистемы. <span className="italic text-[#D4D4D8]">Под ключ.</span>
           </p>
 
@@ -52,7 +52,7 @@ export default function HeroSection({
         </div>
 
         <div 
-          className="hero-3d-wrapper w-60 h-80 md:w-64 md:h-80 mx-auto mt-2 md:mt-4 mb-8 md:mb-10 fade-up-elem cursor-pointer relative z-20" 
+          className="hero-3d-wrapper w-56 h-72 sm:w-60 sm:h-80 md:w-60 md:h-[19.5rem] mx-auto mt-1 md:mt-2 mb-2 md:mb-3 fade-up-elem cursor-pointer relative z-20" 
           style={{ transitionDelay: '0.3s' }}
           onClick={onCardFlip}
           onMouseMove={onHeroMove}
@@ -112,13 +112,6 @@ export default function HeroSection({
                   />
                   <p className="text-[10px] text-[#D4D4D8] mt-2 uppercase tracking-[0.25em] font-medium font-sans">Digital Boutique</p>
                 </div>
-
-                {/* Нижняя строгая плашка */}
-                <div className="w-full flex items-center justify-center pt-2 z-10">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[9px] uppercase tracking-[0.2em] text-[#A1A1AA] font-medium">
-                    <span>Нажмите, чтобы перевернуть</span>
-                  </div>
-                </div>
               </div>
 
               {/* Обратная сторона визитки с фотографией */}
@@ -139,10 +132,18 @@ export default function HeroSection({
             </div>
           </div>
         </div>
+
+        {/* Ненавязчивая плашка-подсказка об интерактиве */}
+        <div className="flex items-center justify-center mt-1 md:mt-1.5 mb-1 fade-up-elem" style={{ transitionDelay: '0.4s' }}>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-[11px] md:text-xs text-[#D4D4D8] backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.4)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E50940] shadow-[0_0_8px_#E50940]"></span>
+            <span>Подвигайте мышкой и нажмите для переворота</span>
+          </div>
+        </div>
       </div>
-      <div className="absolute bottom-4 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 fade-up-elem z-10" style={{ transitionDelay: '0.5s' }}>
-        <span className="text-xs tracking-widest uppercase text-[#A1A1AA]">Scroll</span>
-        <div className="w-px h-10 md:h-12 bg-gradient-to-b from-white/50 to-transparent"></div>
+      <div className="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-60 fade-up-elem z-10" style={{ transitionDelay: '0.5s' }}>
+        <span className="text-[10px] md:text-xs tracking-widest uppercase text-[#A1A1AA]">Scroll</span>
+        <div className="w-px h-6 md:h-8 bg-gradient-to-b from-white/50 to-transparent"></div>
       </div>
     </section>
   );

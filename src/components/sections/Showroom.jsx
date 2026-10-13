@@ -1,12 +1,44 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function Showroom({
   onGlassMove,
   onOpenGallery,
   onOpenHorecaDemo
 }) {
+  const [activeDemoModal, setActiveDemoModal] = useState(null); // 'classic' | 'twin' | null
+  const [modalIframeLoaded, setModalIframeLoaded] = useState(false);
+
+  useEffect(() => {
+    if (activeDemoModal) {
+      document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') setActiveDemoModal(null);
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [activeDemoModal]);
+
+  useEffect(() => {
+    const handleOpenDemoEvent = (e) => {
+      if (e.detail === 'classic' || e.detail === 'twin') {
+        setModalIframeLoaded(false);
+        setActiveDemoModal(e.detail);
+      }
+    };
+    window.addEventListener('open-demo-modal', handleOpenDemoEvent);
+    return () => window.removeEventListener('open-demo-modal', handleOpenDemoEvent);
+  }, []);
+
   return (
     <section id="showroom" className="pt-24 md:pt-32 pb-0 px-4 md:px-8 max-w-7xl mx-auto relative z-10">
       <div className="mb-12 md:mb-24 fade-up-elem text-center">
@@ -42,11 +74,14 @@ export default function Showroom({
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 text-left">
               {/* Classic */}
-              <div className="p-6 md:p-7 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/25 hover:bg-white/[0.04] transition-all flex flex-col justify-between group">
+              <div
+                onClick={(e) => { e.stopPropagation(); setModalIframeLoaded(false); setActiveDemoModal('classic'); }}
+                className="p-6 md:p-7 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/25 hover:bg-white/[0.04] transition-all flex flex-col justify-between group cursor-pointer"
+              >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-center text-white/90 shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-center text-white/90 shrink-0 group-hover:scale-105 transition-transform">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0"></path>
                         </svg>
@@ -58,11 +93,17 @@ export default function Showroom({
                     </span>
                   </div>
                   <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                    Масштабируемый цифровой продукт: PWA-приложение, QR-код и ссылка. 7 премиальных дизайн-тем, микроанимации и мгновенное сохранение VCF-контакта в телефон собеседника.
+                    Масштабируемый цифровой продукт: PWA-приложение, QR-код и ссылка. 7 премиальных дизайн-тем в выпадающем списке, микроанимации и мгновенное сохранение VCF-контакта.
                   </p>
                 </div>
-                <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center text-xs text-white/40">
-                  <span>Быстрый запуск • 24 часа</span>
+                <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-medium text-white/80 group-hover:text-white transition-colors">
+                  <span className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/40 group-hover:bg-white transition-colors"></span>
+                    Открыть демо (7 стилей)
+                  </span>
+                  <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-6-6l6 6-6 6" />
+                  </svg>
                 </div>
               </div>
 
@@ -93,7 +134,7 @@ export default function Showroom({
                 <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-medium text-white/80 group-hover:text-white transition-colors">
                   <span className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#E50940]"></span>
-                    Галерея дизайнов (9 ниш)
+                    Открыть демо (9 ниш)
                   </span>
                   <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-6-6l6 6-6 6" />
@@ -102,11 +143,14 @@ export default function Showroom({
               </div>
 
               {/* Twin ID */}
-              <div className="p-6 md:p-7 rounded-2xl bg-gradient-to-b from-[#E50940]/10 to-white/[0.02] border border-[#E50940]/30 hover:border-[#E50940]/55 hover:bg-white/[0.04] transition-all flex flex-col justify-between group">
+              <div
+                onClick={(e) => { e.stopPropagation(); setModalIframeLoaded(false); setActiveDemoModal('twin'); }}
+                className="p-6 md:p-7 rounded-2xl bg-gradient-to-b from-[#E50940]/10 to-white/[0.02] border border-[#E50940]/30 hover:border-[#E50940]/55 hover:bg-white/[0.04] transition-all flex flex-col justify-between group cursor-pointer"
+              >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-[#E50940]/20 border border-[#E50940]/40 flex items-center justify-center text-[#E50940] shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-[#E50940]/20 border border-[#E50940]/40 flex items-center justify-center text-[#E50940] shrink-0 group-hover:scale-105 transition-transform">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path>
                         </svg>
@@ -118,11 +162,17 @@ export default function Showroom({
                     </span>
                   </div>
                   <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                    Авторская разработка: Личный и Деловой профиль в одном решении. Умная смена стороны по времени суток и секретный Z-жест для защиты приватности.
+                    Авторская разработка: Личный и Деловой профиль в одном решении. Умная смена стороны по времени суток и секретный жест для защиты приватности.
                   </p>
                 </div>
-                <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center text-xs text-[#E50940]/80">
-                  <span>2 профиля в одной ссылке</span>
+                <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-medium text-white/90 group-hover:text-white transition-colors">
+                  <span className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E50940]"></span>
+                    Открыть демо (Twin ID)
+                  </span>
+                  <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-6-6l6 6-6 6" />
+                  </svg>
                 </div>
               </div>
             </div>
@@ -244,12 +294,90 @@ export default function Showroom({
         >
           <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_left,rgba(229,9,64,0.1)_0%,transparent_55%)] pointer-events-none"></div>
           
-          <div className="w-full lg:w-5/12 h-64 sm:h-72 lg:h-auto min-h-[260px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0 group">
-            <img src="beauty-bg.jpg" alt="Beauty Spa" draggable={false} className="absolute inset-0 w-full h-full object-cover opacity-85 scale-105 group-hover:scale-100 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/25 to-transparent"></div>
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3.5 py-2 rounded-xl bg-black/55 backdrop-blur-md border border-white/10 text-[11px] text-[#D4D4D8]">
-              <span>Beauty & SPA Ecosystem</span>
-              <span className="text-white font-medium">24/7 Live</span>
+          {/* Макет смартфона с живым интерфейсом онлайн-записи */}
+          <div className="w-full lg:w-5/12 min-h-[300px] lg:min-h-[340px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0 bg-gradient-to-b from-[#18181b]/95 to-[#09090b]/95 p-4 sm:p-5 flex flex-col justify-between group">
+            {/* Световые акценты темы */}
+            <div className="absolute -top-16 -right-16 w-36 h-36 bg-[#E50940]/15 rounded-full blur-2xl pointer-events-none"></div>
+
+            {/* Верх смартфона: статус мастера и переключатель 6 стилей */}
+            <div className="relative z-10">
+              <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-xs font-serif text-white">
+                    Е
+                  </div>
+                  <div>
+                    <h5 className="text-white text-xs font-medium leading-none">Елена Сотникова</h5>
+                    <p className="text-[10px] text-[#A1A1AA] mt-0.5">Эстетика & Уход • Live</p>
+                  </div>
+                </div>
+
+                {/* 6 цветовых стилей темы */}
+                <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-white/5 border border-white/10" title="6 цветовых стилей">
+                  <span className="w-2 h-2 rounded-full bg-[#E50940]"></span>
+                  <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
+                  <span className="w-2 h-2 rounded-full bg-[#9333EA]"></span>
+                  <span className="w-2 h-2 rounded-full bg-[#06B6D4]"></span>
+                  <span className="w-2 h-2 rounded-full bg-[#10B981]"></span>
+                  <span className="w-2 h-2 rounded-full bg-[#EC4899]"></span>
+                </div>
+              </div>
+
+              {/* Интерактивный календарь с окнами записи */}
+              <div className="space-y-2.5">
+                <div className="flex items-center justify-between text-[11px] text-[#D4D4D8]">
+                  <span>Свободные окна записи:</span>
+                  <span className="text-white/60">Май 2026</span>
+                </div>
+
+                {/* Дни недели */}
+                <div className="grid grid-cols-5 gap-1.5 text-center text-[10px]">
+                  <div className="py-1.5 rounded-lg bg-white/[0.03] text-[#A1A1AA] border border-white/5">
+                    <div>Пн</div>
+                    <div className="font-semibold text-white/70">18</div>
+                  </div>
+                  <div className="py-1.5 rounded-lg bg-white/[0.03] text-[#A1A1AA] border border-white/5">
+                    <div>Вт</div>
+                    <div className="font-semibold text-white/70">19</div>
+                  </div>
+                  <div className="py-1.5 rounded-lg bg-white/15 text-white border border-white/30 shadow-[0_0_12px_rgba(255,255,255,0.15)]">
+                    <div className="text-[9px] text-[#E50940] font-semibold">Ср</div>
+                    <div className="font-semibold text-white">20</div>
+                  </div>
+                  <div className="py-1.5 rounded-lg bg-white/[0.03] text-[#A1A1AA] border border-white/5">
+                    <div>Чт</div>
+                    <div className="font-semibold text-white/70">21</div>
+                  </div>
+                  <div className="py-1.5 rounded-lg bg-white/[0.03] text-[#A1A1AA] border border-white/5">
+                    <div>Пт</div>
+                    <div className="font-semibold text-white/70">22</div>
+                  </div>
+                </div>
+
+                {/* Окошки времени */}
+                <div className="grid grid-cols-3 gap-1.5 text-[10px] pt-1">
+                  <div className="py-1.5 px-2 rounded-lg bg-[#E50940]/20 border border-[#E50940]/40 text-white font-medium text-center">
+                    10:00 • Свободно
+                  </div>
+                  <div className="py-1.5 px-2 rounded-lg bg-white/[0.04] border border-white/10 text-white/80 font-medium text-center">
+                    13:30 • Свободно
+                  </div>
+                  <div className="py-1.5 px-2 rounded-lg bg-white/[0.02] border border-white/5 text-white/30 line-through text-center">
+                    16:00
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Низ смартфона: статус Telegram-бота */}
+            <div className="relative z-10 mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px] text-[#D4D4D8]">
+              <div className="flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 fill-current text-[#2AABEE]" viewBox="0 0 24 24">
+                  <path d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.313 4.693c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
+                </svg>
+                <span>Бронь сразу в <strong>@DemoSeaBeauty_bot</strong></span>
+              </div>
+              <span className="text-[10px] text-[#10B981] font-semibold">24/7 Live</span>
             </div>
           </div>
           
@@ -263,11 +391,11 @@ export default function Showroom({
             <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">
               Эстетика и <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Онлайн-запись</span>
             </h3>
-            <p className="text-[#D4D4D8] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">
-              Вся прибыль остается вам: прямая онлайн-запись без ежемесячной аренды сервисов. Удобное управление расписанием и прайсом из таблицы на телефоне, а брони и клиенты сразу поступают в ваш Telegram.
+            <p className="text-[#D4D4D8] text-sm md:text-base mb-6 max-w-2xl leading-relaxed">
+              Вся прибыль остается вам: прямая онлайн-запись без ежемесячной аренды сервисов. 6 готовых цветовых стилей оформления, удобное управление расписанием из таблицы, а брони моментально приходят в ваш Telegram.
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 text-left">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 text-left mb-6">
               <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all flex flex-col justify-start">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-center text-white/90 shrink-0">
@@ -278,7 +406,7 @@ export default function Showroom({
                   <h4 className="text-white text-base md:text-lg font-serif">Smart-бронирование</h4>
                 </div>
                 <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                  Live-календарь со свободными окнами, временем услуг и режимом отпуска — прямая запись клиентов без ежемесячных платежей агрегаторам.
+                  Live-календарь со свободными окнами, 6 цветовых стилей оформления и режим отпуска — без абонплаты агрегаторам.
                 </p>
               </div>
 
@@ -289,12 +417,42 @@ export default function Showroom({
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
                     </svg>
                   </div>
-                  <h4 className="text-white text-base md:text-lg font-serif">Таблица & Telegram-забота</h4>
+                  <h4 className="text-white text-base md:text-lg font-serif">Таблица & Telegram-бот</h4>
                 </div>
                 <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                  Управление ценами из обычной таблицы на телефоне (не нужен программист на зарплату, чтобы поменять цену на стрижку). Все записи сразу в ваш Telegram.
+                  Цены меняются из таблицы на телефоне. Все брони и контакты клиентов сразу летят в персональный Telegram-бот.
                 </p>
               </div>
+            </div>
+
+            {/* Интерактивные кнопки демо Бьюти */}
+            <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-3">
+              <a
+                href="https://master.appseapro.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="px-5 py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] border border-white/15 hover:border-white/30 text-white text-xs sm:text-sm font-medium transition-all flex items-center gap-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] interactive-elem cursor-pointer"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#E50940]"></span>
+                <span>Открыть демо онлайн-записи (6 стилей)</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+
+              <a
+                href="https://t.me/DemoSeaBeauty_bot"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="px-4 py-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/20 text-[#D4D4D8] hover:text-white text-xs sm:text-sm font-medium transition-all flex items-center gap-2 interactive-elem cursor-pointer"
+              >
+                <svg className="w-3.5 h-3.5 fill-current text-[#2AABEE]" viewBox="0 0 24 24">
+                  <path d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.313 4.693c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
+                </svg>
+                <span>Тестовый бот: @DemoSeaBeauty_bot</span>
+              </a>
             </div>
           </div>
         </div>
@@ -378,6 +536,108 @@ export default function Showroom({
         </div>
 
       </div>
+
+      {/* Модальное окно внутрисайтового демо Classic и Twin ID (в точности как Infinity: без смартфона, свободный холст) */}
+      {typeof document !== 'undefined' && activeDemoModal && createPortal(
+        <div
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-between p-0 lg:px-10 lg:py-7 overflow-hidden overscroll-none bg-[#050505] lg:bg-[#050505]/96 lg:backdrop-blur-3xl animate-in fade-in duration-300"
+          onClick={() => setActiveDemoModal(null)}
+        >
+          {/* Мягкое кинематографичное рассеянное свечение в центре космоса на десктопе */}
+          <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full bg-white/[0.035] blur-[140px] pointer-events-none"></div>
+
+          {/* Мобильный парящий крестик закрытия (только < lg:) */}
+          <button
+            onClick={() => setActiveDemoModal(null)}
+            aria-label="Закрыть демо"
+            className="lg:hidden absolute top-4 right-4 z-50 w-10 h-10 rounded-full bg-black/55 hover:bg-white/[0.14] backdrop-blur-[20px] border border-white/15 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 active:scale-95 interactive-elem cursor-pointer"
+          >
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Парящая навигация сверху (только десктоп lg:) */}
+          <div
+            className="hidden lg:flex w-full max-w-7xl flex-col items-center justify-center relative z-30 shrink-0"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Правый верхний угол: аккуратная кнопка «На весь экран» и минималистичный крестик закрытия */}
+            <div className="absolute right-0 top-0 flex items-center gap-3">
+              <a
+                href={activeDemoModal === 'classic' ? 'https://card-light.appseapro.com/' : 'https://me.appseapro.com/'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/[0.04] hover:bg-white/[0.1] backdrop-blur-xl border border-white/10 hover:border-white/25 text-xs font-medium text-[#E4E4E7] hover:text-white transition-all duration-300 interactive-elem"
+              >
+                <span>На весь экран</span>
+                <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 17L17 7M17 7H8M17 7V16" />
+                </svg>
+              </a>
+
+              <button
+                onClick={() => setActiveDemoModal(null)}
+                aria-label="Закрыть демо"
+                className="w-10 h-10 rounded-full bg-white/[0.04] hover:bg-white/[0.12] backdrop-blur-[20px] border border-white/10 hover:border-white/25 flex items-center justify-center text-white/80 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 interactive-elem cursor-pointer"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Лаконичный заголовок */}
+            <h3 className="font-serif text-2xl xl:text-3xl text-white tracking-tight mb-2">
+              {activeDemoModal === 'classic' ? 'Classic PWA' : 'Twin ID'}
+            </h3>
+            <p className="text-xs text-[#A1A1AA]">
+              {activeDemoModal === 'classic'
+                ? '7 премиальных тем: переключайте стиль в меню визитки'
+                : 'Личный и Деловой профиль: проведите секретный жест'}
+            </p>
+          </div>
+
+          {/* Свободный интерактивный холст в центре (в точности как Infinity: max-w-xl, без смартфона) */}
+          <div
+            className="w-full flex-1 flex flex-col items-center justify-between lg:justify-center relative z-10 overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative w-full max-w-[390px] sm:max-w-[400px] flex-1 lg:flex-none lg:w-full lg:max-w-[400px] h-full lg:h-[84vh] max-h-[850px] bg-transparent border-0 flex flex-col overflow-hidden mx-auto">
+              {/* Деликатный лоадер в открытом пространстве во время подгрузки iframe */}
+              <div
+                className={`absolute inset-0 z-20 flex flex-col items-center justify-center gap-3.5 bg-[#050505] lg:bg-transparent transition-opacity duration-500 ${
+                  modalIframeLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                }`}
+              >
+                <div className="relative flex items-center justify-center w-12 h-12">
+                  <div className="w-10 h-10 rounded-full border border-white/15 border-t-white/80 animate-spin"></div>
+                </div>
+                <div className="text-center px-6">
+                  <p className="text-xs font-serif tracking-wider text-white">
+                    {activeDemoModal === 'classic' ? 'Classic PWA' : 'Twin ID'}
+                  </p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-[#A1A1AA] mt-1">
+                    Загрузка визитки...
+                  </p>
+                </div>
+              </div>
+
+              {/* Свободный прозрачный живой iframe без смартфона и рамок */}
+              <iframe
+                src={activeDemoModal === 'classic' ? 'https://card-light.appseapro.com/' : 'https://me.appseapro.com/'}
+                title={activeDemoModal === 'classic' ? 'Classic PWA Demo' : 'Twin ID Demo'}
+                onLoad={() => setModalIframeLoaded(true)}
+                className={`w-full h-full flex-1 border-0 bg-transparent transition-opacity duration-500 ease-out ${
+                  modalIframeLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
+                allow="autoplay; clipboard-write"
+              />
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
     </section>
   );
 }

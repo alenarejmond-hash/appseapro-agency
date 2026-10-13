@@ -262,14 +262,9 @@ const styles = `
   }
 
   .fade-up-elem {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.45s ease-out, transform 0.45s ease-out;
-    will-change: opacity, transform;
-  }
-  .fade-up-elem.visible {
     opacity: 1;
     transform: translateY(0);
+    transition: opacity 0.45s ease-out, transform 0.45s ease-out;
   }
 
   details > summary {

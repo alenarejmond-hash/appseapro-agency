@@ -17,7 +17,37 @@ export default function FaqSection() {
             <span className="text-2xl group-open:rotate-45 transition-transform text-[#D4D4D8]">+</span>
           </summary>
           <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">
-            Нет. Вы оплачиваете разработку под ключ один раз и спокойно пользуетесь продуктом без регулярной абонплаты за платформу. Все заявки, заказы и брони клиентов поступают напрямую в ваш Telegram.
+            Нет. Вы оплачиваете разработку под ключ один раз и спокойно пользуетесь продуктом без регулярной абонентской платы за платформу. Все заявки, заказы и брони клиентов поступают напрямую в ваш Telegram.
+          </p>
+        </details>
+
+        <details className="glass-card p-6 cursor-pointer group interactive-elem">
+          <summary className="font-medium text-lg outline-none flex justify-between items-center">
+            Сколько времени занимает разработка под ключ?
+            <span className="text-2xl group-open:rotate-45 transition-transform text-[#D4D4D8]">+</span>
+          </summary>
+          <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">
+            От 24 часов до 3–5 дней в зависимости от тарифа. Персональные PWA-визитки обычно запускаются за 1–3 дня, а проекты для ресторанов или салонов красоты с каталогами — за 3–5 рабочих дней.
+          </p>
+        </details>
+
+        <details className="glass-card p-6 cursor-pointer group interactive-elem">
+          <summary className="font-medium text-lg outline-none flex justify-between items-center">
+            Что требуется от меня для начала работы?
+            <span className="text-2xl group-open:rotate-45 transition-transform text-[#D4D4D8]">+</span>
+          </summary>
+          <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">
+            Минимум вашего времени: только качественное фото или логотип, ссылки на мессенджеры и соцсети, а также базовый список услуг или меню. Всю техническую упаковку, дизайн и запуск под ключ я беру на себя.
+          </p>
+        </details>
+
+        <details className="glass-card p-6 cursor-pointer group interactive-elem">
+          <summary className="font-medium text-lg outline-none flex justify-between items-center">
+            Как мне менять цены или добавлять услуги?
+            <span className="text-2xl group-open:rotate-45 transition-transform text-[#D4D4D8]">+</span>
+          </summary>
+          <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">
+            В проектах для ресторанов и салонов красоты (HoReCa и Beauty) всё сделано через удобную таблицу прямо на телефоне: изменили строчку со смартфона — и меню моментально обновилось. А в персональных PWA-визитках вам вообще не нужно тратить время: все нужные изменения контактов или прайса я вношу для вас сама.
           </p>
         </details>
         
@@ -28,16 +58,6 @@ export default function FaqSection() {
           </summary>
           <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">
             Полностью вам. Ваши контакты, меню и записи не заблокируют сторонние конструкторы, а все клиенты, заявки и брони поступают напрямую в ваш Telegram.
-          </p>
-        </details>
-        
-        <details className="glass-card p-6 cursor-pointer group interactive-elem">
-          <summary className="font-medium text-lg outline-none flex justify-between items-center">
-            Как мне менять цены или добавлять услуги?
-            <span className="text-2xl group-open:rotate-45 transition-transform text-[#D4D4D8]">+</span>
-          </summary>
-          <p className="text-[#D4D4D8] mt-4 text-sm leading-relaxed border-t border-white/10 pt-4">
-            Управление ценами из обычной таблицы на телефоне. Вам не нужен программист на зарплату, чтобы поменять цену на кофе, блюдо или стрижку — изменили строчку в таблице со смартфона, и она моментально обновилась.
           </p>
         </details>
       </div>
