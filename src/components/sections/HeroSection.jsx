@@ -12,7 +12,7 @@ export default function HeroSection({
   onHeroLeave
 }) {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-start md:justify-center relative px-4 md:px-6 pt-20 md:pt-20 pb-12 md:pb-6">
+    <section className="min-h-[100dvh] flex flex-col items-center justify-start md:justify-center relative px-4 md:px-6 pt-20 md:pt-20 pb-12 md:pb-6">
       <div className="max-w-5xl mx-auto text-center z-10 flex-1 flex flex-col justify-start md:justify-center items-center w-full pt-1 md:pt-0 pb-6 md:pb-8">
         <p className="text-[#D4D4D8] text-xs md:text-sm font-medium tracking-widest uppercase mb-2 md:mb-3 fade-up-elem" style={{ transitionDelay: '0s' }}>
           Digital Boutique
@@ -67,7 +67,7 @@ export default function HeroSection({
             aria-label={isSoundEnabled ? 'Выключить звук переворота' : 'Включить звук переворота'}
             onClick={onToggleSound}
             onTouchStart={(e) => e.stopPropagation()}
-            className="absolute top-0.5 -right-8 sm:-right-9 z-30 w-7 h-7 rounded-full bg-white/5 border border-white/10 hover:border-white/20 backdrop-blur-md flex items-center justify-center text-xs text-white/60 hover:text-white transition-all interactive-elem cursor-pointer"
+            className="absolute top-0.5 -right-9 sm:-right-10 z-30 w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:border-white/20 backdrop-blur-md flex items-center justify-center text-xs text-white/60 hover:text-white transition-all interactive-elem cursor-pointer"
           >
             {isSoundEnabled ? (
               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">

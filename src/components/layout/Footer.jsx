@@ -11,11 +11,11 @@ export default function Footer({
   return (
     <footer
       id="contact"
-      className="relative w-full bg-[#050505] flex flex-col justify-between px-4 sm:px-6 md:px-12 pt-16 md:pt-24 pb-8 z-10"
+      className="relative w-full bg-[#050505] flex flex-col justify-between px-4 sm:px-6 md:px-12 pt-16 md:pt-24 pb-[max(2rem,env(safe-area-inset-bottom))] z-10"
     >
       {/* Шаг 1: Финальная карточка CTA */}
       <div className="max-w-5xl mx-auto w-full mb-16 md:mb-20">
-        <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-[#1a0b0e] to-[#0a0a0a] p-8 sm:p-10 md:p-16 text-center relative overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.85)]">
+        <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-[#1a0b0e] to-[#0a0a0a] p-5 sm:p-10 md:p-16 text-center relative overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.85)]">
           {/* Декоративное мягкое свечение сзади */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-[#E50940]/10 blur-[100px] pointer-events-none rounded-full"></div>
 
@@ -48,14 +48,14 @@ export default function Footer({
                 }
               }}
               placeholder="Ваш Telegram или Телефон" 
-              className="w-full min-h-[44px] bg-[#121212] border border-white/10 rounded-full py-3 md:py-4 pl-6 pr-32 md:pr-36 text-sm md:text-base text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition-colors"
+              className="w-full min-h-[44px] bg-[#121212] border border-white/10 rounded-full py-3 md:py-4 pl-5 pr-28 md:pr-36 text-[16px] md:text-base text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition-colors"
             />
             <button
               type="button"
               onClick={onContactSubmit}
               className="absolute right-1 top-1 bottom-1 bg-white text-black px-4 md:px-6 rounded-full font-medium text-xs md:text-sm hover:bg-gray-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.2)] cursor-pointer whitespace-nowrap"
             >
-              {isContactSent ? 'Переходим в Telegram... ✓' : 'Отправить'}
+              {isContactSent ? 'Переходим... ✓' : 'Отправить'}
             </button>
           </div>
 

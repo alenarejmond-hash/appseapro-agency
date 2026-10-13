@@ -58,7 +58,7 @@ function BeautyModalContent({ onClose }) {
         type="button"
         onClick={onClose}
         aria-label="Закрыть демо"
-        className="lg:hidden absolute top-4 right-4 z-50 w-10 h-10 rounded-full bg-black/55 hover:bg-white/[0.14] backdrop-blur-[20px] border border-white/15 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 active:scale-95 interactive-elem cursor-pointer"
+        className="lg:hidden absolute top-[max(1rem,env(safe-area-inset-top))] right-[max(1rem,env(safe-area-inset-right))] z-50 w-11 h-11 rounded-full bg-black/55 hover:bg-white/[0.14] backdrop-blur-[20px] border border-white/15 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 active:scale-95 interactive-elem cursor-pointer"
       >
         <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
@@ -96,7 +96,7 @@ function BeautyModalContent({ onClose }) {
 
       {/* 1. Верхняя линия управления над сервисом записи */}
       <div
-        className="relative z-30 w-full lg:max-w-2xl shrink-0 px-3 py-2.5 lg:px-0 lg:py-0 lg:mb-3 bg-[#050505] lg:bg-transparent border-b border-white/10 lg:border-0 flex items-center justify-center gap-3"
+        className="relative z-30 w-full lg:max-w-2xl shrink-0 px-3 py-2.5 lg:px-0 lg:py-0 lg:mb-3 bg-[#050505] lg:bg-transparent border-b border-white/10 lg:border-0 flex flex-wrap items-center justify-center gap-2"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Слева/по центру: лаконичный статус-бейдж демо */}
@@ -147,7 +147,7 @@ function BeautyModalContent({ onClose }) {
                 setShowTgPopup(false);
               }}
               aria-label="Скрыть уведомление"
-              className="absolute top-2.5 right-2.5 z-20 w-6 h-6 rounded-full bg-white/[0.06] hover:bg-white/[0.15] border border-white/10 flex items-center justify-center text-white/60 hover:text-white text-[10px] transition-colors cursor-pointer"
+              className="absolute top-2.5 right-2.5 z-20 w-8 h-8 rounded-full bg-white/[0.06] hover:bg-white/[0.15] border border-white/10 flex items-center justify-center text-white/60 hover:text-white text-xs transition-colors cursor-pointer"
             >
               ✕
             </button>

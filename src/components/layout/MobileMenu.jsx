@@ -3,13 +3,11 @@
 import React from 'react';
 
 export default function MobileMenu({ isOpen, onClose }) {
+  if (!isOpen) return null;
+
   return (
     <div
-      className={`fixed inset-0 z-[55] md:hidden bg-[#050505]/98 backdrop-blur-2xl flex flex-col justify-between px-6 pt-24 pb-10 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-        isOpen
-          ? 'opacity-100 pointer-events-auto translate-y-0'
-          : 'opacity-0 pointer-events-none -translate-y-2'
-      }`}
+      className="fixed inset-0 z-[55] md:hidden bg-[#050505]/98 backdrop-blur-2xl flex flex-col justify-between px-6 pt-[max(6rem,env(safe-area-inset-top))] pb-[max(2.5rem,env(safe-area-inset-bottom))] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] opacity-100 pointer-events-auto translate-y-0"
     >
       <div className="flex-1 flex flex-col justify-center max-w-md mx-auto w-full">
         <a

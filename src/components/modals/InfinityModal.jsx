@@ -26,7 +26,7 @@ export default function InfinityModal({
       <button
         onClick={onClose}
         aria-label="Закрыть шоурум"
-        className="lg:hidden absolute top-4 right-4 z-50 w-10 h-10 rounded-full bg-black/55 hover:bg-white/[0.14] backdrop-blur-[20px] border border-white/15 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 active:scale-95 interactive-elem cursor-pointer"
+        className="lg:hidden absolute top-[max(1rem,env(safe-area-inset-top))] right-[max(1rem,env(safe-area-inset-right))] z-50 w-11 h-11 rounded-full bg-black/55 hover:bg-white/[0.14] backdrop-blur-[20px] border border-white/15 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 active:scale-95 interactive-elem cursor-pointer"
       >
         <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
@@ -128,7 +128,7 @@ export default function InfinityModal({
         </div>
 
         {/* ================= НИЖНИЙ ПЕРЕКЛЮЧАТЕЛЬ НИШ НА СМАРТФОНАХ (только < lg:) ================= */}
-        <div className="lg:hidden w-full shrink-0 px-3 pt-2 pb-4 bg-gradient-to-t from-[#050505] via-[#050505]/95 to-transparent relative z-40">
+        <div className="lg:hidden w-full shrink-0 px-3 pt-2 pb-[max(1rem,env(safe-area-inset-bottom))] bg-gradient-to-t from-[#050505] via-[#050505]/95 to-transparent relative z-40">
           <div
             style={{
               boxShadow: `0 12px 35px rgba(0,0,0,0.9), 0 0 25px -8px ${currentTemplate.glow}, inset 0 1px 0 rgba(255,255,255,0.18)`
@@ -139,7 +139,7 @@ export default function InfinityModal({
             <button
               onClick={() => onStepNiche(-1)}
               aria-label="Предыдущая ниша"
-              className="w-8 h-8 rounded-full flex items-center justify-center text-white/60 hover:text-white active:scale-90 transition-all shrink-0 cursor-pointer"
+              className="w-10 h-10 rounded-full flex items-center justify-center text-white/60 hover:text-white active:scale-90 transition-all shrink-0 cursor-pointer"
             >
               <span className="text-lg leading-none font-light">‹</span>
             </button>
@@ -195,7 +195,7 @@ export default function InfinityModal({
             <button
               onClick={() => onStepNiche(1)}
               aria-label="Следующая ниша"
-              className="w-8 h-8 rounded-full flex items-center justify-center text-white/60 hover:text-white active:scale-90 transition-all shrink-0 cursor-pointer"
+              className="w-10 h-10 rounded-full flex items-center justify-center text-white/60 hover:text-white active:scale-90 transition-all shrink-0 cursor-pointer"
             >
               <span className="text-lg leading-none font-light">›</span>
             </button>

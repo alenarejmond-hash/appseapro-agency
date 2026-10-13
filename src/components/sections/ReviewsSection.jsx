@@ -193,13 +193,13 @@ export default function ReviewsSection({ onGlassMove }) {
             type="button"
             onClick={prevReview}
             aria-label="Предыдущие отзывы"
-            className="w-10 h-10 rounded-full bg-white/[0.04] hover:bg-white/[0.12] active:scale-95 border border-white/10 hover:border-white/25 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer interactive-elem shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
+            className="w-11 h-11 rounded-full bg-white/[0.04] hover:bg-white/[0.12] active:scale-95 border border-white/10 hover:border-white/25 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer interactive-elem shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
           >
             <span className="text-lg leading-none font-light mb-0.5">‹</span>
           </button>
 
           {/* Индикаторы-точки */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             {[...Array(maxIndex + 1)].map((_, index) => {
               const isActive = currentIndex === index;
               return (
@@ -208,12 +208,16 @@ export default function ReviewsSection({ onGlassMove }) {
                   type="button"
                   onClick={() => setCurrentIndex(index)}
                   aria-label={`Перейти к слайду ${index + 1}`}
-                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? 'w-6 bg-white shadow-[0_0_10px_rgba(255,255,255,0.6)]'
-                      : 'w-1.5 bg-white/20 hover:bg-white/40'
-                  }`}
-                />
+                  className="py-3 px-1 cursor-pointer flex items-center"
+                >
+                  <span
+                    className={`h-1.5 rounded-full transition-all duration-300 block ${
+                      isActive
+                        ? 'w-6 bg-white shadow-[0_0_10px_rgba(255,255,255,0.6)]'
+                        : 'w-1.5 bg-white/20 hover:bg-white/40'
+                    }`}
+                  />
+                </button>
               );
             })}
           </div>
@@ -223,7 +227,7 @@ export default function ReviewsSection({ onGlassMove }) {
             type="button"
             onClick={nextReview}
             aria-label="Следующие отзывы"
-            className="w-10 h-10 rounded-full bg-white/[0.04] hover:bg-white/[0.12] active:scale-95 border border-white/10 hover:border-white/25 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer interactive-elem shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
+            className="w-11 h-11 rounded-full bg-white/[0.04] hover:bg-white/[0.12] active:scale-95 border border-white/10 hover:border-white/25 flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer interactive-elem shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
           >
             <span className="text-lg leading-none font-light mb-0.5">›</span>
           </button>

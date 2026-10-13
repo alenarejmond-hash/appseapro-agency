@@ -5,7 +5,7 @@ import React from 'react';
 export default function Header({ isMobileMenuOpen, setIsMobileMenuOpen, onGlassMove }) {
   return (
     <header
-      className={`fixed w-full top-0 z-[60] transition-colors duration-300 py-4 px-5 md:px-12 ${
+      className={`fixed w-full top-0 z-[60] transition-colors duration-300 pt-[max(1rem,env(safe-area-inset-top))] pb-3 px-5 md:py-4 md:px-12 ${
         isMobileMenuOpen
           ? 'bg-transparent border-b border-transparent'
           : 'backdrop-blur-md bg-[#050505]/70 border-b border-white/5'
@@ -55,7 +55,7 @@ export default function Header({ isMobileMenuOpen, setIsMobileMenuOpen, onGlassM
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Написать в Telegram"
-            className="md:hidden flex items-center justify-center w-8 h-8 rounded-full glass-card text-white/80 hover:text-white transition-colors interactive-elem cursor-pointer"
+            className="md:hidden flex items-center justify-center w-11 h-11 rounded-full glass-card text-white/80 hover:text-white transition-colors interactive-elem cursor-pointer"
           >
             <span className="glass-content flex items-center justify-center">
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -68,7 +68,7 @@ export default function Header({ isMobileMenuOpen, setIsMobileMenuOpen, onGlassM
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Меню"
-            className="md:hidden relative w-8 h-8 flex items-center justify-end text-[#F3F4F6] hover:text-white transition-colors interactive-elem cursor-pointer focus:outline-none"
+            className="md:hidden relative w-11 h-11 flex items-center justify-center text-[#F3F4F6] hover:text-white transition-colors interactive-elem cursor-pointer focus:outline-none"
           >
             <span className="relative w-6 h-3 flex flex-col justify-between items-end">
               <span

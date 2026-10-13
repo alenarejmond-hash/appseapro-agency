@@ -23,7 +23,7 @@ export default function PricingSection({
       </div>
 
       {/* Вкладки категорий */}
-      <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-full bg-white/[0.03] border border-white/10 max-w-fit mx-auto mb-10 md:mb-14">
+      <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl sm:rounded-full bg-white/[0.03] border border-white/10 max-w-fit mx-auto mb-10 md:mb-14">
         <button
           onClick={() => setActiveCategory('pwa')}
           className={`px-5 py-2 rounded-full text-xs md:text-sm font-medium transition-all cursor-pointer ${

@@ -15,6 +15,12 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata = {
   metadataBase: new URL("https://agency.appseapro.com"),
   title: "AppSeaPro | IT-Бутик цифровых экосистем Елены Сотниковой",

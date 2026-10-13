@@ -638,7 +638,7 @@ export default function LandingPage() {
   const activeHorecaConfig = HORECA_CONFIG[horecaMode] || HORECA_CONFIG.flagship;
 
   return (
-    <div className="antialiased min-h-screen text-[#F3F4F6] bg-[#050505] w-full">
+    <div className="antialiased min-h-[100dvh] text-[#F3F4F6] bg-[#050505] w-full">
       <style>{styles}</style>
 
       {/* Кастомный курсор и фоновое свечение */}
