@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import BeautyModal from '@/components/modals/BeautyModal';
 
 export default function Showroom({
   onGlassMove,
@@ -10,6 +11,7 @@ export default function Showroom({
 }) {
   const [activeDemoModal, setActiveDemoModal] = useState(null); // 'classic' | 'twin' | null
   const [modalIframeLoaded, setModalIframeLoaded] = useState(false);
+  const [isBeautyModalOpen, setIsBeautyModalOpen] = useState(false);
 
   useEffect(() => {
     if (activeDemoModal) {
@@ -63,13 +65,13 @@ export default function Showroom({
           <div className="glass-content flex-1 z-10 text-left w-full">
             <div className="flex items-center justify-between mb-4">
               <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-[#E50940]/10 border border-[#E50940]/30 text-[#E50940] text-[11px] uppercase tracking-widest font-semibold">
-                Для предпринимателей и экспертов
+                ВАШ ЦИФРОВОЙ СТАТУС
               </span>
               <span className="font-serif italic text-white/25 text-lg md:text-xl">01</span>
             </div>
-            <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Цифровые PWA-визитки</h3>
-            <p className="text-[#D4D4D8] mb-8 text-sm md:text-base max-w-2xl leading-relaxed">
-              Масштабируемый цифровой продукт: PWA-приложение на экране телефона, персональный QR-код и прямая ссылка. Разовый запуск под ключ — никаких скрытых подписок.
+            <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">Цифровые визитки нового поколения</h3>
+            <p className="text-[#D4D4D8] mb-8 text-sm md:text-base leading-relaxed">
+              Это не просто ссылка, а ваш цифровой статус с WOW-эффектом с первых секунд. Устанавливается прямо на рабочий стол телефона как приложение — без скачиваний из AppStore и GooglePlay. Личный QR-код считывается без интернета, а клиент сохраняет все ваши контакты ровно в 1 клик. Разовая оплата — актив ваш, никаких подписок.
             </p>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 text-left">
@@ -86,14 +88,17 @@ export default function Showroom({
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0"></path>
                         </svg>
                       </div>
-                      <h4 className="text-white font-serif text-lg tracking-wide">Classic</h4>
+                      <h4 className="text-white font-semibold text-lg tracking-wide">Classic</h4>
                     </div>
-                    <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 font-medium">
-                      VCF • QR
+                    <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/70 font-medium">
+                      БАЗОВЫЙ ХИТ
                     </span>
                   </div>
-                  <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                    Масштабируемый цифровой продукт: PWA-приложение, QR-код и ссылка. 7 премиальных дизайн-тем в выпадающем списке, микроанимации и мгновенное сохранение VCF-контакта.
+                  <p className="text-white font-medium text-xs md:text-sm mb-2 leading-snug">
+                    Безупречный минимализм. Всё, чтобы не потерять клиента.
+                  </p>
+                  <p className="text-[#A1A1AA] text-xs md:text-sm leading-relaxed">
+                    Элегантное решение для мгновенного обмена контактами. Все ваши соцсети, мессенджеры и ссылки собраны в одном стильном окне. Клиент наводит камеру на QR-код и за секунду сохраняет ваш номер прямо в телефонную книгу. Просто, быстро и со вкусом.
                   </p>
                 </div>
                 <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-medium text-white/80 group-hover:text-white transition-colors">
@@ -120,14 +125,17 @@ export default function Showroom({
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                         </svg>
                       </div>
-                      <h4 className="text-white font-serif text-lg tracking-wide">Infinity</h4>
+                      <h4 className="text-white font-semibold text-lg tracking-wide">Infinity</h4>
                     </div>
-                    <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 font-medium">
-                      3D • Sound
+                    <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#E50940]/15 border border-[#E50940]/30 text-[#E50940] font-semibold">
+                      БЕСТСЕЛЛЕР
                     </span>
                   </div>
-                  <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                    Интерактивная 3D-визитка с физикой переворота, звуком и тактильным откликом. На обороте: блок доверия, прайс и смарт-кнопки под вашу сферу.
+                  <p className="text-white font-medium text-xs md:text-sm mb-2 leading-snug">
+                    Тяжелая артиллерия для вашего личного бренда.
+                  </p>
+                  <p className="text-[#A1A1AA] text-xs md:text-sm leading-relaxed">
+                    Визитка, которую хочется крутить в руках. Завораживающий 3D-разворот со звуковым и тактильным откликом. Лицевая сторона приковывает взгляд, а на обороте — мини-лендинг о вас: ваши услуги, преимущества и прямая запись. Заменяет целый сайт и продает вашу экспертность без слов.
                   </p>
                 </div>
 
@@ -155,14 +163,17 @@ export default function Showroom({
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path>
                         </svg>
                       </div>
-                      <h4 className="text-white font-serif text-lg tracking-wide">Twin ID</h4>
+                      <h4 className="text-white font-semibold text-lg tracking-wide">Twin ID</h4>
                     </div>
                     <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#E50940]/15 border border-[#E50940]/30 text-[#E50940] font-semibold">
-                      EXCLUSIVE
+                      АВТОРСКАЯ РАЗРАБОТКА
                     </span>
                   </div>
-                  <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                    Авторская разработка: Личный и Деловой профиль в одном решении. Умная смена стороны по времени суток и секретный жест для защиты приватности.
+                  <p className="text-white font-medium text-xs md:text-sm mb-2 leading-snug">
+                    Две жизни в одной визитке. Аналогов в мире нет.
+                  </p>
+                  <p className="text-[#A1A1AA] text-xs md:text-sm leading-relaxed">
+                    Уникальная разработка с разделением на Рабочий и Личный профили. Живет по вашим биоритмам: днем открывается деловая сторона, вечером — личная (переключить вручную можно только секретным жестом под пин-кодом). Абсолютная приватность: тот, кому вы дали личный контакт, не увидит вашу рабочую сторону — и наоборот.
                   </p>
                 </div>
                 <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-medium text-white/90 group-hover:text-white transition-colors">
@@ -192,15 +203,15 @@ export default function Showroom({
           <div className="glass-content flex-1 z-10 text-left w-full">
             <div className="flex items-center justify-between mb-4">
               <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[11px] uppercase tracking-widest font-semibold">
-                Для ресторанов и кафе
+                ДЛЯ РЕСТОРАНОВ И КАФЕ
               </span>
               <span className="font-serif italic text-white/25 text-lg md:text-xl">02</span>
             </div>
             <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">
-              Smart <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">QR-Меню</span>
+              <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Интерактивное</span> QR-меню
             </h3>
-            <p className="text-[#D4D4D8] text-sm md:text-base mb-8 max-w-2xl leading-relaxed">
-              Собственная автономная система заказов без процентов с чека и скрытых плат. Управление меню из привычной таблицы на телефоне, а все заказы и вызовы официанта моментально приходят в ваш Telegram.
+            <p className="text-[#D4D4D8] text-sm md:text-base mb-8 leading-relaxed">
+              Забудьте про расходы на перепечатку бумажного меню и ожидание программистов. Меняйте цены, добавляйте сочные фото блюд и отправляйте позиции в стоп-лист за 10 секунд прямо со своего смартфона. Никаких комиссий с заказов и абонентской платы — система полностью ваша.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 text-left">
@@ -216,14 +227,14 @@ export default function Showroom({
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path>
                         </svg>
                       </div>
-                      <h4 className="text-white text-lg font-serif tracking-wide">Классика</h4>
+                      <h4 className="text-white text-lg font-semibold tracking-wide">Классика</h4>
                     </div>
-                    <span className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 font-medium">
-                      Вариант 1 • Без корзины
+                    <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/70 font-medium">
+                      БЕЗ КОРЗИНЫ • БЫСТРЫЙ СТАРТ
                     </span>
                   </div>
                   <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                    Электронное QR-меню для ознакомления. Мультиязычность, умный стоп-лист и мгновенный вызов официанта или запрос счета в 1 клик с тактильным откликом.
+                    Идеальная цифровая витрина вашего заведения. Гость открывает меню на своем языке, видит актуальные блюда без позиций из стоп-листа и выбирает глазами. Внутри — кнопки «Вызвать официанта» и «Попросить счет» в 1 клик. Уведомление с номером столика мгновенно прилетает в Telegram-группу вашего персонала.
                   </p>
                 </div>
 
@@ -250,14 +261,14 @@ export default function Showroom({
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                       </div>
-                      <h4 className="text-white text-lg font-serif tracking-wide">Флагман</h4>
+                      <h4 className="text-white text-lg font-semibold tracking-wide">Флагман</h4>
                     </div>
                     <span className="text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#E50940]/15 border border-[#E50940]/30 text-[#E50940] font-semibold">
-                      Вариант 2 • С корзиной
+                      С КОРЗИНОЙ • РОСТ ЧЕКА +25%
                     </span>
                   </div>
                   <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                    Полная автоматизация заказов с умными допродажами (Cross-sell). Гость собирает корзину, а умный QR-код определяет номер столика. Заказ падает сразу в Telegram персонала.
+                    Полноценный прием заказов и рост выручки. Гость сам собирает заказ в корзину, а встроенная система умных рекомендаций автоматически предлагает к блюду подходящий напиток, соус или десерт — увеличивая ваш средний чек без участия официанта. Готовый заказ, вызов персонала или запрос счета сразу летят в рабочий Telegram с точным номером столика.
                   </p>
                 </div>
 
@@ -290,6 +301,7 @@ export default function Showroom({
           className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15 scroll-mt-28"
           onMouseMove={onGlassMove}
           onTouchMove={onGlassMove}
+          onClick={() => setIsBeautyModalOpen(true)}
           style={{ transitionDelay: '0.2s' }}
         >
           <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_left,rgba(229,9,64,0.1)_0%,transparent_55%)] pointer-events-none"></div>
@@ -384,15 +396,15 @@ export default function Showroom({
           <div className="glass-content flex-1 z-10 text-left w-full flex flex-col justify-center">
             <div className="flex items-center justify-between mb-4">
               <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[11px] uppercase tracking-widest font-semibold">
-                Для мастеров и бьюти-сферы
+                ДЛЯ МАСТЕРОВ И БЬЮТИ-СФЕРЫ
               </span>
               <span className="font-serif italic text-white/25 text-lg md:text-xl">03</span>
             </div>
             <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">
               Эстетика и <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Онлайн-запись</span>
             </h3>
-            <p className="text-[#D4D4D8] text-sm md:text-base mb-6 max-w-2xl leading-relaxed">
-              Вся прибыль остается вам: прямая онлайн-запись без ежемесячной аренды сервисов. 6 готовых цветовых стилей оформления, удобное управление расписанием из таблицы, а брони моментально приходят в ваш Telegram.
+            <p className="text-[#D4D4D8] text-sm md:text-base mb-6 leading-relaxed">
+              Перестаньте платить ежемесячную аренду сложным сервисам и тратить вечера на переписки «какое время свободно?». Клиенты сами видят ваши свободные окошки и записываются в 2 клика — а вы управляете графиком, ценами и отпуском прямо со смартфона без сторонней помощи.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 text-left mb-6">
@@ -403,10 +415,10 @@ export default function Showroom({
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                     </svg>
                   </div>
-                  <h4 className="text-white text-base md:text-lg font-serif">Smart-бронирование</h4>
+                  <h4 className="text-white text-base md:text-lg font-semibold">Запись 24/7 без переписок</h4>
                 </div>
                 <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                  Live-календарь со свободными окнами, 6 цветовых стилей оформления и режим отпуска — без абонплаты агрегаторам.
+                  Свободные окошки и режим отпуска. Клиент открывает стильный календарь, выбирает свободную дату и время и бронирует визит за секунду. Собрались отдохнуть? Закройте дни для записи в один клик. 6 премиальных цветовых тем под ваш визуал на выбор — и 0 ₽ абонентской платы.
                 </p>
               </div>
 
@@ -417,21 +429,22 @@ export default function Showroom({
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
                     </svg>
                   </div>
-                  <h4 className="text-white text-base md:text-lg font-serif">Таблица & Telegram-бот</h4>
+                  <h4 className="text-white text-base md:text-lg font-semibold">Личный Telegram-ассистент</h4>
                 </div>
                 <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                  Цены меняются из таблицы на телефоне. Все брони и контакты клиентов сразу летят в персональный Telegram-бот.
+                  Полный автопилот в вашем телефоне. Новая бронь мгновенно прилетает в ваш Telegram-бот и автоматически встает в календарь телефона. В уведомлении уже есть прямая кнопка перехода в WhatsApp клиента для быстрой связи. А каждое утро бот присылает вам удобную сводку: кто, на какую услугу и во сколько записан сегодня.
                 </p>
               </div>
             </div>
 
-            {/* Интерактивные кнопки демо Бьюти */}
+            {/* Интерактивная кнопка демо Бьюти */}
             <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-3">
-              <a
-                href="https://master.appseapro.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsBeautyModalOpen(true);
+                }}
                 className="px-5 py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] border border-white/15 hover:border-white/30 text-white text-xs sm:text-sm font-medium transition-all flex items-center gap-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] interactive-elem cursor-pointer"
               >
                 <span className="w-2 h-2 rounded-full bg-[#E50940]"></span>
@@ -439,20 +452,7 @@ export default function Showroom({
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
-              </a>
-
-              <a
-                href="https://t.me/DemoSeaBeauty_bot"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="px-4 py-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/20 text-[#D4D4D8] hover:text-white text-xs sm:text-sm font-medium transition-all flex items-center gap-2 interactive-elem cursor-pointer"
-              >
-                <svg className="w-3.5 h-3.5 fill-current text-[#2AABEE]" viewBox="0 0 24 24">
-                  <path d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.313 4.693c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
-                </svg>
-                <span>Тестовый бот: @DemoSeaBeauty_bot</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -486,7 +486,7 @@ export default function Showroom({
               NFC-брелоки <br className="hidden lg:block"/>из кожи <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Crazy Horse</span>
             </h3>
             <p className="text-[#D4D4D8] text-sm md:text-base leading-relaxed mb-6 max-w-2xl">
-              Отдельный премиальный аксессуар ручной работы — штучный апгрейд к вашей цифровой визитке за отдельную доплату. Натуральная винтажная кожа, ручной седельный шов. Одно касание брелоком к смартфону — и ваши контакты уже на экране партнера.
+              Статусный физический аксессуар к вашей цифровой визитке. Натуральная винтажная кожа, ручной седельный шов. Одно касание брелоком к смартфону собеседника — и ваша визитка уже открыта на его экране.
             </p>
             
             <div className="space-y-3.5 text-left">
@@ -638,6 +638,12 @@ export default function Showroom({
         </div>,
         document.body
       )}
+
+      {/* Интерактивная песочница Бьюти */}
+      <BeautyModal
+        isOpen={isBeautyModalOpen}
+        onClose={() => setIsBeautyModalOpen(false)}
+      />
     </section>
   );
 }

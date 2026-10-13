@@ -75,7 +75,7 @@ export default function AboutSection() {
             <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all">
               <span className="text-[10px] uppercase tracking-wider text-white/50 block mb-1">Принцип 03</span>
               <h4 className="text-white font-medium text-sm mb-1.5">Заказы в Telegram</h4>
-              <p className="text-[#D4D4D8] text-xs leading-relaxed">Заказы и брони сразу в ваш Telegram: никаких сложных админок, всё приходит в привычный мессенджер.</p>
+              <p className="text-[#D4D4D8] text-xs leading-relaxed">Заказы и брони сразу в ваш Telegram: никаких сложных админок, а цены и расписание меняются за минуту прямо с телефона без программистов.</p>
             </div>
           </div>
         </div>
@@ -188,7 +188,7 @@ export default function AboutSection() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-5 h-5 rounded-full bg-[#E50940]/25 border border-[#E50940]/50 text-[#E50940] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 shadow-[0_0_8px_rgba(229,9,64,0.4)]">✓</span>
-                  <span><strong className="text-white">Заказы сразу в Telegram:</strong> никаких сложных админок, а цены — из обычной таблицы</span>
+                  <span><strong className="text-white">Заказы сразу в Telegram:</strong> никаких сложных админок, а цены и расписание меняются за минуту прямо с телефона без программистов</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-5 h-5 rounded-full bg-[#E50940]/25 border border-[#E50940]/50 text-[#E50940] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 shadow-[0_0_8px_rgba(229,9,64,0.4)]">✓</span>
@@ -196,9 +196,9 @@ export default function AboutSection() {
                 </li>
               </ul>
             </div>
-            <div className="mt-6 pt-3.5 border-t border-[#E50940]/20 text-[11px] text-[#E50940] font-medium flex items-center justify-between">
+            <div className="mt-6 pt-3.5 border-t border-[#E50940]/20 text-[11px] text-[#E50940] font-medium flex flex-wrap items-center justify-between gap-2">
               <span>Итог: ваш независимый цифровой актив</span>
-              <span className="font-semibold">Без абонентской платы</span>
+              <span className="font-semibold whitespace-nowrap">Без абонентской платы</span>
             </div>
           </div>
         </div>

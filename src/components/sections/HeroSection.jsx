@@ -21,9 +21,9 @@ export default function HeroSection({
           Ваш цифровой <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">статус</span>.
         </h1>
 
-        <div className="max-w-2xl mx-auto mb-4 md:mb-5 fade-up-elem px-2" style={{ transitionDelay: '0.2s' }}>
+        <div className="max-w-3xl mx-auto mb-4 md:mb-5 fade-up-elem px-2" style={{ transitionDelay: '0.2s' }}>
           <p className="text-[#F3F4F6] text-base sm:text-lg md:text-xl font-serif tracking-wide mb-3 md:mb-3.5">
-            Премиальные бизнес-экосистемы. <span className="italic text-[#D4D4D8]">Под ключ.</span>
+            Визитки, QR-меню и системы онлайн-записи. <span className="italic text-[#D4D4D8]">Создаем один раз — работает на вас всегда.</span>
           </p>
 
           {/* Монохромные стеклянные пилюли («тихая роскошь») */}
@@ -67,15 +67,15 @@ export default function HeroSection({
             aria-label={isSoundEnabled ? 'Выключить звук переворота' : 'Включить звук переворота'}
             onClick={onToggleSound}
             onTouchStart={(e) => e.stopPropagation()}
-            className="absolute top-3 right-3 z-30 w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:border-white/20 backdrop-blur-md flex items-center justify-center text-xs text-white/70 hover:text-white transition-all interactive-elem cursor-pointer"
+            className="absolute top-0.5 -right-8 sm:-right-9 z-30 w-7 h-7 rounded-full bg-white/5 border border-white/10 hover:border-white/20 backdrop-blur-md flex items-center justify-center text-xs text-white/60 hover:text-white transition-all interactive-elem cursor-pointer"
           >
             {isSoundEnabled ? (
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M11 5L6 9H2v6h4l5 4V5z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" />
               </svg>
             ) : (
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M11 5L6 9H2v6h4l5 4V5z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M22 9l-6 6M16 9l6 6" />
               </svg>
@@ -134,16 +134,18 @@ export default function HeroSection({
         </div>
 
         {/* Ненавязчивая плашка-подсказка об интерактиве */}
-        <div className="flex items-center justify-center mt-1 md:mt-1.5 mb-1 fade-up-elem" style={{ transitionDelay: '0.4s' }}>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-[11px] md:text-xs text-[#D4D4D8] backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.4)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E50940] shadow-[0_0_8px_#E50940]"></span>
+        <div className="flex items-center justify-center mt-2 mb-2 fade-up-elem" style={{ transitionDelay: '0.4s' }}>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.02] border border-white/[0.08] text-[11px] md:text-xs text-white/50 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E50940]/80 shadow-[0_0_8px_#E50940]"></span>
             <span>Подвигайте мышкой и нажмите для переворота</span>
           </div>
         </div>
-      </div>
-      <div className="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-60 fade-up-elem z-10" style={{ transitionDelay: '0.5s' }}>
-        <span className="text-[10px] md:text-xs tracking-widest uppercase text-[#A1A1AA]">Scroll</span>
-        <div className="w-px h-6 md:h-8 bg-gradient-to-b from-white/50 to-transparent"></div>
+
+        {/* Индикатор Scroll с отступом под подсказкой */}
+        <div className="flex flex-col items-center gap-1.5 opacity-50 fade-up-elem z-10 mt-6 md:mt-8" style={{ transitionDelay: '0.5s' }}>
+          <span className="text-[10px] md:text-xs tracking-widest uppercase text-[#A1A1AA]">Scroll</span>
+          <div className="w-px h-6 md:h-8 bg-gradient-to-b from-white/40 to-transparent"></div>
+        </div>
       </div>
     </section>
   );

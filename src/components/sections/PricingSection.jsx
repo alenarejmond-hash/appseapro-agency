@@ -91,25 +91,25 @@ export default function PricingSection({
                 {/* Быстрая подсказка сути тарифа */}
                 <div className="mb-5 p-3 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-white/90">
                   <span className="text-[#A1A1AA] block text-[10px] uppercase tracking-wider mb-1 font-medium">Суть тарифа:</span>
-                  Цифровая визитка: QR-код, контакты и сохранение в телефон за 1–2 дня.
+                  Элегантная визитка на экране смартфона: все контакты в одном месте, офлайн QR-код и сохранение в телефонную книгу в 1 клик.
                 </div>
                 
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Никаких скрытых подписок и абонентских плат</span>
+                    <span>Установка на рабочий стол телефона (без скачивания из AppStore)</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Удобное обновление контактов без программистов и лишних трат</span>
+                    <span>Персональный QR-код работает без интернета и VPN</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Размещение и запуск за 1–2 дня</span>
+                    <span>Сохранение вашего номера и соцсетей в телефон клиента в 1 клик</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Заявки сразу в ваш Telegram и сохранение VCF-контакта</span>
+                    <span>Разовая оплата — никаких подписок, запуск за 1–2 дня</span>
                   </li>
                 </ul>
 
@@ -161,25 +161,25 @@ export default function PricingSection({
                 {/* Быстрая подсказка сути тарифа */}
                 <div className="mb-5 p-3 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-white/90">
                   <span className="text-[#A1A1AA] block text-[10px] uppercase tracking-wider mb-1 font-medium">Суть тарифа:</span>
-                  3D-визитка с переворотом и звуком: WOW-эффект и каталог работ.
+                  Двусторонняя 3D-визитка со звуковым сопровождением: ваш личный мини-лендинг с услугами, прайсом и портфолио на обороте.
                 </div>
                 
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>3D-переворот, звук и кинематографичный WOW-эффект</span>
+                    <span>Завораживающий 3D-разворот со звуковым и тактильным откликом</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Удобное обновление прайса без программистов и лишних трат</span>
+                    <span>Оборотная сторона с вашими услугами, преимуществами и прайсом</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Размещение и запуск за 2–3 дня</span>
+                    <span>Установка на экран без скачивания, офлайн QR-код и сохранение в 1 клик</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Заказы и заявки сразу в ваш Telegram (без сложных админок)</span>
+                    <span>Заменяет полноценный сайт — запуск под ключ за 2–3 дня</span>
                   </li>
                 </ul>
 
@@ -227,25 +227,25 @@ export default function PricingSection({
                 {/* Быстрая подсказка сути тарифа */}
                 <div className="mb-5 p-3 rounded-xl bg-[#E50940]/10 border border-[#E50940]/25 text-xs text-white/90">
                   <span className="text-[#E50940] block text-[10px] uppercase tracking-wider mb-1 font-semibold">Суть тарифа:</span>
-                  Два профиля в одной ссылке: деловой и личный со скрытым Z-жестом.
+                  Эксклюзивная разработка: Рабочий и Личный профили в одной визитке с защитой приватности и сменой стороны по времени суток.
                 </div>
                 
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Личный и Деловой профиль в одной ссылке</span>
+                    <span>Автоматическая смена профиля: днем — деловой, вечером — личный</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Секретный Z-жест и авто-смена стороны по времени суток</span>
+                    <span>Полная приватность: деловые контакты никогда не увидят личную сторону</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Размещение и запуск за 3–5 дней</span>
+                    <span>Ручной переворот только по вашему секретному жесту и PIN-коду</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Заказы и контакты сразу в ваш Telegram: раздельно для работы и жизни</span>
+                    <span>Офлайн QR-код, установка на экран и сохранение контактов в 1 клик</span>
                   </li>
                 </ul>
 
@@ -345,25 +345,25 @@ export default function PricingSection({
                 {/* Быстрая подсказка сути тарифа */}
                 <div className="mb-5 p-3 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-white/90">
                   <span className="text-[#A1A1AA] block text-[10px] uppercase tracking-wider mb-1 font-medium">Суть тарифа:</span>
-                  Электронное QR-меню, быстрый вызов официанта и запрос счета в Telegram в 1 клик.
+                  Стильная цифровая витрина вашего меню с мгновенным вызовом официанта и запросом счета в Telegram.
                 </div>
                 
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Бесконтактное электронное меню: кинематографичный дизайн и QR-код</span>
+                    <span>Аппетитная подача блюд с поддержкой нескольких языков (RU / AM / EN)</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Мгновенный вызов официанта и запрос счета в 1 клик</span>
+                    <span>Кнопки «Вызвать официанта» и «Попросить счет» в 1 клик с номером стола</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Управление ценами из обычной таблицы на телефоне (без программистов)</span>
+                    <span>Мгновенный стоп-лист и смена цен прямо с вашего смартфона (без технарей)</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Запросы счета и вызовы официанта сразу в Telegram персонала</span>
+                    <span>0% комиссий и никакой абонентской платы — система навсегда ваша</span>
                   </li>
                 </ul>
 
@@ -409,25 +409,25 @@ export default function PricingSection({
                 {/* Быстрая подсказка сути тарифа */}
                 <div className="mb-5 p-3 rounded-xl bg-[#E50940]/10 border border-[#E50940]/25 text-xs text-white/90">
                   <span className="text-[#E50940] block text-[10px] uppercase tracking-wider mb-1 font-semibold">Суть тарифа:</span>
-                  Автоматизация с корзиной, допродажами, номерами столов и чеками в Telegram кухни.
+                  Полноценная система заказов за столиком: корзина, умные допродажи к блюдам и отправка чека сразу в Telegram персонала.
                 </div>
                 
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Полная автоматизация с корзиной, допродажами и столиками</span>
+                    <span>Автоматические допродажи в корзине (предложение напитков, соусов, десертов)</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Умный QR-код с авто-определением номера стола гостя</span>
+                    <span>Умные QR-коды: система сама определяет, за каким столиком сидит гость</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Заказы гостей и комментарии кухне сразу в ваш Telegram</span>
+                    <span>Готовый заказ, комментарии кухне и вызов счета сразу летят в Telegram</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Собственная система: без комиссий с заказов и без скрытых плат</span>
+                    <span>Самостоятельное управление ценами, фото и стоп-листом с телефона за 10 секунд</span>
                   </li>
                 </ul>
 
@@ -491,7 +491,7 @@ export default function PricingSection({
                   Для частных бьюти-мастеров
                 </span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Beauty & SPA Ecosystem</h3>
+              <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Онлайн-запись для Бьюти</h3>
               
               <div className="mb-4 pb-4 border-b border-white/10 flex items-baseline justify-between">
                 <span className="text-3xl md:text-4xl font-serif text-white tracking-tight">$50</span>
@@ -500,30 +500,30 @@ export default function PricingSection({
               {/* Быстрая подсказка сути тарифа */}
               <div className="mb-5 p-3 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-white/90">
                 <span className="text-[#A1A1AA] block text-[10px] uppercase tracking-wider mb-1 font-medium">Суть тарифа:</span>
-                Live-календарь и онлайн-запись в Telegram: вся выручка мастеру без агрегаторов.
+                Личный календарь свободных окошек и Telegram-ассистент без ежемесячной платы агрегаторам.
               </div>
               
               <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                 <li className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span>Прямая онлайн-запись: вся прибыль с процедур остается вам</span>
+                  <span>Клиенты сами видят свободные окна и записываются 24/7 без долгих переписок</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span>Live-календарь со свободными окнами и режимом отпуска мастера</span>
+                  <span>Уведомление в ваш Telegram + прямая ссылка, чтобы в 1 клик написать клиенту в WhatsApp</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span>Управление ценами из обычной таблицы на телефоне (без программистов)</span>
+                  <span>Утренняя сводка в бот: удобное расписание всех клиентов на сегодня + синхронизация с календарем телефона</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span>Записи и брони сразу в ваш Telegram: никаких сложных админок</span>
+                  <span>Управление графиком, ценами и режимом отпуска прямо с вашего смартфона</span>
                 </li>
               </ul>
 
               <a
-                href="https://t.me/appseapro?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20Beauty%20%26%20SPA%20($50)"
+                href="https://t.me/appseapro?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20%D0%9E%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD-%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D1%8C%20%D0%B4%D0%BB%D1%8F%20%D0%91%D1%8C%D1%8E%D1%82%D0%B8%20($50)"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-3 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/10 hover:border-white/30 transition-all text-sm font-semibold text-white flex items-center justify-center gap-2 cursor-pointer interactive-elem"
@@ -557,7 +557,7 @@ export default function PricingSection({
             <div className="glass-content h-full flex flex-col text-left">
               <div className="flex items-center justify-between gap-2 mb-4">
                 <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.08] border border-white/20 text-white text-[10px] font-semibold uppercase tracking-widest">
-                  Custom Engineering
+                  ИНДИВИДУАЛЬНО
                 </span>
               </div>
               <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Индивидуальная разработка</h3>
@@ -569,25 +569,25 @@ export default function PricingSection({
               {/* Быстрая подсказка сути тарифа */}
               <div className="mb-5 p-3 rounded-xl bg-white/[0.06] border border-white/15 text-xs text-white/90">
                 <span className="text-white/70 block text-[10px] uppercase tracking-wider mb-1 font-semibold">Суть тарифа:</span>
-                Сложные веб-сервисы, Telegram-экосистемы и боты с нуля по вашему ТЗ.
+                Разработка уникальных веб-приложений (PWA), интерактивных сервисов, закрытых платформ и Telegram-ботов под задачи вашего бизнеса.
               </div>
               
               <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                 <li className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span><strong>Кастомные веб-сервисы:</strong> личные кабинеты, умные калькуляторы и платформы</span>
+                  <span><strong>Кастомные PWA-приложения:</strong> интерактивные платформы, образовательные и игровые сервисы, закрытые панели управления</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span><strong>Telegram-экосистемы:</strong> боты автоматизации, прием платежей и интеграция с CRM</span>
+                  <span><strong>Автоматизация через Telegram:</strong> умные боты для заявок, анкетирования и уведомлений с удобной базой данных</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span><strong>Чистый авторский код:</strong> никаких шаблонных рамок, максимальная скорость и надежность</span>
+                  <span><strong>Эксклюзивные имиджевые сайты:</strong> штучный дизайн в эстетике Quiet Luxury, 3D-эффекты, звук и микроанимации</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span><strong>Полная автономность:</strong> разработка под ключ без абонентской платы за платформу</span>
+                  <span><strong>Чистый авторский код:</strong> мгновенная загрузка, независимость от конструкторов и передача проекта в вашу полную собственность</span>
                 </li>
               </ul>
 

@@ -25,9 +25,50 @@ export default function HorecaModal({
       {/* Сдержанный монохромный дымчатый свет позади холста на десктопе */}
       <div className="hidden lg:block fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full bg-white/[0.03] blur-[150px] pointer-events-none"></div>
 
-      {/* 1. ОДНА КОМПАКТНАЯ ЧИСТАЯ ЛИНИЯ УПРАВЛЕНИЯ СВЕРХУ */}
+      {/* Мобильный парящий крестик закрытия (только < lg:, в точности как в визитках) */}
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Закрыть демо"
+        className="lg:hidden absolute top-4 right-4 z-50 w-10 h-10 rounded-full bg-black/55 hover:bg-white/[0.14] backdrop-blur-[20px] border border-white/15 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 active:scale-95 interactive-elem cursor-pointer"
+      >
+        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      {/* Парящая навигация сверху в правой стороне (только десктоп lg:, в точности как в визитках) */}
       <div
-        className="relative z-30 w-full lg:max-w-2xl shrink-0 px-3 py-2.5 lg:px-0 lg:py-0 lg:mb-3 bg-[#050505] lg:bg-transparent border-b border-white/10 lg:border-0 flex items-center justify-between lg:justify-center gap-2"
+        className="hidden lg:flex absolute top-6 right-8 z-40 items-center gap-3"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <a
+          href={activeConfig.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/[0.04] hover:bg-white/[0.1] backdrop-blur-xl border border-white/10 hover:border-white/25 text-xs font-medium text-[#E4E4E7] hover:text-white transition-all duration-300 interactive-elem"
+        >
+          <span>На весь экран</span>
+          <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 17L17 7M17 7H8M17 7V16" />
+          </svg>
+        </a>
+
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Закрыть демо"
+          className="w-10 h-10 rounded-full bg-white/[0.04] hover:bg-white/[0.12] backdrop-blur-[20px] border border-white/10 hover:border-white/25 flex items-center justify-center text-white/80 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 interactive-elem cursor-pointer"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      {/* 1. Верхняя линия управления над меню */}
+      <div
+        className="relative z-30 w-full lg:max-w-2xl shrink-0 px-3 py-2.5 lg:px-0 lg:py-0 lg:mb-3 bg-[#050505] lg:bg-transparent border-b border-white/10 lg:border-0 flex items-center justify-center gap-3"
         onClick={(e) => e.stopPropagation()}
       >
         {/* По центру: минималистичный Segmented Control [ 🛎️ Классика ] [ 🛒 Флагман ] */}
@@ -61,29 +102,18 @@ export default function HorecaModal({
           </button>
         </div>
 
-        {/* Справа: стеклянная пилюля «✈️ Чат персонала» и крестик закрытия ✕ */}
-        <div className="lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 flex items-center gap-2 shrink-0">
-          <a
-            href="https://t.me/restaurant_appseapro"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-white/[0.05] hover:bg-white/[0.12] backdrop-blur-xl border border-white/15 hover:border-white/30 text-[11px] sm:text-xs font-medium text-[#D4D4D8] hover:text-white transition-all duration-300 whitespace-nowrap interactive-elem"
-          >
-            <span>✈️ Чат персонала</span>
-            <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 17L17 7M17 7H8M17 7V16" />
-            </svg>
-          </a>
-
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Закрыть демо меню"
-            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/[0.05] hover:bg-white/[0.12] backdrop-blur-xl border border-white/15 hover:border-white/30 flex items-center justify-center text-white/75 hover:text-white text-xs transition-all duration-300 active:scale-95 interactive-elem cursor-pointer shrink-0"
-          >
-            ✕
-          </button>
-        </div>
+        {/* Стеклянная пилюля «✈️ Чат персонала» */}
+        <a
+          href="https://t.me/restaurant_appseapro"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:py-2 rounded-full bg-white/[0.05] hover:bg-white/[0.12] backdrop-blur-xl border border-white/15 hover:border-white/30 text-[11px] sm:text-xs font-medium text-[#D4D4D8] hover:text-white transition-all duration-300 whitespace-nowrap interactive-elem"
+        >
+          <span>✈️ Чат персонала</span>
+          <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 17L17 7M17 7H8M17 7V16" />
+          </svg>
+        </a>
       </div>
 
       {/* 2. СВОБОДНЫЙ ЭКРАН ЖИВОГО МЕНЮ */}
