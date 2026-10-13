@@ -24,9 +24,9 @@ export default function Header({ isMobileMenuOpen, setIsMobileMenuOpen, onGlassM
         
         <nav className="hidden md:flex gap-8 text-sm font-medium text-[#A1A1AA]">
           <a href="#showroom" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Продукты</a>
-          <a href="#nfc" className="hover:text-[#F3F4F6] transition-colors interactive-elem">NFC Брелоки</a>
-          <a href="#about" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Подход</a>
-          <a href="#investments" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Инвестиции</a>
+          <a href="#about" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Обо мне</a>
+          <a href="#pricing" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Цены</a>
+          <a href="#reviews" className="hover:text-[#F3F4F6] transition-colors interactive-elem">Отзывы</a>
         </nav>
 
         <div className="flex items-center">

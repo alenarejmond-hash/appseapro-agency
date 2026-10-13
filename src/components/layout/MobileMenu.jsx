@@ -26,7 +26,7 @@ export default function MobileMenu({ isOpen, onClose }) {
         </a>
 
         <a
-          href="#nfc"
+          href="#about"
           onClick={onClose}
           className="flex items-baseline gap-5 py-5 border-b border-white/5 group transition-colors active:opacity-70"
         >
@@ -34,12 +34,12 @@ export default function MobileMenu({ isOpen, onClose }) {
             02.
           </span>
           <span className="font-serif text-3xl sm:text-4xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
-            NFC Брелоки
+            Обо мне
           </span>
         </a>
 
         <a
-          href="#about"
+          href="#pricing"
           onClick={onClose}
           className="flex items-baseline gap-5 py-5 border-b border-white/5 group transition-colors active:opacity-70"
         >
@@ -47,12 +47,12 @@ export default function MobileMenu({ isOpen, onClose }) {
             03.
           </span>
           <span className="font-serif text-3xl sm:text-4xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
-            Подход
+            Цены
           </span>
         </a>
 
         <a
-          href="#investments"
+          href="#reviews"
           onClick={onClose}
           className="flex items-baseline gap-5 py-5 border-b border-white/5 group transition-colors active:opacity-70"
         >
@@ -60,7 +60,7 @@ export default function MobileMenu({ isOpen, onClose }) {
             04.
           </span>
           <span className="font-serif text-3xl sm:text-4xl text-[#F3F4F6] group-hover:text-white tracking-tight text-left">
-            Инвестиции
+            Отзывы
           </span>
         </a>
       </div>

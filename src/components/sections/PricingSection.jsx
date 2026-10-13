@@ -8,13 +8,14 @@ export default function PricingSection({
   onOpenHorecaDemo
 }) {
   return (
-    <section id="investments" className="py-24 md:py-32 px-4 md:px-8 relative z-10 overflow-hidden">
+    <section id="pricing" className="py-24 md:py-32 px-4 md:px-8 relative z-10 overflow-hidden scroll-mt-20">
+      <span id="investments" className="absolute -top-24"></span>
       <div className="max-w-7xl mx-auto text-center mb-12 md:mb-16 fade-up-elem">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif mb-4">
-          Инвестиции в <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Капитал Бренда</span>
+          Тарифы и <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Стоимость</span>
         </h2>
         <p className="text-[#D4D4D8] text-base md:text-lg max-w-xl mx-auto">
-          Фиксированная инвестиция в разработку под ключ. Продукт становится вашим цифровым активом — без процентов с чеков и комиссий агрегаторам.
+          Фиксированная стоимость разработки под ключ. Продукт становится вашим цифровым активом — без процентов с чеков и комиссий агрегаторам.
         </p>
       </div>
 
