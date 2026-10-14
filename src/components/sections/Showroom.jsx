@@ -540,7 +540,7 @@ export default function Showroom({
       {/* Модальное окно внутрисайтового демо Classic и Twin ID (в точности как Infinity: без смартфона, свободный холст) */}
       {typeof document !== 'undefined' && activeDemoModal && createPortal(
         <div
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-between p-3 pt-[max(4.25rem,calc(env(safe-area-inset-top)+3.5rem))] pb-[max(1.5rem,env(safe-area-inset-bottom))] lg:p-0 lg:px-10 lg:py-7 overflow-hidden overscroll-none bg-[#050505] lg:bg-[#050505]/96 lg:backdrop-blur-3xl animate-in fade-in duration-300"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-between p-0 lg:px-10 lg:py-7 overflow-hidden overscroll-none bg-[#050505] lg:bg-[#050505]/96 lg:backdrop-blur-3xl animate-in fade-in duration-300"
           onClick={() => setActiveDemoModal(null)}
         >
           {/* Мягкое кинематографичное рассеянное свечение в центре космоса на десктопе */}
@@ -603,7 +603,7 @@ export default function Showroom({
             className="w-full flex-1 flex flex-col items-center justify-between lg:justify-center relative z-10 overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative w-full max-w-[340px] sm:max-w-[380px] h-[76vh] max-h-[680px] rounded-3xl border border-white/15 bg-[#09090b] shadow-[0_20px_50px_rgba(0,0,0,0.85)] lg:rounded-none lg:border-0 lg:bg-transparent lg:shadow-none lg:flex-none lg:w-full lg:max-w-[400px] lg:h-[84vh] lg:max-h-[850px] flex flex-col overflow-hidden mx-auto my-auto">
+            <div className="relative w-full flex-1 lg:flex-none lg:w-full lg:max-w-xl lg:h-[72vh] bg-transparent border-0 flex flex-col overflow-hidden">
               {/* Деликатный лоадер в открытом пространстве во время подгрузки iframe */}
               <div
                 className={`absolute inset-0 z-20 flex flex-col items-center justify-center gap-3.5 bg-[#050505] lg:bg-transparent transition-opacity duration-500 ${

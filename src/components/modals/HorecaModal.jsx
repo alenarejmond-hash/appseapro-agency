@@ -25,18 +25,6 @@ export default function HorecaModal({
       {/* Сдержанный монохромный дымчатый свет позади холста на десктопе */}
       <div className="hidden lg:block fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full bg-white/[0.03] blur-[150px] pointer-events-none"></div>
 
-      {/* Мобильный парящий крестик закрытия (только < lg:, в точности как в визитках) */}
-      <button
-        type="button"
-        onClick={onClose}
-        aria-label="Закрыть демо"
-        className="lg:hidden absolute top-[max(1rem,env(safe-area-inset-top))] right-[max(1rem,env(safe-area-inset-right))] z-50 w-11 h-11 rounded-full bg-black/55 hover:bg-white/[0.14] backdrop-blur-[20px] border border-white/15 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 active:scale-95 interactive-elem cursor-pointer"
-      >
-        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-
       {/* Парящая навигация сверху в правой стороне (только десктоп lg:, в точности как в визитках) */}
       <div
         className="hidden lg:flex absolute top-6 right-8 z-40 items-center gap-3"
@@ -68,52 +56,68 @@ export default function HorecaModal({
 
       {/* 1. Верхняя линия управления над меню */}
       <div
-        className="relative z-30 w-full lg:max-w-2xl shrink-0 px-3 py-2.5 lg:px-0 lg:py-0 lg:mb-3 bg-[#050505] lg:bg-transparent border-b border-white/10 lg:border-0 flex flex-wrap items-center justify-center gap-2"
+        className="relative z-30 w-full lg:max-w-2xl shrink-0 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] pb-2.5 lg:px-0 lg:py-0 lg:mb-3 bg-[#050505] lg:bg-transparent border-b border-white/10 lg:border-0"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* По центру: минималистичный Segmented Control [ 🛎️ Классика ] [ 🛒 Флагман ] */}
-        <div className="relative p-1 rounded-full bg-white/[0.05] backdrop-blur-2xl border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.12)] grid grid-cols-2 items-center min-w-[215px] sm:min-w-[260px]">
-          {/* Скользящая каретка с мягким белым свечением */}
-          <div
-            style={{
-              transform: horecaMode === 'classic' ? 'translateX(0%)' : 'translateX(100%)'
-            }}
-            className="pointer-events-none absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-full bg-white/[0.14] border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.12),inset_0_1px_0_rgba(255,255,255,0.3)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-          />
+        <div className="flex items-center justify-between lg:justify-center gap-2 lg:gap-3 max-w-lg lg:max-w-none mx-auto">
+          {/* По центру/слева: минималистичный Segmented Control [ 🛎️ Классика ] [ 🛒 Флагман ] */}
+          <div className="relative p-1 rounded-full bg-white/[0.05] backdrop-blur-2xl border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.12)] grid grid-cols-2 items-center min-w-[200px] sm:min-w-[260px] flex-1 max-w-[260px]">
+            {/* Скользящая каретка с мягким белым свечением */}
+            <div
+              style={{
+                transform: horecaMode === 'classic' ? 'translateX(0%)' : 'translateX(100%)'
+              }}
+              className="pointer-events-none absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-full bg-white/[0.14] border border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.12),inset_0_1px_0_rgba(255,255,255,0.3)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+            />
 
-          <button
-            type="button"
-            onClick={() => onSwitchMode('classic')}
-            className={`relative z-10 px-3 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs tracking-wide transition-colors duration-300 text-center whitespace-nowrap cursor-pointer interactive-elem ${
-              horecaMode === 'classic' ? 'text-white font-semibold' : 'text-[#A1A1AA] hover:text-white font-medium'
-            }`}
-          >
-            🛎️ Классика
-          </button>
+            <button
+              type="button"
+              onClick={() => onSwitchMode('classic')}
+              className={`relative z-10 px-2.5 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs tracking-wide transition-colors duration-300 text-center whitespace-nowrap cursor-pointer interactive-elem ${
+                horecaMode === 'classic' ? 'text-white font-semibold' : 'text-[#A1A1AA] hover:text-white font-medium'
+              }`}
+            >
+              🛎️ Классика
+            </button>
 
-          <button
-            type="button"
-            onClick={() => onSwitchMode('flagship')}
-            className={`relative z-10 px-3 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs tracking-wide transition-colors duration-300 text-center whitespace-nowrap cursor-pointer interactive-elem ${
-              horecaMode === 'flagship' ? 'text-white font-semibold' : 'text-[#A1A1AA] hover:text-white font-medium'
-            }`}
-          >
-            🛒 Флагман
-          </button>
+            <button
+              type="button"
+              onClick={() => onSwitchMode('flagship')}
+              className={`relative z-10 px-2.5 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs tracking-wide transition-colors duration-300 text-center whitespace-nowrap cursor-pointer interactive-elem ${
+                horecaMode === 'flagship' ? 'text-white font-semibold' : 'text-[#A1A1AA] hover:text-white font-medium'
+              }`}
+            >
+              🛒 Флагман
+            </button>
+          </div>
+
+          {/* Правая часть: Стеклянная пилюля «✈️ Чат персонала» и аккуратный мобильный крестик в одной строке */}
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <a
+              href="https://t.me/restaurant_appseapro"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-full bg-white/[0.05] hover:bg-white/[0.12] backdrop-blur-xl border border-white/15 hover:border-white/30 text-[10px] sm:text-xs font-medium text-[#D4D4D8] hover:text-white transition-all duration-300 whitespace-nowrap interactive-elem"
+            >
+              <span>✈️ Чат персонала</span>
+              <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 17L17 7M17 7H8M17 7V16" />
+              </svg>
+            </a>
+
+            {/* Мобильный крестик закрытия — аккуратно встроен в строку навигации рядом с кнопкой, без наездов */}
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Закрыть демо"
+              className="lg:hidden w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/[0.06] hover:bg-white/[0.14] active:scale-95 backdrop-blur-[20px] border border-white/15 flex items-center justify-center text-white/80 hover:text-white shadow-[0_4px_16px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.15)] transition-all interactive-elem cursor-pointer shrink-0"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
         </div>
-
-        {/* Стеклянная пилюля «✈️ Чат персонала» */}
-        <a
-          href="https://t.me/restaurant_appseapro"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-full bg-white/[0.05] hover:bg-white/[0.12] backdrop-blur-xl border border-white/15 hover:border-white/30 text-[10px] sm:text-xs font-medium text-[#D4D4D8] hover:text-white transition-all duration-300 whitespace-nowrap interactive-elem"
-        >
-          <span>✈️ Чат персонала</span>
-          <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 17L17 7M17 7H8M17 7V16" />
-          </svg>
-        </a>
       </div>
 
       {/* 2. СВОБОДНЫЙ ЭКРАН ЖИВОГО МЕНЮ */}

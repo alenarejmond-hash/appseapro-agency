@@ -128,7 +128,7 @@ export default function PricingSection({
                     </svg>
                   </button>
                   <a
-                    href="https://t.me/appseapro?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20Classic%20($40)"
+                    href="https://t.me/elenlime?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20Classic%20($40)"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-3 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/10 hover:border-white/30 transition-all text-sm font-semibold text-white flex items-center justify-center gap-2 cursor-pointer interactive-elem"
@@ -194,7 +194,7 @@ export default function PricingSection({
                     </svg>
                   </button>
                   <a
-                    href="https://t.me/appseapro?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20Infinity%20($80)"
+                    href="https://t.me/elenlime?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20Infinity%20($80)"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-3 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/10 hover:border-white/30 transition-all text-sm font-semibold text-white flex items-center justify-center gap-2 cursor-pointer interactive-elem"
@@ -264,7 +264,7 @@ export default function PricingSection({
                     </svg>
                   </button>
                   <a
-                    href="https://t.me/appseapro?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20Twin%20ID%20($130)"
+                    href="https://t.me/elenlime?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20Twin%20ID%20($130)"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-3 rounded-xl bg-white text-black hover:bg-gray-200 transition-colors text-sm font-semibold shadow-[0_0_20px_rgba(255,255,255,0.18)] flex items-center justify-center gap-2 cursor-pointer interactive-elem"
@@ -297,7 +297,7 @@ export default function PricingSection({
                 <span className="text-[11px] text-[#A1A1AA] block mt-0.5">ручная работа • с NFC</span>
               </div>
               <a
-                href="https://t.me/appseapro?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BA%D0%BE%D0%B6%D0%B0%D0%BD%D1%8B%D0%B9%20NFC-%D0%B1%D1%80%D0%B5%D0%BB%D0%BE%D0%BA%20Crazy%20Horse%20($40)"
+                href="https://t.me/elenlime?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BA%D0%BE%D0%B6%D0%B0%D0%BD%D1%8B%D0%B9%20NFC-%D0%B1%D1%80%D0%B5%D0%BB%D0%BE%D0%BA%20Crazy%20Horse%20($40)"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-6 py-3 rounded-xl bg-white text-black hover:bg-gray-200 transition-colors text-xs font-semibold shadow-[0_0_20px_rgba(255,255,255,0.18)] flex items-center justify-center gap-2 cursor-pointer interactive-elem whitespace-nowrap"
@@ -376,7 +376,7 @@ export default function PricingSection({
                     <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-6-6l6 6-6 6" /></svg>
                   </button>
                   <a
-                    href="https://t.me/appseapro?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20%D0%B4%D0%BB%D1%8F%20%D1%80%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D0%BE%D0%B2%20%D0%9A%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D0%BA%D0%B0%20($220)"
+                    href="https://t.me/elenlime?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20%D0%B4%D0%BB%D1%8F%20%D1%80%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D0%BE%D0%B2%20%D0%9A%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D0%BA%D0%B0%20($220)"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-3 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/10 hover:border-white/30 transition-all text-sm font-semibold text-white flex items-center justify-center gap-2 cursor-pointer interactive-elem"
@@ -440,7 +440,7 @@ export default function PricingSection({
                     <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-6-6l6 6-6 6" /></svg>
                   </button>
                   <a
-                    href="https://t.me/appseapro?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20%D0%B4%D0%BB%D1%8F%20%D1%80%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D0%BE%D0%B2%20%D0%A4%D0%BB%D0%B0%D0%B3%D0%BC%D0%B0%D0%BD%20($350)"
+                    href="https://t.me/elenlime?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20%D0%B4%D0%BB%D1%8F%20%D1%80%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D0%BE%D0%B2%20%D0%A4%D0%BB%D0%B0%D0%B3%D0%BC%D0%B0%D0%BD%20($350)"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-3 rounded-xl bg-white text-black hover:bg-gray-200 transition-colors text-sm font-semibold shadow-[0_0_20px_rgba(255,255,255,0.18)] flex items-center justify-center gap-2 cursor-pointer interactive-elem"
@@ -523,7 +523,7 @@ export default function PricingSection({
               </ul>
 
               <a
-                href="https://t.me/appseapro?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20%D0%9E%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD-%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D1%8C%20%D0%B4%D0%BB%D1%8F%20%D0%91%D1%8C%D1%8E%D1%82%D0%B8%20($50)"
+                href="https://t.me/elenlime?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D1%80%D0%B8%D1%84%20%D0%9E%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD-%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D1%8C%20%D0%B4%D0%BB%D1%8F%20%D0%91%D1%8C%D1%8E%D1%82%D0%B8%20($50)"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-3 rounded-xl bg-white/[0.04] border border-white/15 hover:bg-white/10 hover:border-white/30 transition-all text-sm font-semibold text-white flex items-center justify-center gap-2 cursor-pointer interactive-elem"
@@ -592,7 +592,7 @@ export default function PricingSection({
               </ul>
 
               <a
-                href="https://t.me/appseapro?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%B8%D0%BD%D0%B4%D0%B8%D0%B2%D0%B8%D0%B4%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20(%D0%BE%D1%82%20$600)"
+                href="https://t.me/elenlime?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%B8%D0%BD%D0%B4%D0%B8%D0%B2%D0%B8%D0%B4%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%20(%D0%BE%D1%82%20$600)"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-3 rounded-xl bg-white text-black hover:bg-gray-200 transition-colors text-sm font-semibold shadow-[0_0_20px_rgba(255,255,255,0.18)] flex items-center justify-center gap-2 cursor-pointer interactive-elem"

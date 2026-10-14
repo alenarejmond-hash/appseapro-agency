@@ -312,8 +312,8 @@ export default function LandingPage() {
   const handleContactSubmit = () => {
     const trimmed = contactValue.trim();
     const targetUrl = trimmed
-      ? `https://t.me/appseapro?text=${encodeURIComponent('Здравствуйте, Елена! Хочу обсудить проект: ' + trimmed)}`
-      : 'https://t.me/appseapro';
+      ? `https://t.me/elenlime?text=${encodeURIComponent('Здравствуйте, Елена! Хочу обсудить проект: ' + trimmed)}`
+      : 'https://t.me/elenlime';
 
     setIsContactSent(true);
     window.open(targetUrl, '_blank', 'noopener,noreferrer');
@@ -739,13 +739,13 @@ export default function LandingPage() {
         onTouchMove={handlePushTouchMove}
       />
 
-      {/* Плавающая полупрозрачная кнопка связи в Telegram на мобильных */}
+      {/* Плавающая полупрозрачная кнопка связи в Telegram */}
       <a
         href="https://t.me/elenlime"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Написать в Telegram"
-        className="md:hidden fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 z-40 w-12 h-12 rounded-full glass-card bg-black/60 backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.7)] flex items-center justify-center text-white/90 hover:text-white transition-transform active:scale-95 interactive-elem cursor-pointer"
+        className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 sm:right-6 z-40 w-12 h-12 rounded-full glass-card bg-black/60 backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.7)] flex items-center justify-center text-white/90 hover:text-white transition-transform active:scale-95 interactive-elem cursor-pointer"
       >
         <span className="glass-content flex items-center justify-center">
           <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
