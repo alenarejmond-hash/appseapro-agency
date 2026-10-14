@@ -745,13 +745,11 @@ export default function LandingPage() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Написать в Telegram"
-        className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 sm:right-6 z-40 w-12 h-12 rounded-full glass-card bg-black/60 backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.7)] flex items-center justify-center text-white/90 hover:text-white transition-transform active:scale-95 interactive-elem cursor-pointer"
+        className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 sm:right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-xl border border-white/20 hover:border-white/40 shadow-[0_8px_30px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.2)] flex items-center justify-center text-white/90 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 interactive-elem cursor-pointer"
       >
-        <span className="glass-content flex items-center justify-center">
-          <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.313 4.693c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
-          </svg>
-        </span>
+        <svg className="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24">
+          <path d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.313 4.693c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
+        </svg>
       </a>
 
     </div>

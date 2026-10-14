@@ -550,7 +550,11 @@ export default function Showroom({
           <button
             onClick={() => setActiveDemoModal(null)}
             aria-label="Закрыть демо"
-            className="lg:hidden absolute top-[max(1rem,env(safe-area-inset-top))] right-[max(1rem,env(safe-area-inset-right))] z-50 w-11 h-11 rounded-full bg-black/55 hover:bg-white/[0.14] backdrop-blur-[20px] border border-white/15 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 active:scale-95 interactive-elem cursor-pointer"
+            className={`lg:hidden absolute top-[max(1rem,env(safe-area-inset-top))] ${
+              activeDemoModal === 'classic'
+                ? 'left-[max(1rem,env(safe-area-inset-left))]'
+                : 'right-[max(1rem,env(safe-area-inset-right))]'
+            } z-50 w-11 h-11 rounded-full bg-black/55 hover:bg-white/[0.14] backdrop-blur-[20px] border border-white/15 flex items-center justify-center text-white/80 hover:text-white shadow-[0_8px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.2)] transition-all duration-300 active:scale-95 interactive-elem cursor-pointer`}
           >
             <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M6 18L18 6M6 6l12 12" />

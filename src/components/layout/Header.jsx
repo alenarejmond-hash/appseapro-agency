@@ -31,24 +31,6 @@ export default function Header({ isMobileMenuOpen, setIsMobileMenuOpen, onGlassM
         </nav>
 
         <div className="flex items-center gap-3">
-          {/* Прямая кнопка связи в Telegram на десктопе */}
-          <a
-            href="https://t.me/elenlime"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Написать в Telegram"
-            className="hidden md:inline-flex items-center gap-2 glass-card px-5 py-2 rounded-full text-sm font-medium hover:bg-white/10 transition-colors interactive-elem cursor-pointer text-[#F3F4F6] hover:text-white"
-            onMouseMove={onGlassMove}
-            onTouchMove={onGlassMove}
-          >
-            <span className="glass-content flex items-center gap-2">
-              <svg className="w-3.5 h-3.5 fill-current text-white/90" viewBox="0 0 24 24">
-                <path d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.313 4.693c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
-              </svg>
-              <span>Связаться</span>
-            </span>
-          </a>
-
           {/* Две тонкие минималистичные линии бургера */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
