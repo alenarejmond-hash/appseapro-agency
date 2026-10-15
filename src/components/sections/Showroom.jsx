@@ -94,12 +94,23 @@ export default function Showroom({
                       БАЗОВЫЙ ХИТ
                     </span>
                   </div>
-                  <p className="text-white font-medium text-xs md:text-sm mb-2 leading-snug">
-                    Безупречный минимализм. Всё, чтобы не потерять клиента.
+                  <p className="text-white font-medium text-xs md:text-sm mb-3 leading-snug">
+                    Элегантный обмен контактами без лишнего. Заменяет пачку бумажных визиток.
                   </p>
-                  <p className="text-[#A1A1AA] text-xs md:text-sm leading-relaxed">
-                    Элегантное решение для мгновенного обмена контактами. Все ваши соцсети, мессенджеры и ссылки собраны в одном стильном окне. Клиент наводит камеру на QR-код и за секунду сохраняет ваш номер прямо в телефонную книгу. Просто, быстро и со вкусом.
-                  </p>
+                  <ul className="space-y-2 text-[#A1A1AA] text-xs md:text-sm leading-relaxed">
+                    <li className="flex items-start gap-2">
+                      <span className="text-white/60 shrink-0">✦</span>
+                      <span>Все связи в 1 окне: телефон, мессенджеры, соцсети и портфолио.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-white/60 shrink-0">✦</span>
+                      <span>В 1 клик в телефонную книгу: собеседник сразу сохраняет ваш номер без ручного набора.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-white/60 shrink-0">✦</span>
+                      <span>Работает всегда: персональный QR-код открывается без интернета и без VPN.</span>
+                    </li>
+                  </ul>
                 </div>
                 <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-medium text-white/80 group-hover:text-white transition-colors">
                   <span className="flex items-center gap-2">
@@ -131,12 +142,23 @@ export default function Showroom({
                       БЕСТСЕЛЛЕР
                     </span>
                   </div>
-                  <p className="text-white font-medium text-xs md:text-sm mb-2 leading-snug">
-                    Тяжелая артиллерия для вашего личного бренда.
+                  <p className="text-white font-medium text-xs md:text-sm mb-3 leading-snug">
+                    Тяжелая артиллерия для личного бренда. Заменяет полноценный сайт.
                   </p>
-                  <p className="text-[#A1A1AA] text-xs md:text-sm leading-relaxed">
-                    Визитка, которую хочется крутить в руках. Завораживающий 3D-разворот со звуковым и тактильным откликом. Лицевая сторона приковывает взгляд, а на обороте — мини-лендинг о вас: ваши услуги, преимущества и прямая запись. Заменяет целый сайт и продает вашу экспертность без слов.
-                  </p>
+                  <ul className="space-y-2 text-[#A1A1AA] text-xs md:text-sm leading-relaxed">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#E50940] shrink-0">✦</span>
+                      <span>Вау-эффект с первых секунд: завораживающий 3D-разворот с реалистичным звуком переворота.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#E50940] shrink-0">✦</span>
+                      <span>Мини-лендинг на обороте: презентация ваших услуг, прайс-лист, отзывы и прямая запись.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#E50940] shrink-0">✦</span>
+                      <span>Всегда под рукой: открывается по QR-коду без интернета и сохраняет все контакты в 1 клик.</span>
+                    </li>
+                  </ul>
                 </div>
 
                 <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-medium text-white/80 group-hover:text-white transition-colors">
@@ -169,12 +191,23 @@ export default function Showroom({
                       АВТОРСКАЯ РАЗРАБОТКА
                     </span>
                   </div>
-                  <p className="text-white font-medium text-xs md:text-sm mb-2 leading-snug">
-                    Две жизни в одной визитке. Аналогов в мире нет.
+                  <p className="text-white font-medium text-xs md:text-sm mb-3 leading-snug">
+                    Две жизни в одной визитке. Для тех, кто ценит личные границы.
                   </p>
-                  <p className="text-[#A1A1AA] text-xs md:text-sm leading-relaxed">
-                    Уникальная разработка с разделением на Рабочий и Личный профили. Живет по вашим биоритмам: днем открывается деловая сторона, вечером — личная (переключить вручную можно только секретным жестом под пин-кодом). Абсолютная приватность: тот, кому вы дали личный контакт, не увидит вашу рабочую сторону — и наоборот.
-                  </p>
+                  <ul className="space-y-2 text-[#A1A1AA] text-xs md:text-sm leading-relaxed">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#E50940] shrink-0">✦</span>
+                      <span>Живет по вашему графику: днем открывается деловой профиль, вечером — личный.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#E50940] shrink-0">✦</span>
+                      <span>Абсолютная приватность: партнеры по бизнесу никогда не увидят ваши личные фото и контакты.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#E50940] shrink-0">✦</span>
+                      <span>Секретный доступ: переключить профиль вручную можно только тайным жестом под PIN-кодом.</span>
+                    </li>
+                  </ul>
                 </div>
                 <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-medium text-white/90 group-hover:text-white transition-colors">
                   <span className="flex items-center gap-2">
@@ -298,102 +331,14 @@ export default function Showroom({
         {/* Карточка 03: Эстетика и Онлайн-запись */}
         <div
           id="product-beauty"
-          className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-stretch gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15 scroll-mt-28"
+          className="glass-card lg:col-span-3 p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8 interactive-elem fade-up-elem cursor-pointer border-white/15 scroll-mt-28"
           onMouseMove={onGlassMove}
           onTouchMove={onGlassMove}
-          onClick={() => setIsBeautyModalOpen(true)}
           style={{ transitionDelay: '0.2s' }}
         >
           <div className="absolute inset-0 rounded-[inherit] bg-[radial-gradient(circle_at_top_left,rgba(229,9,64,0.1)_0%,transparent_55%)] pointer-events-none"></div>
           
-          {/* Макет смартфона с живым интерфейсом онлайн-записи */}
-          <div className="w-full lg:w-5/12 min-h-[300px] lg:min-h-[340px] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-white/15 shrink-0 bg-gradient-to-b from-[#18181b]/95 to-[#09090b]/95 p-4 sm:p-5 flex flex-col justify-between group">
-            {/* Световые акценты темы */}
-            <div className="absolute -top-16 -right-16 w-36 h-36 bg-[#E50940]/15 rounded-full blur-2xl pointer-events-none"></div>
-
-            {/* Верх смартфона: статус мастера и переключатель 6 стилей */}
-            <div className="relative z-10">
-              <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-3">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-xs font-serif text-white">
-                    Е
-                  </div>
-                  <div>
-                    <h5 className="text-white text-xs font-medium leading-none">Елена Сотникова</h5>
-                    <p className="text-[10px] text-[#A1A1AA] mt-0.5">Эстетика & Уход • Live</p>
-                  </div>
-                </div>
-
-                {/* 6 цветовых стилей темы */}
-                <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-white/5 border border-white/10" title="6 цветовых стилей">
-                  <span className="w-2 h-2 rounded-full bg-[#E50940]"></span>
-                  <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
-                  <span className="w-2 h-2 rounded-full bg-[#9333EA]"></span>
-                  <span className="w-2 h-2 rounded-full bg-[#06B6D4]"></span>
-                  <span className="w-2 h-2 rounded-full bg-[#10B981]"></span>
-                  <span className="w-2 h-2 rounded-full bg-[#EC4899]"></span>
-                </div>
-              </div>
-
-              {/* Интерактивный календарь с окнами записи */}
-              <div className="space-y-2.5">
-                <div className="flex items-center justify-between text-[11px] text-[#D4D4D8]">
-                  <span>Свободные окна записи:</span>
-                  <span className="text-white/60">Май 2026</span>
-                </div>
-
-                {/* Дни недели */}
-                <div className="grid grid-cols-5 gap-1.5 text-center text-[10px]">
-                  <div className="py-1.5 rounded-lg bg-white/[0.03] text-[#A1A1AA] border border-white/5">
-                    <div>Пн</div>
-                    <div className="font-semibold text-white/70">18</div>
-                  </div>
-                  <div className="py-1.5 rounded-lg bg-white/[0.03] text-[#A1A1AA] border border-white/5">
-                    <div>Вт</div>
-                    <div className="font-semibold text-white/70">19</div>
-                  </div>
-                  <div className="py-1.5 rounded-lg bg-white/15 text-white border border-white/30 shadow-[0_0_12px_rgba(255,255,255,0.15)]">
-                    <div className="text-[9px] text-[#E50940] font-semibold">Ср</div>
-                    <div className="font-semibold text-white">20</div>
-                  </div>
-                  <div className="py-1.5 rounded-lg bg-white/[0.03] text-[#A1A1AA] border border-white/5">
-                    <div>Чт</div>
-                    <div className="font-semibold text-white/70">21</div>
-                  </div>
-                  <div className="py-1.5 rounded-lg bg-white/[0.03] text-[#A1A1AA] border border-white/5">
-                    <div>Пт</div>
-                    <div className="font-semibold text-white/70">22</div>
-                  </div>
-                </div>
-
-                {/* Окошки времени */}
-                <div className="grid grid-cols-3 gap-1.5 text-[10px] pt-1">
-                  <div className="py-1.5 px-2 rounded-lg bg-[#E50940]/20 border border-[#E50940]/40 text-white font-medium text-center">
-                    10:00 • Свободно
-                  </div>
-                  <div className="py-1.5 px-2 rounded-lg bg-white/[0.04] border border-white/10 text-white/80 font-medium text-center">
-                    13:30 • Свободно
-                  </div>
-                  <div className="py-1.5 px-2 rounded-lg bg-white/[0.02] border border-white/5 text-white/30 line-through text-center">
-                    16:00
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Низ смартфона: статус Telegram-бота */}
-            <div className="relative z-10 mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px] text-[#D4D4D8]">
-              <div className="flex items-center gap-1.5">
-                <svg className="w-3.5 h-3.5 fill-current text-[#2AABEE]" viewBox="0 0 24 24">
-                  <path d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.313 4.693c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
-                </svg>
-                <span>Бронь сразу в <strong>@DemoSeaBeauty_bot</strong></span>
-              </div>
-              <span className="text-[10px] text-[#10B981] font-semibold">24/7 Live</span>
-            </div>
-          </div>
-          
-          <div className="glass-content flex-1 z-10 text-left w-full flex flex-col justify-center">
+          <div className="glass-content flex-1 z-10 text-left w-full">
             <div className="flex items-center justify-between mb-4">
               <span className="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[11px] uppercase tracking-widest font-semibold">
                 ДЛЯ МАСТЕРОВ И БЬЮТИ-СФЕРЫ
@@ -403,56 +348,80 @@ export default function Showroom({
             <h3 className="text-3xl md:text-4xl font-serif mb-4 text-white">
               Эстетика и <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white to-[#D4D4D8]">Онлайн-запись</span>
             </h3>
-            <p className="text-[#D4D4D8] text-sm md:text-base mb-6 leading-relaxed">
+            <p className="text-[#D4D4D8] text-sm md:text-base mb-8 leading-relaxed">
               Перестаньте платить ежемесячную аренду сложным сервисам и тратить вечера на переписки «какое время свободно?». Клиенты сами видят ваши свободные окошки и записываются в 2 клика — а вы управляете графиком, ценами и отпуском прямо со смартфона без сторонней помощи.
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 text-left mb-6">
-              <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all flex flex-col justify-start">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-center text-white/90 shrink-0">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                    </svg>
-                  </div>
-                  <h4 className="text-white text-base md:text-lg font-semibold">Запись 24/7 без переписок</h4>
-                </div>
-                <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                  Свободные окошки и режим отпуска. Клиент открывает стильный календарь, выбирает свободную дату и время и бронирует визит за секунду. Собрались отдохнуть? Закройте дни для записи в один клик. 6 премиальных цветовых тем под ваш визуал на выбор — и 0 ₽ абонентской платы.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all flex flex-col justify-start">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-center text-white/90 shrink-0">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
-                    </svg>
-                  </div>
-                  <h4 className="text-white text-base md:text-lg font-semibold">Личный Telegram-ассистент</h4>
-                </div>
-                <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
-                  Полный автопилот в вашем телефоне. Новая бронь мгновенно прилетает в ваш Telegram-бот и автоматически встает в календарь телефона. В уведомлении уже есть прямая кнопка перехода в WhatsApp клиента для быстрой связи. А каждое утро бот присылает вам удобную сводку: кто, на какую услугу и во сколько записан сегодня.
-                </p>
-              </div>
-            </div>
-
-            {/* Интерактивная кнопка демо Бьюти */}
-            <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsBeautyModalOpen(true);
-                }}
-                className="px-5 py-2.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] border border-white/15 hover:border-white/30 text-white text-xs sm:text-sm font-medium transition-all flex items-center gap-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] interactive-elem cursor-pointer"
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 text-left">
+              {/* Онлайн-запись 24/7 */}
+              <div
+                onClick={(e) => { e.stopPropagation(); setIsBeautyModalOpen(true); }}
+                className="p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/25 hover:bg-white/[0.04] transition-all flex flex-col justify-between group cursor-pointer"
               >
-                <span className="w-2 h-2 rounded-full bg-[#E50940]"></span>
-                <span>Открыть демо онлайн-записи (6 стилей)</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </button>
+                <div>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between items-start gap-2.5 mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-center text-white/90 group-hover:scale-105 transition-transform shrink-0">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                      </div>
+                      <h4 className="text-white text-lg font-semibold tracking-wide">Запись 24/7 без переписок</h4>
+                    </div>
+                    <span className="text-[9px] sm:text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/70 font-medium whitespace-nowrap self-start sm:self-auto">
+                      6 СТИЛЕЙ • 0 ₽ АРЕНДЫ
+                    </span>
+                  </div>
+                  <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
+                    Свободные окошки и режим отпуска. Клиент открывает стильный календарь, выбирает свободную дату и время и бронирует визит за секунду. Собрались отдохнуть? Закройте дни для записи в один клик. 6 премиальных цветовых тем под ваш визуал на выбор — и 0 ₽ абонентской платы.
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs md:text-sm font-medium text-white/80 group-hover:text-white transition-colors">
+                  <span className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/40 group-hover:bg-white transition-colors"></span>
+                    Демо онлайн-записи (6 стилей)
+                  </span>
+                  <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-6-6l6 6-6 6" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Личный Telegram-ассистент */}
+              <div
+                onClick={(e) => { e.stopPropagation(); window.open('https://t.me/DemoSeaBeauty_bot', '_blank'); }}
+                className="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-[#E50940]/10 to-white/[0.02] border border-[#E50940]/30 hover:border-[#E50940]/55 hover:bg-white/[0.04] transition-all flex flex-col justify-between group cursor-pointer"
+              >
+                <div>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between items-start gap-2.5 mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-[#E50940]/20 border border-[#E50940]/40 flex items-center justify-center text-[#E50940] group-hover:scale-105 transition-transform shrink-0">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                      </div>
+                      <h4 className="text-white text-lg font-semibold tracking-wide">Telegram-ассистент</h4>
+                    </div>
+                    <span className="text-[9px] sm:text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#E50940]/15 border border-[#E50940]/30 text-[#E50940] font-semibold whitespace-nowrap self-start sm:self-auto">
+                      АВТОПИЛОТ • 24/7 LIVE
+                    </span>
+                  </div>
+                  <p className="text-[#D4D4D8] text-xs md:text-sm leading-relaxed">
+                    Полный автопилот в вашем телефоне. Новая бронь мгновенно прилетает в ваш Telegram-бот и автоматически встает в календарь телефона. В уведомлении уже есть прямая кнопка перехода в WhatsApp клиента для быстрой связи. А каждое утро бот присылает вам удобную сводку: кто, на какую услугу и во сколько записан сегодня.
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs md:text-sm font-medium text-white group-hover:text-white transition-colors">
+                  <span className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E50940]"></span>
+                    Тестовый бот: @DemoSeaBeauty_bot
+                  </span>
+                  <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-6-6l6 6-6 6" />
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
         </div>

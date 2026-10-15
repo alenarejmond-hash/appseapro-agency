@@ -79,37 +79,35 @@ export default function PricingSection({
               <div className="glass-content h-full flex flex-col text-left">
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[10px] font-medium uppercase tracking-widest">
-                    PWA Визитка
+                    Установка на экран • Запуск за 1–2 дня
                   </span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Classic</h3>
                 
-                <div className="mb-4 pb-4 border-b border-white/10 flex items-baseline justify-between">
+                <div className="mb-6 pb-4 border-b border-white/10 flex items-baseline justify-between">
                   <span className="text-3xl md:text-4xl font-serif text-white tracking-tight">$40</span>
-                </div>
-
-                {/* Быстрая подсказка сути тарифа */}
-                <div className="mb-5 p-3 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-white/90">
-                  <span className="text-[#A1A1AA] block text-[10px] uppercase tracking-wider mb-1 font-medium">Суть тарифа:</span>
-                  Элегантная визитка на экране смартфона: все контакты в одном месте, офлайн QR-код и сохранение в телефонную книгу в 1 клик.
                 </div>
                 
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Установка на рабочий стол телефона (без скачивания из AppStore)</span>
+                    <span>Индивидуальный дизайн в вашем фирменном стиле (7 тем на выбор)</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Персональный QR-код работает без интернета и VPN</span>
+                    <span>Офлайн QR-код (считывается в любой точке мира без связи)</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Сохранение вашего номера и соцсетей в телефон клиента в 1 клик</span>
+                    <span>Кнопка мгновенного сохранения контакта в телефонную книгу</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Разовая оплата — никаких подписок, запуск за 1–2 дня</span>
+                    <span>Установка на рабочий стол телефона как приложение (PWA)</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Разовый платеж под ключ — без подписок и скрытых комиссий</span>
                   </li>
                 </ul>
 
@@ -149,37 +147,35 @@ export default function PricingSection({
               <div className="glass-content h-full flex flex-col text-left">
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[10px] font-medium uppercase tracking-widest">
-                    PWA Визитка • 3D
+                    3D-эффект • Заменяет сайт • Запуск за 2–3 дня
                   </span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Infinity</h3>
                 
-                <div className="mb-4 pb-4 border-b border-white/10 flex items-baseline justify-between">
+                <div className="mb-6 pb-4 border-b border-white/10 flex items-baseline justify-between">
                   <span className="text-3xl md:text-4xl font-serif text-white tracking-tight">$80</span>
-                </div>
-
-                {/* Быстрая подсказка сути тарифа */}
-                <div className="mb-5 p-3 rounded-xl bg-white/[0.03] border border-white/10 text-xs text-white/90">
-                  <span className="text-[#A1A1AA] block text-[10px] uppercase tracking-wider mb-1 font-medium">Суть тарифа:</span>
-                  Двусторонняя 3D-визитка со звуковым сопровождением: ваш личный мини-лендинг с услугами, прайсом и портфолио на обороте.
                 </div>
                 
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Завораживающий 3D-разворот со звуковым и тактильным откликом</span>
+                    <span>Интерактивная 3D-визитка с реалистичным звуком переворота</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Оборотная сторона с вашими услугами, преимуществами и прайсом</span>
+                    <span>Ваш мини-лендинг на обороте: перечень услуг, прайс-лист и портфолио</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Установка на экран без скачивания, офлайн QR-код и сохранение в 1 клик</span>
+                    <span>Прямые кнопки быстрой связи и записи к вам в мессенджеры</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Заменяет полноценный сайт — запуск под ключ за 2–3 дня</span>
+                    <span>Офлайн QR-код, установка на экран и сохранение контакта в 1 клик</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Полноценный цифровой актив навсегда без абонентской платы</span>
                   </li>
                 </ul>
 
@@ -215,37 +211,35 @@ export default function PricingSection({
               <div className="glass-content h-full flex flex-col text-left">
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#E50940]/15 border border-[#E50940]/30 text-[#E50940] text-[10px] font-semibold uppercase tracking-widest">
-                    EXCLUSIVE
+                    Эксклюзив • 2 профиля • Запуск за 2–3 дня
                   </span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Twin ID</h3>
                 
-                <div className="mb-4 pb-4 border-b border-white/10 flex items-baseline justify-between">
+                <div className="mb-6 pb-4 border-b border-white/10 flex items-baseline justify-between">
                   <span className="text-3xl md:text-4xl font-serif text-white tracking-tight">$130</span>
-                </div>
-
-                {/* Быстрая подсказка сути тарифа */}
-                <div className="mb-5 p-3 rounded-xl bg-[#E50940]/10 border border-[#E50940]/25 text-xs text-white/90">
-                  <span className="text-[#E50940] block text-[10px] uppercase tracking-wider mb-1 font-semibold">Суть тарифа:</span>
-                  Эксклюзивная разработка: Рабочий и Личный профили в одной визитке с защитой приватности и сменой стороны по времени суток.
                 </div>
                 
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Автоматическая смена профиля: днем — деловой, вечером — личный</span>
+                    <span>Два автономных экрана в одной ссылке: «Бизнес» и «Личное»</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Полная приватность: деловые контакты никогда не увидят личную сторону</span>
+                    <span>Автопереключение по времени суток (утро/вечер)</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Ручной переворот только по вашему секретному жесту и PIN-коду</span>
+                    <span>Защита личной стороны секретным жестом и пин-кодом</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    <span>Офлайн QR-код, установка на экран и сохранение контактов в 1 клик</span>
+                    <span>Гарантия приватности: контакты из делового круга не увидят личные ссылки</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 text-white shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>Установка на экран, офлайн QR-код и пожизненная автономия</span>
                   </li>
                 </ul>
 
@@ -282,14 +276,25 @@ export default function PricingSection({
             <div className="text-left flex-1">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.06] border border-white/15 text-[10px] uppercase tracking-widest text-[#F3F4F6] font-medium mb-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E50940] shadow-[0_0_8px_#E50940]"></span>
-                <span>Премиум-аксессуар • NFC</span>
+                <span>Премиум-аксессуар с чипом NFC</span>
               </div>
-              <h4 className="text-xl md:text-2xl font-serif text-white mb-2">
-                Кожаный брелок Crazy Horse (ручная работа)
+              <h4 className="text-xl md:text-2xl font-serif text-white mb-3">
+                Кожаный брелок Crazy Horse
               </h4>
-              <p className="text-sm text-[#D4D4D8] leading-relaxed max-w-2xl">
-                Винтажная натуральная кожа с благородным эффектом патины и встроенным чипом NFC. Приложите брелок к любому смартфону — ваша визитка откроется мгновенно без сканирования QR-кода.
-              </p>
+              <ul className="space-y-2 text-xs md:text-sm text-[#D4D4D8]">
+                <li className="flex items-start gap-2.5">
+                  <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                  <span>Натуральная винтажная кожа ручного пошива</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                  <span>Встроенный чип: визитка открывается от простого касания к смартфону</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <svg className="w-4 h-4 text-[#E4E4E7] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                  <span>Работает автономно: не требует зарядки или батареек</span>
+                </li>
+              </ul>
             </div>
             <div className="flex flex-col sm:flex-row md:flex-col items-center md:items-end gap-3 shrink-0 w-full md:w-auto">
               <div className="text-center md:text-right">
