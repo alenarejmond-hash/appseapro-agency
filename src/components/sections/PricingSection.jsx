@@ -79,13 +79,18 @@ export default function PricingSection({
               <div className="glass-content h-full flex flex-col text-left">
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[10px] font-medium uppercase tracking-widest">
-                    Установка на экран • Запуск за 1–2 дня
+                    PWA Визитка
                   </span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Classic</h3>
                 
-                <div className="mb-6 pb-4 border-b border-white/10 flex items-baseline justify-between">
-                  <span className="text-3xl md:text-4xl font-serif text-white tracking-tight">$40</span>
+                <div className="mb-6 pb-4 border-b border-white/10">
+                  <div className="flex items-baseline justify-between mb-1.5">
+                    <span className="text-3xl md:text-4xl font-serif text-white tracking-tight">$40</span>
+                  </div>
+                  <p className="text-xs text-[#D4D4D8] font-medium tracking-wide">
+                    Установка на экран • Запуск за 1–2 дня
+                  </p>
                 </div>
                 
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
@@ -147,13 +152,18 @@ export default function PricingSection({
               <div className="glass-content h-full flex flex-col text-left">
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[#D4D4D8] text-[10px] font-medium uppercase tracking-widest">
-                    3D-эффект • Заменяет сайт • Запуск за 2–3 дня
+                    PWA Визитка • 3D
                   </span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Infinity</h3>
                 
-                <div className="mb-6 pb-4 border-b border-white/10 flex items-baseline justify-between">
-                  <span className="text-3xl md:text-4xl font-serif text-white tracking-tight">$80</span>
+                <div className="mb-6 pb-4 border-b border-white/10">
+                  <div className="flex items-baseline justify-between mb-1.5">
+                    <span className="text-3xl md:text-4xl font-serif text-white tracking-tight">$80</span>
+                  </div>
+                  <p className="text-xs text-[#D4D4D8] font-medium tracking-wide">
+                    3D-эффект • Заменяет сайт • Запуск за 2–3 дня
+                  </p>
                 </div>
                 
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
@@ -211,13 +221,18 @@ export default function PricingSection({
               <div className="glass-content h-full flex flex-col text-left">
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#E50940]/15 border border-[#E50940]/30 text-[#E50940] text-[10px] font-semibold uppercase tracking-widest">
-                    Эксклюзив • 2 профиля • Запуск за 2–3 дня
+                    EXCLUSIVE
                   </span>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">Twin ID</h3>
                 
-                <div className="mb-6 pb-4 border-b border-white/10 flex items-baseline justify-between">
-                  <span className="text-3xl md:text-4xl font-serif text-white tracking-tight">$130</span>
+                <div className="mb-6 pb-4 border-b border-white/10">
+                  <div className="flex items-baseline justify-between mb-1.5">
+                    <span className="text-3xl md:text-4xl font-serif text-white tracking-tight">$130</span>
+                  </div>
+                  <p className="text-xs text-[#D4D4D8] font-medium tracking-wide">
+                    Эксклюзив • 2 профиля • Запуск за 2–3 дня
+                  </p>
                 </div>
                 
                 <ul className="space-y-3.5 mb-8 text-sm text-[#D4D4D8] flex-1">
@@ -276,7 +291,7 @@ export default function PricingSection({
             <div className="text-left flex-1">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.06] border border-white/15 text-[10px] uppercase tracking-widest text-[#F3F4F6] font-medium mb-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E50940] shadow-[0_0_8px_#E50940]"></span>
-                <span>Премиум-аксессуар с чипом NFC</span>
+                <span>Премиум-аксессуар • NFC</span>
               </div>
               <h4 className="text-xl md:text-2xl font-serif text-white mb-3">
                 Кожаный брелок Crazy Horse
@@ -299,7 +314,7 @@ export default function PricingSection({
             <div className="flex flex-col sm:flex-row md:flex-col items-center md:items-end gap-3 shrink-0 w-full md:w-auto">
               <div className="text-center md:text-right">
                 <span className="text-2xl md:text-3xl font-serif text-white">$40</span>
-                <span className="text-[11px] text-[#A1A1AA] block mt-0.5">ручная работа • с NFC</span>
+                <span className="text-xs text-[#D4D4D8] font-medium block mt-1">Премиум-аксессуар с чипом NFC</span>
               </div>
               <a
                 href="https://t.me/elenlime?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%20%D0%95%D0%BB%D0%B5%D0%BD%D0%B0,%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BA%D0%BE%D0%B6%D0%B0%D0%BD%D1%8B%D0%B9%20NFC-%D0%B1%D1%80%D0%B5%D0%BB%D0%BE%D0%BA%20Crazy%20Horse%20($40)"
